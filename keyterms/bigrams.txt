@@ -1,3 +1,4 @@
+authentication framework
 legal requir
 confident integri
 euicc locat
@@ -17,6 +18,7 @@ cryptographic protocols
 cryptographic techniques
 evaluation criteria
 identity management
+information security
 internet security
 intrusion detection
 mobile security
@@ -32,3 +34,9 @@ smart cards
 telecommunications security
 trusted computing
 web security
+Interception Area
+Local Breakout
+Location Services
+LI Mirror
+HLR Intercept
+Lawful Disclosure

@@ -1,32 +1,28 @@
 import os
 import re
+import time
+from functools import partial
+from typing import List, Dict
 from pathlib import Path
 import argparse
-import logging
 from tqdm import tqdm
 from itertools import compress
 from collections import defaultdict
 import pandas as pd
+import numpy as np
+from collections import namedtuple
+import multiprocessing
+from joblib import Parallel, delayed
 
 from bigbang.analysis.listserv import ListservMailList
 
+from tgpp.config.config import CONFIG
 from tgpp.ingress import TextFile
+import tgpp.ingress.queries as Queries
 from tgpp.nlp.utils import text_preprocessing
 
-folder_project = str(Path(os.path.abspath(__file__)).parent.parent)
-folder_data = folder_project + "/data"
-folder_keys = folder_project + "/keywords"
-folder_bin = folder_project + "/bin"
-#folder_emails = "/home/christovis/InternetGov/bigbang-archives/3GPP"
-folder_emails = "/home/christovis/InternetGov/bigbang/archives/3GPP"
-
-logging.basicConfig(
-    filename=folder_bin + "/find_target_documents.log",
-    filemode="w",
-    level=logging.INFO,
-    format="%(asctime)s %(message)s",
-)
-logger = logging.getLogger(__name__)
+# find available nr. of cpus for parallel computation
+ncpus_available = multiprocessing.cpu_count()
 
 parser = argparse.ArgumentParser(
     description="""
@@ -34,115 +30,121 @@ parser = argparse.ArgumentParser(
     """,
 )
 parser.add_argument(
-    "--query_file",
-    const=folder_project + '/keywords/bigrams_unsupervised_verified.csv',
-    default=folder_project + '/keywords/bigrams_unsupervised_verified.csv',
+    "--search_set",
+    const=CONFIG.search_set,
+    default=CONFIG.search_set,
     type=str,
     nargs='?',
-    help='File-path to file containing search queries.',
+    help='Define the search set which can be [emails]',
 )
 parser.add_argument(
-    "--search_set",
-    const='email',
-    default='email',
+    "--ncpus",
+    const=CONFIG.ncpus,
+    default=CONFIG.ncpus,
     type=str,
     nargs='?',
-    help='Define the search set which can be [email, rfcfinal, rfcrecent]',
+    help='Number of CPUs to use.',
 )
 args = parser.parse_args()
 
+text_preprocessing = partial(
+    text_preprocessing,
+    min_len=1,
+    max_len=30,
+    remove_punctuations=True,
+    remove_numbers=True,
+)
 
-def queries_from_csv(file_path: str) -> pd.DataFrame:
-    df = pd.read_csv(
-        file_path,
-        header=0,
-        index_col=0,
-    )
-    return list(df['ngram'].values)
+
+def search_keyterms(
+    msg: pd.Series,
+    queries: List[str],
+    header_fields: List[str],
+    attachment_fields: List[str],
+) -> list:
+    tset_msg = {}
+    # get texts of message body and attachment
+    body = msg['body']
+    attachment = (' ').join(list(msg[attachment_fields].dropna().values))
+    # preprocess texts
+    preproc_body = text_preprocessing(body, return_tokens=False)
+    preproc_attachment = text_preprocessing(attachment, return_tokens=False)
+    # add Email header fields
+    for header_field in header_fields:
+        try:
+            tset_msg[f'msg-{header_field}'] = msg[header_field]
+        except Exception:
+            tset_msg[f'msg-{header_field}'] = None
+    # add query counts
+    for query in queries:
+        tset_msg[f'body-{query}'] = preproc_body.count(query)
+        tset_msg[f'attachment-{query}'] = preproc_attachment.count(query)
+    # add extra fields
+    #tset_msg['msg-body'] = body
+    tset_msg['msg-body_token_count'] = len(preproc_body)
+    #tset_msg['msg-attachment'] = attachment
+    tset_msg['msg-attachment_token_count'] = len(preproc_attachment)
+    return list(tset_msg.values())
+
+
 
 def main(args):
-    queries = queries_from_csv(args.query_file)
-    queries += text_preprocessing(
-        TextFile.from_file(f"{folder_keys}/key_bigrams.txt"),
-        min_len=2,
-        return_tokens=True,
-    )
-    queries += text_preprocessing(
-        TextFile.from_file(f"{folder_keys}/key_unigrams.txt"),
-        min_len=2,
-        return_tokens=True,
-    )
-    queries = list(set(queries))
-    # add acronyms
-    queries += [
-        " eid ",
-        " nef ",
-        " nesas ",
-        " rfid ",
-        " e2e ",
-    ]
-    queries = [q for q in queries if len(q) >= 3]
+    # load keyterms/queries
+    queries = Queries.load_abbreviations(CONFIG.file_queries)
+    queries = text_preprocessing(queries, min_len=1, return_tokens=True)
+    # remove dublicates
+    queries = list(np.unique(queries))
+    # remove empty strings
+    queries.remove('')
+    queries = [' '+query+' ' for query in queries]
 
-    mlist_name = "3GPP_TSG_SA_WG3_LI"
+    # load mailinglist
     mlist = ListservMailList.from_mbox(
-        name=mlist_name,
-        filepath=f"{folder_emails}/{mlist_name}.mbox",
+        name=args.search_set,
+        filepath=f"{CONFIG.folder_search_set}{args.search_set}.mbox",
+        include_body=True,
     )
     print(f"The mailing list containes {len(mlist.df.index)} Emails.")
 
-    col_attachment = [
+    attachment_fields = [
         col for col in mlist.df.columns if col.startswith('attachment-')
     ]
-    findings = defaultdict(list)
-    for msg_idx, msg in mlist.df.iterrows():
-        text = '' #msg.body
-        if len(msg[col_attachment].dropna()) > 0:
-            attachment = ('Attachment:\n').join(list(msg[col_attachment].dropna().values))
-            text = text + '\n' + attachment
-        text_pp = text_preprocessing(text, min_len=2, return_tokens=False)
-        findings['message-attachment'].append(text)
-        findings['message-id'].append(msg['message-id'])
-        findings['message-from'].append(msg['from'])
-        findings['message-date'].append(msg['date'])
-        findings['archived-at'].append(msg['archived-at'])
-        for query in queries:
-            if query == "intercept":
-                _text = text_pp.replace('law intercept group', '')
-                findings[query].append(_text.count(query))
-            else:
-                findings[query].append(text_pp.count(query))
 
-    query_name = args.query_file.split('/')[-1].split('.')[0]
-    file_name = f"{folder_data}/{query_name}_in_maillist_attachments.csv"
-    df = pd.DataFrame.from_dict(findings)
+    # run through messages and count keyterms
+    time_start = time.time()
+    if args.ncpus == 1:
+        tset =  [
+            search_keyterms(msg, queries, CONFIG.header_fields, attachment_fields)
+            for msg_idx, msg in mlist.df.iterrows()
+        ]
+    else:
+        tset = Parallel(n_jobs=args.ncpus)(
+            delayed(search_keyterms)(msg, queries, CONFIG.header_fields, attachment_fields)
+            for msg_idx, msg in mlist.df.iterrows()
+        )
+    print(time.time() - time_start)
 
-    print(df.columns)
-    # only keep non-zero rows and columns
-    non_query_columns = [
-        'message-attachment',
-        'message-id',
-        'message-date',
-        'message-from',
-        'archived-at',
-    ]
-    _df = df.loc[:, ~df.columns.isin(non_query_columns)]
-    _df = _df.loc[(_df!=0).any(axis=1), :]  # remove rows with only zeros
-    _df = _df.loc[:, (_df!=0).any(axis=0)]  # remove columns with only zeros
-    columns = list(_df.columns) + non_query_columns
-    indices = list(_df.index)
-    df = df.loc[indices, columns]
-    print(df.columns)
+    # Target-set Email attributes
+    attributes = {f'msg-{header_field}': str for header_field in CONFIG.header_fields}
+    for query in queries:
+        attributes[f'body-{query}'] = int
+        attributes[f'attachment-{query}'] = int
+    attributes['msg-body_token_count'] = int
+    attributes['msg-attachment_token_count'] = int
+    tset = np.asarray(tset).T
+    tset_msg = {}
+    for idx, (attribute, datatype) in enumerate(attributes.items()):
+        tset_msg[attribute] = tset[idx].astype(datatype)
 
-    # remove row with only one unigram count
-    columns_unigrams = [col for col in df.columns if len(col.split(' ')) == 1]
-    _df = df[columns_unigrams]
-    _df = _df.loc[:, ~_df.columns.isin(non_query_columns)]
-    _df = _df.loc[_df.sum(axis=1) > 1, :]
-    indices = list(_df.index)
-    df = df.loc[indices, columns]
-    print(df.columns)
+    df = pd.DataFrame.from_dict(tset_msg)
+    df = Queries.remove_text_wo_query(df)
+    df = Queries.remove_query_wo_text(df)
+    print(len(df.index), len(df.columns))
 
-    df.to_csv(file_name)
+    #TODO: Need to specify escapechar as white-space etc can be contianed in text body
+    #df.to_csv(_file_path, escapechar=), hdf5 might therefore be better in that case
+    _file_path = CONFIG.folder_target_set + f"{args.search_set}.h5"
+    df.to_hdf(_file_path, key='df', mode='w')
 
 
 if __name__ == "__main__":

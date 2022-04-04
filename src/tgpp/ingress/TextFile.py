@@ -1,18 +1,9 @@
 import os
-import logging
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from urllib.request import urlopen
 
-
-directory_project = str(Path(os.path.abspath(__file__)).parent.parent)
-logging.basicConfig(
-    filename=directory_project + "/ingress.log",
-    filemode="w",
-    level=logging.INFO,
-    format="%(asctime)s %(message)s",
-)
-logger = logging.getLogger(__name__)
+from tgpp.config.config import CONFIG
 
 
 def from_url(url: Union[List[str], str], merge: bool=False) -> str:
@@ -20,7 +11,6 @@ def from_url(url: Union[List[str], str], merge: bool=False) -> str:
         try:
             text = str(urlopen(url).read().lower(), "utf-8")
         except Exception:
-            logger.info(f"{url} returned with Error")
             text = ""
         return text
 
@@ -31,11 +21,9 @@ def from_url(url: Union[List[str], str], merge: bool=False) -> str:
         return texts
 
 
-def from_file(file_path: str, return_lines: bool=True) -> Union[List[str], str]:
-    if return_lines:
-        lines = []
-        with open(file_path) as f:
-            lines = f.readlines()
-        return lines
-    else:
-        return open(file_path, 'rb').read()
+def from_file(file_path: str) -> List[str]:
+    lines = []
+    with open(file_path) as file:
+        while (line := file.readline().rstrip()):
+            lines.append(line)
+    return list(set(lines))

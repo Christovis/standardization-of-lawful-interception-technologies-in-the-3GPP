@@ -10,6 +10,7 @@ import nltk
 
 from bigbang.analysis.listserv import ListservMailList
 
+from tgpp.config.config import CONFIG
 from tgpp.ingress import PolyFiles, RFCFinal, EmailList
 from tgpp.nlp.utils import (
     text_preprocessing,
@@ -17,23 +18,17 @@ from tgpp.nlp.utils import (
 )
 import tgpp.nlp.query_extractor as QE
 
-folder_project = str(Path(os.path.abspath(__file__)).parent.parent)
-folder_data = folder_project + "/data"
-folder_keys = folder_project + "/keywords"
-folder_bin = folder_project + "/bin"
-folder_emails = "/home/christovis/InternetGov/bigbang-archives/3GPP"
-
 
 # Load search set, S, for the KLR method
 sset_selection = list(pd.read_csv(
-    f"{folder_data}/bigrams_unsupervised_verified_in_maillist.csv",
+    f"{CONFIG.folder_target_set}bigrams_unsupervised_verified_in_maillist.csv",
     header=0,
     index_col=0,
 )['email_id'].values)
 mlist_name = "3GPP_TSG_SA_WG3_LI"
 mlist = ListservMailList.from_mbox(
-    name=mlist_name,
-    filepath=f"{folder_emails}/{mlist_name}.mbox",
+    name=args.search_set,
+    filepath=f"{CONFIG.folder_search_set}{args.search_set}.mbox",
 )
 sset = mlist.df[mlist.df['message-id'].isin(sset_selection)]
 sset = sset[['message-id', 'body']].set_index('message-id').T.to_dict('list')
@@ -46,5 +41,4 @@ result_T, result_ST = QE.using_klr(
     search_frac=.33,
 )
 
-#result_T.to_csv(folder_keys + "/bigrams_supervised.csv")
-
+#result_T.to_csv(CONFIG.folder_keyterms + "bigrams_supervised.csv")

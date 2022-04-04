@@ -2,6 +2,7 @@ Interception
 Surveillance
 Requirement
 Access
+Attack
 Authentication
 Injection
 Cipher
@@ -12,6 +13,6 @@ Security
 Disclosure
 Disclose
 Baseband
-GDPR
-compliance
-SX3LIF
+Compliance
+LAW
+Issue

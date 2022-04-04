@@ -1,0 +1,58 @@
+Date:
+26/01/2022
+Note:
+Based on literature and keyterm provided by Niels ten Oever.
+##############################################################
+                   Query | Nr of Emails
+----------------------------------------------------
+                  ue real 1
+            intern confer 1
+            polici enforc 1
+            intrus detect 1
+           respons action 1
+             secur servic 2
+                   cipher 2
+             secur threat 2
+              secur evalu 2
+             cloud comput 2
+              person data 2
+               secur risk 3
+          virtual network 4
+                   inject 4
+             nation secur 5
+               mitig risk 5
+     critic infrastructur 5
+            network secur 5
+             radio access 5
+             inform secur 6
+               mobil oper 6
+             base station 7
+           access control 7
+            mobil network 8
+             legal requir 9
+              cyber secur 9
+                ue access 10
+             secur commun 15
+           access network 22
+         temporari identi 26
+            secur concern 27
+                     nef  42
+             network oper 47
+                  authent 49
+             core network 54
+                  end end 58
+                  li auth 61
+             data protect 78
+            secur privaci 80
+           sequenc number 100
+                  surveil 105
+                  privaci 161
+               law enforc 460
+                   access 596
+                disclosur 654
+                  disclos 743
+                 interfac 786
+                    secur 812
+                intercept 1429
+                   requir 1656
+

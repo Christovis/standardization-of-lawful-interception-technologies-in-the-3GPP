@@ -1,0 +1,256 @@
+Abbreviation, Concept
+3GMS, 3rd Generation Mobile Communications System
+3G MSC, 3rd Generation Mobile Switching Centre
+3G UMSC, 3rd Generation Unified Mobile Switching Centre
+AAA, Authentication Authorization and Accounting
+AC, Alarm Call
+ADMF, Administration Function
+ADSL, Asynchronous Digital Subscriber Line
+AF, Authentication Framework
+AGW, Access Gateway
+AMQP, Advanced Message Queuing Protocol
+AN, Access Network
+ANDSF, Access Network Discovery and Selection Function
+AP, Access Provider
+API, Application Program Interface
+AS, Application Server
+A-SBC, Access Session Border Controller
+ASN, Abstract Syntax Notation
+ATCF, Access Transfer Control Function
+ATGW, Access Transfer Gateway
+BBIFF, Bearer Binding Intercept and Forwarding Function
+BER, Basic Encoding Rules
+BM-SC, Broadcast-Multicast Service Centre
+BSF, Bootstrapping Serving Function
+B-TID, Bootstrapping Transaction Identifier
+CA, Certificate Authority
+CC, Content of Communication
+CCIF, Content of Communication Interception Function
+CC IIF, Content of Communication Internal Interception Function
+CCLID, CC Link IDentifier
+CID, Communication IDentifier
+CII, Communication Identifying Information
+CIN, Communication Identity Number
+CITS, Cooperative Intelligent Transport Systems
+CLIF, Cloud Lawful Interception Function
+CLIP, Calling Line Identification Presentation
+CLIR, Calling Line Identification Restriction
+COL, COnnected Line identity
+COLP, COnnected Line identification Presentation
+COLR, COnnected Line identification Restriction
+COTS, Commercial Off The Shelf
+CS, Circuit Switched
+CSCF, Call Session Control Function
+CSG, Closed Subscriber Group
+CSP, Communications Service Provider
+CSPRNG, Cryptographically Secure Pseudo-Random Number Generator
+CUPS, Control and User Plane Separation of EPC nodes
+DASH, Dynamic Adaptive Streaming over HTTP
+DDOS, Distributed Denial Of Service
+DER, Distinguished Encoding Rules
+DF, Delivery Function
+DMA, Direct Memory Access
+DPI, Deep Packet Inspection
+DSMIP, Dual Stack Mobile IP
+e-Codex, e-justice Communication via online data exchange
+E2E, End-to-End
+ECT, Explicit Call Transfer
+EID, Error Insertion Device
+EIO, European Investigation Order
+EJO, European Judicial Network
+EPC, Evolved Packet Core
+EPOC, European Production Order Certificate
+EPOC-PR, European Preservation Order Certificate
+ePDG, Evolved PDG
+EPS, Evolved Packet System
+ESSID, Extended Service Set IDentifier
+E-UTRAN, Evolved UTRAN
+EVCP, Extended Validation Certificates Policy
+FB, FallBack procedure
+FDC, Fixed Destination Call
+FTP, File Transfer Protocol
+GAA, Generic Authentication Architecture
+GBA, Generic Bootstrapping Architecture
+GDPR, General Data Protection Regulation
+GGSN, Gateway GPRS Support Node
+GLIC, GPRS LI Correlation
+GPRS, General Packet Radio Service
+GPS, Global Positioning System
+GRE, Generic Routing Encapsulation
+GSM, Global System for Mobile communications
+GSN, GPRS Support Node
+GTP, GPRS Tunnelling Protocol
+HA, Home Agent
+HBRT, Hardware-based Root of Trust
+HeMS, HeNB Management System
+HeNB, Home enhanced NodeB
+HeNB GW, HeNB Gateway
+H(e)NB, Home and Home enhanced NodeB
+HI, Handover Interface
+HLR, Home Location Register
+HMEE, Hardware-Mediated Execution Enclave
+HMS, HNB Management System
+HNB, Home NodeB
+HNB GW, HNB Gateway
+HRPD, High Rate Packet Data
+HSM, Hardware Security Module
+HSS, Home Subscriber Server
+HTTP, HyperText Transfer Protocol
+HTTPS, HyperText Transfer Protocol Secure
+IA, Interception Area
+IAP, Intercept Access Point
+IBCF, Interconnecting Border Control Function
+ICEs, Intercepting Control Elements
+IHI, Internal Handover Interface
+IIF, Internal Interception Function
+ILHI, Inter LEA Handover Interface
+IMAP, Internet Message Access Protocol
+IMEI, International Mobile Equipment Identity
+IM-MGW, IMS Media Gateway
+IMS, IP Multimedia Core Network Subsystem
+IMS-AGW, IMS Access Gateway
+IMSI, International Mobile Subscriber Identity
+IN, Intelligent Network
+INEs, Intercepting Network Elements
+INI, Internal Network Interface
+IP, Internet Protocol
+IP-SM-GW, IP-Short-Message-Gateway
+IRI, Intercept Related Information
+ISP, Internet Service Point
+IoT, Internet of Things
+LALS, Lawful Access Location Services
+LAN, Local Area Network
+LBO, Local Breakout
+LCS, Location Services
+LD, Lawful Disclosure
+LDI, Location Dependent Interception
+LEA, Law Enforcement Agency
+LEMF, Law Enforcement Monitoring Facility
+LI, Lawful Interception
+LIaaS, Lawful Interception as a Cloud Service
+LICF, LI Control Function
+LIID, Lawful Interception IDentifier
+LIPA, Local IP Access
+LIPF, LI Provisioning Function
+LMISF, LI Mirror IMS State Function
+LRPG, Lawful Interception Routing Proxy Gateway
+LTE, Long Term Evolution
+MAC, Media Access Control
+MAEC, Malware Attribute Enumeration and Characterization
+MANO, Management and Orchestration
+MBMS, Multimedia Broadcast/Multicast Service
+MDF, Mediation and Delivery Function
+MEC, Multi-access Edge Computing
+MF, Mediation Function
+MGCF, Media Gateway Control Function
+MGW, Media Gateway
+ME, Mobile Entity
+MIME, Multipurpose Internet Mail Extensions
+MIP, Mobile IP
+MLAT, Mutual Legal Assistance Treaty
+MM, Multimedia Message
+MMBox, Multimedia Message Box
+MME, Mobility Management Entity
+MN, Mobile Node
+MPLS, Multiprotocol Label Switching
+MRF, Media Resource Function
+MSISDN, Mobile Subscriber ISDN Number
+MTAS, Mobile Terminating Access Service
+NAF, Network Application Function
+NAI, Network Access Identifier
+NDS, Network Domain Security
+NEF, Network Exposure Function
+NEID, Network Element IDentifier
+NESAS, Network Equipment Assurance Scheme
+NFV, Network Functions Virtualisation
+NID, Network IDentifier
+NO, Network Operator
+NWO, Network Operator
+OCR, Optical Character Recognition
+PANI, Private Access Network Info
+PCAP, Packet CAPture
+PCC, Policy and Charging Control
+PCRF, Policy and Charging Rules Function
+PDG, Packet Data Gateway
+PDHR, Packet Data Header Reporting
+PDN, Packet Data Network
+PDP, Packet Data Protocol
+PDSR, Packet Data Summary Reporting
+PGP, Pretty Good Privacy
+PGW, PDN Gateway
+PKI, Public Key Infrastructure
+PLMN, Public Land Mobile Network
+PMIP, Proxy Mobile IP
+PMRM, Privacy Management Reference Model
+PoC, Push to talk over Cellular
+PoI, Point of Interception
+PRA, Primary Rate Access
+PRI, Primary Rate Interface
+PS, Packet Switched
+QoS, Quality of Service
+QUIC, Quick UDP Internet Connection
+RA, Routing Area
+RAI, Routing Area Identity
+RD, Retained Data
+RDHI, Retained Data Handover Interface
+RFID, Radio Frequency Identification
+ROSE, Remote Operation Service Element
+S8HR, S8 Home Routing
+SAC, System Area Code
+SAI, Service Area Identity
+SCF, Service Control Function
+SCTP, Stream Control Transmission Protocol
+SDP, Session Description Protocol
+SeGW, Security Gateway
+SEW, Support of Emergency services over WLAN
+SGSN, Serving GPRS Support Node
+S-GW, Serving Gateway
+SHA, Secure Hash Algorithm
+SHS, Secure Hash Standard
+SIP, Session Initiation Protocol
+SMPP, Short Message Peer to Peer Protocol
+SMS, Short Message Service
+SNMP, Simple Network Management Protocol
+SR-VCC, Single Radio Voice Call Continuity
+SSID, Service Set ID
+SSL, Secure Sockets Layer
+SUPI, Subscription Permanent Identifier
+SvP, Service Provider
+SX3LIF, Split X3 LI Interworking Function
+TCG, Trusted Computing Group
+TEL URI, tel URI
+TETRA, TErrestrial Trunked Radio
+TF, Triggering Function
+TIP, Terminating Identification Presentation
+TIR, Terminating Identification Restriction
+TKIP, Temporal Key Integrity Protocol
+TLS, Transport Layer Security
+TNC, Trusted Network Connect
+TPM, Trusted Platform Module
+TrGW, Transit Gateway
+TRF, Transit Routing Function
+TTI, Test Target Identity
+TTP, Trusted Third Party
+TWAN, Trusted WLAN Access Network
+UDP, User Datagram Protocol
+UE, User Equipment
+UMTS, Universal Mobile Telecommunication System
+UPF, User Plane Function
+URI, Universal Resource Identifier
+URL, Universal Resource Locator
+URN, Universal Resource Name
+UUID, Universally Unique Identifier
+UUS, User-to-User Signalling
+VoIP, Voice over IP
+VoLTE, Voice over LTE
+WLAN, Wireless LAN
+WAF, WebRTC Authorisation Function
+WAP, Wireless Access Point
+WEP, Wired Equivalent Privacy
+WebRTC, Web Real Time Communications
+WIC, WebRTC IMS Client
+WISP, Wireless Internet Service Provider
+WPA, Wi-Fi Protected Access
+WWSF, WebRTC Web Server Function
+XML, eXtensible Markup Language
+XSD, XML Schema Definition
