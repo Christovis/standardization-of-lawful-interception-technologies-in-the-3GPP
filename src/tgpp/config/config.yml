@@ -10,10 +10,10 @@ folder_tests: "tests/data/"
 
 # Corpus linguistics settings
 ## Stopwords: words to be removed
-file_stopwords : "keywords/stopwords_extended.txt"
+file_stopwords : "keyterms/stopwords_extended.txt"
 ## Query: words & n-grams to define target set
 file_queries:
-    - "keyterms/keyterms_010422.csv"
+    - "keyterms/keyterms_010422NtO.csv"
 
 # Corpus source settings
 ## Choose between  Mailinglists:

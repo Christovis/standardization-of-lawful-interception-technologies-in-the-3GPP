@@ -40,10 +40,19 @@ def from_url(url: Union[List[str], str], merge: bool=False) -> str:
 def from_file(file_path: Union[List[str], str], merge: bool=False) -> List[str]:
     if isinstance(file_path, str):
         text = open(file_path, 'rb')
-        return _read_pdf(text, file_path)
+        try:
+            return _read_pdf(text, file_path)
+        except:
+            return None
 
     elif isinstance(file_path, list):
-        texts = [from_file(_fp) for _fp in file_path]
+        texts = []
+        for _fp in file_path:
+            try:
+                texts.append(from_file(_fp))
+            except:
+                print(f"Couldn't read file: {_fp}")
+        print(f"Of {len(file_path)}, {len(texts)} were read.")
         if merge:
             texts = (" ").join(texts)
         return texts
@@ -59,4 +68,3 @@ def _read_pdf(data: str, source: str) -> str:
             logger.info(f"For {source} page number {page_nr} couldn't be read")
             continue
     return (" ").join(text)
-

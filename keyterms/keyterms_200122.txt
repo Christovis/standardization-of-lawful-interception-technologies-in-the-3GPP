@@ -1,20 +1,18 @@
-Date:
-20/01/2022
-Note:
-Second list of keyterms provided by Niels ten Oever.
-##############################################################
-legal + requir
-UE + real time access
-confident + integri
-eSIM + program
-UE + access
-UE + proxim
-eSIM + proxim
-eUICC + locat
-eSIM + locat
+Date: 20/01/2022
+Note: Second list of keyterms provided by Niels ten Oever.
+################################################################################
+legal requir
+UE real time access
+confident integri
+eSIM program
+UE access
+UE proxim
+eSIM proxim
+eUICC locat
+eSIM locat
 EID
 NEF
 NESAS
 Baseband
 Interface
-LI + auth
+LI auth

@@ -1,0 +1,99 @@
+Date: 01/04/2022
+Note: List of relevant abbreviation obtained from 3GPP LI standards, and edited by Niels ten Oever. We can't inlude LI or Lawful Intercept as it is the name of the working group and therefore mentioned throughout the documents.
+################################################################################
+Abbreviation, Concept
+AC, Alarm Call
+ADSL, Asynchronous Digital Subscriber Line
+AF, Authentication Framework
+AGW, Access Gateway
+ANDSF, Access Network Discovery and Selection Function
+AP, Access Provider
+A-SBC, Access Session Border Controller
+BER, Basic Encoding Rules
+CC, Content of Communication
+CCIF, Content of Communication Interception Function
+CC IIF, Content of Communication Internal Interception Function
+CCLID, CC Link IDentifier
+CID, Communication IDentifier
+CII, Communication Identifying Information
+CIN, Communication Identity Number
+CITS, Cooperative Intelligent Transport Systems
+CLIF, Cloud Lawful Interception Function
+CLIP, Calling Line Identification Presentation
+CLIR, Calling Line Identification Restriction
+COL, COnnected Line identity
+COLP, COnnected Line identification Presentation
+COLR, COnnected Line identification Restriction
+COTS, Commercial Off The Shelf
+CSCF, Call Session Control Function
+CSG, Closed Subscriber Group
+CSP, Communications Service Provider
+CSPRNG, Cryptographically Secure Pseudo-Random Number Generator
+DDOS, Distributed Denial Of Service
+DER, Distinguished Encoding Rules
+DPI, Deep Packet Inspection
+DSMIP, Dual Stack Mobile IP
+e-Codex, e-justice Communication via online data exchange
+E2E, End-to-End
+ECT, Explicit Call Transfer
+EID, Error Insertion Device
+EIO, European Investigation Order
+EJO, European Judicial Network
+EPOC, European Production Order Certificate
+EPOC-PR, European Preservation Order Certificate
+ESSID, Extended Service Set IDentifier
+E-UTRAN, Evolved UTRAN
+EVCP, Extended Validation Certificates Policy
+FB, FallBack procedure
+GAA, Generic Authentication Architecture
+GDPR, General Data Protection Regulation
+GLIC, GPRS LI Correlation
+HI, Handover Interface
+HLR, Home Location Register
+HMEE, Hardware-Mediated Execution Enclave
+HSM, Hardware Security Module
+IA, Interception Area
+IAP, Intercept Access Point
+IBCF, Interconnecting Border Control Function
+ICEs, Intercepting Control Elements
+IHI, Internal Handover Interface
+IIF, Internal Interception Function
+ILHI, Inter LEA Handover Interface
+IMEI, International Mobile Equipment Identity
+IMS-AGW, IMS Access Gateway
+IMSI, International Mobile Subscriber Identity
+IN, Intelligent Network
+INEs, Intercepting Network Elements
+INI, Internal Network Interface
+IRI, Intercept Related Information
+LALS, Lawful Access Location Services
+LD, Lawful Disclosure
+LDI, Location Dependent Interception
+LEA, Law Enforcement Agency
+LEMF, Law Enforcement Monitoring Facility
+LIaaS, Lawful Interception as a Cloud Service
+LICF, LI Control Function
+LIID, Lawful Interception IDentifier
+LIPA, Local IP Access
+LIPF, LI Provisioning Function
+LMISF, LI Mirror IMS State Function
+LRPG, Lawful Interception Routing Proxy Gateway
+MAEC, Malware Attribute Enumeration and Characterization
+MANO, Management and Orchestration
+MF, Mediation Function
+NAI, Network Access Identifier
+NDS, Network Domain Security
+NEF, Network Exposure Function
+NEID, Network Element IDentifier
+NESAS, Network Equipment Assurance Scheme
+NFV, Network Functions Virtualisation
+NID, Network IDentifier
+PGP, Pretty Good Privacy
+PKI, Public Key Infrastructure
+PMRM, Privacy Management Reference Model
+PoI, Point of Interception
+QUIC, Quick UDP Internet Connection
+S8HR, S8 Home Routing
+SX3LIF, Split X3 LI Interworking Function
+TCG, Trusted Computing Group
+TLS, Transport Layer Security

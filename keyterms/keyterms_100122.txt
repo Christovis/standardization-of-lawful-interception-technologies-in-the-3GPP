@@ -1,16 +1,14 @@
-Date:
-10/01/2022
-Note:
-Frist list of keyterms provided by Niels ten Oever.
-##############################################################
-secur                                                     1027
-inject                                                       9
-surveil                                                     40
-disclosur                                                  680
-requir                                                    6831
-disclos                                                    800
-interfac                                                  3245
-access                                                    1916
-cipher                                                       9
-intercept                                                13585
+Date: 10/01/2022
+Note: Frist list of keyterms provided by Niels ten Oever.
+################################################################################
+secur
+inject
+surveil
+disclosur
+requir
+disclos
+interfac
+access
+cipher
+intercept
 privacy

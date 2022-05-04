@@ -1,0 +1,20 @@
+Date: 21/04/2022
+Note: Attributes to keyterms_010422NtO.csv Words as thread or protect are also contained in hyperlinks which confuses things and should therefore not be used.
+################################################################################
+authent
+cipher
+corrupt
+danger
+disclos
+enforc
+eavesdrop
+illeg
+infest
+legal
+malici
+privacy
+requir
+secur
+shield
+surveil
+threat

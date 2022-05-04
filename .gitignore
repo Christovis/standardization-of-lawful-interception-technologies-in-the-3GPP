@@ -1,0 +1,15 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+*.png
+*.log
+
+# Ignore ipython notebook checkpoints
+examples/.ipynb_checkpoints/
+examples/.ipynb_checkpoints/*
+.ipynb_checkpoints
+notebooks/.ipynb_checkpoints/
+
+# OS costum attributes
+.DS_Store

@@ -5,22 +5,23 @@ from pathlib import Path
 from typing import Dict, List, Optional, Tuple, Union
 from urllib.parse import urlparse
 
-from tgpp.ingress import TextFile, PDFFile
+from sdo_and_cc.ingress import TextFile, PDFFile
 
-folder_project = str(Path(os.path.abspath(__file__)).parent.parent.parent.parent)
+folder_project = str(
+    Path(os.path.abspath(__file__)).parent.parent.parent.parent
+)
 folder_data = folder_project + "/data"
 logger = logging.getLogger(__name__)
 
 
-class PolyFiles():
-    """
-    """
+class PolyFiles:
+    """ """
 
     def __init__(
         self,
-        folder_path: Optional[str]=None,
-        file_dsc: str="*.txt",
-        url: Optional[Union[List[str], str]]=None,
+        folder_path: Optional[str] = None,
+        file_dsc: str = "*.txt",
+        url: Optional[Union[List[str], str]] = None,
     ):
         self.url = url
         self.folder_path = folder_path
@@ -54,14 +55,14 @@ class PolyFiles():
         -------
         A dictionary of the form {'url': 'document text', ...}
         """
-        if url.endswith('.txt'):
+        if url.endswith(".txt"):
             text = TextFile.from_url(url)
-        elif url.endswith('.pdf'):
+        elif url.endswith(".pdf"):
             text = PDFFile.from_url(url)
         else:
             text = ""
             logger.info(f"Unkown file type for {url}.")
-        document_name = urlparse(url).netloc.split('.')[1]
+        document_name = urlparse(url).netloc.split(".")[1]
         document = {document_name: text}
         return document
 
@@ -71,14 +72,14 @@ class PolyFiles():
         -------
         A dictionary of the form {'document id': 'document text', ...}
         """
-        if file_path.endswith('.txt'):
+        if file_path.endswith(".txt"):
             text = TextFile.from_file(file_path)
-        elif file_path.endswith('.pdf'):
+        elif file_path.endswith(".pdf"):
             text = PDFFile.from_file(file_path)
         else:
             text = ""
             logger.info(f"Unkown file type for {file_path}.")
-        document_name = file_path.split('/')[-1]
+        document_name = file_path.split("/")[-1]
         document = {document_name: text}
         return document
 
@@ -88,8 +89,12 @@ class PolyFiles():
         """
         if self.url:
             for index in range(0, self.n_of_docs, 1):
-                file_name = urlparse(self.url[index]).netloc.split('.')[1]
-                with open(f"{folder_path}/{file_name}_{index}.txt", 'w') as file:
+                file_name = urlparse(self.url[index]).netloc.split(".")[1]
+                with open(
+                    f"{folder_path}/{file_name}_{index}.txt", "w"
+                ) as file:
                     file.write(list(self[index].values())[0])
         else:
-            assert 1 == 2, "Couldn't come up with a reason yet to save file locally that already exists locally."
+            assert (
+                1 == 2
+            ), "Couldn't come up with a reason yet to save file locally that already exists locally."

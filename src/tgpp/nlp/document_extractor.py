@@ -7,7 +7,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 import nltk
 
-import sdo_and_cc.nlp.concept_extractor as CE
+import tgpp.nlp.concept_extractor as CE
 
 
 def using_cosine_similarity(
@@ -37,7 +37,7 @@ def using_tfidf(
 
     Based on:
         Introduction to Information Retrieval (2008), Eq. 6.9, Fig. 6.14
-   
+
     Note:
         N : number of documents
         q : query

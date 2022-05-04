@@ -10,15 +10,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.feature_extraction.text import TfidfVectorizer
 import nltk
 
-from sdo_and_cc.nlp.classifiers import Classifiers as CL
-from sdo_and_cc.nlp.utils import (
-    get_dt_matrix,
-    sample_dt_matrix,
-    text_preprocessing,
-    create_training_and_test_sets,
-)
-
-logger = logging.getLogger(__name__)
+from tgpp.nlp.classifiers import Classifiers as CL
+import tgpp.nlp.utils as NLPutils
 
 
 def using_frequency(
@@ -69,7 +62,7 @@ def using_tfidf(
 ) -> Dict:
     """
     Term Frequency – Inverse Document Frequency
-    
+
     Parameters
     ----------
     text: Pre-processed tokenised text from which concepts have to be extracted.
@@ -97,9 +90,9 @@ def using_kl_divergence(
 
     Note:
         This expansion required an initial information retrieval query.
-    
+
     Based on:
-        Claudio Carpineto et al.  
+        Claudio Carpineto et al.
         "An information theoretic approach to automatic query expansion"
         (2001)
 
@@ -120,7 +113,7 @@ def using_kl_divergence(
     """
     assert 0 < alpha <= 1, "Alpha has to be within 0 and 1."
     # Compute the document-term matrix
-    dt_matrix = get_dt_matrix(text)
+    dt_matrix = NLPutils.get_dt_matrix(text)
     p_t_cor = _term_frequency(dt_matrix, mode='corpus')
     p_t_doc = _term_frequency(dt_matrix, mode='document')
     score = _weighted_zone_scoring(term_freq_corpus, term_freq_doc, alpha)
@@ -140,7 +133,7 @@ def using_klr(
     ref_frac: float=1.0,
     search_frac: float=.33,
     **args,
-) -> Dict:
+) -> Tuple(pd.DataFrame, pd.DataFrame):
     """
     A concept expansion tailored to a specific corpus that is being analysed.
 
@@ -168,7 +161,7 @@ def using_klr(
     Returns
     -------
     """
-    
+
     def log_likelihood_fct(term):
         # number of docs in T containing word
         n1 = dc_T[term]
@@ -185,15 +178,17 @@ def using_klr(
             lgamma(n1_n+alpha_T) + lgamma(n0_n+alpha_ST) - lgamma(n1_n+alpha_T+n0_n+alpha_ST)
         )
         return ll
-    
-    y_train, x_train, x_test, key_test = create_training_and_test_sets(
+
+    # Create training and test set
+    y_train, x_train, x_test, key_test = NLPutils.create_training_and_test_sets(
         reference_set,
         search_set,
         ref_frac,
         search_frac,
         **args,
     )
-    logger.info("Created train and test set")
+
+    # Return names of documents in test set that are in and outisde T-set
     docnames_T, docnames_ST = CL(
         y_train, x_train, x_test, key_test, classifiers,
     )
@@ -201,17 +196,30 @@ def using_klr(
     if len(docnames_T) == 0:
         return None, None
     else:
-        dt_matrix_S = get_dt_matrix(search_set)
-        dt_matrix_T = sample_dt_matrix(dt_matrix_S, docnames_T)
+        frequent_words = NLPutils.get_dt_matrix(
+            search_set, min_df=10, max_df=1.,
+        ).terms
+        dt_matrix_S = NLPutils.get_dt_matrix(
+            search_set, min_df=1, vocabulary=frequent_words,
+        )
+        #dt_matrix_T = NLPutils.sample_dt_matrix(dt_matrix_S, docnames_T)
 
         # Counts of documents within the total corpus set that contain word
-        dc_S = get_doc_counts_for_term(dt_matrix_S.matrix, dt_matrix_S.terms)
+        dc_S = get_doc_counts_for_term(
+            dt_matrix=dt_matrix_S,
+            terms=frequent_words,
+            doc_names=None,
+        )
         # Counts of documents within the target set that contain word
-        dc_T = get_doc_counts_for_term(dt_matrix_T.matrix, dt_matrix_T.terms)
+        dc_T = get_doc_counts_for_term(
+            dt_matrix=dt_matrix_S,
+            terms=frequent_words,
+            doc_names=docnames_T,
+        )
+        print("Look into this ->", np.max(list(dc_T.values())), len(docnames_T))
+
         # number of target documents in search set, T
-        n_T = len(docnames_T)
-        if n_T == 0:
-            n_T = 1
+        n_T = np.max([len(docnames_T), 1])
         # number of non-target documents in search set, S\T
         n_ST = len(docnames_ST)
 
@@ -223,10 +231,10 @@ def using_klr(
         for term in dt_matrix_S.terms:
             ll = log_likelihood_fct(term)
             # likelihood term rightly categorizes document into target set, T
-            p_T = float(dc_T[term]) / n_T
+            p_T = float(dc_T[term]) / n_T * 100
             # likelihood term rightly categorizes document into non-target set, S\T
-            p_ST = float(dc_S[term] - dc_T[term]) / n_ST
-            
+            p_ST = float(dc_S[term] - dc_T[term]) / n_ST * 100
+
             stats['n_T'].append(p_T * n_T)
             stats['n_ST'].append(p_ST * n_ST)
             stats['p_T'].append(p_T)
@@ -242,9 +250,9 @@ def using_klr(
         stats = pd.DataFrame(stats)
         stats = stats.set_index('term')
         stats_T = stats[stats['category'] == 'T']
-        stats_T.sort('ll', ascending=False, inplace=True)
+        stats_T.sort_values('ll', ascending=False, inplace=True)
         stats_ST = stats[stats['category'] == 'S\T']
-        stats_ST.sort('ll', ascending=False, inplace=True)
+        stats_ST.sort_values('ll', ascending=False, inplace=True)
 
         del stats
         return stats_T, stats_ST
@@ -291,11 +299,24 @@ def _term_frequency(dt_matrix: np.ndarray, mode: str='corpus') -> np.ndarray:
     return term_freq
 
 
-def get_doc_counts_for_term(dt_matrix: sparse.csr_matrix, terms: list) -> Dict[str, int]:
+def get_doc_counts_for_term(
+    dt_matrix: tuple,
+    terms: List[str],
+    doc_names: Optional[List[str]]=None,
+) -> Dict[str, int]:
     """
+    Parameters
+    ----------
+    dt_matrix: Document-Term matrix
+    terms: List of terms of which to return the results.
     """
+    if doc_names:
+        indices = [dt_matrix.docs.index(doc_name) for doc_name in doc_names]
+        dtm = dt_matrix.matrix.A[indices, :]
+    else:
+        dtm = dt_matrix.matrix.A[:, :]
     # count documents containing term
-    d_count = dt_matrix.A.sum(axis=0)
+    d_count = np.count_nonzero(dtm, axis=0)
     return {term: d_count[index] for index, term in enumerate(terms)}
 
 

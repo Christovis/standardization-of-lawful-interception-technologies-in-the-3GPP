@@ -48,49 +48,49 @@ def Classifiers(
         clf_nb.fit(X_train, y_train)
         results['nbayes'] = clf_nb.predict(X_test).tolist()
         logger.info("Finished nbayes classifier")
- 
+
     # Nearest Neighbor
     if 'nearest' in algorithms:
         clf_nn = neighbors.KNeighborsClassifier()
         clf_nn.fit(X_train, y_train)
         results['nearest'] = clf_nn.predict(X_test).tolist()
         logger.info("Finished NN classifier")
- 
+
     # Logit
     if 'logit' in algorithms:
         clf_logit = linear_model.LogisticRegression()
         clf_logit.fit(X_train, y_train)
         results['logit'] = clf_logit.predict(X_test).tolist()
         logger.info("Finished logit classifier")
- 
+
     # Support vector machine
     if 'SVM' in algorithms:
         clf_svm = svm.SVC(C=100, probability=True, random_state=seed)
         clf_svm.fit(X_train, y_train)
         results['svm'] = clf_svm.predict(X_test).tolist()
         logger.info("Finished SVM classifier")
- 
+
     # Linear discriminant
     if 'LDA' in algorithms:
         clf_lda = LDA()
         clf_lda.fit(X_train.toarray(), y_train)
         results['lda'] = clf_lda.predict(X_test.toarray()).tolist()
         logger.info("Finished LDA classifier")
- 
+
     # Tree
     if 'tree' in algorithms:
         clf_tree = tree.DecisionTreeClassifier(random_state=seed)
         clf_tree.fit(X_train.toarray(), y_train)
         results['tree'] = clf_tree.predict(X_test.toarray()).tolist()
         logger.info("Finished Tree classifier")
- 
+
     # Gradient boosting
     if 'gboost' in algorithms:
         clf_gboost = ensemble.GradientBoostingClassifier(random_state=seed)
         clf_gboost.fit(X_train.toarray(), y_train)
         results['gboost'] = clf_gboost.predict(X_test.toarray()).tolist()
         logger.info("Finished Gboost classifier")
- 
+
     # Random forest
     if 'rf' in algorithms:
         clf_rf = ensemble.RandomForestClassifier(n_estimators=rf_trees, random_state=seed)
@@ -104,7 +104,8 @@ def Classifiers(
     # sum of all classifier predictions
     target_votecount = df.sum(axis=1)
 
-    docnames_T, docnames_ST = get_target_set(target_votecount, 1)
+    # Group documents into T- and S-set depending on classifiers
+    docnames_T, docnames_ST = get_target_set(target_votecount, vote_min=1)
     print(f"Classifier: T={len(docnames_T)} ST={len(docnames_ST)}")
     return docnames_T, docnames_ST
 

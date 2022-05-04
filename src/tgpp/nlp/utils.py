@@ -12,14 +12,38 @@ import nltk
 from nltk.stem import WordNetLemmatizer, SnowballStemmer
 from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
-from sdo_and_cc.ingress import TextFile
-from sdo_and_cc.config.config import CONFIG
+from tgpp.ingress import TextFile
+from tgpp.config.config import CONFIG
 
 #nltk.download("omw-1.4")
 #nltk.download("wordnet")
 stemmer = SnowballStemmer("english")
 lemmatizer = WordNetLemmatizer()
-STOPWORDS = TextFile.from_file(CONFIG.file_stopwords)
+STOPWORDS = TextFile.load_stopwords(CONFIG.file_stopwords)
+
+
+def contains_digits(text: Union[List[str], str]) -> bool:
+    if isinstance(text, str):
+        return any(i.isdigit() for i in text)
+    elif isinstance(text, list):
+        return any(i.isdigit() for term in text for i in term)
+
+
+def contains_non_alphanumerics(text: Union[List[str], str]) -> bool:
+    if isinstance(text, str):
+        return any(not i.isalnum() for i in text)
+    elif isinstance(text, list):
+        return any(not i.isalnum() for term in text for i in term)
+
+
+def return_non_alphanumerics(text: Union[List[str], str]) -> bool:
+    if isinstance(text, str):
+        characters = list(set([i for i in text if not i.isalnum()]))
+        characters = [i for i in characters if i != ' ']
+    elif isinstance(text, list):
+        characters = list(set([i for term in text for i in term if not i.isalnum()]))
+        characters = [i for i in characters if i != ' ']
+    return characters
 
 
 def lemmatize(tokens: List[str]) -> List[str]:
@@ -48,7 +72,7 @@ def text_preprocessing(
     text: Union[List[str], str],
     min_len: int = 2,
     max_len: int = 15,
-    remove_punctuations: bool=True,
+    keep_nonalphanumerics: Union[bool, List[str]]=True,
     remove_numbers: bool=True,
     return_tokens: bool=True,
 ) -> Union[List[List[str]], List[str]]:
@@ -74,19 +98,25 @@ def text_preprocessing(
         text = text.encode("ascii", "ignore").decode()
         if remove_numbers:
             text = re.sub("[0-9]", " ", text)
-        if remove_punctuations:
-            text = re.sub(r'[!"#$%&()*+,\-./:;<=>?@[\\\]^_`{|}~\']', " ", text)
+        if keep_nonalphanumerics is False:
+            all_nonalphanumerics = r'[!"#$%&()*+,\-./:;<=>?@[\\\]^_`{|}~\']'
+            text = re.sub(all_nonalphanumerics, " ", text)
+        if isinstance(keep_nonalphanumerics, list):
+            all_nonalphanumerics = r'[!"#$%&()*+,\-./:;<=>?@[\\\]^_`{|}~\']'
+            for kan in keep_nonalphanumerics:
+                all_nonalphanumerics = all_nonalphanumerics.replace(kan, '')
+            text = re.sub(all_nonalphanumerics, " ", text)
         tokens = tokenize_text(text)
         tokens = filter_words(tokens, min_len, max_len)
         tokens = lemmatize(tokens)
         tokens = stemming(tokens)
-    if isinstance(text, list):
+    elif isinstance(text, list):
         tokens = [
             text_preprocessing(
                 t,
                 min_len,
                 max_len,
-                remove_punctuations,
+                keep_nonalphanumerics,
                 remove_numbers,
                 return_tokens=False,
             )
@@ -120,6 +150,13 @@ def get_diff_of_sets(
     set_b: str,
     return_indices: bool = False,
 ) -> List[Union[str, int]]:
+    """
+    Parameters
+    ----------
+
+    Returns
+    -------
+    """
     if return_indices is False:
         return [ngram for ngram in set_a if ngram not in set_b]
     else:
@@ -134,6 +171,11 @@ def create_training_and_test_sets(
     rnd_seed: int = 12345,
 ) -> Tuple:
     """
+    King et al. 17, page 978:
+    Since R is typically much smaller than S and our test set for our classifiers
+    is all of S, we often use the entire R set and a sample of S as our training
+    set.
+
     Note: The documents in the reference_set and search_set are not tokenized.
 
     Parameters
@@ -146,7 +188,8 @@ def create_training_and_test_sets(
     ref_frac, search_frac : Fraction of the reference_set and search_set that is
         used for their training sets.
     """
-    cl_input = get_dt_matrix(dict(reference_set, **search_set))
+    corpus = dict(reference_set, **search_set)
+    cl_input = get_dt_matrix(corpus, min_df=1, max_df=1.)
 
     # fix random seed for reproducability
     random.seed(rnd_seed)
@@ -155,37 +198,28 @@ def create_training_and_test_sets(
 
     # split reference set in training and test set
     ref_train_keys = random.sample(
-        list(list(reference_set.keys())),
-        int(n_doc_in_ref * ref_frac),
+        list(reference_set.keys()),
+        int(round(n_doc_in_ref * ref_frac)),
     )
-    ref_test_keys = random.sample(
-        list(list(reference_set.keys())),
-        int(n_doc_in_ref * ref_frac),
-    )
-    # for key in ref_train_keys:
-    #    del reference_set[key]
-    # ref_test_keys = list(reference_set.keys())
     print(
-        f"{len(ref_train_keys)} ref-docs in train and"
-        + "{len(ref_test_keys)} ref-docs in test."
+        f"{len(ref_train_keys)} ref-docs in train and "
+        + f"{0} ref-docs in test."
     )
 
     # split search set in training and test set
     search_train_keys = random.sample(
-        list(list(search_set.keys())),
+        list(search_set.keys()),
         int(n_doc_in_sea * search_frac),
     )
-    for key in search_train_keys:
-        del search_set[key]
     search_test_keys = list(search_set.keys())
     print(
-        f"{len(search_train_keys)} sea-docs in train and"
-        + "{len(search_test_keys)} sea-docs in test."
+        f"{len(search_train_keys)} serch-docs in train and "
+        + f"{len(search_test_keys)} serch-docs in test."
     )
 
-    # test set
-    test_keys = ref_test_keys + search_test_keys
-    # test_keys = list(search_set.keys())
+    # test set is composed of the entire search set
+    test_keys = search_test_keys
+
     indices = np.array(
         [index for index, did in enumerate(cl_input.docs) if did in test_keys]
     )
@@ -203,24 +237,36 @@ def create_training_and_test_sets(
             y_train.append(0)
         elif cl_input.docs[index] in search_train_keys:
             y_train.append(1)
+    print("Created train and test set")
     return y_train, x_train, x_test, test_keys
 
 
-def get_dt_matrix(corpus: Dict[str, str], **kwargs) -> Tuple:
+def get_dt_matrix(
+    corpus: Dict[str, str],
+    min_df=1,
+    max_df=0.9,
+    vocabulary=None,
+    **kwargs,
+) -> Tuple:
     """
+    Document-Term matrix
+
     Parameters
     ----------
+    min_df: If 0, it keeps rare terms, as concept of interest is niche.
+    max_df: If 0.9, it ignores frequent terms as only niche terms are of interest
 
     Returns
     -------
     """
     input_object = namedtuple("classifier_input", "matrix terms docs")
     vectorizer = CountVectorizer(
-        min_df=0,  # keep rare terms, as concept of interest is niche
-        max_df=0.9,  # as concept of interest is niche, ignore frequent terms
+        min_df=min_df,  # keep rare terms, as concept of interest is niche
+        max_df=max_df,  # as concept of interest is niche, ignore frequent terms
         tokenizer=tokenize_text,
         decode_error="ignore",
         ngram_range=(2, 2),  # only bigrams
+        vocabulary=vocabulary,
         **kwargs,
     )
     dt_matrix = vectorizer.fit_transform(list(corpus.values()))  # .toarray()
@@ -235,7 +281,6 @@ def sample_dt_matrix(dt_matrix: namedtuple, docs: list) -> namedtuple:
         [index for index, dn in enumerate(dt_matrix.docs) if dn in docs],
         dtype=np.int8,
     )
-    print(indices)
     input_object = namedtuple("classifier_input", "matrix terms docs")
     return input_object(
         matrix=sparse.csr_matrix(dt_matrix.matrix.A[indices, :]),
