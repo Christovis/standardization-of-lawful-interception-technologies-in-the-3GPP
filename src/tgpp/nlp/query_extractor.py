@@ -133,7 +133,7 @@ def using_klr(
     ref_frac: float=1.0,
     search_frac: float=.33,
     **args,
-) -> Tuple(pd.DataFrame, pd.DataFrame):
+) -> Tuple:
     """
     A concept expansion tailored to a specific corpus that is being analysed.
 
@@ -142,6 +142,8 @@ def using_klr(
         - Since the reference set (R) is typically much smaller than the search set
           (S) and our test set for our classifiers is all of S, we often use the
           entire R set and a sample of S as our training set.
+        - Only return the top 10 queries as the precision drops of quickly for
+          the niche topic of interest we are looking for (Figure A1 in KLR paper).
 
     Based on:
         G King, P L Thresher, M E Roberts
@@ -235,8 +237,8 @@ def using_klr(
             # likelihood term rightly categorizes document into non-target set, S\T
             p_ST = float(dc_S[term] - dc_T[term]) / n_ST * 100
 
-            stats['n_T'].append(p_T * n_T)
-            stats['n_ST'].append(p_ST * n_ST)
+            stats['n_T'].append(int(p_T * n_T))
+            stats['n_ST'].append(int(p_ST * n_ST))
             stats['p_T'].append(p_T)
             stats['p_ST'].append(p_ST)
             stats['ll'].append(ll)
@@ -256,17 +258,6 @@ def using_klr(
 
         del stats
         return stats_T, stats_ST
-
-
-def get_klr_queries(support: int=10, ngrams: int=2) -> List[str]:
-    """
-    Identify and rank keywords within target and non-target sets.
-    Only return the top 10 queries as the precision drops of quickly for the
-    niche topic of interest we are looking for (Figure A1 in KLR paper).
-
-    Parameters
-    ----------
-    """
 
 
 def _weighted_zone_scoring(

@@ -38,30 +38,59 @@ args = parser.parse_args()
 
 
 if __name__ == "__main__":
-    # file_paths = glob.glob(CONFIG.folder_reference_set + "*.pdf")
-    # reference_set = PDFFile.from_file(file_path=file_paths)
+    # load reference set from documents
+    # file_paths = glob.glob(CONFIG.folder_reference_set + "*.txt")
+    # if file_paths[0].endswith('txt'):
+    #     reference_set = TextFile.from_files(file_paths=file_paths)
+    # if file_paths[0].endswith('pdf'):
+    #     reference_set = PDFFile.from_file(file_path=file_paths)
 
-    file_paths = glob.glob(CONFIG.folder_reference_set + "*.txt")
-    reference_set = TextFile.from_files(file_paths=file_paths)
+    # load reference set from preliminary Email selection
+    first_target_set = pd.read_hdf(
+        CONFIG.folder_target_set + f"{args.search_set}.h5",
+        key="df",
+        header=0,
+        index_col=0,
+    )
 
+    # load search set
     search_set = ListservMailList.from_mbox(
         name=args.search_set,
         filepath=f"{CONFIG.folder_search_set}{args.search_set}.mbox",
         include_body=True,
     ).df
 
+    reference_set = search_set[
+        search_set['archived-at'].isin(
+            list(first_target_set['msg-archived-at'].values)
+        )
+    ]
+    search_set = search_set[
+        ~search_set['archived-at'].isin(
+            list(first_target_set['msg-archived-at'].values)
+        )
+    ]
+    print("reference_set = ", len(reference_set))
+    print("search_set = ", len(search_set))
+
+    # text pre-processing
     text_preprocessing = partial(
         NLPutils.text_preprocessing,
         min_len=2,
         max_len=40,
         keep_nonalphanumerics=['-'],
         remove_numbers=True,
+        do_lemmatize=True,
+        do_stemming=False,
         return_tokens=False,
     )
-
+    # reference_set = {
+    #     name: text_preprocessing(text)
+    #     for name, text in reference_set.items()
+    # }
     reference_set = {
-        name: text_preprocessing(text)
-        for name, text in reference_set.items()
+        row['archived-at']: text_preprocessing(row['body'])
+        for idx, row in reference_set.iterrows()
     }
     search_set = {
         row['archived-at']: text_preprocessing(row['body'])
@@ -73,4 +102,7 @@ if __name__ == "__main__":
         search_set=search_set,
         classifiers="nbayes",
     )
-    print(stats_T)
+    stats_T = stats_T.iloc[:1000]
+    stats_ST = stats_ST.iloc[:1000]
+    stats_T.to_csv('keyterms_for_T.csv')
+    stats_ST.to_csv('keyterms_for_ST.csv')

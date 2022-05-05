@@ -74,6 +74,8 @@ def text_preprocessing(
     max_len: int = 15,
     keep_nonalphanumerics: Union[bool, List[str]]=True,
     remove_numbers: bool=True,
+    do_lemmatize: bool=True,
+    do_stemming: bool=True,
     return_tokens: bool=True,
 ) -> Union[List[List[str]], List[str]]:
     """
@@ -106,10 +108,14 @@ def text_preprocessing(
             for kan in keep_nonalphanumerics:
                 all_nonalphanumerics = all_nonalphanumerics.replace(kan, '')
             text = re.sub(all_nonalphanumerics, " ", text)
+
         tokens = tokenize_text(text)
         tokens = filter_words(tokens, min_len, max_len)
-        tokens = lemmatize(tokens)
-        tokens = stemming(tokens)
+
+        if do_lemmatize:
+            tokens = lemmatize(tokens)
+        if do_stemming:
+            tokens = stemming(tokens)
     elif isinstance(text, list):
         tokens = [
             text_preprocessing(
