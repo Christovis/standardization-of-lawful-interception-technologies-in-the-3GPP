@@ -15,3 +15,7 @@ notebooks/.ipynb_checkpoints/
 
 # only add .txt file of reference set
 data/reference_set/*.pdf
+
+# this data is sensitive and only upon request available
+data/search_set/*.mbox
+data/target_set/*.mbox
