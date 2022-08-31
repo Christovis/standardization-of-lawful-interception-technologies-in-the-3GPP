@@ -2,7 +2,6 @@
 __pycache__/
 *.py[cod]
 
-*.png
 *.log
 
 # Ignore ipython notebook checkpoints
@@ -13,3 +12,6 @@ notebooks/.ipynb_checkpoints/
 
 # OS costum attributes
 .DS_Store
+
+# only add .txt file of reference set
+data/reference_set/*.pdf
