@@ -1,0 +1,807 @@
+ 
+ETSI TS 102 232-7 V3.3.1 (2016-03) Lawful Interception (
+LI); Handover Interface and 
+Service-Specific Details (SSD) for IP delivery; 
+Part 7: Service-specific details for Mobile Services 
+   
+ TECHNICAL SPECIFICATION 
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)2 
+
+RTS/LI-00132-7 
+
+handover, IP, Lawful Interception, mobile, 
+security 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+ Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - NAF 742 C 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° 7803/88 
+ Important notice 
+The present document can be downloaded from: 
+http://www.etsi.org/standards-search
+ The present document may be made available in electronic ve
+rsions and/or in print. The content of any electronic and/or 
+print versions of the present document shall not 
+be modified without the prior written authorization of ETSI. In case of any 
+existing or perceived difference in contents between such versions and/or in print, the only prevailing document is the 
+print of the Portable Document Format (PDF) version kept on a specific network drive within ETSI Secretariat. 
+Users of the present document should be aware that the document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+If you find errors in the present document, please send your comment to one of the following services: 
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+Copyright Notification 
+No part may be reproduced or utilized in any form or by any
+ means, electronic or mechanical, including photocopying 
+and microfilm except as authorized by written permission of ETSI. 
+The content of the PDF version shall not be modified without the written authorization of ETSI. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © European Telecommunications Standards Institute 2016. 
+All rights reserved. 
+ DECTTM, PLUGTESTSTM, UMTS
+TM and the ETSI logo are Trade Marks of ETSI registered for the benefit of its Members.
+ 3GPP
+TM 
+and LTEŽ are Trade Marks of ETSI registered for the benefit of its Members and 
+of the 3GPP Organizational Partners. 
+GSM® and the GSM logo are Trade Marks registered and owned by the GSM Association. 
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)3 Contents 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)4 
+
+
+
+
+
+
+
+
+Annex A (normative): ASN.1 for IRI and CC ................................................................................... 1
+3
+
+
+
+
+
+Annex B (informative): Change request history .................................................................................
+. 15
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)5 Intellectual Property Rights 
+
+
+ETSI members and non-members
+
+
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to ETSI in 
+respect of ETSI standards"
+
+
+
+
+
+
+Foreword 
+
+
+
+
+
+Modal verbs terminology
+ 
+shall
+
+shall not
+
+should
+
+should not
+
+may
+
+need not
+will
+
+will not
+
+can
+cannot
+
+
+
+
+must
+
+must not
+
+NOT
+
+Introduction 
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)6 1 Scope 1.0 Introduction 
+
+
+ 
+
+
+
+1.1 UMTS/GPRS and EPS - 3GPP TS 33.108 
+
+
+
+ • 
+
+
+
+
+• 
+• 
+• 
+• 
+• 
+• 
+• 
+
+1.2 CDMA2000 - ANSI/J-STD-025-B 
+
+
+
+ • 
+
+
+ • 
+
+ 
+2 References 
+2.1 Normative references 
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)7 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.2 Informative references 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3 Definitions and abbreviations 
+3.1 Definitions 
+
+call-identifying information:
+
+
+
+
+
+3.2 Abbreviations 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)8 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 General 
+4.1 Approach 
+
+
+
+
+
+
+
+4.2 Reference model 
+ Figure 1: Reference model 
+5 GPRS/UMTS Headers, data exchange and networks 
+5.1 Approach 
+
+
+
+
+
+
+
+5.2 Structures 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)9 
+
+
+6 GPRS/UMTS Intercept Related Information (IRI) and 
+Content of Communication (CC) 
+6.1 Definition of IRI events and CC 
+
+6.2 IRI format 
+
+
+
+
+
+
+
+6.3 CC format 
+
+
+
+
+
+
+
+
+
+7 CDMA2000 Headers, data exchange and networks 
+7.1 Approach 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+7.2 Structures 
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)10 8 CDMA2000 Communication-Identifying Information 
+(CII), Call-Identifying Information and Call Content 
+(CC) 
+
+Table 1: Populating the PSHeader 
+ETSI TS 102 232-1 [2] element 
+Source from  ANSI/J-STD-025-B [4] 
+Comments 
+pSHeader.lawfulInterceptionIdentifier caseIdentity 
+Same value 
+pSHeader.communicationIdentifier.networkIdentifier.networkElementIdentifier iapSystemIdentity Same value 
+pSHeader.timeStamp  
+timeStamp (note) Same value 
+NOTE: The source timestamp is in generalized time format.  
+The optional use of MicroSecondTimeStamp does not apply. 
+9 EPS Headers, data exchange and networks 
+9.1 Approach 
+
+
+
+
+
+
+
+9.2 Structures 
+
+
+
+
+10 EPS Intercept Related Information (IRI) and Content 
+of Communication (CC) 
+10.1 Definition of IRI events and CC 
+
+10.2 IRI format 
+
+
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)11 10.3 CC format 
+
+
+
+
+
+
+11 IMS Conference Intercept 
+Related Information (IRI) 
+and Content of Communication (CC) 
+11.1 Definition of IRI events and CC 
+
+11.2 IRI format 
+
+
+
+
+
+
+11.3 CC format 
+
+
+
+
+
+
+
+
+12 IMS-based VoIP Intercept Related Information (IRI) 
+and Content of Communication (CC) 
+12.1 Definition of IRI events and CC 
+
+12.2 IRI format 
+
+
+
+
+
+12.3 CC format 
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)12 
+
+
+
+
+13 Proximity Services Intercept Related Information (IRI) 
+13.1 Definition of IRI 
+
+13.2 IRI format 
+
+
+
+
+
+
+14 Group Communications System Enablers Intercept 
+Related Information (IRI) and Content of 
+Communication (CC) 
+14.1 Definition of IRI events and CC 
+
+14.2 IRI format 
+
+
+
+
+
+14.3 CC format 
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)13 Annex A (normative): 
+ASN.1 for IRI and CC 
+A.1 Note on integrating ASN.1 structures 
+A.1.1 Header field mappings 
+
+
+Table A.1: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] PSHeader mapping 
+ETSI TS 102 232
+-1 [2]  PSHeader element 
+Source from 3GPP TS 33.108 [3] 
+lawfulInterceptionIdentifier 
+Copied directly from IRI-Parameters.lawfulInterceptionIdentifier 
+authorizationCountryCode 
+Supplied directly by the MF 
+communicationIdentifier 
+See below for individual elements 
+ networkIdentifier 
+ See below for individual elements 
+  operatorIdentifier 
+ Copied directly from IRI-
+Parameters.networkIdentifier.operatorIdentifier 
+  eTSI671NEID 
+  Copied directly from IRI-Parameters.networkIdentifier. 
+Network-Element-Identifier 
+ communicationIdentityNumber  See clause A.1.2 
+ deliveryCountryCode 
+ Supplied directly by the MF 
+sequenceNumber 
+Supplied directly by the MF 
+timeStamp 
+Copied from IRI-Parameters.timeStamp. 
+
+This requires a conversion from HI2Operations.TimeStamp to 
+
+GeneralizedTime 
+
+
+Table A.2: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] IRIPayload mapping
+ ETSI TS 102 232
+-1 [2]  IRIPayload element 
+Source from 3GPP TS 33.108 [3] 
+iRIType 
+Inferred from UmtsIRIContent or EpsIRIContent or ConfIRIContent or 
+ProSeIRIContent or GcseIRIContent 
+timeStamp 
+Copied from IRI-Parameters.timeStamp (assuming no aggregation of PDUs) 
+
+This requires a conversion from HI2Operations.TimeStamp to 
+
+GeneralizedTime 
+iRIContents 
+See below for individual elements 
+ uMTSIRI 
+ See below for individual elements 
+  iRI-Parameters 
+  Copied directly from IRI-Parameters, if handing over packet domain IRI 
+  iRI-CS-Parameters 
+  Copied directly from IRI-Parameters, if handing over circuit switched IRI 
+ ePSIRI 
+ See below for individual elements 
+  iRI-EPS-Parameters 
+  Copied directly from IRI-Parameters, if handing over EPS IRI 
+
+See note 
+ confIRI 
+ See below for individual elements 
+  iRI-Conf-Parameters 
+  Copied directly from IRI-Parameters, if handing over CONF IRI 
+ proseIRI 
+ See below for individual elements 
+  iRI-ProSe-Parameters   Copied directly from IRI-Parameters, if handing over PROSE IRI 
+ gcseIRI 
+ See below for individual elements 
+  iRI-Gcse-Parameters 
+  Copied directly from IRI-Parameters, if handing over GCSE IRI 
+NOTE: EPS IRI is also used for IMS-based VoIP services. 
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)14 Table A.3: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] PSHeader mapping
+ ETSI TS 102 232
+-1 [2]  PSHeader element 
+Source from 3GPP TS 33.108 [3] 
+lawfulInterceptionIdentifier 
+Copied from CC-PDU.uLIC-header.lIID or
+ Conf-CC-PDU.confLIC-header.lIID 
+or Voip-CC-PDU.voipLIC-header.lIID or Gcse-CC-PDU.gcseLIC-header.lIID 
+authorizationCountryCode 
+Supplied directly by the MF 
+communicationIdentifier 
+See below for individual elements 
+ networkIdentifier 
+ See below for individual elements 
+  operatorIdentifier 
+  Supplied directly by the MF (see 3GPP TS 33.108 [3], clause 5.2.4) 
+  eTSI671NEID 
+  Supplied directly by the MF (see 3GPP TS 33.108 [3], clause 5.2.4) 
+ communicationIdentityNumber  See clause A.1.2 
+ deliveryCountryCode 
+ Supplied directly by the MF 
+sequenceNumber 
+Supplied directly by the MF 
+timeStamp 
+Copied from CC-PDU.uLIC-header.timeStamp or  
+Conf-CC-PDU.confLIC-header.timeStamp or  
+
+Voip-CC-PDU.voipLIC-header.timeStamp or  
+Gcse-CC-PDU.gcseLIC-header.timeStamp 
+This requires a conversion from HI2Operations.TimeStamp to 
+
+GeneralizedTime 
+
+
+Table A.4: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] CCPayload mapping
+ ETSI TS 102 232
+-1 [2]  CCPayload element 
+Source from 3GPP TS 33.108 [3] 
+payloadDirection 
+Copied from CC-PDU.uLIC-header.t-PDU-direction or 
+Conf-CC-PDU.confLIC-header.t-PDU-direction or 
+
+Voip-CC-PDU.voipLIC-header.t-PDU-direction or 
+
+Gcse-CC-PDU.gcseLIC-header.t-PDU-direction 
+This requires a trivial translation between TPDU-direction and 
+PayloadDirection enumerated types 
+timeStamp 
+Copied from CC-PDU.uLIC-header.timeStamp or 
+Conf-CC-PDU.confLIC-header.timeStamp or 
+Voip-CC-PDU.voipLIC-header.timeStamp or  
+
+Gcse-CC-PDU.gcseLIC-header.timeStamp 
+
+This requires a conversion from HI2Operations.TimeStamp to 
+GeneralizedTime 
+ccContents 
+See below for individual elements 
+ uMTSCC 
+ Bytes copied from CC-PDU.payload 
+ ePSCC 
+ Bytes copied from CC-PDU.payload 
+ confCC 
+ Bytes copied from Conf-CC-PDU.payload 
+ voipCC 
+ Bytes copied from Voip-CC-PDU.payload 
+ gcseCC 
+ Bytes copied from Gcse-CC-PDU.payload 
+A.1.2 CIN allocation 
+
+
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)15 Annex B (informative): 
+Change request history 
+Status of the present document: ETSI TS 102 232-7 
+Service-specific details for Mobile Services 
+TC LI approval 
+Date 
+Version 
+Remarks 
+January 2008 2.1.1 
+First publication of the TS after approval by ETSI/TC LI#17 (22-24 January 2008, Como) 
+ 
+Rapporteur of version 2.1.1 is Chris White (GTEN) 
+February 2011  2.2.1 
+Included Change Request: 
+
+ETSI TS 102 232-07CR001 (Cat B) Addition of Service-Specific Details for CDMA2000 
+
+This CR was approved by TC LI#26 (15-17 February 2011, Sophia Antipolis): 
+
+ Version 2.2.1 prepared by Peter van der Arend (Vodafone) (Chairman TC LI) 
+Rapporteur of this specification is Mark Shepherd (NTAC) 
+May 2012 3.1.1 
+Included Change Request: 
+ETSI TS 102 232-07CR002 (Cat B) Introduce changes to accommodate EPS 
+This CR was approved by TC LI#30 (14-16 May 2012, Amsterdam): 
+
+ 
+Version 3.1.1 prepared by Peter van der Arend (Vodafone) (Chairman TC LI) 
+Rapporteur of this specification is Mark Shepherd (NTAC) 
+June 2013 3.2.1 
+Included Change Request: 
+ETSI TS 102 232-07CR003 (Cat B) to preserve the uLIC header 
+
+ This CR was approved by TC LI #33 (11-13 June 2013, Joensuu) 
+ 
+Version 3.2.1 prepared by the Rapporteur 
+February 2016 3.3.1 
+Included Change Request 
+
+ETSI TS 102 232-07004r3 (Cat B) to accommodate the delivery of the 3GPP IMS-based 
+
+VoIP and IMS Conference Services and Proximity Services (ProSe) and Group 
+
+Communications System Enablers specified in 3GPP TS 33.108 clauses 11, 12, 13 and 
+14.  
+This CR was approved by TC LI #41 (10-12 Feb 2016, Sophia Antipolis) 
+
+ Version 3.3.1 prepared by the Rapporteur 
+  ETSI ETSI TS 102 232
+-7 V3.3.1 (2016
+-03)16 History 
+Document history 
+
+
+
+
+

@@ -1,0 +1,517 @@
+     ETSI TS 102 232-6 V2.3.1 (2008-08)Technical Specification
+ Lawful Interception (
+LI);Handover Interface and
+Service-Specific Details (SSD) for IP delivery;
+Part 6: Service-specific de
+tails for PSTN/ISDN services
+    ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 2    
+ Reference 
+RTS/LI-00053-6 
+Keywords 
+IP, telephony, lawful interception, security 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+  Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - NAF 742 C 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° 7803/88 
+ Important notice 
+Individual copies of the present document can be downloaded from: 
+http://www.etsi.org
+ The present document may be made available in more than one electronic version or in print. In any case of existing or 
+perceived difference in contents between such versions, the reference version is the Portable Document Format (PDF). 
+In case of dispute, the reference shall be the printing on
+ ETSI printers of the PDF version kept on a specific network drive 
+within ETSI Secretariat. 
+Users of the present document should be aware that the 
+document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+http://portal.etsi.org/tb/status/status.asp
+ If you find errors in the present document, please send your comment to one of the following services: 
+http://portal.etsi.org/chaircor/ETSI_support.asp
+ Copyright Notification 
+No part may be reproduced except as authorized by written permission. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © European Telecommunications Standards Institute 2008. 
+All rights reserved. 
+ DECTTM, PLUGTESTSTM, UMTS
+TM, TIPHON
+TM, the TIPHON logo and the ETSI logo are Trade Marks of ETSI registered 
+for the benefit of its Members. 
+3GPP
+TM 
+is a Trade Mark of ETSI registered for the benefit of its Members and of the 3GPP Organizational Partners. 
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 3  Contents 
+Intellectual Prop
+erty Rights...................................................................................................
+.............................4
+ Foreword.......................................................................................................................
+......................................4
+ 1 Scope........................................................................................................................
+................................5
+ 2 References...................................................................................................................
+.............................5
+ 2.1 Normative references.......................................................................................................
+..................................5
+ 2.2 Informative references.....................................................................................................
+...................................6
+ 3 Definitions and abbreviations................................................................................................
+...................6
+ 3.1 Definitions................................................................................................................
+..........................................6
+ 3.2 Abbreviations..............................................................................................................
+.......................................6
+ 4 General......................................................................................................................
+...............................7
+ 4.1 Approach...................................................................................................................
+.........................................7
+ 4.2 Reference model............................................................................................................
+.....................................7
+ 5 Headers, data exchange and networks..........................................................................................
+............7
+ 5.1 Approach...................................................................................................................
+.........................................7
+ 5.2 Structures.................................................................................................................
+...........................................7
+ 5.3 Definition of a co
+mmunications
+ sessi
+on.....................................................................................
+........................7
+ 6 Intercept Related Information (IRI) 
+and Content of Co
+mmunication (CC).............................................8
+ 6.1 Definition of IRI events and CC events.....................................................................................
+.........................8
+ 6.2 CC format..................................................................................................................
+.........................................8
+ 6.3 Supplementary information..................................................................................................
+..............................8
+ 6.3.1 Requirements for supplementary information...............................................................................
+...............8
+ 6.3.2 Supplementary information................................................................................................
+..........................9
+ 6.3.3 Sending supplementary information........................................................................................
+.....................9
+ 6.3.4 Identification of CCLinks................................................................................................
+.............................9
+ Annex A (normative): ASN.1 for IRI and CC...................................................................................10
+ A.1 Note on integratin
+g ASN.1 structures.......................................................................................
+.............10
+ A.2 ASN.1 definitions..........................................................................................................
+.........................10
+ Annex B (informative): Ch
+ange request history..................................................................................
+13 History........................................................................................................................
+......................................14
+    ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 4  Intellectual Property Rights 
+IPRs essential or potentially essential to the present document may have been declared to ETSI. The information 
+pertaining to these essential IPRs, if any, is publicly available for 
+ETSI members and non-members
+, and can be found 
+in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to ETSI in 
+respect of ETSI standards"
+, which is available from the ETSI Secretariat. Latest updates are available on the ETSI Web 
+server (
+http://webapp.etsi.org/IPR/home.asp
+). Pursuant to the ETSI IPR Policy, no investigation, including IPR searches, has been carried out by ETSI. No guarantee 
+can be given as to the existence of other IPRs not referenced in ETSI SR 000 314 (or the updates on the ETSI Web 
+server) which are, or may be, or may become, essential to the present document. 
+Foreword 
+This Technical Specification (TS) has been produced 
+by ETSI Technical Committee Lawful Interception (LI). 
+The present document is part 6 of a multi-part deliverable. Full details of the entire series can be found in part 1 [2]. 
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 5  1 Scope The present document contains service-specific details fo
+r the handover of the lawfully intercepted PSTN/ISDN 
+Services (including emulated services such as those defined in ES 282 002 [3]) using packet-based techniques as 
+
+defined in TS 102 232-1 [2]. 
+2 References 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+
+non-specific. 
+• For a specific reference, subsequent revisions do not apply. 
+• Non-specific reference
+ may be made only to a complete document or a part thereof and only in the following 
+cases:  
+- if it is accepted that it will be possible to use all future changes of the referenced document for the 
+purposes of the referring document;  
+- for informative references. 
+Referenced documents which are not found to be publicly available in the expected location might be found at 
+http://docbox.etsi.org/Reference
+. For online referenced documents, information sufficient to identify and locate the source shall be provided. Preferably, 
+the primary source of the referenced document should be cited, in order to ensure traceability. Furthermore, the 
+
+reference should, as far as possible, remain valid for the expected life of the document. The reference shall include the 
+
+method of access to the referenced document and the full network address, with the same punctuation and use of upper 
+case and lower case letters. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication ETSI cannot guarantee 
+their long term validity. 
+2.1 Normative references 
+The following referenced documents are indispensable for the application of the present document. For dated 
+
+references, only the edition cited applies. For non-specific references, the latest edition of the referenced document 
+
+(including any amendments) applies. 
+[1] ETSI TS 101 671: "Lawful Interception (LI); Ha
+ndover interface for the lawful interception of 
+telecommunications traffic". 
+NOTE: Periodically TS 101 671 is published as ES 201 671. A reference to the latest version of the TS as above 
+reflects the latest stable content from ETSI/TC LI. 
+[2] ETSI TS 102 232-1: "Lawful Interception (LI); Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 1: Handover specification for IP delivery". 
+[3] ETSI ES 282 002: "Telecommunications and Internet converged Services and Protocols for 
+Advanced Networking (TISPAN); PSTN/ISDN Emulation Sub-system (PES); Functional 
+architecture". 
+[4] ITU-T Recommendation X.680: "Information technology - Abstract Syntax Notation One 
+(ASN.1): Specification of basic notation". 
+[5] Void. 
+
+[6] ITU-T Recommendation G.711 (1988): "Pulse code modulation (PCM) of voice frequencies". 
+[7] IETF RFC 4566: "SDP: Session Description Protocol". 
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 6  [8] ETSI TS 187 005: "Telecommunications and Internet converged Services and Protocols for 
+Advanced Networking (TISPAN); NGN Lawful Interception; Lawful interception functional 
+
+entities, information flow and reference points". 
+[9] Void. 
+
+[10] IETF RFC 3551: "RTP Profile for Audio and Video Conferences with Minimal Control". 
+2.2 Informative references 
+The following referenced documents are not essential to the use of the present document but they assist the user with 
+regard to a particular subject area
+. For non-specific references, the latest version of the referenced document (including 
+any amendments) applies. 
+[i.1] ETSI TR 102 053: "Telecommunications s
+ecurity; Lawful Interception (LI); Notes on ISDN 
+lawfull interception functionality". 
+[i.2] ETSI TR 102 503: "Lawful Interception (LI); ASN.1 Object Identifiers in Lawful Interception 
+Specifications". 
+3 Definitions and abbreviations 
+3.1 Definitions For the purposes of the present document, the terms and definitions given in TS 102 232-1 [2] and TS 101 671 [1] 
+
+apply. 
+3.2 Abbreviations For the purposes of the present document, the following abbreviations apply: 
+ASN.1 Abstract Syntax Notation One 
+CC Content of Communication 
+CIN Communications Identity Number 
+CSP Communications Service Provider 
+NOTE: CSP covers all Access Providers, Network Operators and Service Providers. 
+
+HI1 Handover Interface 1 (for Administrative Information) 
+HI2 Handover Interface 2 (for Intercept Related Information) 
+
+HI3 Handover Interface 3 (for Content of Communication) 
+IP Internet Protocol 
+IRI Intercept Related Information 
+
+ISDN Integrated Services Digital Network 
+
+LEA Law Enforcement Agency 
+
+LEMF Law Enforcement Monitoring Facility 
+LI Lawful Interception 
+MF Mediation Function (at CSP) 
+
+PDU Protocol Data Unit 
+
+PES PSTN/ISDN Emulation Subsystem 
+
+PSTN Public Switched Telephone Network 
+
+RTP Real-time Transport Protocol 
+SDP Session Description Protocol 
+TISPAN Telecommunications and Internet converged Services and Protocols for Advanced Networking 
+
+UDP User Datagram Protocol 
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 7  4 General 
+4.1 Approach The present document forms part 6 of the TS 102 232 family of standards, in that it is a service-specific component of 
+the TS 102 232-1 [2] framework.  
+For ISDN interception TS 101 671 [1] defines the interception behaviour that leads to visible IRI events on the 
+handover interface. TR 102 053 [i.1] provides detailed guidance in support of TS 101 671 [1]. 
+The present document provides a model for handover that may be used in conjunction with the interception domain 
+specification TS 187 005 [8]. TS 187 005 [8] also provides an overview of the document structure within the NGN LI 
+
+domain.  
+4.2 Reference model 
+   Law Enforcement
+ Monitoring 
+Facility (LEMF)
+         Handover 
+interface 
+Network Mediation 
+Function (MF) 
+Source of  
+PSTN or ISDN 
+ Figure 1: Reference model 
+5 Headers, data exchange and networks 
+5.1 Approach TS 102 232-1 [2] describes a technique for data exchange, an
+d specifies the headers that shall be associated with the 
+results of interception. The present document follows TS 102 232-1 [2] regarding headers, data exchange and networks.  
+5.2 Structures IRI events from TS 101 671 [1] are sent using the structure ETSI671IRI. Supplementary information IRI (defined in 
+
+clause 6.3) is sent using either the structure pstnIsdnIRI or the structure pstnIsdnCC (see clause A.2). CC is sent using 
+the structure pstnIsdnCC (see clauses 6.2 and A.3). 
+5.3 Definition of a communications session 
+A new Communications Identity Number (or CIN) is assigned each time a new communications session begins. See 
+
+TS 101 671 [1] for the definition of communications session. 
+Typically, a new communications session is defined to begin (i.e. a new CIN is assigned) when each IRI-BEGIN 
+message is sent (as listed in TS 101 671 [1]), then all further IRI and CC relating to that session has the same CIN. 
+
+Typically, a REPORT record would form a communications session in its own right. If CC or an IRI record is generated 
+
+for a session before the IRI-BEGIN is sent (e.g. through fault situations, or owing to unexpected latency), the CSP shall 
+still ensure that all IRI and CC in the communication session has the same CIN. 
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 8  6 Intercept Related Information (IRI) and Content of 
+Communication (CC) 
+6.1 Definition of IRI events and CC events 
+IRI events are defined as per TS 101 671 [1]. CC is sent on all occasions that CC would be sent under TS 101 671 [1]. 
+Further details for ISDN are provided by the state model and message sequence diagrams in TR 102 053 [i.1]; in 
+
+particular see clause 6 of TR 102 053 [i.1]. 
+6.2 CC format 
+CC shall be expressed as an RTP frame. The CC shall also
+ contain the RTP header, UDP header and IP header, except 
+by agreement between CSP and LEA. 
+NOTE: CSPs and LEAs may choose to omit headers because they are unavailable at the point of interception. 
+The SupplementaryInfo FrameType field indicates which header
+s are present in a given CC stream. If all headers are 
+present, the FrameType field may be omitted. 
+In the case where the RTP header is unavailable, one may be 
+inserted by the mediation function, subject to agreement 
+between LEA and CSP. The addition of an inserted RTP header may aid processing the audio stream at the receiver.  
+The content (i.e. RTP payload) shall be a complete, unmodified copy of CC information that is part of the target 
+communication. 
+The RTP header shall accurately describe the target communication. 
+The information contained in the IP and UDP header does not n
+ecessarily relate to any media flow as seen by the target. 
+IP and UDP headers shall not be inserted to the intercepted material by the mediation function if they are unavailable. 
+
+If encryption has been applied within the CSP's domain and under their control, either it shall be removed or full details 
+of the encryption including keys shall be supplied. 
+Typically under PSTN/ISDN the codec used is ITU-T Recommendation G.711 [6]. The codec in use shall be signalled 
+as described in clause 6.3. 
+6.3 Supplementary information 
+6.3.1 Requirements for s
+upplementary information 
+It is required that the LEA has enough information to dec
+ode and comprehend the traffic delivered over the Handover 
+Interface. The following information is required: 
+• Description of the format of the CC, to allow the LEMF to understand the information within the CC.  
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 9  6.3.2 Supplementary information 
+Supplementary information is defined to be the following set of information. 
+Field name 
+Status ASN.1 field 
+Information 
+Media format Mandatory mediaFormat 
+This field signals the codec used, as defined in 
+RFC 3551 [10]. The supplementary info shall contain only 
+
+one media format (send another supplementary 
+information messages if the format changes).  
+Media attributes 
+Conditional 
+(i.e. mandatory 
+under the 
+conditions 
+
+listed) 
+mediaAttributes 
+If any extra information (beyond the Media Format) is 
+needed to understand the delivered CC then it shall be 
+sent here, in the format defined in the a= field of SDP (see 
+RFC 4566 [7]). Typically, media attributes shall be present 
+
+if and only if the media format is 32 or above.  
+Encryption key Conditional  encryptionKey See clause 6.2. 
+Session name Optional sessionName 
+If present in the target communication (e.g. SDP 's=' field), 
+it may be present in supplementary information as decided 
+by national agreement.  
+Session 
+information 
+Optional sessionInfo 
+If present in the target communication (e.g. SDP 'i=' field), 
+it may be present in the target communication, it may be 
+present as decided by national agreement.  
+Copy of SDP 
+message 
+Optional copyOfSDPMessage 
+In addition to the above information, an SDP message
+ may 
+be included here. 
+ 6.3.3 Sending supplementary information 
+Supplementary information shall be sent as soon as possible for a communications session, and should be sent before 
+CC is available.  
+If supplementary information is not available before the CC, under no circumstances shall CC be buffered or delayed. If 
+supplementary information is critical to interpreting the CC, then CSPs shall ensure their systems are designed to avoid 
+any delay in sending supplementary information.  
+If the communications session contains traffic in more than one direction, then one set of supplementary information 
+shall be sent for each direction present. Under some circumst
+ances, the traffic sent in one direction will have a different 
+set of supplementary information from traffic sent in the othe
+r direction (e.g. traffic to the target uses a different codec 
+compared to traffic going from the target). Under these ci
+rcumstances, the direction flag shall always be present and 
+correct for all CC PDUs, and only the values 'To Target' and 'From Target' shall be used. 
+If the supplementary information changes during a session (e.g. change of codec) then a new set of supplementary 
+information shall be sent as soon as possible (it should be sent before the change occurs). It is required that the LEMF 
+
+can identify the point in the CC stream at which the change took place. If it is not clear from the CC, then the CSP 
+
+should populate the field 'First PDU number' within the structure 'InformationAppliesTo', to state the sequence number 
+
+of the first CC-PDU to which the new supplementary information applies.  
+Supplementary information shall be sent either as IRI or in CC-PDUs (in this case at least in the first PDU and in the 
+following PDUs only if there are any changes during the session). 
+6.3.4 Identificat
+ion of CCLinks 
+TS 101 671 [1] identifies certain occasions when different CCLinks are established (e.g. multi-party calls).  
+If there are a number of different CCLinks (see TS 101 671 [1]), then one set of supplementary information shall be 
+sent for each CC Link and the CCLinkID represent the CCLink that this information applies to. Within each CC Link, 
+
+traffic in different directions shall be isolated
+ and identified as described in clause 6.3.3. 
+Note that the sequence numbering of CC-PDUs is not affected by the CCLink counter (i.e. do not maintain separate 
+sequence number counts for separate CCLinks). 
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 10 Annex A (normative): 
+ASN.1 for IRI and CC A.1 Note on integrating ASN.1 structures 
+IRI information structures are defined by the ASN.1 in TS 101 671 [1]. The headers that shall be applied to all IRI are 
+defined in TS 102 232-1 [2]. There is some overlap between these structures, in that some fields which are present in 
+
+TS 101 671 [1] IRI-Parameters are then repeated in the TS 
+102 232 PSHeader construction. In particular, there are the 
+following overlaps: Lawful Intercept Identifier, Communication Identifier, TimeStamp.  
+The present document follows TS 102 232-1 [2] for header information and requires that the TS 102 232 header shall be 
+populated. For ease of interoperability the present document 
+recommends that repeated fields should be populated in 
+both the TS 102 232 and TS 101 671 [1] parts of the header.  
+A.2 ASN.1 definitions 
+The ASN.1 definitions are contained in a .txt file (PstnIsdnPDU, ver3.txt contained in archive 
+
+ts_10223206v020301p0.zip) which accompanies the present document. 
+The ASN.1 (ITU-T Recommendation X.680 [4]) module that represents the information in the present document and 
+meets all stated requirements is shown below. TR 102 503 [i.2] gives an overview of the relevant Object Identifiers 
+(OID) used in ASN.1 modules of the Lawful Intercept specifications and points to the specification where the modules 
+can be found. 
+-- =============================== -- Description of the PstnIsdn PDU -- ===============================  PstnIsdnPDU {itu-t(0) identified-organization(4) etsi(0) securityDomain(2) lawfulIntercept(2) li-ps(5) pstnIsdn(6) version3(3)}  DEFINITIONS IMPLICIT TAGS ::= BEGIN  IMPORTS   -- from TS 101 671 [1] 
+ IPAddress   FROM HI2Operations 
+  {itu-t(0) identified-organization(4) etsi(0) securityDomain(2) lawfulIntercept(2) hi2(1) 
+version10(10)}   -- from TS 102 232-01 [2] 
+ PayloadDirection   FROM LI-PS-PDU   {itu-t(0) identified-organization(4) etsi(0) securityDomain(2) lawfulIntercept(2) li-ps(5) 
+genHeader(1) version8(8)};   -- ============================ -- Object Identifier Definition -- ============================   -- definitions are relative to 
+ -- {itu-t(0) identified-organization(4) etsi(0) securityDomain(2) lawfulintercept(2)} 
+pstnIsdnIRIObjId RELATIVE-OID ::= {li-ps(5) pstnIsdn(6) version3(3) iRI(1)} 
+pstnIsdnCCObjId RELATIVE-OID ::= {li-ps(5) pstnIsdn(6) version3(3) cC(2)} 
+    ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 11 -- =============================== -- Description of the PstnIsdn IRI -- ===============================  PstnIsdnIRI  ::= SEQUENCE 
+{  pstnIsdnIRIObjId   [0] RELATIVE-OID, 
+ pstnIsdnIRIContents  [1] PstnIsdnIRIContents 
+}  PstnIsdnIRIContents ::= CHOICE {  supplementaryInfo   [0] SupplementaryInfo, 
+ ... 
+}  SupplementaryInfo  ::= SEQUENCE 
+{  informationAppliesTo  [0] InformationAppliesTo,   Œ- Identifies the PDUs to which this info applies
+  mediaFormat    
+[1] INTEGER (0..127),   -- As defined in RFC 3551 [10] 
+ mediaAttributes   
+[2] OCTET STRING OPTIONAL,   Œ- Format as per RFC 4566 [7] 
+  -- Clause 6.3 describes when the mediaAttributes shall be present 
+ encryptionKey   
+[3] OCTET STRING OPTIONAL,   Œ- Format as per RFC 4566 [7] 
+ sessionName    
+[4] OCTET STRING OPTIONAL,   Œ- Format as per RFC 4566 [7] 
+ sessionInfo    
+[5] OCTET STRING OPTIONAL,   Œ- Format as per RFC 4566 [7] 
+ copyOfSDPMessage  [6] OCTET STRING OPTIONAL, 
+  -- Format as per RFC 4566 [7] 
+ ..., 
+ frameType    [7] FrameType OPTIONAL 
+  -- Populated if one or more protocol layers are missing from CC data 
+  -- May be omitted if all headers are present. 
+}  InformationAppliesTo ::= SEQUENCE 
+ -- Identifies the PDUs to which a piece of supplementary information applies 
+{  payloadDirection  [0] PayloadDirection,    Œ- The direction of the traffic to which this info applies 
+ cCLinkID    [1] INTEGER (0..65535) OPTIONAL, 
+  -- 
+If there are multiple CCLinks, this field states CCLink to which this info applies  firstPDUNumber   
+[2] INTEGER (0..4294967295) OPTIONAL,   -- The supplementary info applies to all PDUs with this sequence number and above 
+ ... 
+}  FrameType ::= ENUMERATED 
+{  ipFrame(0),   -- All headers are present 
+ udpFrame(1),   -- IP header is missing 
+ rtpFrame(2),   -- UDP and IP headers are missing 
+ audioFrame(3),   -- All headers are missing 
+ ... 
+}    ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 12 -- ============================== -- Description of the PstnIsdn CC -- ==============================  PstnIsdnCC  ::= SEQUENCE 
+{  pstnIsdnCCObjId   [0] RELATIVE-OID, 
+ pstnIsdnCCContents  [1] OCTET STRING, 
+  -- See clause 6.2 for definition of format of 
+PstnIsdn CC  cCLinkID    [2] INTEGER (0..65535) OPTIONAL, 
+  -- Shall be present if multiple CCLinks are used (see clause 6.3.4) 
+ ..., 
+ supplementaryInfo  [3] SupplementaryInfo OPTIONAL   -- Shall be present at least in the first PDU
+ }  END -- end of PstnIsdnPDU   ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 13 Annex B (informative): 
+Change request history 
+Status of TS 102 232-6 
+Service-specific details for PSTN/ISDN services; Handover specification for IP delivery 
+Date 
+Version Remarks 
+September 2006  2.1.1 First publication of the TS af
+ter approval by ETSI/TC LII#13 (6-8 September 2006, 
+Stockholm) 
+ Version 2.1.1 prepared by rapporteur Mark Shepherd (HO UK) 
+April 2007  2.2.1 Included Change Request: 
+TS102232-06CR001r1 (cat B) on Clarification of use of RTP/UDP/IP headers 
+This CR was approved by TC LI#15 (23-25 April 2007; Riga) 
+
+ 
+Version 2.2.1 prepared by Peter van der Arend (Chairman TC LI) 
+May 2008 2.3.1 Included Change Requests: 
+TS102232-06CR002r1 (cat C) on Some comment and modification on the identification 
+
+CCLinks defined in the clause 6.3.4 
+This CR was approved by TC LI#16 (2-4 October 2007; Berlin) 
+ 
+TS102232-06CR003r1 (cat B) on SupplemetaryInfo in PstnIsdnCC 
+
+This CR was approved by TC LI#18 (27-29 May 2008; Chania) 
+
+ Version 2.3.1 prepared by Peter van der Arend (Chairman TC LI) 
+Rapporteur of this Technical Specification is Mark Shepherd  
+  ETSI ETSI TS 102 232
+-6 V2.3.1 (2008
+-08) 14 History 
+Document history 
+V2.1.1 December 2006 Publication 
+V2.2.1 May 2007 Publication 
+V2.3.1 August 2008 Publication 
+   
+   
+ 

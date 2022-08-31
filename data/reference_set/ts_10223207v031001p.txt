@@ -1,0 +1,858 @@
+   
+   ETSI TS 102 232-7 
+V3.10.1 
+(2021-09) Lawful Interception (LI); 
+Handover Interface and 
+Service-Specific Details (SSD) for IP delivery; 
+Part 7: Service-specific details for Mobile Services 
+   
+ TECHNICAL SPECIFICATION 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)2    Reference 
+RTS/LI-00212-7 
+Keywords 
+handover, IP, lawful interception, mobile, security 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+  Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - APE 7112B 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° w061004871 
+ Important notice 
+The present document can be downloaded from: 
+http://www.etsi.org/standards-search
+ The present document may be made available in electronic ve
+rsions and/or in print. The content of any electronic and/or 
+print versions of the present document shall not be modified wi
+thout the prior written authorization of ETSI. In case of any 
+existing or perceived difference in contents between such versions and/or in print, the prevailing version of an ETSI 
+deliverable is the one made publicly available in PDF format at 
+www.etsi.org/deliver
+. Users of the present document should be aware that the document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+ If you find errors in the present document, please send your comment to one of the following services: 
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+ Notice of disclaimer & limitation of liability 
+The information provided in the present deliverable is directed solely to professionals who have the appropriate degree of 
+experience to understand and interpret its content in accordance with generally accepted engineering or  
+other professional standard and applicable regulations.  
+No recommendation as to products and services or vendors is made or should be implied. 
+No representation or warranty is made that this deliverable is
+ technically accurate or sufficient or conforms to any law 
+and/or governmental 
+rule and/or regulation and further, no representation or warranty is made of merchantability or fitness 
+for any particular purpose or against infringement of intellectual property rights. 
+In no event shall ETSI be held liable for loss of profit
+s or any other incidental or consequential damages. 
+ Any software contained in this deliverable is provided "AS IS" with no warranties, express or implied, including but not 
+limited to, the warranties of merchantability, fitness for a particu
+lar purpose and non-infringement of intellectual property 
+rights and ETSI shall not be held liable in any event for any damages whatsoever (including, without limitation, damages 
+for loss of profits, business interruption, loss of 
+information, or any other pecuniary loss) arising 
+out of or related to the use 
+of or inability to use the software. 
+Copyright Notification 
+No part may be reproduced or utilized in any form or by any 
+means, electronic or mechanical, including photocopying and 
+microfilm except as authorized by written permission of ETSI. 
+The content of the PDF version shall not be modified without the written authorization of ETSI. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © ETSI 2021. 
+All rights reserved. 
+   ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)3 Contents 
+Intellectual Property Rights ..................................................................................................
+.............................. 5Foreword ......................................................................................................................
+....................................... 5Modal verbs te
+rminology .......................................................................................................
+............................. 5Introduction ..................................................................................................................
+...................................... 51 Scope .......................................................................................................................
+................................. 62 References ..................................................................................................................
+.............................. 62.1 Normative references ......................................................................................................
+................................... 62.2 Informative references ....................................................................................................
+.................................... 73 Definition of terms, symbols and abbreviations ..............................................................................
+......... 73.1 Terms .....................................................................................................................
+............................................. 73.2 Symbols ...................................................................................................................
+........................................... 73.3 Abbreviations .............................................................................................................
+........................................ 74 General .....................................................................................................................
+................................ 84.1 Approach ..................................................................................................................
+.......................................... 84.2 Reference model ...........................................................................................................
+...................................... 85 3GPP handover Headers, data exchange and networks ...........................................................................
+. 95.1 Approach ..................................................................................................................
+.......................................... 95.2 Structures ................................................................................................................
+............................................ 96 3GPP handover Intercept Related Information (IRI) and Content of Communication (CC) ................... 9
+6.1 Definition of IRI events and CC ...........................................................................................
+.............................. 96.2 IRI format ................................................................................................................
+........................................... 96.3 CC format .................................................................................................................
+.......................................... 97 Void ........................................................................................................................
+................................ 108 Void ........................................................................................................................
+................................ 109 EPS Headers, data exchange and networks .....................................................................................
+....... 109.1 Approach ..................................................................................................................
+........................................ 109.2 Structures ................................................................................................................
+.......................................... 1010 EPS Intercept Related Information (IRI) 
+and Content of Communication (CC) ................................... 10
+10.1 Definition of IRI events and CC ..........................................................................................
+............................. 1010.2 IRI format ...............................................................................................................
+.......................................... 1010.3 CC format ................................................................................................................
+......................................... 1111 IMS Conference Intercept Related Information (IRI) and Content of Communication (CC) ................ 11
+11.1 Definition of IRI events and CC ..........................................................................................
+............................. 1111.2 IRI format ...............................................................................................................
+.......................................... 1111.3 CC format ................................................................................................................
+......................................... 1112 IMS-based VoIP Intercept Related Information (IRI) and Content of Communication (CC) ............... 11
+12.1 Definition of IRI events and CC ..........................................................................................
+............................. 1112.2 IRI format ...............................................................................................................
+.......................................... 1112.3 CC format ................................................................................................................
+......................................... 1213 Proximity Services Intercep
+t Related Inform
+ation (IRI) .....................................................................
+... 1213.1 Definition of IRI ........................................................................................................
+....................................... 1213.2 IRI format ...............................................................................................................
+.......................................... 1214 Group Communications System Enablers Intercept Related Information (IRI) and Content of 
+Communication (CC) ............................................................................................................
+................. 1214.1 Definition of IRI events and CC ..........................................................................................
+............................. 1214.2 IRI format ...............................................................................................................
+.......................................... 1214.3 CC format ................................................................................................................
+......................................... 12  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)4 15 IRI and CC for services defined in 3GPP TS 33.128 ..........................................................................
+... 1315.1 Definition of IRI events and CC ..........................................................................................
+............................. 1315.2 IRI and 
+CC format ........................................................................................................
+.................................... 1315.3 Network Function Identifier ..............................................................................................
+............................... 1315.4 Extended Interceptio
+n Point Identifier ...................................................................................
+.......................... 13Annex A (normative): ASN.1 for IRI and CC ................................................................................... 1
+4A.1 Note on integrating ASN.1 structures ......................................................................................
+.............. 14A.1.1 Header field mappings ...................................................................................................
+................................... 14A.1.2 CIN allocation ..........................................................................................................
+........................................ 16Annex B (informative): Change request history .................................................................................
+. 17History .......................................................................................................................
+....................................... 18   ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)5 Intellectual Property Rights Essential patents 
+IPRs essential or potentially essential to normative deliverables may have been declared to ETSI. The declarations 
+pertaining to these essential IPRs, if any, are publicly available for 
+ETSI members and non-members
+, and can be 
+found in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to 
+ETSI in respect of ETSI standards"
+, which is available from the ETSI Secretaria
+t. Latest updates are available on the 
+ETSI Web server (
+https://ipr.etsi.org/
+). 
+Pursuant to the ETSI Directives including the ETSI IPR Policy, no investigation regarding the essentiality of IPRs, 
+
+including IPR searches, has been carried out by ETSI. No guarantee can be gi
+ven as to the existence of other IPRs not 
+referenced in ETSI SR 000 314 (or the updates on the ETSI Web server) which are, or may be, or may become, 
+
+essential to the present document. 
+Trademarks 
+The present document may include trademar
+ks and/or tradenames which are assert
+ed and/or registered by their owners. 
+ETSI claims no ownership of these except for any which are indicated as being the property of ETSI, and conveys no 
+right to use or reproduce any trademark and/or tradename. 
+Mention of those trademarks in the present document does 
+not constitute an endorsement by ETSI of products, services
+ or organizations associated with those trademarks. 
+DECTŽ
+, PLUGTESTSŽ
+, UMTSŽ
+ and the ETSI logo are trademarks of ETSI registered for the benefit of its 
+Members. 
+3GPPŽ and 
+LTEŽ
+ are trademarks of ETSI registered for th
+e benefit of its Members and of the 3GPP 
+Organizational Partners. 
+oneM2MŽ
+ logo is a trademark of ETSI registered for the benefit of its Members and of the 
+oneM2M Partners. 
+GSM
+® and the GSM logo are trademarks registered and owned by the GSM Association. 
+Foreword This Technical Specification (TS) ha
+s been produced by ETSI Technical
+ Committee Lawful Interception (LI). 
+The present document is part 7 of a multi-part deliverable. Full details of the entire series can be found in part 1 [2]. 
+Modal verbs terminology 
+In the present document "
+shall
+", "shall not
+", "should
+", "should not
+", "may", "need not", "will", "will not
+", "can" and "cannot
+" are to be interpreted as described in clause 3.2 of the 
+ETSI Drafting Rules
+ (Verbal forms for the expression of 
+provisions). 
+"must
+" and "must not
+" are NOT
+ allowed in ETSI deliverables excep
+t when used in direct citation. 
+Introduction 
+The ETSI TS 102 232 [i.1] series of standards aims to provide a common delivery interface for lawfully-intercepted 
+material from a wide range of services. 
+The aim of the present document is to in
+crease the range of services to which 
+the ETSI TS 102 232 [i.1] interface app
+lies, by including services from 3GPP 
+TS 33.108 [3] and 3GPP TS 33.128 [6] 
+within the ETSI TS 102 232 [i.1] delivery framework. 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)6 1 Scope 
+Introduction 
+The present document specifies an approach for the handover of
+ the lawfully-intercepted information that is defined in 
+the two standards: 3GPP TS 33.108 [3] and 3GPP TS 33.128 [6]. The present document uses the handover techniques 
+defined in ETSI TS 102 232-1 [2]. In this way, the present 
+document allows additional services to be delivered through 
+a common interface. 
+3GPP TS 33.108 
+The scope of the present document includes the handover of lawfully-intercepted information from the following parts 
+of 3GPP TS 33.108 [3]:
+ • Intercept Related Information
+ (IRI) and the
+ Content of Communication
+ (CC) 
+from the mobile circuit-switched 
+domain (3GPP TS 33.108 [3], clause 5). 
+• IRI and CC from the mobile packet-switched domain (3GPP TS 33.108 [3], clause 6). 
+• IRI and CC from the multi-media domain (3GPP TS 33.108 [3], clause 7). 
+• IRI and CC from the EPS domain (3GPP TS 33.108 [3], clause 10).  
+• IRI and CC from the IMS Conference domain (3GPP TS 33.108 [3], clause 11). 
+• IRI and CC from the IMS-based VoIP domain (3GPP TS 33.108 [3], clause 12). 
+• IRI from the Proximity Services domain (3GPP TS 33.108 [3], clause 13). 
+• IRI and CC from the Group Communication System Enablers domain (3GPP TS 33.108 [3], clause 14). 
+The present document does not override or supersede any specifications or requirements in 3GPP TS 33.108 [3].
+ 3GPP TS 33.128 
+The scope of the present document includes the handover of
+ lawfully-intercepted inform
+ation in accordance with 3GPP 
+TS 33.128 [6]. 
+2 References 
+2.1 Normative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+Referenced documents which are not found to be publicly available in the expected location might be found at 
+https://docbox.etsi.org/Reference/
+. NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documen
+ts are necessary for the appli
+cation of the present document. 
+[1] Void. 
+[2] ETSI TS 102 232-1: "Lawful Interception (LI); 
+Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 1: Handover specification for IP delivery". 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)7 [3] 
+ETSI TS 133 108: "Universal Mobile Telecommunications System (UMTS); LTE; Digital cellular 
+telecommunications system (Pha
+se 2+) (GSM); 3G security; Handover interface for Lawful 
+Interception (LI) (3GPP TS 33.108)". 
+[4] Void. 
+[5] Void. 
+[6] 
+ETSI TS 133 128: "LTE; 5G; Digital cellular telecommunications system (Phase 2+) (GSM); 
+Universal Mobile Telecommunications System (UMTS); Security; Protocol and procedures for 
+Lawful Interception (LI); Stage 3 (3GPP TS 33.128)". 
+[7] 
+ETSI TS 103 221-2: "Lawful Interception (LI); 
+Internal Network Interfaces; Part 2: X2/X3". 
+2.2 Informative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are no
+t necessary for the application of the 
+present document but they assist the 
+user with regard to a particular subject area. 
+[i.1] ETSI TS 102 232 (all parts): "Lawful Interception (LI); Handover Interface and Service-Specific 
+Details (SSD) for IP delivery". 
+[i.2] ETSI TS 101 671: "Lawful Interception (LI); Ha
+ndover interface for the lawful interception of 
+telecommunications traffic". 
+3 Definition of terms, symbols and abbreviations 
+3.1 Terms 
+For the purposes of the present document, the terms given in ETSI TS 102 232-1 [2] and ETSI TS 101 671 [i.2] apply. 
+3.2 Symbols Void. 
+3.3 Abbreviations For the purposes of the present document, the following abbreviations apply: 
+ASN.1 Abstract Syntax Notation One 
+
+CC Content of Communication 
+
+CC-PDU Content of Communication Protocol Data Unit 
+
+CIN Communications Identity Number 
+
+CONFLIC Conference LI Correlation 
+
+CR Change Request 
+CS Circuit Switched 
+EPS Evolved Packet System 
+
+GCSE Group Communications System Enablers 
+
+GCSELIC Group Communications System Enablers LI Correlation 
+
+IMS IP Multimedia Subsystem 
+
+IP Internet Protocol 
+  ETSI ETSI TS 102 
+232
+-7 V3.10.1 (2021
+-09)8 IPID Interception Point IDentifier 
+IRI Intercept Related Information 
+
+LI Lawful Interception 
+
+LI_X2 Lawful Interception Internal Interface 2 
+
+LI_X3 Lawful Interception Internal Interface 3 
+LTE Long Term Evolution (of UMTS) 
+MF Mediation Function (at CSP) 
+
+NFID Network Function Identifier 
+
+PDU Protocol Data Unit 
+
+ProSe Proximity Services 
+PS Packet Switched 
+TC Technical Committee 
+
+TS Technical Specification 
+
+uLIC UMTS LI Correlation 
+
+UMTS Universal Mobile Telecommunications System 
+
+VOIPLIC Voice Over IP LI Correlation 
+4 General 
+4.1 Approach 
+The present document forms part 7 of the ETSI TS 102 232 [i
+.1] family of standards, in that it is a service-specific 
+component of the ETSI TS 102 232-1 [2] framework. 
+3GPP TS 33.108 [3] and 3GPP TS 33.128 [6] define the interception behaviour that leads to IRI events on the handover 
+interface, for both the packet data
+ domain and circuit switched domain. 
+4.2 Reference model 
+ Figure 1: Reference model 
+Source of mobile data 
+(defined in 3GPP 
+TS 33.108 or 3GPP  
+TS 33.128.  
+Mediation 
+Function (MF) 
+Law Enforcement 
+Monitoring 
+Facility (LEMF) 
+Handover 
+interface 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)9 5 3GPP handover Headers, data exchange and 
+networks 
+5.1 Approach 
+ETSI TS 102 232-1 [2] describes a technique for data exchange, and specifies the headers that shall be associated with 
+the results of interception. The present document follows ETSI TS 102 232-1 [2] regarding headers, data exchange and 
+
+networks demonstrates how the header fields in ETSI TS 102 232-1 [2] can be populated in a direct and straightforward 
+
+manner using the interception information available in 3GPP TS 33.108 [3] and 3GPP TS 33.128 [6]. 
+5.2 Structures 
+IRI events from 3GPP TS 33.108 [3], for both circuit and packet switched services, are sent using the uMTSIRI element 
+
+of IRIContents. 
+CC from CS domain delivery in IP are sent using the CSvoice-CC-PDU element of CCContents, which is the CSvoice-
+CC-PDU from 3GPP TS 33.108 [3], containing cSvoiceLIC-header and payload. 
+CC from packet switched services are sent using the 
+uMTSCC element CCContents, which is an OCTET STRING. 
+Alternatively, subject to national agreement, CC from p
+acket switched services are sent using the uMTSCC-CC-PDU 
+element of CCContents, which is the CC-PDU from 3GPP TS 33.108 [3], containing the uLIC-header and payload. 
+CC and IRI PDUs formatted according to 3GPP TS 33.128 
+[6] are sent using the threeGPP33128DefinedCC and 
+threeGPP33128DefinedIRI elements of 
+CCContents and IRIContents respectively. 
+6 3GPP handover Intercept Related Information (IRI) 
+and Content of Communication (CC) 
+6.1 Definition of IRI events and CC 
+IRI events are defined as per 3GPP TS 33.108 [3]. 
+6.2 IRI format 
+IRI events are defined as per 3GPP TS 33.108 [3] for both circuit and packet switched services. They are sent using the 
+uMTSIRI element of IRIContents.  
+Fields which are duplicated in the 3GPP TS 33.108 [3] and ETSI TS 102 232-1 [2] structures should be populated 
+consistently in both structures. Clause A.1 gives guidanc
+e on mapping between 3GPP TS 33.108 [3] elements and ETSI 
+TS 102 232-1 [2] elements for IRI. 
+6.3 CC format 
+CC from packet switched services are sent using the uM
+TSCC element CCContents, whic
+h is an OCTET STRING. The 
+OCTET STRING will be as defined in the payload element of the CC-PDU structure in 3GPP TS 33.108 [3], 
+clause B.4. 
+Alternatively, subject to national agreement, CC from p
+acket switched services are sent using the uMTSCC-CC-PDU 
+element of CCContents, which is the CC-PDU from 3GPP TS 33.108 [3], containing the uLIC-header and payload. 
+
+CC from CS domain delivery in IP are sent using the CSvoice-CC-PDU element of CCContents, which is the CSvoice-
+CC-PDU from 3GPP TS 33.108 [3], containing cSvoiceLIC-header and payload. 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)10 The information in the cSvoiceLIC-h
+eader element of CSvoice-CC-PDU will 
+be used to populate the header 
+information in the LI-PS-PDU structure of ETSI TS 102 232-1 [2]. Clause A.1 gives guidance on the mapping between 
+these elements. 
+The information in the uLIC-header el
+ement of CC-PDU will be used to pop
+ulate the header information in the 
+LI-PS-PDU structure of ETSI TS 102 232-1 [2]. Clause A.1 gives guidance on the mapping between these elements. 
+7 Void 
+8 Void 
+9 EPS Headers, data exchange and networks 
+9.1 Approach 
+ETSI TS 102 232-1 [2] describes a technique for data exchange, and specifies the headers that shall be associated with 
+the results of interception. The present document follows ETSI TS 102 232-1 [2] regarding headers, data exchange and 
+networks demonstrates how the header fields in ETSI TS 102 232-1 [2] can be populated in a direct and straightforward 
+
+manner using the interception information available in 3GPP TS 33.108 [3]. 
+9.2 Structures 
+IRI events from 3GPP TS 33.108 [3], for EPS services, are sent using the ePSIRI element of IRIContents. 
+CC from EPS services is sent using the ePSCC el
+ement of CCContents, which is an OCTET STRING. 
+Alternatively, subject to national agreement, CC from E
+PS services are sent using the ePSCC-CC-PDU element of 
+CCContents, which is the CC-PDU from 3GPP TS 33.108 [3], containing the uLIC-header and payload. 
+10 EPS Intercept Related Information (IRI) and Content 
+of Communication (CC) 
+10.1 Definition of IRI events and CC 
+IRI events are defined as per 3GPP TS 33.108 [3]. 
+10.2 IRI format 
+IRI events for EPS services are defined as per clause 10 of 3GPP TS 33.108 [3]. They are sent using the ePSIRI element 
+of IRIContents. 
+Fields which are duplicated in the 3GPP TS 33.108 [3] and ETSI TS 102 232-1 [2] structures should be populated 
+consistently in both structures. Clause A.1 gives guidance on mapping between 3GPP TS
+ 33.108 [3] elements and ETSI 
+TS 102 232-1 [2] elements for IRI. 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)11 10.3 CC format 
+CC from EPS is sent using the ePSCC element of CCC
+ontents, which is an OCTET STRING. The OCTET STRING 
+will be as defined in the payload element of the CC-PDU structure in 3GPP TS 33.108 [3], clause B.10. 
+Alternatively, subject to national agreement, CC from E
+PS services are sent using the ePSCC-CC-PDU element of 
+CCContents, which is the CC-PDU from 3GPP TS 33.108 [3], containing the uLIC-header and payload. 
+The information in the uLIC-header el
+ement of CC-PDU will be used to pop
+ulate the header information in the 
+LI-PS-PDU structure of ETSI TS 102 232-1 [2]. Clause A.1 gives guidance on the mapping between these elements. 
+11 IMS Conference Intercept 
+Related Information (IRI) 
+and Content of Communication (CC) 
+11.1 Definition of IRI events and CC 
+IRI events are defined as per 3GPP TS 33.108 [3]. 
+11.2 IRI format 
+IRI events for IMS Conference services are defined as per clause 11 of 3GPP TS 33.108 [3]. They are sent using the 
+confIRI element of IRIContents. 
+Fields which are duplicated in the 3GPP TS 33.108 [3] and ETSI TS 102 232-1 [2] structures should be populated 
+consistently in both structures. Clause A.1 gives guidanc
+e on mapping between 3GPP TS 33.108 [3] elements and ETSI 
+TS 102 232-1 [2] elements for IRI. 
+11.3 CC format 
+CC from IMS Conference services are sent using the 
+Conf-CC-PDU element of CCContents, which is the 
+Conf-CC-PDU from 3GPP TS 33.108 [3], containing the confLIC-header and payload. 
+The information in the confLIC-header element of Conf-CC-PDU will be used to populate the header information in the 
+LI-PS-PDU structure of ETSI TS 102 232-1 [2]. Clause A.1 gives guidance on the mapping between these elements. 
+NOTE: Octet string is not provided as it will break evidential use. 
+12 IMS-based VoIP Intercept Related Information (IRI) 
+and Content of Communication (CC) 
+12.1 Definition of IRI events and CC 
+IRI events are defined as per 3GPP TS 33.108 [3]. 
+12.2 IRI format 
+IRI events for IMS-based VoIP services are defined as per clause 12 of 3GPP TS 33.108 [3]. They are sent using the 
+
+ePSIRI element of IRIContents. 
+Fields which are duplicated in the 3GPP TS 33.108 [3] and ETSI TS 102 232-1 [2] structures should be populated 
+consistently in both structures. Clause A.1 gives guidanc
+e on mapping between 3GPP TS 33.108 [3] elements and ETSI 
+TS 102 232-1 [2] elements for IRI. 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)12 12.3 CC format 
+CC from IMS-based VoIP services are sent using the Voip-CC-PDU element of CCContents, which is the 
+Voip-CC-PDU from 3GPP TS 33.108 [3], containing the voipLIC-header and payload. 
+The information in the voipLIC-header element of Voip-CC-PDU will be used to populate the header information in the 
+LI-PS-PDU structure of ETSI TS 102 232-1 [2]. Clause A.1 gives guidance on the mapping between these elements. 
+NOTE: Octet string is not provided as it will break evidential use. 
+13 Proximity Services Intercept Related Information (IRI) 
+13.1 Definition of IRI 
+IRI events are defined as per 3GPP TS 33.108 [3]. 
+13.2 IRI format 
+IRI events for Proximity Services (PROSE) are defined as per clause 13 of 3GPP TS 33.108 [3]. They are sent using the 
+
+proseIRI element of IRIContents. 
+Fields which are duplicated in the 3GPP TS 33.108 [3] and ETSI TS 102 232-1 [2] structures should be populated 
+consistently in both structures. Clause A.1 gives guidanc
+e on mapping between 3GPP TS 33.108 [3] elements and ETSI 
+TS 102 232-1 [2] elements for IRI. 
+14 Group Communications System Enablers Intercept 
+Related Information (IRI) and Content of 
+Communication (CC) 
+14.1 Definition of IRI events and CC 
+IRI events are defined as per 3GPP TS 33.108 [3]. 
+14.2 IRI format 
+IRI events for Group Communications System Enablers (G
+CSE) services are defined as per clause 14 of 3GPP 
+TS 33.108 [3]. They are sent using the gcseIRI element of IRIContents. 
+Fields which are duplicated in the 3GPP TS 33.108 [3] and ETSI TS 102 232-1 [2] structures should be populated 
+consistently in both structures. Clause A.1 gives guidanc
+e on mapping between 3GPP TS 33.108 [3] elements and ETSI 
+TS 102 232-1 [2] elements for IRI. 
+14.3 CC format 
+CC from Group Communications System Enablers (GCSE) services are sent using the Gcse-CC-PDU element of 
+
+CCContents, which is the Gcse-CC-PDU from 3GPP TS 33.108 [3], containing the gcseLIC-header and payload. 
+The information in the gcseLIC-header element of Gcse-CC-PDU will be used to populate the header information in the 
+LI-PS-PDU structure of ETSI TS 102 232-1 [2]. Clause A.1 gives guidance on the mapping between these elements. 
+NOTE: Octet string is not provided as it will break evidential use. 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)13 15 IRI and CC for services defined in 3GPP TS 33.128 
+15.1 Definition of IRI events and CC 
+IRI and CC events are defined as per 3GPP TS 33.128 [6]. 
+15.2 IRI and CC format 
+3GPP TS 33.128 [6] defines the format for the contents of the threeGPP33128DefinedIRI and 
+threeGPP33128DefinedCC elements 
+for each IRI and CC event. 
+15.3 Network Function Identifier 
+If NFID (as defined in ETSI TS 103 221-2 
+[7], clause 5.3.7) is available on th
+e LI_X2 and LI_X3 interfaces (as defined 
+in 3GPP TS 33.128 [6]), in order to indicate the Network Function associated with the Point of Interception the 
+
+NetworkFunctionIdentifier parameter (as defined in ETSI TS 102 232-1 [2]) shall be populated by the MF with the 
+
+NFID value received over the 
+LI_X2 and LI_X3 interfaces. 
+15.4 Extended Interception Point Identifier 
+If IPID (as defined in ETSI TS 103 221-2 [7], clause 5.3.8)
+ is available on the LI_X2 an
+d LI_X3 interfaces (as defined 
+in 3GPP TS 33.128 [6]), in order to indicate the specific Point of Interception the ExtendedInterceptionPointID 
+
+parameter (as defined in ETSI TS 102 232-1 
+[2]) shall be populated by the MF wi
+th the IPID value received over the 
+LI_X2 and LI_X3 interfaces. 
+   ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)14 Annex A (normative): 
+ASN.1 for IRI and CC 
+A.1 Note on integrating ASN.1 structures 
+A.1.1 Header field mappings 
+Table A.1 shows how elements of the ETSI TS 102 232-1 [2] PSHeader structure should be populated from information 
+in the 3GPP TS 33.108 [3] IRI-Parameters structure. 
+Table A.1: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] PSHeader mapping 
+ETSI TS 102 232-1 [2]  
+PSHeader
+ element
+ Source from 3GPP TS 33.108 [3] 
+lawfulInterceptionIdentifier 
+Copied directly from IRI-Parameters.lawfulInterceptionIdentifier 
+authorizationCountryCode 
+Supplied directly by the MF 
+communicationIdentifier 
+See below for individual elements 
+ networkIdentifier 
+ See below for individual elements 
+  operatorIdentifier 
+  Copied directly from IRI-Parameters.networkIdentifier.operatorIdentifier 
+  eTSI671NEID 
+  Copied directly from IRI-Parameters.networkIdentifier 
+Network-Element-Identifier 
+ communicationIdentityNumber  See clause A.1.2 
+ deliveryCountryCode 
+ Supplied directly by the MF 
+sequenceNumber 
+Supplied directly by the MF 
+timeStamp 
+Copied from IRI-Parameters.timeStamp. 
+
+This requires a conversion from HI2Operations.TimeStamp to 
+
+GeneralizedTime 
+ Table A.2 shows how elements of the ETSI TS 102 232-1 [2] IRIPayload structure should be populated from 
+information in the 3GPP TS 33.108 [3] structures. 
+Table A.2: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] IRIPayload mapping
+ ETSI TS 102 232-1 [2]  
+IRIPayload
+ element
+ Source from 3GPP TS 33.108 [3] 
+iRIType 
+Inferred from UmtsIRIContent or EpsIRIContent or ConfIRIContent or 
+ProSeIRIContent or GcseIRIContent or UmtsCS-IRIsContent 
+timeStamp 
+Copied from IRI-Parameters.timeStamp (assuming no aggregation of PDUs) 
+
+This requires a conversion from HI2Operations.TimeStamp to 
+
+GeneralizedTime 
+iRIContents 
+See below for individual elements 
+ uMTSIRI 
+ See below for individual elements 
+  iRI-Parameters 
+  Copied directly from IRI-Parameters, if handing over packet domain IRI 
+  iRI-CS-Parameters 
+  Copied directly from IRI-Parameters, if handing over circuit switched IRI 
+ ePSIRI 
+ See below for individual elements 
+  iRI-EPS-Parameters 
+  Copied directly from IRI-Parameters, if handing over EPS IRI 
+
+See note 
+ confIRI 
+ See below for individual elements 
+  iRI-Conf-Parameters 
+  Copied directly from IRI-Parameters, if handing over CONF IRI 
+ proseIRI 
+ See below for individual elements 
+  iRI-ProSe-Parameters   Copied directly from IRI-Parameters, if handing over PROSE IRI 
+ gcseIRI 
+ See below for individual elements 
+  iRI-Gcse-Parameters 
+  Copied directly from IRI-Parameters, if handing over GCSE IRI 
+NOTE: EPS IRI is also used for IMS-based VoIP services. 
+   ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)15 Table A.3 shows how elements of the ETSI TS 102 232-1 [2] PSHeader structure should be populated from information 
+in the 3GPP TS 33.108 [3] CC-PDU structure. 
+Table A.3: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] PSHeader mapping
+ ETSI TS 102 232-1 [2]  
+PSHeader
+ element
+ Source from 3GPP TS 33.108 [3] 
+lawfulInterceptionIdentifier 
+Copied from CC-PDU.uLIC-header.lIID or
+ Conf-CC-PDU.confLIC-header.lIID 
+or Voip-CC-PDU.voipLIC-header.lIID or Gcse-CC-PDU.gcseLIC-header.lIID or 
+CSvoice-CC-PDU.cSvoiceLIC-header.lIID 
+authorizationCountryCode 
+Supplied directly by the MF 
+communicationIdentifier 
+See below for individual elements 
+ networkIdentifier 
+ See below for individual elements 
+  operatorIdentifier 
+  Supplied directly by the MF (see 3GPP TS 33.108 [3], clause 5.2.4) 
+  eTSI671NEID 
+  Supplied directly by the MF (see 3GPP TS 33.108 [3], clause 5.2.4) 
+ communicationIdentityNumber  See clause A.1.2 
+ deliveryCountryCode 
+ Supplied directly by the MF 
+sequenceNumber 
+Supplied directly by the MF 
+timeStamp 
+Copied from CC-PDU.uLIC-header.timeStamp or  
+
+Conf-CC-PDU.confLIC-header.timeStamp or  
+
+Voip-CC-PDU.voipLIC-header.timeStamp or  
+Gcse-CC-PDU.gcseLIC-header.timeStamp or 
+CSvoice-CC-PDU.cSvoiceLIC-header.timeStamp 
+
+This requires a conversion from HI2Operations.TimeStamp to 
+
+GeneralizedTime 
+ Table A.4 shows how elements of the ETSI TS 102 232-1 [2] CCPayload structure should be populated from 
+information in the 3GPP TS 33.108 [3] structures. 
+Table A.4: 3GPP TS 33.108 [3] to ETSI TS 102 232-1 [2] CCPayload mapping
+ ETSI TS 102 232-1 [2]  
+CCPayload
+ element
+ Source from 3GPP TS 33.108 [3] 
+payloadDirection 
+Copied from CC-PDU.uLIC-header.t-PDU-direction or 
+Conf-CC-PDU.confLIC-header.t-PDU-direction or 
+
+Voip-CC-PDU.voipLIC-header.t-PDU-direction or 
+Gcse-CC-PDU.gcseLIC-header.t-PDU-direction or 
+CSvoice-CC-PDU.cSvoiceLIC-header.t-PDU-direction 
+
+This requires a trivial translation between TPDU-direction and 
+
+PayloadDirection enumerated types 
+timeStamp 
+Copied from CC-PDU.uLIC-header.timeStamp or 
+
+Conf-CC-PDU.confLIC-header.timeStamp or 
+
+Voip-CC-PDU.voipLIC-header.timeStamp or  
+
+Gcse-CC-PDU.gcseLIC-header.timeStamp or 
+CSvoice-CC-PDU.cSvoiceLIC-header.timeStamp 
+This requires a conversion from HI2Operations.TimeStamp to 
+
+GeneralizedTime 
+ccContents 
+See below for individual elements 
+ uMTSCC 
+ Bytes copied from CC-PDU.payload 
+ uMTSCC-CC-PDU 
+ Copied directly from UMTS CC-PDU (that is UMTS CC-PDU.uLIC-header 
+plus UMTS CC-PDU.payload) 
+ ePSCC 
+ Bytes copied from CC-PDU.payload 
+ ePSCC-CC-PDU 
+ Copied directly from EPS CC-PDU (that is EPS CC-PDU.uLIC-header plus 
+
+EPS CC-PDU.payload) 
+ confCC-CC-PDU 
+ Copied directly from Conf-CC-PDU (that is Conf-CC-PDU.confLICheader 
+plus Conf-CC-PDU.payload) 
+ voipCC-CC-PDU 
+ Copied directly from Voip-CC-PDU (that is Voip-CC-PDU.voipLIC-header 
+
+plus Voip-CC-PDU.payload) 
+ gcseCC-CC-PDU 
+ Copied directly from Gcse-CC-PDU (that is Gcse-CC-PDU.gcseLIC-header 
+plus Gcse-CC-PDU.payload) 
+ cSvoice-CC-PDU 
+ Copied directly from CSvoice-CC-PDU (that is CSvoice-CC-PDU. 
+cSvoiceLIC-header plus CSvoice-CC-PDU.payload) 
+   ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)16 A.1.2 CIN allocation 
+CIN allocation follows ETSI TS 102 232-1 [2], clause 5.2.4. The CIN extension field may be used, if required, using 
+the CorrelationValues field as described in 3GPP TS 33.108 [3]. 
+  ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)17 Annex B (informative): 
+Change request history 
+Status of the present document: ETSI TS 102 232-7 
+Service-specific
+ details
+ for Mobile Services
+ TC LI approval Date
+ Version 
+Remarks 
+January 2008 2.1.1 First publication of the TS after 
+approval by ETSI/TC LI#17 (22-24 January 2008, Como) 
+February 2011 
+ 2.2.1 
+Included Change Request: 
+ETSI TS 102 232-7 CR001 (Cat B) Addition of Service-Specific Details for CDMA2000 
+This CR was approved by TC LI#26 (15-17 February 2011, Sophia Antipolis) 
+ 
+Version 2.2.1 prepared by the Rapporteur 
+May 2012 3.1.1 
+Included Change Request: 
+
+ETSI TS 102 232-7 CR002 (Cat B) Introduce changes to accommodate EPS 
+
+This CR was approved by TC LI#30 (14-16 May 2012, Amsterdam) 
+
+ Version 3.3.1 prepared by the Rapporteur 
+June 2013 3.2.1 
+Included Change Request: 
+ETSI TS 102 232-7 CR003 (Cat B) to preserve the uLIC header 
+This CR was approved by TC LI #33 (11-13 June 2013, Joensuu) 
+ 
+Version 3.2.1 prepared by the Rapporteur 
+February 2016 3.3.1 
+Included Change Request: 
+ETSI TS 102 232-7 004r3 (Cat B) to accommodate the delivery of the 3GPP IMS-based 
+VoIP and IMS Conference Services and Proximity Services (ProSe) and Group 
+
+Communications System Enablers specified in 3GPP TS 33.108, clauses 11, 12, 13 and 
+
+14 
+This CR was approved by TC LI #41 (10-12 February 2016, Sophia Antipolis) 
+ 
+Version 3.3.1 prepared by the Rapporteur 
+February 2017 3.4.1 
+Included Change Request: 
+
+ETSI 102 232 CR005r1 (Cat F). Table A.4 modified in order to be aligned with clause 12.3 
+
+C.C. format 
+
+ This CR was approved by TC LI#44 (30 January - 1 February, Sophia Antipolis) 
+February 2018 3.5.1 
+Included Change Request: 
+ETSI 102 232 CR006r3 (Cat B). modification to take account of changes from SA3LI#67 
+to have an IP-based CC handover interface 
+ 
+This CR was approved by TC LI#47 (5-7 February 2018, New Delhi), version prepared by 
+
+the Rapporteur 
+February 2019 3.6.1 
+Included Change Request: 
+
+ETSI TS 102 232 CR007 (Cat B): Inclusion of 33.128 services in part 7 
+
+ This CR was approved by TC LI#50 (5-7 February 2019, Dubai), version prepared by the 
+Rapporteur 
+October 2019 3.7.1 
+Included Change Request: 
+ETSI TS 102 232-7 CR008 (Cat B): Adapt the introduction and scope 
+ 
+This CR was approved by TCLI#52 (15-17 October 2019, Turin), version prepared by the 
+
+Rapporteur 
+July 2020 3.8.1 
+Included Change Request: 
+
+ETSI TS 102 232-7 CR009 (Cat F): Correcting reference 
+
+ This CR was approved by TCLI#54-e (June 
+2020, online), version prepared by the 
+Rapporteur 
+July 2021 3.9.1 Withdrawn 
+September 
+2021 
+3.10.1 
+Included Change Requests: 
+ETSI TS 102 232-7 CR010r3 (Cat C): Network Function ID 
+
+ETSI TS 102 232-7 CR011r2 (Cat C): Extended Interception Point Identifier 
+
+ These CR were approved by TCLI#57-e (June 2021, online) 
+   ETSI ETSI TS 102 232
+-7 V3.10.1 (2021
+-09)18 History 
+Document history 
+V2.1.1 March 2008 Publication (Historical) 
+V2.2.1 March 2011 Publication (Historical) 
+V3.1.1 June 2012 Publication 
+V3.2.1 July 2013 Publication 
+V3.3.1 March 2016 Publication 
+V3.4.1 March 2017 Publication 
+V3.5.1 April 2018 Publication 
+V3.6.1 April 2019 Publication 
+V3.7.1 December 2019 Publication 
+V3.8.1 August 2020 Publication 
+V3.9.1 July 2021 Publication (Withdrawn) 
+V3.10.1 September 2021 Publication 
+ 

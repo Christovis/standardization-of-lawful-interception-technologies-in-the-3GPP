@@ -1,0 +1,51 @@
+respons action	1
+intrus detect	1
+intern confer	1
+polici enforc	1
+cloud comput	2
+person data	2
+cipher	2
+secur servic	2
+secur evalu	2
+secur threat	2
+proxim	3
+secur risk	3
+inject	4
+virtual network	4
+mitig risk	5
+critic infrastructur	5
+radio access	5
+network secur	5
+nation secur	5
+mobil oper	6
+inform secur	6
+access control	7
+base station	7
+mobil network	8
+cyber secur	9
+legal requir	9
+secur commun	15
+access network	23
+temporari identi	26
+secur concern	27
+nef	45
+network oper	47
+authent	54
+core network	54
+end end	75
+data protect	78
+secur privaci	80
+sequenc number	102
+surveil	105
+privaci	161
+complianc	254
+law enforc	480
+access	612
+auth	628
+disclosur	654
+disclos	743
+interfac	792
+secur	836
+real	1052
+intercept	1447
+requir	1708

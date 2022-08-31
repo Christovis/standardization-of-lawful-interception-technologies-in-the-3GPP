@@ -1,0 +1,1245 @@
+   
+   
+Lawful Interception (LI); 
+IMS and LTE FAQ and Guidance 
+  
+SPECIAL REPORT 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 2   
+ Reference 
+
+Keywords 
+
+ETSI 
+
+
+ 
+
+
+
+Important notice 
+
+
+
+
+
+
+
+
+
+
+
+
+
+Copyright Notification 
+
+
+
+
+
+
+
+DECTPLUGTESTSUMTS
+
+3GPP
+
+LTE
+
+oneM2M
+
+GSM
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 3 
+Intellectual Prop
+erty Rights ..................................................................................................
+.............................. 5Foreword. .....................................................................................................................
+....................................... 5Modal verbs te
+rminology .......................................................................................................
+............................. 5Introduction ..................................................................................................................
+...................................... 51 Scope .......................................................................................................................
+................................. 62 References ..................................................................................................................
+.............................. 62.1 Normative references ......................................................................................................
+................................... 62.2 Informative references ....................................................................................................
+.................................... 63 Abbreviations ...............................................................................................................
+............................ 84 Questions and guid
+ance statements ...........................................................................................
+............. 104.0 Introduction ..............................................................................................................
+........................................ 104.1 General solution architecture .............................................................................................
+............................... 104.1.1 Introduction.............................................................................................................
+.................................... 104.1.2 Question: What is the relationship between LTE and EPS? .................................................................
+...... 104.1.3 Question: What is new in
+ the EPS/IMS ar
+chitectur
+e? ......................................................................
+.......... 114.1.4 Question: What is the service definition of VoLTE? ......................................................................
+............ 114.1.5 Question: What other services are combined with VoLTE? ..................................................................
+..... 114.1.6 Question: What types of IMS are there internationally? ..................................................................
+........... 124.1.7 Question: What types of IMS service are of relevance to LEAs? ...........................................................
+.... 124.2 Applicable international standards ........................................................................................
+........................... 124.2.1 Introduction.............................................................................................................
+.................................... 124.2.2 Question: What are the applicable 
+international LI an
+d DR standards? ....................................................
+. 124.2.3 Question: What are the applicable VoLTE standards? ......................................................................
+......... 134.2.4 Question: What are the pros and cons of the international LI and DR standards? ...................................... 13
+4.3 Nodes and Intercept Access Po
+ints / Points 
+of Intercept ...................................................................
+............... 134.3.1 Introduction.............................................................................................................
+.................................... 134.3.2 Question: For VoLTE intercept, what are the options for the IAPs and their pros and cons? .................... 13
+4.3.3 Question: For IMS intercept, what are the op
+tions for the IAPs and their pros and cons? ......................... 14
+4.4 Identities used in IMS and how to target the right id
+entity/iden
+tities ....................................................
+........... 144.4.1 Introduction.............................................................................................................
+.................................... 144.4.2 Question: What are the 
+available target
+ identitie
+s? .....................................................................
+................ 144.4.3 Question: Is IMSI and IMEI interception possible for IMS? ...............................................................
+....... 154.4.4 Question: Is it always possible to determine who initiated an IMS session (or an IMS dialog), and 
+flagging which was targeted?...................................................................................................
+................... 164.4.5 Question: How do you define the start, end and duration of a session? ...................................................
+... 164.4.6 Question: How do you define the direction and context of a session? .....................................................
+... 164.4.7 Question: Are device identifiers or P-GRUUs seen or both? Also, is the PANI header 
+available/
+useful? .............................................................................................................
+............................ 164.4.8 Question: Can location information be obtained from IMS? ................................................................
+...... 164.4.9 Question: How do we get hold of location information? ...................................................................
+......... 174.4.10 Question: How do we pres
+ent location in
+formation? ......................................................................
+............ 174.4.11 Question: How do we correlate location informat
+ion (e.g. from access to service or vice versa)?............. 17
+4.4.12 Question: Are login and presence events seen? ..........................................................................
+................ 174.4.13 Question: Is it possible to determine the IP addresses of the participants (e.g. target and non-target)? ..... 17
+4.5 Detailed call/sessions flows and guidance with rega
+rd to multi-location or multi-country sessions ................ 17
+4.5.1 Question: Is it possible to enforce the use of clear media and clear signalling in the visiting network 
+possible? .....................................................................................................................
+................................ 174.5.2 Question: Where is it decided what roaming scenarios are allowed or supported? .................................... 17
+4.5.3 Question: Do roamers always go back to their home network for their services? ...................................... 18
+4.6 Supplementary Services ....................................................................................................
+............................... 184.6.1 Introduction.............................................................................................................
+.................................... 184.6.2 Question: Will the Supplem
+entary Services change? .......................................................................
+.......... 184.7 Terminals, LEMF cap
+abilities and E2
+E issues ...............................................................................
+.................. 194.7.1 Introduction.............................................................................................................
+.................................... 19  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 4 4.7.2 Question: Should we put all of the signall
+ing interpretation responsibility on the LEMF? ........................ 19
+4.7.3 Question: Can the responsibility 
+for the interpretation of the signalling be placed on the LEMF? ............ 19
+4.8 Correlation ...............................................................................................................
+......................................... 194.8.1 Question: How can different identities for a single party be performed? .................................................
+.. 194.8.2 Question: How can HI2 and HI3 be correlated? ............................................................................
+............. 194.8.3 Question: How can you correlate different sessions between different accesses (e.g. CS call and 
+VoLTE call)? ..................................................................................................................
+............................ 204.9 Codecs, codec changes and other issues affecting voice quality ............................................................
+.......... 204.9.1 Introduction.............................................................................................................
+.................................... 204.9.2 Question: What common codecs are seen? ..................................................................................
+............... 204.9.3 Question: Are there likely to be codecs beyo
+nd those specified in the core VoLTE specification 
+which are being used or expect
+ed to be used in VoLTE? .........................................................................
+.. 204.9.4 Question: If proprietary codecs are used then appropriate technical details and licenses need to be 
+provided? .....................................................................................................................
+............................... 214.9.5 Question: Can the IMS operators 
+limit the codecs 
+which are used? ........................................................
+... 214.10 Impacts and dependencies on existing CS solutions ........................................................................
+................ 214.10.1 Introduction............................................................................................................
+..................................... 214.10.2 Question: Is "double interception" possible? ...........................................................................
+................... 214.11 Related or complimentary technologies ....................................................................................
+....................... 214.11.1 Introduction............................................................................................................
+..................................... 214.11.2 Question: What are the links or cross-overs with the Internet of Things? ...............................................
+... 224.11.3 Question: What are the links to eCall?..................................................................................
+...................... 22Annex A: Change Request history ...............................................................................................
+......... 23History .......................................................................................................................
+....................................... 24     ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 5 
+
+IPRs essential or potentially essential to the present document may have been declared to ETSI. The information 
+pertaining to these essential IPRs, if any, is publicly available for 
+ETSI members and non-members
+, and can be found 
+in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to ETSI in 
+respect of ETSI standards"
+, which is available from the ETSI Secretariat. Latest updates are available on the ETSI Web 
+server (
+https://ipr.etsi.org/
+). 
+Pursuant to the ETSI IPR Policy, no investigation, including IPR searches, has been carried out by ETSI. No guarantee 
+
+can be given as to the existence of other IPRs not referenced in ETSI SR 000 314 (or the updates on the ETSI Web 
+
+server) which are, or may be, or may become, essential to the present document. 
+
+The present document may include trademarks and/or tradenames
+ which are asserted and/or registered by their owners. 
+ETSI claims no ownership of these except for any which ar
+e indicated as being the property of ETSI, and conveys no 
+right to use or reproduce any trademark and/or tradename. 
+Mention of those trademarks in the present document does 
+not constitute an endorsement by ETSI of products, serv
+ices or organizations associated with those trademarks. 
+
+This Special Report (SR) has been produced by ET
+SI Technical Committee Lawful Interception (LI). 
+
+In the present document "
+should
+", "
+should not
+", "
+may
+", "
+need not
+", "
+will
+", "
+will not
+", "
+can
+" and "
+cannot
+" are to be 
+interpreted as described in clause 3.2 of the 
+ETSI Drafting Rules
+ (Verbal forms for the expression of provisions). 
+"must
+" and "
+must not
+" are 
+NOT
+ allowed in ETSI deliverables except when used in direct citation. 
+
+ The present document provides a summary of some of the issues that members of ETSI TC LI believe to be important 
+in relation to the Lawful Interception of IMS (IP Multimedia Subsystem) and LTE (Long Term Evolution). 
+    ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 6 
+The present document provides guidance to interested parties regarding implementation of Lawful Interception (LI) for 
+LTE, IMS and related services. It covers what is available and how it may be interpreted.  
+The present document is in the format of a set of Freq
+uently Asked Questions and their accompanying answers, 
+contained within the present document. An Explanatory Note is produced to accompany the present document which 
+contains some observations based on the questions and answers. 
+The present document covers both Lawful Interception and Data Retention. 
+
+
+Normative references are not app
+licable in the present document. 
+
+References are either specific (identified by date of publication and/or edition number or version number) or 
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+referenced document (including any amendments) applies. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are not necessary for the application of the present document but they assist the 
+
+user with regard to a particular subject area. 
+[i.1] GSMA IR.92 v7.0: "IMS Profile for Voice and SMS". 
+[i.2] GSMA RCC.61: "RCS Common Core 1.1 Service Description Document, Version 2.0". 
+[i.3] GSMA IR.64: "IMS Service Centralization and Continuity Guidelines". 
+
+[i.4] ETSI TS 133 107: "Universal Mobile Telecommunications System (UMTS); LTE; 3G security; 
+Lawful interception architecture and functions (3GPP TS 33.107)". 
+[i.5] ETSI TS 133 108: "Universal Mobile Telecommunications System (UMTS); LTE; 3G security; 
+Handover interface for Lawful Interception (LI) (3GPP TS 33.108)". 
+[i.6] ETSI TS 102 232-1: "Lawful Interception (LI); Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 1: Handover specification for IP delivery". 
+[i.7] ETSI TS 102 232-5: "Lawful Interception (LI); Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 5: Service-specific details for IP Multimedia Services". 
+[i.8] ETSI TS 102 232-7: "Lawful Interception (LI); Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 7: Service-specific details for Mobile Services". 
+[i.9] ETSI TS 102 657: "Lawful Interception (LI); Retained data handling; Handover interface for the 
+request and delivery of retained data". 
+[i.10] Recommendation ITU-T E.164: "The International Public Telecommunication Numbering Plan". 
+
+[i.11] IETF RFC 7977: "The Message Session Relay Protocol (MSRP)". 
+[i.12] IETF RFC 4825: "The Extensible Markup 
+Language (XML) Configuration Access Protocol 
+(XCAP)". 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 7 [i.13] ATIS-1000678.v3.2015: "Lawfully Authorized Electronic Surveillance (LAES) for Voice over 
+Internet Protocol in Wireline Telecommunications Networks". 
+[i.14] ATIS-0700005.v002.2017: "Lawfully Authorized Electronic Surveillance (LAES) for 3GPP IMS-
+based VoIP and other Multimedia Services". 
+[i.15] PKT-SP-ES-INF-I04-080425: "PacketCableŽ 2.0 Electronic Surveillance Intra-Network 
+Specification". 
+[i.16] ETSI TS 123 228: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; IP Multimedia Subsystem (IMS); Stage 2 
+(3GPP TS 23.228)". 
+[i.17] ETSI TS 129 228: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; IP Multimedia (IM) Subsystem Cx and Dx 
+
+Interfaces; Signalling flows and message contents (3GPP TS 29.228)". 
+[i.18] ETSI TS 129 229: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Cx and Dx interfaces based on the Diameter 
+
+protocol; Protocol details (3GPP TS 29.229)". 
+[i.19] ETSI TS 129 230: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE;
+ Diameter applications; 3GPP specific codes 
+and identifiers (3GPP TS 29.230)". 
+[i.20] ETSI TS 124 229: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; IP multimedia call control protocol based on 
+
+Session Initiation Protocol (SIP) and Session Description Protocol (SDP); Stage 3 (3GPP 
+
+TS 24.229)". 
+[i.21] ETSI TS 123 003: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); Numbering, addressing and identification (3GPP 
+
+TS 23.003)". 
+[i.22] IETF RFC 7254: "A Uniform Resource Name Namespace for the Global System for Mobile 
+Communications Association (GSMA) and the International Mobile Station Equipment Identity 
+
+(IMEI)". 
+[i.23] IETF RFC 7255: "A Uniform Resource Name Namespace for the Global System for Mobile 
+Communications Association (GSMA) and the International Mobile Station Equipment Identity 
+
+(IMEI)". 
+[i.24] 3GPP TR 33.827: "Study on Providing for LI in the S8 Home Routing Architecture for VoLTE 
+(Release 14)". 
+[i.25] ETSI TS 124 607: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Originating Identification Presentation (OIP) 
+
+and Originating Identification Restriction (OIR) using IP Multimedia (IM) Core Network (CN) 
+
+subsystem; Protocol specification (3GPP TS 24.607)". 
+[i.26] ETSI TS 124 608: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; 
+Terminating Identification Presentation (TIP) 
+and Terminating Identification Restriction (TIR) using IP Multimedia (IM) Core Network (CN) 
+
+subsystem; Protocol specification (3GPP TS 24.608)". 
+[i.27] ETSI TS 124 610: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Communication HOLD (HOLD) using IP 
+
+Multimedia (IM) Core Network (CN) subsystem; Protocol specification (3GPP TS 24.610)". 
+[i.28] ETSI TS 124 605: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Conference (CONF) using IP Multimedia 
+
+(IM) Core Network (CN) subsystem; Protocol specification (3GPP TS 24.605)". 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 8 [i.29] ETSI TS 124 604: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Communication Diversion (CDIV) using IP 
+Multimedia (IM) Core Network (CN) subsystem; Protocol specification (3GPP TS 24.604)". 
+[i.30] ETSI TS 124 611: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Anonymous Communication Rejection 
+(ACR) and Communication Barring (CB) using IP Multimedia (IM) Core Network (CN) 
+subsystem; Protocol specification (3GPP TS 24.611)". 
+[i.31] ETSI TS 124 615: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Communication Waiting (CW) using IP 
+
+Multimedia (IM) Core Network (CN) subsystem; Protocol Specification (3GPP TS 24.615)". 
+[i.32] ETSI TS 124 606: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Message Waiting Indication (MWI) using IP 
+
+Multimedia (IM) Core Network (CN) subsystem; Protocol specification (3GPP TS 24.606)". 
+[i.33] ETSI TS 124 647: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Advice Of Charge (AOC) using IP 
+
+Multimedia (IM) Core Network (CN) subsystem (3GPP TS 24.647)". 
+[i.34] ETSI TS 124 654: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Closed User Group (CUG) using IP 
+
+Multimedia (IM) Core Network (CN) subsystem, Protocol Specification (3GPP TS 24.654)". 
+[i.35] ETSI TS 124 239: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; Flexible Alerting (FA) using IP Multimedia 
+
+(IM) Core Network (CN) subsystem; Protocol specification (3GPP TS 24.239)". 
+[i.36] ETSI TS 124 182: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; IP Multimedia Subsystem (IMS) Customized 
+
+Alerting Tones (CAT); Protocol specification (3GPP TS 24.182)". 
+[i.37] ETSI TS 124 183: "Universal Mobile Telecommunications System (UMTS); LTE; IP Multimedia 
+Subsystem (IMS) Customized Ringing Signal (CRS); Protocol specification (3GPP TS 24.183)". 
+[i.38] ETSI TS 101 671: "Lawful Interception (LI); Handover interface for the lawful interception of 
+telecommunications traffic". 
+[i.39] IETF RFC 3550: "RTP: A Transport Protocol for Real-Time Applications". 
+[i.40] IETF RFC 4867: "TP Payload Format and File Storage Format for the Adaptive Multi-Rate 
+(AMR) and Adaptive Multi-Rate Wideband (AMR-WB) Audio Codecs". 
+[i.41] IETF RFC 4733: "A Mechanism for Transporting User-to-User Call Control Information in SIP". 
+
+[i.42] IETF RFC 2833: "RTP Payload for DTMF Digits, Telephony Tones and Telephony Signals". 
+[i.43] GSMA IR.94: "IMS Profile for Conversational Video Service v10.0". 
+
+For the purposes of the present document, the following abbreviations apply: 
+ADSL Asymmetric Digital Subscriber Line 
+AMR Adaptive Multi-Rate Wideband 
+
+ANDSF Access Network Discovery and Selection Function  
+AS Application Server 
+A-SBC Access Session Border Controller 
+
+ASN.1  Abstract Syntax Notation One 
+
+ATCF Access Transfer Control Function 
+
+ATGW Access Transfer Gateway 
+
+CBP Constrained Baseline Profile 
+  ETSI ETSI SR 003 292 V1
+.1.1 (2017
+-11) 9 CC 
+Content of Communications  
+CGI 
+Cell Global Identifier 
+CHP Constrained High Profile 
+CMTS Cable Modem Termination System 
+
+CS Circuit 
+Switched 
+CSCF Call Session Control Function 
+
+CSP 
+Communication Service Provider 
+DR Data 
+Retention 
+DSR Dynamic Source Routing 
+
+ECGI E-UTRAN Cell Global Identifier 
+ENUM E.164 Number to URI Mapping 
+EPC 
+Evolved Packet Core 
+ePDG evolved Packet Data Gateway 
+
+EPS 
+Evolved Packet System 
+eRCS enhanced RCS 
+
+eSRVCC enhanced SRVCC 
+E-UTRAN Evolved-UMTS-Terrestrial Radio Access Network 
+EVS Enhanced Voice Services 
+
+FFS 
+For Further Study 
+GPRS General Packet Radio Services 
+
+GRUU Globally Routable User agent URI 
+
+GSMA Global System Mobile Association 
+GW Gateway 
+HEVC High Efficiency Video Coding 
+
+HI2  
+Handover Interface port 2 (for Intercept Related Information)  
+HI3  
+Handover Interface port 3 (for Content of Communication) 
+HPLMN Home Public Land Mobile Network  
+
+HSS 
+Home Subscriber Server 
+IAP 
+Intercept Access Point 
+ICS 
+IMS Centralized Service 
+IMEI International Mobile Equipment Identity 
+
+IMS 
+IP Multimedia Subsystem 
+IMSI International Mobile Subscriber Identity 
+IoT 
+Internet of Things 
+IP Internet 
+Protocol 
+IR 
+GSMA Permanent Reference Document 
+IRI 
+Intercept Related Information 
+LBO Local Break Out 
+LEA Law enforcement agency 
+LEMF Law Enforcement Monitoring Facility 
+LI 
+Lawful Intercept  
+LIID Lawful Interception Identifier 
+
+LTE 
+Long Term Evolution 
+MCC Mobile Country Code 
+
+MF Mediation 
+Function 
+MF/DF Mediation Function . Delivery Function 
+
+MGCF Media Gateway Control Function 
+
+MGW Media GateWay 
+
+MMS Multimedia Messaging Service 
+
+MNC Mobile Network Code 
+
+MRF Media Resource Function 
+MSC  Mobile Switching Centre 
+MSISDN Mobile Station International Subscriber Directory Number 
+
+MSRP Message Session Relay Protocol 
+
+MTAS Mobile Terminating Access Service 
+
+MVNO Mobile Virtual Network Operator 
+NAI 
+Network Access Identifier  
+NB Narrow 
+band 
+PANI Private-Access-Network-Info 
+PCC Policy Control and Charging 
+
+P-CSCF Proxy-CSCF 
+
+P-GRUU Public GRUU 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 10 PGW Packet data network GateWay 
+PLMN Public Land Mobile Network 
+
+PMN Public Mobile Network 
+
+PS Packet Switched 
+
+PSTN Public Switched Telephone Network 
+RCS Rich Communications Service 
+RS Reference Signal 
+
+RTP Real-Time Transport Protocol 
+
+S8HR S8 (interface point) Home Routing 
+
+SDP Session Description Protocol 
+
+SEW Support of Emergency services over WLAN 
+NOTE: More information available at 
+http://www.3gpp.org/DynaReport/WiCr--690033.htm
+. S-GW Serving GateWay 
+SIM Subscriber Identity Module 
+
+SIP Session Initiation Protocol 
+
+SM SIP MESSAGE 
+SMS Short Message Service 
+S-PGW Serving PGW 
+
+SRVCC Single Radio-VCC  
+
+SS Supplementary Services 
+
+TIP Terminating Identification Presentation 
+
+TIR Terminating Identification Restriction 
+TLS Transport Layer Security 
+UE User Equipment 
+
+UMTS Universal Mobile Telecommunications System 
+
+URI Uniform Resource Identifier 
+
+URL Uniform Resource Locator 
+
+URN Uniform Resource Name 
+ViLTE Video over LTE 
+VoLTE Voice over LTE 
+
+VoWiFi Voice over Wireless Fidelity 
+
+VPLMN Visited Public Land Mobile Network 
+
+WebRTC Web Real Time Communications 
+WLAN Wireless Local Area Network 
+XCAP XML Configuration Access Protocol 
+
+XML eXtensible Markup Language 
+
+
+This clause contains a series of subclauses regarding va
+rious themes relating to IMS, LTE and VoLTE; each of the 
+subclauses contains a list of Frequently Asked Questions and Answers. 
+
+
+This clause provides general information concerning LTE, IMS, and VoLTE. 
+
+
+Long Term Evolution (LTE) is the radio access to the Evolved Packet System (EPS). 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 11 
+
+In EPS, there are no circuit switched services. The packet network is evolved from the General Packet Radio Services 
+(GPRS) and Universal Mobile Telecommunications System (UMTS) packet systems. The telephony service is a Voice 
+
+over IP (VoIP) service also known as Voice over LTE (VoLTE). The management of the telephony service in EPS is 
+
+done by the IP Multimedia Subsystem (IMS). The IMS can handle the call control for a wide variety of multimedia 
+
+telecommunication services (e.g. telephony/VoLTE, video /ViLTE). The content of the communication (CC) is not 
+
+handled by the IMS. 
+ Figure 1: Circuit and packet domains 
+
+
+VoLTE is defined in the GSMA specification IR.92 [i.1]. 
+NOTE: This includes Short Message Service (SMS) and Supplementary Services (SS). 
+
+
+Since 3GPP Release 10, enhanced Single Radio Voice Call 
+Continuity (eSRVCC), using the Access Transfer Control 
+Function (ATCF)/Access Transfer Gateway (ATGW) as an 
+Intercept Access Point (IAP) is recommended to avoid 
+difficulties in correlating two call legs of the same target's call (one coming from IMS and the other from CS domain) 
+
+during the handover. The overlap of the two legs may be an issue to look at the implementation.  
+Without eSRVCC, the LI Identifier (LIID) will be the only correlation information to correlate the same call before and 
+after handover from Packet Switched (PS) to Circuit Switched (CS). 
+In some regions, there are LI implementations where the second leg of an SRVCC call (i.e. the CS leg) get split into two 
+- the calls remain anchored in IMS but LI is delivered for both IMS and CS, with the latter providing potentially richer 
+
+location information. 
+For LI, the handling of Video over LTE (ViLTE) is similar to the handling of VoLTE. Additional signalling (i.e. IRI) 
+can be used and the Content of Communication (CC) bandwidth can differ.  
+Defined by GSMA in the Rich Communications Service (
+RCS) Common Core Service Description Document [i.2], 
+RCS is the evolution of SMS and Multimedia Messaging Service (MMS). 
+There is interest in RCS/Joyn
+ services that may be included later in convergent messaging (including SMS/MMS over 
+IP) based on 3GPP IP-SM-GW and some interconnection functionality between different CSPs. 
+
+It should be noted that there is a distinction between pager mode messaging using individual SIP MESSAGE requests 
+(such as SM). That may include SMS over IP and eRCS, and may induce a separate delivery of CC from voice, 
+
+especially with VoWifi usage. 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 12 
+IMS Centralized Service (ICS) is defined to make it possible 
+for IMS to act as the single service engine for a VoLTE 
+subscriber regardless of the access to which they are current
+ly attached. Performing the centralization of services into 
+IMS, GSMA IR.64 [i.3] focuses on two variants, of which access via unchanged MSC/media gateway control function 
+using Customized Application for Mobile Networks Enhanced. Logic home routing is currently the most widely 
+
+adopted solution. The other solution is ICS with Enhanced Mobile Switching Centre Server, which provides a User 
+
+Network Interface to IMS acting as a SIP user agent on behalf of the circuit-switched user. However, some 
+
+standardization of LI may have to be made (see Impacts and dependencies on existing CS solutions). 
+The IMS is access network independent. Therefore, IMS is also a common platform used for fixed line telephony (for 
+example where the Public Switched Telephone Network (PSTN) is migrating to VoIP over Asymmetric Digital 
+
+Subscriber Line (ADSL)). It is service setting whether the fixed line telephony is only served for a specific network 
+
+access point or whether it served network access point independent.  
+The IMS platform can also accept the User Equipment (UE) accessing the core network via a non-3GPP network. The 
+typical example is via a Wireless Local Area Network (WLA
+N) access point, to provide Voice over WiFi (VoWiFi). 
+(See also clause 4.4.8). 
+
+It has been noted that IMS sessions are typically more verbose than those from traditional telephony, with far more IRI 
+
+messages (e.g. 120 IRIs where previously there had been 5). However, work undertaken in [i.5] and [i.7] will ensure 
+
+that all relevant IMS services can be intercepted within the relevant network and that the visited network can always 
+
+maintain LI capability independently to the home network.  
+
+
+The clause answers questions concerning standards. 
+
+
+The latest releases of 3GPP TS 33.107 [i.4] and 3GPP TS 33.108 [i.5] provide LI solutions. These standards are also 
+
+transposed by regional partners in 3GPP (e.g. ETSI or ATIS
+). 3GPP standards typically do not address data retention. 
+ETSI TS 102 232-1 [i.6], ETSI TS 102 232-5 [i.7], and ETSI TS 102 232-7 [i.8] may also be used by some service 
+
+providers for an LI solution. See Table 1 for more information. 
+ETSI TS 102 657 [i.9] provides a handover interface for DR. 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 13 Table 1: Overview of international LI standards 
+Standard Observations
+ Potential for further work
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+For LI, 3GPP TS 33.107 [i.4] and 3GPP TS 33.108 [i.5]. ATIS-1000678 [i.13] and ATIS-0700005 [i.14] also provide 
+alternative VoIP LI solutions. 
+
+
+Table 1 provides some comparisons. 
+
+
+This clause provides information concerning LI architecture. 
+
+
+Table 2 provides some comparative information. 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 14 
+
+
+Table 2 provides some comparative information. 
+Table 2: Observations of different monitoring points 
+Standard Useful
+ Future Study
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+This clause provides information on 
+the identifiers used to intercept. 
+
+Identities include (but not limited to) IMEI, IMSI, MSISDN, SIP-URI, TEL-URI (not all usable in all IMS 
+implementations). 
+Before the implementation of release 12 of 3GPP TS 33.108 [i.5], LEMFs will have to analyse SIP messages to 
+identify/extract the IMEI if the data is unencrypted. 
+The SIP URI and TEL URL are preferred identifiers for targeting, but what about other identifiers? 
+Version 3.4.1 of ETSI TS 102 232-5 [i.7] allows the use of the TEL URI, SIP URI or E.164 number as selectors. 
+
+Versions beyond 12.9.0 of 3GPP TS 33.108 [i.5] allow the use of the IMEI, TEL URI and SIP URI as selectors. 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 15 Relationship of SIP or TEL URIs to MSISDN 
+It is expected that, under some circum
+stances, Communication Service Providers (CSPs) will use SIP or TEL URIs that 
+are based on the E.164 number [i.10] also used in the MSISDNs of their customers. However, there are some reports of 
+CSPs using SIP URIs which use randomly generated numbers as the prefix ([randomly generated 
+
+number]@provide.example.com). 
+Mobile number portability is based on proprietary ENUM so
+lutions to resolve E.164 numbers [i.10] to a routable SIP 
+URI). Using this to report to LEA is FFS. 
+Issues related to reporting SIP and TEL URIs
+ Two issues related to SIP URI and TEL URI: 
+•VoLTE, identities reporting may be an issue where there will be reported both SIP URI and TEL URI in the 
+same LI instance - SIP URI from the target and TEL URI to the target. 
+•TEL-URI will never occur per the 3GPP standards. One example is the Media Description Key is available 
+
+since it is not a Mobile Terminated service. 
+Implementation at the Mediation Function (MF) could activate based on the MSISDN based E.164 number [i.10] of the 
+
+target and at the LEMF side, TEL URI and SIP URI may have to be processed to extract the MSISDN like E.164 
+
+number [i.10]. 
+Diameter messages 
+The standards do not take into account Diameter messages (Diameter CX subscriber info messages of the 3GPP 
+TS 23.228 [i.16], 3GPP TS 29.228 [i.17], 3GPP TS 29.229 [i.18] and 3GPP TS 29.230 [i.19]) at the registration process 
+
+of the target. The addition of this trusted information reported in the standards is FFS. 
+Multiple identities are often present e.g. multiple aliases. Implicit registration should be noted. Legal question about 
+whether "related identities" are automatically added to a warrant, and if so what exactly does that include or not? Also 
+reported are issues around a provider generating SIP URIs instead of TEL URIs, using randomly allocated numbers. 
+Particular issue if both parties in a call do this. Advice is to try to obtain P-Asserted-Identity. 
+
+IMEI will be based on Instance ID. The observed IMEI URN will be reported as an Instance ID as defined in 3GPP 
+
+TS 24.229 [i.20]. It will be encoded as an IMEI URN as
+ defined in 3GPP TS 23.003 [i.21], IETF RFC 7254 [i.22] and 
+IETF RFC 7255 [i.23]. 
+Examples have been observed of individual VoLTE calls with multiple IMEIs in its SIP messages. This was a hunt call 
+made by the operator to the customer. This may be an issue that deserves further study. 
+3GPP TS 33.108 [i.5] may report multiple IMEIs, but what the 
+IMEI is not extracted from 
+the SIP into the ASN.1 in 
+ETSI TS 102 232-5 [i.7] so the IMEI(s) would be present in their native form in the SIP (the "+sip.instance" header). 
+NOTE: The standards do not address the legal approval process concerning multiple IMEIs and the implications 
+if the selection is based on IMEI? This is no different to non LTE based systems. 
+Availability of the IMSI 
+
+In the IMS specification, the IMSI is currently not used and therefore not supported as formal identifier. At least one 
+vendor has commented that their equipment will provide the IMSI (depending on what release of the equipment is 
+
+used). 
+Triggering interception
+ based on the IMSI 
+The IMSI is only contained in UE signalling to identify the subscription which is reported in the IMS SIP signalling 
+events for SIP session establishment transactions. However, the IMSI is not available in other IMS signalling so there is 
+no observed IMSI reporting possible and there are no events 
+associated with any IMS registration events tied to any Cx 
+signalling (3GPP TS 23.228 [i.16], 3GPP TS 29.228 [i.17], 3GPP TS 29.229 [i.18] and 3GPP TS 29.230 [i.19]).
+   ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 16 
+
+
+There are concerns about call direction for VoLTE reporting since various INVITEs and media streams go in various 
+directions. For the CC and IRI to be properly understood, it is important for it to be possible to determine whether it is 
+"to" or "from" target". 
+There are circumstances under which it is difficult or impossible for the LEMF to determine who initiated an IMS 
+session. Modifications have been made ETSI TS 102 232 family of standards [i.6], [i.7] and [i.8] to introduce 
+
+parameters that the MF could use to sign
+al the direction of sessions to the LEMF. 
+
+
+This is available according to [i.5]. 
+
+This is available according to [i.5]. 
+
+
+
+
+Sometimes the PANI headers are seen on LI 
+traffic and do contain relevant information. 
+P-GRUU and device identifiers are for further study. 
+
+There are several categories of location information relevant to IMS services: 
+•Location information at the access level (EPS/PS) is available in HI2 and may be trusted as they are provided 
+
+by the network (i.e. from the Mobile Management Entity). 
+•Location information is provided with the PANI Header 
+in some SIP messages. For example, this may be the 
+cell site (CGI or ECGI) or the Media Access Control Address of the WLAN Access Point. If the target and the 
+
+other party are on the same network, the location information of the other party may be included. Filtering of 
+
+such information may be required by national regulation. 
+•Location information is provided by the UE. Network a
+sserted location information 
+need an upgrade of the 
+IMS system. If a country wants to have some trusted value 
+of the cell id, it has either to lock at the LI system 
+
+at EPC level, but it could request development such architecture based on PCC Based solution provided via 
+
+Gx/Rx (P-CSCF - Policy and Charging Rules Function - PGW). Such interfaces may not be available at short 
+
+term. 
+Location for VoWiFi 
+Getting the location in a VoWiFi scenario can be an issue. In some situations, the ePDG could intercept on top of 
+content, the information "Terminating address of IP Sec" (i
+.e. Outer IP and Port source address). This information may 
+not be enough in case of WLAN mesh network. Some networks may not populate PANI header with location 
+
+information. 
+In some situations, receiving a comprehensive set of loca
+tion information is reported with WLAN records, which 
+reduces the need to perform look-ups. Noted the possibility to use information such as pOPIdentifier, pOPIPAddress or 
+targetNetworkID to then make an indirect determination of
+ location. Clear preference that there is an ability to do 
+automatic look-ups (e.g. based on targetNetworkID). 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 17 
+This is available according to [i.5]. 
+
+
+This is provided for according to [i.5]. 
+
+
+
+This is provided for as per [i.5]. 
+
+Both these are noted as having been seen on some LI traffic. 
+
+
+
+The IP addresses presented in ETSI TS 102 232-5 [i.7] for a given SIP message will related to the IP endpoints for that 
+IP transport 'leg' and therefore it is likely that at least one 
+of the A party and B party IP addresses will not be provided. 
+
+
+
+
+Yes. Both roaming agreements and a technical solution to deny inbound roamers the use of the VPLMN for VoLTE 
+
+services can be used to ensure compliance with local law. 
+
+
+
+There are two roaming models defined: Local Break-Out (LBO) and S8 Home Routed (S8HR). There are some 
+
+technical challenges to S8HR, including local regulatory co
+mpliance (i.e. emergency calls, LI/DR) and interoperability 
+between carriers who implemented S8HR and those having implemented LBO.  
+It is up to each carrier to select their roaming architecture.  
+At least one roaming model that is studied by the GSMA, the S8 Home Routed scenario (P-CSCF within the home 
+public land mobile network (HPLMN), can present a problem to
+ intercept at the visited network level, especially if the 
+home IMS enable additional privacy enhancement options for IMS services. This was not taken into account fully when 
+
+S8HR was designed by GSMA. 
+If the S8 Home Routing (S8HR) scenario is chosen by the CSP: 
+•The roaming agreements between VPLMN and HPLMN should contain the additional PE is not enabled. 
+•The S8HR solutions from 3GPP TS 33.107 [i.4] and 3GPP TS 33.108 [i.5] should be implemented (based on 
+3GPP TR 33.827 [i.24]). 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 18 •If PE is used by the HPLMN, the VPLMN may be forced to reject LTE attach request in order to do LI. LTE 
+networks could return #15 (no suitable cells in tracking area) The #14 (EPS services not allowed in this 
+
+PLMN) is not recommended as the UE, that received cause code #14, will list (or its forbidden PMN for GPRS 
+
+service list). The UE could even never initiate a Location Update or a GPRS Attach.  
+Further notes on roaming 
+VoWifi based on specifications of GSMA are for the time 
+being not compatible with international roaming and cannot 
+manage emergency calling. However, the works of 3GPP with its "SEW" project for emergency call from WLAN will 
+include roaming usage for VoWIFI and SMS over Wifi. The cas
+e of WLAN provider for VoWIFI roaming that is not a 
+mobile operator with an ePDG and IMS core network may be an issue to be studied. Location information from 
+
+roaming (including MVNO) is of interest. 
+
+
+For VoLTE, only if an operator has implemented S8HR. 
+
+
+This clause provides information on VoLTE supplementary services (SS). 
+
+
+Yes, and this is how they change. As it is detailed in CS domain, is it interesting to better develop LI of XCAP [i.12] 
+
+server? It may induce to process at the MF/DF 
+side and deliver extra information based on: 
+•Originating Identification Presentation/Restriction, 3GPP TS 24.607 [i.25] 
+•Terminating Identification Presentation/Restriction, 3GPP TS 24.608 [i.26] 
+•Communication Hold, 3GPP TS 24.610 [i.27] 
+•CONFerence Calling, 3GPP TS 24.605 [i.28] 
+•Communication DIVersion Services, 3GPP TS 24.604 [i.29] 
+•Communication forwarding unconditional 
+•Communication Forwarding on busy user 
+•Communication Forwarding on no-Reply 
+•Communication Forwarding on not Logged-In 
+•Communication Forwarding on 
+Subscriber Not Reachable 
+•Communication Diversion Notification 
+•Communication Deflection 
+•Communication Barring, 3GPP TS 24.611 [i.30] 
+•Barring of All Outgoing Calls 
+•Barring of Outgoing International Calls 
+•Barring of Incoming Calls 
+•Communication Waiting, 3GPP TS 24.615 [i.31] 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 19 •Message Waiting Indication, 3GPP TS 24.606 [i.32] 
+•Explicit Communication Transfer (Legal LI issue as it let establish a call between two parties by the target that 
+will release the call, etc.) 
+•Malicious Call Identification 
+•Completion of Communications to Busy Subscriber 
+•Advice of Charge, 3GPP TS 24.647 [i.33] 
+•Close User Group, 3GPP TS 24.654 [i.34] 
+•Flexible Alerting, 3GPP TS 24.239 [i.35] 
+However, some supplementary services are already standardized: 
+•Customized Alerting Tone, 3GPP TS 24.182 [i.36] 
+•Customized Ringing Signal, 3GPP TS 24.183 [i.37] 
+
+
+This clause provides information about the LEMF. 
+
+
+Depending on national or regional requirements, the CSP may be required to deliver IRI in a manner which enables it to 
+
+be associated with the communications to which it pertains.  
+
+
+The intention is to ensure appropriate IRIs are ge
+nerated and delivered according to [i.5] and [i.7]. 
+
+
+
+Correlation assists the LEA to associate IRI and CC. For each 
+service, different parameters may be used to provide 
+correlation. 
+
+The LEMF will have to handle SIP contexts (e.g. SDP offer, services tag, Payload Type RTP) to process (to play) CC 
+
+over HI3. It may induce problem of high performance capacity/complexity of post processing within LEMF. This point 
+
+may have to be studied. Solutions may exist such as to impose extra processes at the MF/DF side with IRI begin/IRI 
+
+end as in US standards for any VoLTE call, or to "t
+ag" important SIP messages to help the CC contents. 
+NOTE: FFS: Can we learn from the ATIS-1000678 
+[i.13] or from ETSI TS 101 671 [i.38]?  
+  ETSI ETSI SR 003 292 V
+1.1.1 (2017
+-11) 20 
+
+
+They will be delivered according to the do
+main within which the call was handled. 
+
+
+
+Management of SDP messages is a key element for the LEMF when dynamic codecs are used. The LEMF needs to 
+track the relevant SDP messages and implement dynamic ma
+pping properly to process the HI3 correctly. They have to 
+be able to process any of the permitted numbers from th
+e dynamic range as described in IETF RFC 3550 [i.39] and 
+(from AMR codec) IETF RFC 4867 [i.40]. 
+Some issues have been observed when using the 3GPP TS 33.108 [i.5] for delivery of IMS where the codecs are in the 
+dynamic range as delivery of the HI2 (which includes the SIP which contains the SDP) can sometimes lag behind the 
+
+delivery of the HI3, thus delaying the LEMF's ability to decode the RTP. This applies for codec change as well as mode 
+
+change within the codec. Please note that for example AMR-WB has nine modes. 
+Note that the telephone-event payload as well as tone payload (IETF RFC 4733 [i.41] / IETF RFC 2833 [i.42]) is within 
+the dynamic range of the rtp payload type. 
+In case of LI activation during an established call, there will be no information sent to the LEMF related to the codec. 
+The LEMF can try to guess the codec and associ
+ated information to 
+process the content. 
+
+In principle any codec could be used. However, the CSP 
+will focus on bandwidth efficient codecs. As per GSMA 
+IR.92 [i.1] the following codecs have to be supported: 
+•AMR-NB 
+•AMR-WB 
+•EVS 
+Although three voice codecs are specified, AMR-NB and AMR-WB are mostly used.  
+For video, IR.94 [i.43] specifies the following mandatory codecs to be supported: 
+•H.264 Constrained High Profile (CHP) Level 3.1 
+•H.264 Constrained Baseline Profile (CBP) Level 3.1 
+
+
+
+
+Additional voice codecs could be supported such as: 
+•G.722 
+•GSM-EFR 
+•G.729 
+•AMR-WB+ 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 21 The following video codecs might be used as well: 
+•H.265 (HEVC) Main Profile, Main Tier, Level 3.1 
+•MPEG4 (H.264 part 10) 
+•H.263 
+
+
+
+For most codecs royalty fees are due. 
+
+
+Most of the IMS vendors support white/black lists for voice and video codecs. Using this configuration the list of voice 
+and video codecs supported could be limited. 
+
+
+This case provides information on the relationship of LTE and CS services. 
+
+Double Interception of the same call will happen due to use of the CS+IMS domain without anchoring all the call 
+
+through IMS core network. The LEMF will have to 
+manage the double content for the following examples: 
+•Without eSRVCC, i.e. without any ATCF/ATGW, LIID will be the only correlation information to correlate 
+
+the same call before and after handover from LTE radio access to UMTS/GSM radio access. 
+•If the AS is modifying the SIP message (case of "Terminating Identification Presentation (TIP) and 
+
+Terminating Identification Restriction (TIR), or of a modification of the phone number identification by the 
+
+target), you will have LI IAP not only at the pre service level but also the LI IAP will be triggered at outgoing 
+
+of the AS, based on a post LI process. 
+•If User A (VoLTE) calls User B (a target, and a subs
+criber of VoLTE but under 2G/3G coverage): a double 
+interception in CS and IMS domains will be triggered. The standards have not addressed this scenario. 
+•VoIP by 3GPP is standardized however, some eRCS services are not. Subsequently, issue may happen at the 
+
+delivery of intercepted SIP messages. eRCS will provide 
+more SIP messages to be process at the LEMF level, 
+especially when a target uses VoLTE and eRCS at the same time. 
+
+
+This clause provides some clarification on the relationship of LTE and VoLTE to other technologies and initiatives. 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 22 
+
+
+Narrowband/Internet of Things (IoT) have low power requirements for UEs. This is noted to have implications on the 
+security protocols, as low power use means low bandwidth which reduces options for encryption. There is a lot of 
+pressure for networks to provide encryption (e.g. from the Subscriber Identity Module (SIM) card). Sometimes you will 
+
+have multiple cards that are the slaves of a single card; they talk back to the central card, which then talks to the 
+
+network. It should be noted that IoT networks may not be 3GPP-based. 
+
+In the event of a serious accident, eCall automatically dial
+s 112 - Europe's single emergency number to establish a voice 
+connection. An emergency message that includes a minimum 
+set of data (e.g. time, location, driving direction and 
+vehicle description) is simultaneously sent with the voice call. At the date of publication of the present document there 
+
+was a deadline of end of March 2018 for all new cars to have embedded SIM cards. eCall does not necessarily need the 
+
+vehicle to have an MSISDN (from a technical perspective). This may come down to the regulator. 
+  ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 23 
+
+Status of the present document 
+Dictionary for common parameters
+ TC LI approval 
+date Version 
+Remarks 
+
+
+
+
+   ETSI ETSI SR 003 292 V1.1.1 (2017
+-11) 24 
+Document history 
+V1.1.1 November 2017 Publication 
+   
+   
+   
+   
+ 

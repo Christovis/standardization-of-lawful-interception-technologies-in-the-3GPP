@@ -1,0 +1,3957 @@
+ 
+ETSI TS 103 120 V1.3.1 (2019-05)
+ Lawful Interception (LI); 
+Interface for warrant information 
+  
+ TECHNICAL SPECIFICATION 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)2 
+
+RTS/LI-00168 
+
+eWarrant, lawful interception, warrant, warrantry 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+ Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - NAF 742 C 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° 7803/88 
+ Important notice 
+The present document can be downloaded from: 
+http://www.etsi.org/standards-search
+ The present document may be made available in electronic ve
+rsions and/or in print. The content of any electronic and/or 
+print versions of the present document shall not
+ be modified without the prior written authorizatio
+n of ETSI. In case of any 
+existing or perceived difference in contents between such versions and/or in print, the prevailing version of an ETSI 
+deliverable is the one made publicly available in PDF format at 
+www.etsi.org/deliver
+. Users of the present document should be aware that the document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+ If you find errors in the present document, please send your comment to one of the following services: 
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+ Copyright Notification 
+No part may be reproduced or utilized in any form or by any
+ means, electronic or mechanical, including photocopying 
+and microfilm except as authorized by written permission of ETSI. 
+The content of the PDF version shall not be modified without the written authorization of ETSI. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © ETSI 2019. 
+All rights reserved. 
+ DECTTM, PLUGTESTSTM, UMTS
+TM and the ETSI logo are trademarks of ETSI registered for the benefit of its Members.
+ 3GPP
+TM 
+and LTETM are trademarks of ETSI registered for the benefit of its Members and 
+of the 3GPP Organizational Partners. 
+oneM2MŽ
+ logo is a trademark of ETSI registered for the benefit of its Members and 
+of the oneM2M Partners. 
+GSM® and the GSM logo are trademarks registered and owned by the GSM Association. 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)3 Contents 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)4 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)5 
+
+
+
+
+
+Annex A (informative): Example 
+usage scenarios 
+for HI-1 ................................................................ 39
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Annex B (informative): Example 
+Template National Profile ............................................................. 43
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Annex C (normative): ETSI Target Id
+entifier Format Definitions ................................................. 58
+
+
+
+
+Annex D (normative): Error Codes ..............................................................................................
+...... 60
+
+Annex E (normative): Approval Details .........................................................................................
+... 61  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)6 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Annex F (normative): Dictionaries .............................................................................................
+........ 64
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Annex G (normative): Drafting conventions for National Parameters ........................................... 66
+
+
+
+
+Annex H (informative): Bibliography ...........................................................................................
+........ 67Annex I (informative): Change Request history .................................................................................
+ 68
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)7 Intellectual Property Rights 
+Essential patents  
+
+
+ETSI members and non-members
+
+
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to ETSI in 
+respect of ETSI standards"
+
+
+
+
+
+
+
+
+
+Trademarks 
+
+
+
+
+
+
+
+
+Foreword 
+
+
+Modal verbs terminology 
+
+shall
+
+shall not
+
+should
+
+should not
+
+may
+
+need not
+will
+
+will not
+
+can
+cannot
+
+
+
+
+must
+
+must not
+
+NOT
+
+Executive summary 
+
+
+
+
+
+
+Introduction 
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)8 1 Scope 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2 References  
+2.1 Normative references 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)9 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2.2 Informative references 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)10 3 Definition of terms, symbols and abbreviations 
+3.1 Terms 
+
+Communications Service Provider (CSP):
+
+
+Law Enforcement Agency (LEA): 
+
+
+warrant:
+
+3.2 Symbols 
+
+3.3 Abbreviations 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)11 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4 Structure and model 
+4.1 Structure of the standard 
+
+
+
+
+
+
+
+
+
+
+ Figure 4.1: Conceptual structure of the standard 
+4.2 Structure of the present document 
+
+
+
+
+
+
+
+
+
+4.3 Reference model 
+
+National Processes
+ Data definitions for Warrant / Tasking information
+ Messaging protocol
+ Transport and transport security
+ Physical/network infrastructure
+  Defined in the present document
+  Not defined in the present document
+   ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)12  Figure 4.2: Reference model for WI interface 
+
+
+ Figure 4.3: Example national process composed of WI interactions 
+ Figure 4.4: Further example national process composed of WI interactions 
+
+
+
+5 Message Exchange 
+
+• 
+• 
+
+Party A 
+Party C 
+Party D 
+Party B 
+WI 
+WI 
+WI 
+Party C 
+WI 
+WI 
+Party A 
+Party B 
+Party A 
+Party B 
+WI Interface 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)13  Figure 5.1 
+
+
+
+
+
+6 Message Structure 
+6.1 Overview 
+
+ Figure 6.1: High-level message structure 
+
+• 
+• 
+Sender 
+Receiver 
+Request Message 
+Response Message 
+Message 
+Header 
+Request Payload 
+Action Request 
+GET
+ / CREATE
+ /  
+UPDATE
+ / LIST
+ Object Identifier 
+Object 
+  Action Request 
+– Action Request 
+  Top level container for all 
+HI-1 message 
+Header contains routing and timestamp 
+information - see clause6.2 
+Payloads contain multiple Actions (either 
+Requests or Responses) - see clause 6.3 
+Each Action has a Verb such as 
+GET
+ or 
+CREATE
+ Œ either a request or a response, 
+depending on the message. See 
+clauses 6.4.5 through 6.4.8. 
+This generally contains an Object Identifier, 
+which identifies the Object being acted on 
+(see clause 7 and clause 8). Depending on 
+the verb. It may also contain an Object. 
+There may be many Action Requests in a 
+Request message. Each will generally act 
+on a separate message. 
+In the response, there should be an Action 
+Response for each Action Request (in the 
+absence of errors)
+ Message 
+Header 
+Response Payload 
+Action Response 
+GET
+ / CREATE
+ / ,etc. Response 
+Object Identifier 
+Object 
+  Action Response 
+– Action Response 
+    ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)14 6.2 Message Header 
+6.2.1 Introduction 
+
+
+
+
+
+
+
+
+6.2.2 Structure 
+
+Table 6.1: High-level message structure 
+Field Format Description
+ SenderIdentifier EndpointID (see clause 6.2.4 for detai
+ls) Nationally unique identifier and country code, 
+sufficient to uniquely identify the Sender node 
+in the message exchange. See clause 6.2.4 
+for details. 
+ReceiverIdentifier EndpointID (see clause 6.2.4 for details) Nationally unique identifier and country code, 
+sufficient to uniquely identify the intended 
+
+Receiver in the message exchange. See 
+
+clause 6.2.4 for details. 
+TransactionIdentifier UUID (see ETSI TS 103 280 [7]) in IETF 
+RFC 4122 [3] canonical form 
+Identifier that uniquely identifies the message 
+
+exchange between a given Sender and 
+
+Receiver. See clause 6.2.5 for details. 
+Timestamp 
+QualifiedMicrosecondDateTime (see ETSI 
+TS 103 280 [7]) 
+Timestamp indicating the time the message 
+was sent. 
+Version 
+Version (see clause 6.2.3 for details) 
+Version of the present document and relevant 
+national profile used for interpreting the 
+
+message. 
+6.2.3 Version 
+
+
+
+Table 6.2: Version 
+Field Format Description
+ ETSIVersion 
+ShortString of the form "VX.Y.Z" (X gives 
+major version, Y gives minor version, Z gives 
+revision) 
+Version of the present document that should 
+
+be used to interpret this message. 
+NationalProfileOwner National profile owner (see clause F.3.2 for a 
+definition of owners) 
+Identifies the owner of the relevant national 
+
+profile. See clause F.3.2 for further details. 
+NationalProfileVersion ShortString (see ETSI TS 103 280 [7
+]) Version of the national profile that should be 
+used to interpret this message. National 
+
+profile shall define the valid format and values 
+
+for this field. 
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)15 6.2.4 EndpointID 
+
+
+Table 6.3: Endpoint ID 
+Field Format Description
+ CountryCode ISOCountryCode (see ETSI TS 103 280 [7]) 
+giving 3166-1 alpha-2 code 
+Two-letter country code for the country. The 
+reserved Country Code XX shall be used for 
+
+international organizations. 
+UniqueIdentifier LongString (see ETSI TS 103 280 [7]) 
+Unique identifier sufficient for identifying the 
+
+object/field within the country. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.2.5 Transaction
+ Identifiers 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.3 Message Payload 
+6.3.1 Introduction 
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)16 6.3.2 Request Payload 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.3.3 Response Payload 
+
+
+
+
+
+
+
+
+6.4 Action Request and Responses 
+6.4.1 Overview 
+
+
+
+
+6.4.2 Action Requests 
+
+
+
+
+Table 6.4: Action Request types 
+Verb Description
+ Definition GET 
+Retrieve HI-1 Object 
+See clause 6.4.5 
+CREATE 
+Create new HI-1 Object 
+See clause 6.4.6 
+UPDATE 
+Update existing HI-1 Object 
+See clause 6.4.7 
+LIST 
+List identifiers of HI-1 Objects 
+See clause 6.4.8 
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)17 6.4.3 Action Responses 
+
+
+
+
+
+
+
+Table 6.5: Action Response types 
+Verb Desc
+ription Definition GET RESPONSE Successful retrieval of HI-1 Object of given identifier in Action Request. See clause 6.4.5 
+CREATE RESPONSE Receipt of legible Create Request of given identifier in Action Request. See clause 6.4.6 
+UPDATE RESPONSE Receipt of legible Update Request of given identifier in Action Request. See clause 6.4.7 
+LIST RESPONSE Successful retrieval of identifiers of
+ given type from Action Request. See clause 6.4.8 
+ERROR INFORMATION Action Request could not be successfully processed. On receipt of this, 
+the Sender shall regard the Action Request as not having been 
+processed. 
+See clause 6.4.9 
+6.4.4 Action Identifiers 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6.4.5 GET 
+
+
+Table 6.6: GET Request fields 
+Field Format Description
+ Mandatory?
+ Identifier ObjectIdentifier (see clause 7.1.2) Uniquely identifies the HI-1 Object that the Sender 
+wishes to retrieve. 
+Yes 
+
+
+Table 6.7: GET Response fields 
+Field Format Description
+ Mandatory?
+ HI1Object HI-1 Object Object that is identified by the identifier. Yes 
+
+
+
+
+6.4.6 CREATE 
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)18 Table 6.8: CREATE Request fields 
+Field Format Description
+ Mandatory?
+ HI1Object HI-1 Object Representation of the HI-1 Object to be created by the Receiver. Yes 
+
+Table 6.9: CREATE Response fields 
+Field Format Description
+ Mandatory?
+ Identifier Object Identifier (see clause 7.1.2) Value provided in the CREATE Request. Yes 
+HI1Object HI-1 Object 
+HI-1 Object that is identified by the identifier. No 
+
+
+
+
+
+
+
+
+
+
+
+6.4.7 UPDATE 
+
+
+
+Table 6.10: UPDATE Request fields 
+Field Format Description
+ Mandatory?
+ HI1Object HI-1 Object Representation of the HI-1 Object to be updated by the Receiver. Yes 
+
+
+
+Table 6.11: UPDATE Response fields 
+Field Format Description
+ Mandatory?
+ Identifier Object Identifier (see clause 7.1.2) Value provided in the UPDATE Request. Yes 
+HI1Object HI-1 Object 
+HI-1 Object that is identified by the identifier. No 
+
+
+
+
+
+• 
+
+• 
+
+
+• 
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)19 6.4.8 LIST 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Table 6.12: LIST Request fields 
+Field Format Description
+ Mandatory?
+ ObjectType ObjectType dictionary entry 
+(see below) 
+Specifies the type of identifiers to be listed. No 
+LastChanged QualifiedDateTime (see 
+ETSI TS 103 280 [7]) 
+If specified, the Receiver shall return only records of 
+Objects whose LastChanged field is equal to or later 
+
+than the value specified. 
+No 
+
+
+
+
+Table 6.13: LIST ResponseRecord fields 
+Field Format Description
+ Mandatory?
+ ObjectType ObjectType dictionary entry (see below) 
+Value provided in the LIST 
+Request. 
+Yes 
+Identifier 
+HI-1 ObjectIdentifier (see clause 7.1.2) Identifier of the Object. Yes 
+CountryCode ISOCountryCode (see ETSI TS 103 280 [7]) 
+giving ISO 3166-1 Alpha-2 code [14] 
+See clause 7.1.1. 
+No 
+OwnerIdentifier ShortString (see ETSI TS
+ 103 280 [7]) See clause 7.1.1. No 
+Generation Positive integer 
+See clause 7.1.3. Yes 
+ExternalIdentifier LongString (see ETSI TS 103 280 [7]) See clause 7.1.1. No 
+LastChanged 
+QualifiedDateTime (see ETSI TS 103 280 [7]) Indicates the last time an 
+Object was altered, either 
+via HI-1 or locally. 
+No 
+
+Table 6.14: ObjectType Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI ObjectType 
+Defined DictionaryEntries
+ Value Meaning
+ Authorisation 
+An Authorisation Object as defined in clause 7.2 
+Document 
+A Document Object as defined in clause 7.3 
+Notification 
+A Notification Object as defined in clause 7.4 
+Task 
+A Task Object as defined in clause 8.2 
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)20 
+
+
+
+
+
+
+
+6.4.9 Action Unsuccessful Information 
+
+
+
+Table 6.15: Action Unsuccessful Information fields 
+Field Format Description
+ Mandatory?
+ ErrorCode Integer 
+Integer code specifying the type of error. Yes 
+ErrorInformation LongString (see ETSI TS 103 280 [7]) Detail of the error that occurred. 
+Yes 
+
+
+
+
+
+
+
+
+
+
+
+
+7 Data Definitions 
+7.1 HI-1 Object 
+7.1.1 Overview 
+
+
+
+
+Table 7.1: HI-1 Object top-level fields 
+Field Format Description
+ ObjectIdentifier 
+UUID (see ETSI TS 103 280 [7]) given in 
+IETF RFC 4122 [3] canonical form 
+Uniquely identifies the Object (see 
+clause 7.1.2). 
+CountryCode 
+ISOCountryCode (see ETSI 
+TS 103 280 [7]) giving ISO 3166-1 
+
+Alpha-2 code [14] 
+Two-letter country code for the country. If 
+
+the Owner Identifier identifies an 
+
+international organization, the reserved 
+Country Code XX. 
+OwnerIdentifier 
+ShortString (see ETSI TS
+ 103 280 [7]) String to represent the 
+agency/organization involved. Format for 
+national agreement. 
+Generation 
+Positive integer 
+Indicates the generation or version of the 
+
+Object (see clause 7.1.3). 
+ExternalIdentifier 
+LongString (see ETSI TS 103 280 [7]) Optional identifier for the Object, as 
+assigned by the Receiver. For correlation 
+
+with legacy or pre-HI-1 systems. 
+AssociatedObjects 
+List of ObjectIdentifiers (see cl
+ause 7.1.4) Indicated other HI-1 Objects which are 
+associated with a given Object. 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)21 Field Format Description
+ LastChanged 
+QualifiedDateTime (see ETSI 
+TS 103 280 [7]) 
+Indicates the last time this Object was 
+altered, either via HI-1 or locally. 
+NationalHandlingParameters Defined by the relevant nati
+onal profile Nationally-defined information concerning 
+the handling of the Object. 
+7.1.2 ObjectIdentifier 
+
+
+
+
+
+
+7.1.3 Generation 
+
+
+
+
+
+
+
+
+
+
+
+
+7.1.4 AssociatedObjects 
+
+
+
+
+
+
+Table 7.2: AssociatedObjects 
+Field Format Description
+ AssociatedObjects List of ObjectIdentifiers List of other
+ Objects which are related or associated with the current 
+Object. 
+7.1.5 LastChanged 
+
+
+
+
+
+
+
+
+7.1.6 NationalHandlingParameters 
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (20
+19-05)22 7.2 Authorisation Object 
+7.2.1 Overview 
+
+
+Table 7.3: Authorisation Object 
+Field Format Description
+ Reference
+ AuthorisationReference 
+LongString (see ETSI 
+TS 103 280 [7]). 
+Nationally defined reference for 
+the Authorisation. This is 
+
+provided to allow correlation with 
+non-HI1 processes. 
+Clause 7.2.2 
+AuthorisationLegalType AuthorisationLegalType 
+DictionaryEntry. 
+Indicates the type and legal basis 
+under which the Authorisation is 
+sought e.g. a reference to the 
+relevant legal code or statutory 
+
+purpose. The format and 
+
+acceptable values for this field 
+shall be defined by the relevant 
+national profile. 
+Clause 7.2.3 
+AuthorisationPriority AuthorisationPriority 
+DictionaryEntry. 
+Usage for national agreement 
+
+When used, a default dictionary 
+is provided in clause 7.2.4. 
+Clause 7.2.4 
+AuthorisationStatus AuthorisationStatus 
+DictionaryEntry. 
+The current status of the 
+Authorisation according to the 
+Receiver. 
+Clause 7.2.5 
+AuthorisationDesiredStatus AuthorisationDesiredStatu
+s DictionaryEntry. 
+The desired status of the 
+Authorisation, as specified by the 
+
+Sender. 
+Clause 7.2.6 
+AuthorisationTimespan AuthorisationTimespan 
+(see clause 7.2.7). 
+The period of validity for the 
+
+Authorisation. 
+Clause 7.2.7 
+AuthorisationCSPID 
+List of EndpointIDs (see 
+clause 6.2.3). 
+Identifies the CSP(s) required to 
+
+implement the Authorisation. 
+Clause 7.2.8 
+AuthorisationCreationTimestamp QualifiedDateTime (see 
+ETSI TS 103 280 [7]). 
+Indicates when the Authorisation 
+
+was created. 
+Clause 7.2.9 
+AuthorisationServedTimestamp QualifiedDateTime (see 
+ETSI TS 103 280 [7]). 
+Indicates when the Authorisation 
+
+was served on the CSP. 
+Clause 7.2.10 
+AuthorisationTerminationTimestamp QualifiedDateTime (see 
+ETSI TS 103 280 [7]). 
+Indicates when an Authorisation 
+was terminated, in the event that 
+it is explicitly terminated prior to 
+
+the end of its validity. 
+ AuthorisationApprovalDetails ApprovalDetails (see 
+annex F). 
+Gives details of who approved or 
+
+signed the Authorisation, and 
+
+when. 
+Clause 7.2.11 
+AuthorisationInvalidReason ActionUnsuccessful 
+structure (see 
+
+clause 6.4.9). 
+Optional information for the 
+
+Receiver to indicate why the 
+
+Object is in the Invalid state. 
+
+Usage for national agreement. 
+Clause 6.4.9 
+AuthorisationFlags AuthorisationFlags 
+(see 
+clause 7.2.12). 
+Set of flags associated with the 
+
+Authorisation Object. 
+Clause 7.2.12 
+AuthorisationManualInformation LongString (see ETSI 
+TS 103 280 [7]). 
+Any additional human-readable 
+information regarding the 
+Authorisation. 
+ NationalAuthorisationParameters See 
+annex G. See annex G. Annex G 
+7.2.2 AuthorisationReference 
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)23 7.2.3 AuthorisationLegalType 
+
+
+
+
+
+
+
+Table 7.4: AuthorisationPriority Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI AuthorisationLegalType 
+Defined DictionaryEntries
+ Value Meaning
+ Manual 
+The implementation should consult the AuthorisationManualInformation field for 
+details on the type of legal Authorisation 
+7.2.4 AuthorisationPriority 
+
+
+
+
+
+
+
+Table 7.5: AuthorisationPriority Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI AuthorisationPriority 
+Defined DictionaryEntries
+ Value Meaning
+ High 
+The Authorisation has a high priority. 
+Routine 
+The Authorisation has a routine priority. 
+7.2.5 AuthorisationStatus 
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)24 Table 7.6: AuthorisationStatus Dictionary 
+Dictionary Owner
+ Dictionary Na
+me ETSI AuthorisationStatus 
+Defined DictionaryEntries
+ Value Meaning
+ AwaitingApproval The Authorisation is still waiting 
+approval from one or more relevant authorities. 
+EmergencyApproval The Authorisation has 
+been approved under emergency procedures. 
+Approved 
+The Authorisation has been approved by the relevant authorities. 
+Rejected 
+The Authorisation has been explicitly denied or rejected by one or more relevant 
+authorities. 
+Suspended The Authorisation has been suspended temporarily. 
+Cancelled 
+The Authorisation has been permanently cancelled. 
+Expired 
+The expiry date for this Authorisation has passed, meaning that the Authorisation has 
+lapsed. 
+Invalid 
+The Authorisation is not active due to a problem with the current information populated in 
+the Authorisation Object. 
+7.2.6 AuthorisationDesiredStatus 
+
+
+
+
+Table 7.7: AuthorisationDesiredStatus Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI AuthorisationDesiredStatus. 
+Defined DictionaryEntries
+ Value Meaning
+ AwaitingApproval The Authorisation is still waiting 
+approval from one or more relevant authorities. 
+EmergencyApproval The Authorisation has 
+been approved under emergency procedures. 
+Approved 
+The Authorisation has been approved by the relevant authorities. 
+Rejected 
+The Authorisation has been explicitly denied or rejected by one or more relevant authorities. 
+Suspended 
+The Authorisation has been suspended temporarily. 
+Cancelled 
+The Authorisation has been permanently cancelled. 
+Expired 
+The expiry date for this Authorisation has passed, meaning that the Authorisation has lapsed. 
+7.2.7 AuthorisationTimespan 
+
+
+
+Table 7.8: AuthorisationTimespan 
+Field Format Description
+ StartTime 
+QualifiedDateTime (see ETSI TS 103 280 [7]) Start time for the authorisation. 
+EndTime 
+QualifiedDateTime (see ETSI TS 103 280 [7]) End time for the authorisation. 
+7.2.8 AuthorisationCSPID 
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)25 7.2.9 AuthorisationCreationTimestamp  
+
+
+
+
+
+7.2.10 AuthorisationServedTimestamp 
+
+
+
+7.2.11 AuthorisationApprovalDetails 
+
+
+7.2.12 AuthorisationFlags 
+
+
+
+
+Table 7.9: AuthorisationFlag Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI AuthorisationFlag. 
+Defined DictionaryEntries
+ Value Meaning
+ IsEmergency 
+Indicates if the authorisation was issued under nationally-defined emergency procedures 
+(e.g. orally). The circumstances and consequences for setting the field shall be defined by 
+the relevant national profile. 
+IsConsensual 
+Indicates that the current authorisation is for consensual interception. This may alter the 
+process or documentation accompanying the authorisation. 
+IsTest 
+Indicates that the current authorisation is given for test purposes. This may alter the 
+process or documentation accompanying the authorisation. 
+7.3 Document Object 
+7.3.1 Overview 
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)26 Table 7.10: Document Object 
+Field Format Description
+ Reference
+ DocumentReference 
+LongString (see ETSI 
+TS 103 280 [7]). 
+Nationally-defined reference for the 
+Document. This is provided to allow 
+
+correlation with non-electronic 
+processes. 
+Clause 7.3.2 
+DocumentName 
+LongString (see ETSI 
+TS 103 280 [7]). 
+Name for a specific document. 
+Clause 7.3.3 
+DocumentStatus DocumentStatus 
+Dictionary 
+Entry. 
+The current status of the Document as 
+determined by the Receiver. 
+Clause 7.3.4 
+DocumentDesiredStatus DesiredDocumentStatus 
+Dictionary Entry. 
+The current status of the Document as 
+specified by the Sender. 
+Clause 7.3.5 
+DocumentTimespan 
+TimeSpan. 
+Optional start and end datetimes 
+indicating the period of validity of the 
+
+Document. 
+Clause 7.3.6 
+DocumentType 
+Document Type. 
+Indicates the type of document that this 
+Object represents. The list of permissible 
+
+Document Types is defined by national 
+agreement. 
+Clause 7.3.7 
+DocumentProperties 
+Document Properties. A list of key-value pairs that define 
+additional properties of the Document in 
+a machine-readable manner. 
+Permissible document properties for 
+each Document Type are defined by 
+
+national agreement. 
+Clause 7.3.8 
+DocumentBody 
+Complex type. 
+Contains an electronic copy of the 
+original document e.g. a scanned image. 
+Clause 7.3.9 
+DocumentSignature ApprovalDetails 
+(see 
+annex F). 
+Details of the approval given for the 
+
+present document, including any 
+necessary signature information. 
+Clause 7.3.10 
+DocumentInvalidReason ActionUnsuccessful 
+structure (see 
+
+clause 6.4.9). 
+Optional information for the Receiver to 
+indicate why the Document Object is in 
+the Invalid state. Usage for national 
+agreement. 
+Clause 6.4.9 
+NationalDocumentParameters See annex G. 
+See annex G. 
+Annex G 
+7.3.2 DocumentReference 
+
+
+
+7.3.3 DocumentName 
+
+
+
+7.3.4 DocumentStatus 
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)27 Table 7.11: DocumentStatus Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI DocumentStatus 
+Defined DictionaryEntries
+ Value Meaning
+ AwaitingApproval The Document is still waiting a
+pproval from one or more relevant authorities. 
+Approved The Document has been approved by the relevant authorities. 
+Rejected 
+The Document has been explicitly denied or rejected by one or more relevant authorities. 
+Suspended The Document has been suspended temporarily. 
+Cancelled The Document has been permanently cancelled. 
+Expired 
+The expiry date for this Document has passed. 
+Invalid 
+The Document is invalid due to a problem with the current information populated in the 
+Document Object. 
+7.3.5 DocumentDesiredStatus 
+
+
+
+
+
+Table 7.12: DocumentDesiredStatus Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI DocumentDesiredStatus 
+Defined DictionaryEntries
+ Value Meaning
+ AwaitingApproval The Document is still waiting a
+pproval from one or more relevant authorities. 
+Approved The Document has been approved by the relevant authorities. 
+Rejected 
+The Document has been explicitly denied or rejected by one or more relevant authorities. 
+Suspended The Document has been suspended temporarily. 
+Cancelled The Document has been permanently cancelled. 
+Expired 
+The expiry date for this Document has passed. 
+7.3.6 DocumentTimespan 
+
+
+Table 7.13: DocumentTimespan 
+Field Format Description
+ StartTime QualifiedDateTime (see ETSI TS 103 280 [7]). Start time for the document. 
+EndTime 
+QualifiedDateTime (see ETSI TS 103 280 [7]). End time for the document. 
+7.3.7 DocumentType 
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)28 Table 7.14: DocumentType Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI DocumentType 
+Defined DictionaryEntries
+ Value Meaning
+ Warrant 
+This Document represents a legal warrant. 
+7.3.8 DocumentProperties 
+
+
+Table 7.15: DocumentProperties 
+Field Format Description
+ PropertyType Dictionary entry (see below). 
+Type of the property. 
+The dictionary of permissible document properties shall be 
+defined by the relevant national profile. 
+PropertyValue LongString (see ETSI TS 103 280 [7]). Value of the property. 
+7.3.9 DocumentBody 
+
+Table 7.16: DocumentBody 
+Field Format Description
+ Contents Binary data, represented using XSD's base64Binary 
+type. 
+Binary representation of the original paper 
+
+authorisation documentation. 
+Content Type ShortString contai
+ning a MIME type as per IETF 
+RFC 2045 [9] and IETF RFC 2046 [10]. The details of 
+
+permissible MIME types shall be defined by the relevant 
+
+national profile. 
+Encoding of the binary Contents file 
+
+(e.g. "image/jpeg"). 
+Checksum UTF-8 string containing an MD5 checksum of the binary 
+data, given as hexadecimal digits, as per IETF 
+
+RFC 1321 [11]. 
+Checksum to ensure that the Contents field 
+
+has been transmitted correctly. 
+7.3.10 DocumentSignature 
+
+
+
+
+
+7.4 Notification Object 
+7.4.1 Overview 
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)29 
+
+
+
+
+
+
+
+
+
+
+Table 7.17: Notification Object 
+Field Format Description
+ Reference
+ NotificationDetails LongString (see ETSI 
+TS 103 280 [7]). 
+Human readable information regarding 
+the notification. 
+Clause 7.4.2 
+NotificationType 
+NotificationType Dictionary Entry 
+(see clause 7.4.3). 
+Identifies the type of notification, for use 
+
+in automating workflow processes. 
+The format and acceptable values for 
+this field shall be defined by the 
+
+relevant national profile. 
+Clause 7.4.3 
+NewNotification 
+Boolean. 
+Indication that this is a new notification. 
+See clause 7.4.4 for more details. 
+Clause 7.4.4 
+NotificationTimestamp QualifiedDateTime (see ETSI 
+TS 103 280 [7]). 
+Timestamp indicating the time of the 
+Notification. 
+Clause 7.4.5 
+NationalNotificationParam
+eters 
+See annex G. See annex G. Clause 7.4.6 
+7.4.2 NotificationDetails 
+
+
+
+7.4.3 NotificationType 
+
+
+
+
+
+
+
+
+Table 7.18: NotificationType Dictionary 
+Dictionary 
+Owner
+ Dictionary Name
+ ETSI NotificationType. 
+Defined DictionaryEntries
+ Value Meaning
+ General 
+A general notification that a change has occurred with the specified Objects. 
+7.4.4 NewNotification 
+
+
+
+
+
+
+
+
+• 
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)30 • 
+
+
+
+
+
+
+7.4.5 NotificationTimestamp 
+
+
+
+7.4.6 NationalNotificationParameters 
+
+8 Task Objects 
+8.1 Overview 
+
+
+
+
+
+
+
+
+
+
+8.2 LITaskObject 
+8.2.1 Overview 
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)31 Table 8.1: LITaskObject 
+Field Format Description
+ Reference
+ Reference 
+LIID (see ETSI TS 103 280 [7]). LIID assigned to the product of 
+task. 
+Clause 8.2.2 
+Status 
+TaskStatus Dictionary Entry. T
+he current status of the task as 
+determined by the Receiver. 
+Clause 8.2.3 
+DesiredStatus TaskDesiredStatus 
+Dictionary 
+Entry. 
+The current status of the task as 
+specified by the Sender. 
+Clause 8.2.4 
+TimeSpan Collection 
+of QualifiedDateTimes (see ETSI 
+
+TS 103 280 [7]). 
+Indicated the period of time for 
+
+which task should occur, as well 
+
+as provisioning and 
+deprovisioning times. 
+Clause 8.2.5 
+TargetIdentifier TargetIdentifier 
+(see 
+clause 8.2.6). 
+The communication address or 
+technical identifier used to 
+
+identify the target of task. Given 
+as a list of TargetIdentifier types 
+(see clause 7.3.6) which are 
+
+combined (with ordering and 
+
+Boolean ANDed together) to 
+identify the target's traffic. 
+Clause 8.2.6 
+DeliveryType DictionaryEntry 
+(see 
+clause 8.2.7). 
+Typically for interception 
+indicates whether the interception 
+should contain IRI, CC or both. 
+Clause 8.2.7 
+DeliveryDetails List 
+of DeliveryDestination 
+structures (see clause 8.2.8). 
+Destination(s) for the intercepted 
+LI traffic. 
+Clause 8.2.8 
+ApprovalDetails 
+ApprovalDetails (see annex F). Details regarding the approval for 
+this Task, including dates and 
+
+signatures where appropriate. 
+Clause 8.2.9 
+CSPID 
+EndpointID (see clause 6.2.4). Describes the CSP required to 
+implement the Task. 
+Clause 8.2.10 
+HandlingProfile DictionaryEntry 
+(see 
+clause 8.2.11). 
+A dictionary entry which gives the 
+
+name of a handling profile that 
+represents a set of configuration 
+information associated with this 
+
+task. 
+Clause 8.2.11 
+InvalidReason ActionUnsuccessful 
+structure 
+(see clause 6.4.9). 
+Optional information for the 
+Receiver to indicate why the 
+Object is in the Invalid state. 
+
+Usage for national agreement. 
+Clause 6.4.9 
+Flags 
+TaskFlags (see clause 8.2.12). A set of flags associated with the 
+Task Object. 
+Clause 8.2.12 
+NationalLITaskingParameters See annex G. 
+See annex G. 
+Annex G 
+8.2.2 Reference 
+
+
+
+8.2.3 Status 
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)32 Table 8.2: TaskStatus Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI TaskStatus. 
+Defined DictionaryEntries
+ Value Meaning
+ AwaitingApproval 
+The Task is still waiting approval
+ from one or more relevant authorities. 
+AwaitingProvisioning 
+The Task is approved, but is not yet provisioned in the LI system. 
+Active 
+The Task is active and can produce LI traffic. 
+Rejected 
+The Task has been explicitly denied or rejected by one or more relevant authorities. 
+Suspended 
+The Task has been suspended temporarily. 
+Cancelled 
+The Task has been permanently cancelled. 
+Expired 
+The expiry date for this Task has passed, meaning that the Task has lapsed. 
+Error The Task is not active due to a problem with the underlying LI system. 
+Invalid 
+The Task is not active due to a problem with the current information populated in 
+the Task Object. 
+8.2.4 DesiredStatus 
+
+
+
+Table 8.3: TaskDesiredStatus Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI TaskDesiredStatus. 
+Defined DictionaryEntries
+ Value Meaning
+ AwaitingApproval 
+The Task is still waiting approval
+ from one or more relevant authorities. 
+AwaitingProvisioning 
+The Task is approved, but is not yet provisioned in the LI system. 
+Active 
+The Task is active and can produce LI traffic. 
+Rejected 
+The Task has been explicitly denied or rejected by one or more relevant authorities. 
+Suspended 
+The Authorisation has been suspended temporarily. 
+Cancelled 
+The Authorisation has been permanently cancelled. 
+Expired 
+The expiry date for this Task has passed, meaning that the Task has lapsed. 
+8.2.5 TimeSpan 
+
+
+
+Table 8.4: TimeSpan structure 
+Field Format Description
+ StartTime 
+QualifiedDateTime (see ETSI TS 103 280 [7]). Start time for the interception. 
+EndTime 
+QualifiedDateTime (see ETSI TS 103 280 [7]). End time for the interception. 
+TerminationTime QualifiedDateTime (see ETSI TS 103 280 [7]). Termination or cancellation timestamp, 
+in the event that the Task is terminated 
+prior to its scheduled end time. 
+Provisioning Time QualifiedDateTime (see ETSI TS 103 280 [7]). Provisioning time for the interception. 
+DeprovisioningTime QualifiedDateTime (see ETSI TS 103 280 [7]). Deprovisioning time for the interception. 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)33 8.2.6 TargetIdentifier 
+8.2.6.1 Overview 
+
+
+
+Table 8.5: TargetIdentifier 
+Field Format Description
+ TargetIdentifierValues List of TargetIdentiferValue 
+structures (see clause 8.2.6.2). 
+Specifies the technical identifier(s) used to identify the 
+target of the Task. 
+ServiceType 
+ServiceType (see clause 8.2.6.4). Specifies the service(s) to be intercepted. 
+8.2.6.2 TargetIdentifierValues Field 
+
+
+
+
+
+Table 8.6: TargetIdentifierValue 
+Field Format Description
+ FormatType As defined below. 
+Specifies a Target Identifier Format (see below) which defines 
+the format for the Target Identifier Value fields. See annex C 
+
+for the list of Target Identifier Formats defined by ETSI. Other 
+
+definitions may be managed on a national basis. 
+Value LongString (see ETSI TS 103 280 [7]). Additional formatting information is given by the Target 
+Identifier Format. 
+
+
+
+
+
+
+
+8.2.6.3 FormatType 
+
+
+
+
+Table 8.7: TargetIdentifier Format Type 
+Field Format Description
+ FormatOwner ShortString (see ETSI TS 103 280 [7]). Name 
+of the Owner of the Format definition. See below. 
+FormatName ShortString (see ETSI TS 103 280 [7]). Uniquely
+ identifies the format definition within the Owner. 
+
+
+• 
+• 
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)34 Table 8.8: TargetIdentifier Format Definition 
+Field Format Description
+ FormatOwner ShortString (see ETSI TS 103 280 [7]). I
+dentifies the Owner of the Format definition. See 
+below. 
+FormatName ShortString (see ETSI TS 103 280 [7]). Ident
+ifies the format, unique within the Format Owner. 
+Description LongString (see ETSI TS 103 280 [7]). Human-readable description associated with the 
+Format. 
+Format IEEE POSIX
+® 1003.1Ž ERE [13] Regular 
+Expression. 
+Regular expression defining the permissible contents 
+of the field. If absent, any UTF-8 string is permitted, 
+
+subject to the length restriction of the field. 
+
+
+8.2.6.4 Task Service Type 
+
+
+
+
+
+
+
+Table 8.9: TargetServiceType Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI TaskServiceType. 
+Defined DictionaryEntries
+ Value Meaning
+ The present document does not define any dictionary entries for this dictionary. 
+8.2.7 DeliveryType 
+
+
+Table 8.10: TaskDeliveryType Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI TaskDeliveryType. 
+Defined DictionaryEntries
+ Value Meaning
+ IRIOnly 
+Only IRI is delivered. 
+CCOnly 
+Only CC is delivered. 
+IRIandCC 
+Both IRI and CC are delivered. 
+8.2.8 TaskDeliveryDetails 
+8.2.8.1 Overview 
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)35 8.2.8.2 DeliveryDestination 
+
+Table 8.11: DeliveryDestination structure 
+Field Format Description
+ DeliveryAddress DeliveryAddress (see clause 8.2.8.3)
+. The address to which the traffic for this Task 
+should be delivered. 
+EncryptionDetails NationalEncryptionDetails. 
+Details regarding the encryption to be applied to 
+traffic delivered to this destination. Shall be 
+defined by the relevant national profile. 
+IRIorCC 
+TaskDeliveryType (see clause 8.2.7). S
+pecifies whether IRI, CC, or IRI and CC should 
+be delivered to this destination. 
+HandoverFormat HandoverFormat DictionaryEntry (see 
+clause 8.2.8.4). 
+Specifies the handover format to be used. 
+DeliveryProfile DictionaryEntry. 
+A dictionary entry which gives the name of a 
+delivery profile that represents a set of 
+
+configuration information associated with the 
+
+destination and delivery of the traffic from this 
+
+Task. 
+If used, the dictionary shall be defined by the 
+relevant national profile. 
+NationalDeliveryPa
+rameters 
+See annex G. See annex G. 
+8.2.8.3 DeliveryAddress 
+
+Table 8.12: DeliveryAddress structure 
+Field Format Description
+ IPv4Address IPv4Address (see ETSI 
+TS 103 280 [7]). IPv4 destination. 
+IPv6Address IPv6Address (see ETSI 
+TS 103 280 [7]). IPv6 destination. 
+IPAddressPort IPAddressP
+ort (see ETSI TS 103 280 [7]). Combination of an IP Address (IPv4 or 
+IPv6) and a Port number. 
+IPAddressPortRange IPAddres
+sPortRange (see ETSI TS 103 280 [7]). Combination of an IP Address (IPv4 or 
+IPv6) and a Port Range. 
+E164number InternationalE164 (see ETSI TS 103 280 [7]). E.164 destination. 
+FTPAddress URL as per xs:anyURI but conformant to the 
+FTP scheme defined in IETF RFC 1738 [8]. 
+IETF RFC 1738 [8] allows specification of 
+hostname, port, path and username. 
+URL xs:anyURI. 
+URL 
+destination. 
+FQDN 
+LongString (see ETSI TS 103 280 [7]). 
+FQDN of the destination. 
+EmailAddress EmailAddress (see ETSI TS 103 280 [7]). Email address of the destination. 
+8.2.8.4 HandoverFormat 
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)36 Table 8.13: HandoverFormat dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI HandoverFormat 
+Defined DictionaryEntries
+ Value Meaning
+ TS102232-2 
+Handed over in ETSI TS 102 232-2 [15] format. 
+TS102232-3 
+Handed over in ETSI TS 102 232-3 [16] format. 
+TS102232-4 
+Handed over in ETSI TS 102 232-4 [17] format. 
+TS102232-5 
+Handed over in ETSI TS 102 232-5 [18] format. 
+TS102232-6 
+Handed over in ETSI TS 102 232-6 [19] format. 
+TS102232-7 
+Handed over in ETSI TS 102 232-7 [20] format. 
+8.2.9 ApprovalDetails 
+
+
+8.2.10 CSPID 
+
+8.2.11 HandlingProfile 
+
+
+
+
+
+8.2.12 Flags 
+
+
+
+
+Table 8.14: TaskFlag Dictionary 
+Dictionary Owner
+ Dictionary Name
+ ETSI TaskFlag. 
+Defined DictionaryEntries
+ Value Meaning
+ IsTest 
+Indicates that the current Task is for test purposes. This may alter the process or 
+documentation accompanying the authorisation. 
+9 Transport and Encoding 
+9.1 Overview 
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)37 9.2 Encoding 9.2.1 XML Schema 
+
+
+
+
+
+
+9.2.2 Error conditions 
+
+
+
+
+9.2.3 Message signing and encryption 
+
+
+
+
+
+
+9.3 HTTP Transport 
+9.3.1 Use of HTTP 
+
+
+
+
+
+9.3.2 Client/Server architecture 
+
+
+
+9.3.3 HTTP Configuration 
+
+
+
+
+
+
+
+
+
+
+
+
+9.3.4 Transport security 
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)38 
+
+
+
+
+
+9.4 Nationally-defined Transport 
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)39 Annex A (informative): 
+Example usage scenarios for HI-1 
+A.1 Overview 
+
+A.2 Direct communication 
+
+
+ Figure A.1: Simple architecture for exchange of warrant and tasking information 
+
+Table A.1: Message flows in Direct Communication 
+Message 
+flow
+ Description 
+Information carried 
+Notes 
+1 Request for warrant 
+approval. 
+Warrant information, plus any 
+technical tasking information required. 
+ 2 Approved/rejected warrant. Warrant inform
+ation. If the warrant is not approved, #1 
+and #2 may be repeated. 
+3 Request for interception. Tasking information, plus whatever 
+subset of the warrant information is 
+
+required. 
+ 4 Intercepted product. Intercepted product. 
+Covered by HI-2/3. 
+A.3 Single "Central Authority" 
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)40 
+
+ Figure A.2: Scenario including a Central Authority 
+
+Table A.2: Message flows with a Central Authority 
+Message 
+flow
+ Description 
+Information carried 
+Notes 
+1 Request for warrant 
+approval. 
+Warrant information, plus any 
+technical tasking information required. 
+ 2 Approved/rejected warrant. Warrant inform
+ation. If the warrant is not approved, #1 
+and #2 may be repeated. 
+3 Notification of approved 
+warrant. 
+Warrant information. Sent if the Central Authority 
+requires some kind of external 
+
+notification that the warrant is 
+
+approved. 
+4 Request for interception. Tasking information, plus any required 
+subset of warrant information. 
+May include requests for tasking 
+
+multiple CSPs. 
+5 Product of interception. Intercepted product (if product is 
+passed back via the Central Authority). 
+Covered by HI-2/3. 
+6 Request for interception. Tasking information, plus any required 
+subset of warrant information. 
+May be a subset of the 
+
+information carried in #4. 
+7 Product of interception. Intercepted product (if product is 
+passed back via the Central Authority). 
+Covered by HI-2/3. 
+8 Product of interception. Intercepted product (if product is 
+passed back to the LEA directly). 
+Covered by HI-2/3. 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)41 A.4 Multiple Approving Authorities 
+A.4.1 Overview 
+
+
+A.4.2 "Serial" interaction 
+
+
+
+
+
+
+
+ Figure A.3: Scenario with multiple Approving Authorities 
+
+Table A.3: Message flows with multiple serial approving authorities 
+Message 
+flow
+ Description 
+Information carried 
+Notes 
+1 Request for warrant 
+approval. 
+Warrant information, plus any 
+technical tasking information required. 
+ 2 Request for warrant 
+approval. 
+Warrant information (including 
+approval from Warrant Approving 
+Authority 1), plus any technical tasking 
+
+information required. 
+If the warrant is not approved, a 
+rejection may be sent back to the 
+LEA. 3 Request for interception. Tasking information, plus any required 
+subset of warrant information. 
+Here, the last Approving Authority 
+serves the warrant on the CSP. 
+4 Notification of activated 
+warrant. 
+Tasking information. Confirmation from the CSP that 
+the warrant/task has been 
+
+activated. 
+5 Notification of activated 
+warrant. 
+Tasking information. Confirmation from the CSP that 
+the warrant/task has been 
+activated. 
+6 Notification of activated 
+warrant. 
+Tasking information. Confirmation from the CSP that 
+the warrant/task has been 
+
+activated. 
+7 Product of interception. Intercepted product (if product is 
+passed back to the LEA directly). 
+Covered by HI-2/3. 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)42 A.4.3 "Parallel" interaction 
+
+
+
+ Figure A.4: Scenario with multiple Approving Authorities 
+
+Table A.4: Message flows with multiple parallel approving authorities 
+Message 
+flow
+ Description 
+Information carried 
+Notes 
+1 Request for warrant 
+approval. 
+Warrant information, plus any 
+technical tasking information required. 
+ 2 Approved/rejected warrant. Warrant inform
+ation. If the warrant is not approved, #1 
+and #2 may be repeated. 
+3 Request for warrant 
+approval. 
+Warrant information, plus any 
+
+technical tasking information required. 
+ 4 Approved/rejected warrant. Warrant inform
+ation. If the warrant is not approved, #3 
+and #4 may be repeated. 
+5 Request for interception. Tasking information, plus any required 
+subset of warrant information. 
+ 6 Product of interception. Intercepted product (if product is 
+passed back to the LEA directly). 
+Covered by HI-2/3. 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)43 Annex B (informative): 
+Example Template National Profile 
+B.1 Introduction 
+B.1.1 Overview 
+
+
+
+
+
+
+
+
+• 
+• 
+
+• 
+
+B.1.2 Structure of this annex 
+
+
+
+
+
+
+
+B.1.3 Checklist for National Profile authors 
+
+
+
+Table B.1: Requirements for national profiles 
+Item ETSI Reference
+ The relevant national processes and reference model should be described or referenced, 
+taking particular care to explain the desired mapping between HI-1 Objects and the 
+
+things they represent in those national processes. 
+Clause 4 
+The correct value for the NationalProfileOwner has to be specified. 
+Clause 6.2.3 
+The correct value for the NationalProfileVersion field has to be specified. 
+Clause 6.2.3 
+The desired interoperability behaviour should be described. 
+Clause 6.2.3 
+The correct EndpointID country codes have to be specified. 
+Clause 6.2.4 
+The format or list of valid values for EndpointID Unique Identifiers have to be specified. Clause 6.2.4 
+The profile has to specify whether use of the LIST verb is permitted. 
+Clause 6.4.8 
+If LIST is permitted, the rules for determining which Object Identifiers are returned have 
+
+to be specified. 
+Clause 6.4.8 
+If LIST is permitted, any additional rules relating to LIST responses (e.g. size of 
+
+response, caching behaviour) may be specified. 
+Clause 6.4.8 
+If LIST is permitted, any additional logic related to listing Notification Objects may be 
+
+specified. 
+Clause 6.4.7 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)44 Item ETSI Reference
+ The national profile has to make a statement about whether each field in each HI-1 
+Object definition are required in order for an instance of the object to be valid. 
+Clause 7.1 
+The valid format or values for Owner Identifier have to be specified. 
+Clause 7.1.1 
+NationalHandingParameters may be defined. 
+Clause 7.1.6 
+The correct format or values for AuthorisationReference have to be specified. 
+Clause 7.2.2 
+The correct format or values for AuthorisationLegalType have to be specified. 
+Clause 7.2.3 
+The usage of AuthorisationPriority has to be 
+specified. Any additional clarifications or 
+DictionaryEntries may be specified. 
+Clause 7.2.4 
+The rules for determining the value of the AuthorisationStatus field have to be specified. 
+
+The business meaning of each Status should be specified. Any additional clarifications or 
+
+DictionaryEntries may be specified. 
+Clause 7.2.5 
+The business meaning of each Status should be specified. Any additional clarifications or 
+
+DictionaryEntries may be specified.  
+Clause 7.2.6 
+Usage and meaning of the IsEmergency flag have to be specified. 
+Clause 7.2.12 
+Any additional clarifications or DictionaryEntries for Flags field may be specified. Clause 7.2.12 
+The correct format or values of the DocumentReference field have to be specified. Clause 7.3.2 
+The correct usage of the DocumentName field has to be specified. 
+Clause 7.3.3 
+The rules for determining the value of the DocumentStatus field have to be specified. The 
+
+business meaning of each Status should be specified. Any additional clarifications or 
+DictionaryEntries may be specified. 
+Clause 7.3.4 
+The business meaning of each Status should be specified. Any additional clarifications or 
+DictionaryEntries may be specified.  
+Clause 7.3.5 
+The list of permissible of DocumentTypes has to be specified. 
+Clause 7.3.7 
+The list of permissible of DocumentProperties has to be specified. 
+Clause 7.3.8 
+The list of permissible MIME types for the DocumentBody field has to be specified. Clause 7.3.9 
+The profile has to specify whether use of Notification Objects is permitted. 
+Clause 7.4.1 
+If NotificationObjects are used, The format and usage of the NotificationType field have 
+to be specified. 
+Clause 7.4.3 
+If NotificationObjects are used, the correct archiving and persistence behaviour for 
+NotificationObjects once the NewNotification flag has been cleared have to be specified. 
+Clause 7.4.4 
+If NotificationObjects are used, the definition of NationalNotificationParameters may be 
+
+specified. 
+Clause 7.4.6 
+The rules for determining the value of the LITaskObject Status field have to be specified. 
+The business meaning of each Status should be specified. Any additional clarifications or 
+DictionaryEntries may be specified. 
+Clause 8.2.3 
+The business meaning of each Status should be specified. Any additional clarifications or 
+
+DictionaryEntries may be specified.  
+Clause 8.2.4 
+Additional TargetIdentifier FormatTypes may be defined. 
+Clause 8.2.6.3 
+The list of valid TaskServiceTypes has to be specified. 
+Clause 8.2.6.4 
+Additional clarifications and DictionaryEntries for the DeliveryType may be defined. Clause 8.2.7 
+NationalDeliveryParameters may be defined. 
+Clause 8.2.8.2 
+Additional clarifications and DictionaryEntries for the HandoverFormat may be defined. Clause 8.2.8.4 
+DictionaryEntries for the HandlingProfile may be defined. 
+Clause 8.2.11 
+Additional clarifications and DictionaryEntries for the Flags field may be defined. Clause 8.2.12 
+Additional schema fields may be specified. 
+Clause 9.2.1 
+Use of message signature and message encryption may be specified. If they are, the 
+
+required signature and encryption details have to be specified. 
+Clause 9.2.3 
+Implementers may be directed not to use HTTPS. 
+Clause 9.3.4 
+National requirements for transport encryption and authentication have to be specified. Clause 9.3.4 
+Additional error codes may be specified. 
+Annex D 
+The usage and valid format for ApprovalType have to be specified. 
+Clause E.2 
+The usage and valid format for ApprovalDescription may be specified. 
+Clause E.3 
+The usage and valid format for ApprovalReference have to be specified. 
+Clause E.4 
+The usage and valid format for ApprovalRole have to be specified. 
+Clause E.5.1 
+NationalApproverIdentity may be defined. 
+Clause E.5.2 
+Definition of the usage of ApprovalIsEmergency has to be specified. 
+Clause E.7 
+NationalDigitalSignature details may be defined. 
+Clause E.8 
+B.1.4 Details of the ficti
+onal national jurisdiction 
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (20
+19-05)45 
+
+
+
+
+
+B.2 Example National Profile 
+B.2.1 Approach and reference model 
+B.2.1.1 Overview 
+
+
+
+
+
+• 
+• 
+• 
+B.2.1.2 Warrants 
+
+
+
+
+• 
+• 
+• 
+• 
+
+
+
+
+
+• 
+• 
+• 
+B.2.1.3 Tasking Instructions 
+
+
+• 
+• 
+• 
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)46 • 
+
+B.2.1.4 Representation by HI-1 Objects 
+
+
+ Figure B.1: Mapping of concepts to HI-1 Objects 
+B.2.2 Message Structure 
+B.2.2.1 Overview 
+
+B.2.2.2 Version information 
+
+
+
+
+B.2.2.3 Sender and Receiver Identifiers 
+
+
+
+B.2.2.4 LIST semantics 
+
+
+
+
+Warrant 
+Instrument 
+Tasking 
+Instruction 
+Cancellation 
+Instrument 
+
+
+
+
+
+
+
+
+
+National Process Entities 
+HI-1 Objects 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)47 B.2.3 Data Definitions 
+B.2.3.1 Overview 
+
+B.2.3.2 Object Identifiers 
+
+
+
+
+
+B.2.3.3 Generic Object Fields 
+
+B.2.3.4 Authorisation Objects 
+
+Table B.2: Authorisation Object 
+Field Usage
+ Additional guidance
+ AuthorisationReference 
+Used Set to the Warrant Reference of the associated Warrant 
+Instrument, in the same format (see Document Object, 
+clause B.2.3.5). 
+AuthorisationLegalType Not 
+Used 
+ AuthorisationPriority Not 
+Used 
+ AuthorisationStatus 
+Used No additional Author
+isationStatus DictionaryEntries are defined. 
+The rules for calculating the correct AuthorisationStatus value are 
+
+given below table B.2. 
+AuthorisationDesiredStatus Not 
+Used  
+AuthorisationTimespan 
+Used Set to match the validity period of the associated Warrant 
+Instrument Document Object. 
+AuthorisationCSPID Not 
+Used 
+ AuthorisationCreationTimestamp Not Used  
+AuthorisationServedTimestamp Not Used  
+AuthorisationTerminationTimestamp Used If the Authorisation Object is associated with a Cancellation 
+Instrument Document Object, this field is set to the signature date 
+
+of the associated Cancellation.  
+AuthorisationApprovalDetails Not Used  
+AuthorisationInvalidReason 
+Used Populated by the Re
+ceiver if the AuthorisationStatus is "Invalid", 
+absent otherwise. 
+AuthorisationFlags Not 
+Used 
+ NationalAuthorisationParameters Not Used  
+
+
+• 
+
+• 
+
+
+• 
+
+
+
+• 
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)48 • 
+
+• 
+
+
+• 
+B.2.3.5 Document Objects 
+
+Table B.3: Document Object 
+Field Usage
+ Additional guidance
+ DocumentReference 
+Used 
+For Warrant Instruments, this field is set to the 
+Warrant Reference, given as the letter "W" followed 
+by a six digit number. 
+For Cancellation Instruments, this field is set to the 
+Cancellation Reference, given as the letter "C" 
+
+followed by a six digit number. 
+DocumentName 
+Not Used 
+Name for a specific document. 
+DocumentStatus 
+Used 
+No additional DocumentStatus DictionaryEntries are 
+defined. 
+
+The rules for calculating the correct DocumentStatus 
+value are given below. 
+DocumentDesiredStatus Not Used 
+ DocumentTimespan 
+Used 
+Start time is set to the date of signature. 
+For Warrant Instruments, the End time is set to the 
+end of the validity of the Warrant. 
+
+For Cancellation Instruments, the End time is absent. 
+DocumentType 
+Used 
+Additional guidance and DictionaryEntry definitions 
+are given below. 
+DocumentProperties Not 
+Used  
+DocumentBody Not 
+Used  
+DocumentSignature 
+ApprovalDetails (see annex F) 
+Additional guidance given below table B.3. 
+NationalDocumentParameters Not Used 
+ 
+
+• 
+• 
+
+• 
+
+
+• 
+
+Table B.4: National DocumentType Dictionary 
+Dictionary
+ Owner
+ Dictionary Name
+ CountryXX DocumentType. 
+Defined DictionaryEntries
+ Value Meaning
+ Cancellation 
+This Document represents a Cancellation Instrument. 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)49 
+Table B.5: ETSI DocumentType Dictionary 
+ETSI-Defined DictionaryEntries
+ Value Additional Meaning
+ Warrant 
+This Document represents a Warrant Instrument. 
+
+Table B.6: ETSI Document ApprovalDetails 
+Field Used
+ Additional Guidance
+ ApprovalType Not 
+Used  
+ApprovalDescription Not Used  
+ApprovalReference Not Used  
+ApproverDetails 
+ApproverDetails See table B.7. 
+ApprovalTimestamp Used 
+Given as the time of the signature. 
+ApprovalIsEmergency Not Used  
+ApprovalDigitalSignature Not Used  
+ApprovalNationalDetails Not Used  
+Table B.7: ETSI Document ApproverDetails 
+Field Used
+ Description
+ ApproverName 
+Used 
+Name or other identifier of the approver. 
+ApproverRole Not 
+Used  
+ApproverIdentity Not 
+Used  
+B.2.3.6 Notification Objects 
+
+B.2.3.7 LITa
+skObjects 
+
+Table B.8: LITaskObject 
+Field Used
+ Additional guidance
+ Reference 
+Used LIID assigned to the product of task. 
+Status 
+Used No additional Status DictionaryEntries defined. 
+The rules for calculating the correct Status value are given below 
+table B.8. 
+DesiredStatus Not 
+Used 
+ TimeSpan Not 
+Used 
+ TargetIdentifier 
+Used Contains the desired Target Identifier. Contains a single Target Identifier 
+of type InternationalE164. 
+DeliveryType Used 
+No 
+additional 
+guidance. 
+DeliveryDetails Used No 
+additional 
+guidance. 
+ApprovalDetails Not 
+Used 
+ CSPID Used 
+No 
+additional 
+guidance. 
+HandlingProfile Not 
+Used 
+ InvalidReason 
+Used Populated by the Receiver if 
+the AuthorisationStatus is "Invalid", absent 
+otherwise. 
+Flags Not 
+Used 
+ NationalLITaskingParameters Not Used  
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)50 
+• 
+• 
+
+• 
+
+
+• 
+• 
+• 
+• 
+
+
+• 
+
+
+• 
+• 
+
+
+• 
+• 
+B.2.4 Transport and Encoding 
+
+
+
+
+
+
+
+
+B.2.5 Example XML 
+B.2.5.1 Introduction 
+
+
+
+
+
+Request 1: 
+
+
+Response 1:
+
+
+
+Request 2:
+
+Response 2:
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)51 Request 3:
+
+
+
+
+Response 3:
+
+
+
+B.2.5.2 Request 1 
+
+
+<?xml version="1.0" encoding="utf-8"?>  <HI1Message xmlns="http://uri.etsi.org/03120/common/2016/02Core"             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns:common="http://uri.etsi.org/03120/common/2016/02Common"             xmlns:task="http://uri.etsi.org/03120/common/2016/02Task"             xmlns:auth="http://uri.etsi.org/03120/common/2016/02Authorisation">   <Header>     <SenderIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>SENDER01</UniqueIdentifier>     </SenderIdentifier>     <ReceiverIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>RECVER01</UniqueIdentifier>     </ReceiverIdentifier>     <TransactionIdentifier>c02358b2-76cf-4ba4-a8eb-f6436ccaea2e</TransactionIdentifier>     <Timestamp>2015-09-01T12:00:00.000000Z</Timestamp>     <Version>       <ETSIVersion>V1.2.1</ETSIVersion>       <NationalProfileOwner>XX</NationalProfileOwner>       <NationalProfileVersion>v1.0</NationalProfileVersion>     </Version>   </Header>   <Payload>     <RequestPayload>       <ActionRequests>        <
+ActionRequest>          <
+ActionIdentifier>0</ActionIdentifier>          <CREATE> 
+
+           <
+HI1Object  xsi:type="auth:AuthorisationObject">              <
+ObjectIdentifier>7dbbc880-8750-4d3c-abe7-ea4a17646045</ObjectIdentifier>              <CountryCode>XX</CountryCode>              <
+OwnerIdentifier>SENDER01</OwnerIdentifier>              <
+auth:AuthorisationReference>W000001</auth:AuthorisationReference>              <
+auth:AuthorisationTimespan>                <
+auth:StartTime>2015-09-01T12:00:00Z</auth:StartTime>                <
+auth:EndTime>2015-12-01T12:00:00Z</auth:EndTime>              </
+auth:AuthorisationTimespan>            </
+HI1Object> 
+         </CREATE> 
+       </
+ActionRequest>        <
+ActionRequest>          <
+ActionIdentifier>1</ActionIdentifier>          <CREATE> 
+
+           <
+HI1Object xsi:type="task:LITaskObject">              <
+ObjectIdentifier>2b36a78b-b628-416d-bd22-404e68a0cd36</ObjectIdentifier>              <
+CountryCode>XX</CountryCode>              <
+OwnerIdentifier>SENDER01</OwnerIdentifier>              <
+AssociatedObjects>                <
+AssociatedObject>7dbbc880-8750-4d3c-abe7-ea4a17646045</AssociatedObject>              </
+AssociatedObjects>              <
+task:Reference>LIID1</task:Reference>              <
+task:TargetIdentifier>                <
+task:TargetIdentifierValues>                  <
+task:TargetIdentifierValue>                    <
+task:FormatType>                      <
+task:FormatOwner>ETSI</task:FormatOwner>                      <
+task:FormatName>InternationalE164</task:FormatName>                    </task:FormatType>                    <task:Value>+447700900000</task:Value>                  </
+task:TargetIdentifierValue>                </
+task:TargetIdentifierValues>   ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)52              </
+task:TargetIdentifier>              <
+task:DeliveryType>                <
+common:Owner>ETSI</common:Owner>                <
+common:Name>TaskDeliveryType</common:Name>                <
+common:Value>IRIandCC</common:Value>              </
+task:DeliveryType>              <
+task:DeliveryDetails>                <
+task:DeliveryDestination>                  <
+task:DeliveryAddress>                    <
+task:IPv4Address>192.0.2.0</task:IPv4Address>                  </
+task:DeliveryAddress>                </
+task:DeliveryDestination>              </
+task:DeliveryDetails>              <
+task:CSPID>                <
+CountryCode>XX</CountryCode> 
+               <
+UniqueIdentifier>RECVER01</UniqueIdentifier>              </
+task:CSPID>            </
+HI1Object>          </CREATE> 
+       </
+ActionRequest>       </ActionRequests>     </RequestPayload>   </Payload> 
+</HI1Message>  B.2.5.3 Response 1 
+
+
+<?xml version="1.0" encoding="utf-8"?>  <HI1Message xmlns="http://uri.etsi.org/03120/common/2016/02Core"             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns:common="http://uri.etsi.org/03120/common/2016/02Common"             xmlns:task="http://uri.etsi.org/03120/common/2016/02Task"             xmlns:auth="http://uri.etsi.org/03120/common/2016/02Authorisation">   <Header>     <SenderIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>SENDER01</UniqueIdentifier>     </SenderIdentifier>     <ReceiverIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>RECVER01</UniqueIdentifier>     </ReceiverIdentifier>     <TransactionIdentifier>c02358b2-76cf-4ba4-a8eb-f6436ccaea2e</TransactionIdentifier>     <Timestamp>2015-09-01T12:00:01.000000Z</Timestamp>     <Version> 
+      <ETSIVersion>V1.2.1</ETSIVersion>       <NationalProfileOwner>XX</NationalProfileOwner>       <NationalProfileVersion>v1.0</NationalProfileVersion>     </Version> 
+  </Header>   <Payload>     <ResponsePayload>       <ActionResponses>        <
+ActionResponse>          <
+ActionIdentifier>0</ActionIdentifier>          <
+CREATEResponse>            <
+Identifier>7dbbc880-8750-4d3c-abe7-ea4a17646045</Identifier>          </CREATEResponse>        </ActionResponse>        <
+ActionResponse>          <
+ActionIdentifier>1</ActionIdentifier>          <
+CREATEResponse>            <
+Identifier>2b36a78b-b628-416d-bd22-404e68a0cd36</Identifier>          </
+CREATEResponse>        </
+ActionResponse>       </ActionResponses>     </ResponsePayload>   </Payload> 
+</HI1Message>    ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)53 B.2.5.4 Request 2 
+
+
+<?xml version="1.0" encoding="utf-8"?>  <HI1Message xmlns="http://uri.etsi.org/03120/common/2016/02Core"             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns:common="http://uri.etsi.org/03120/common/2016/02Common" 
+            xmlns:task="http://uri.etsi.org/03120/common/2016/02Task"             xmlns:auth="http://uri.etsi.org/03120/common/2016/02Authorisation">   <Header>     <SenderIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>SENDER01</UniqueIdentifier>     </SenderIdentifier>     <ReceiverIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>RECVER01</UniqueIdentifier>     </ReceiverIdentifier>     <TransactionIdentifier>45002c1e-dc4a-470a-9152-8e752638c86c</TransactionIdentifier>     <Timestamp>2015-09-01T12:01:00.000000Z</Timestamp>     <Version>       <ETSIVersion>V1.2.1</ETSIVersion>       <NationalProfileOwner>XX</NationalProfileOwner>       <NationalProfileVersion>v1.0</NationalProfileVersion>     </Version> 
+  </Header>   <Payload>     <RequestPayload>       <ActionRequests>        <
+ActionRequest>          <
+ActionIdentifier>0</ActionIdentifier>          <GET> 
+           <
+Identifier>2b36a78b-b628-416d-bd22-404e68a0cd36</Identifier>          </GET> 
+       </
+ActionRequest>        <ActionRequest>          <ActionIdentifier>1</ActionIdentifier>          <GET> 
+           <
+Identifier>7dbbc880-8750-4d3c-abe7-ea4a17646045</Identifier>          </GET> 
+
+       </
+ActionRequest>       </ActionRequests>     </RequestPayload>   </Payload> 
+</HI1Message>  B.2.5.5 Response 2 
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?> 
+ <HI1Message xmlns="http://uri.etsi.org/03120/common/2016/02Core"             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns:common="http://uri.etsi.org/03120/common/2016/02Common"             xmlns:task="http://uri.etsi.org/03120/common/2016/02Task"             xmlns:auth="http://uri.etsi.org/03120/common/2016/02Authorisation">   <Header>     <SenderIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>SENDER01</UniqueIdentifier>     </SenderIdentifier>     <ReceiverIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>RECVER01</UniqueIdentifier>     </ReceiverIdentifier>     <TransactionIdentifier>45002c1e-dc4a-470a-9152-8e752638c86c</TransactionIdentifier>     <Timestamp>2015-09-01T12:01:00.000000Z</Timestamp>     <Version> 
+      <ETSIVersion>V1.2.1</ETSIVersion>       <NationalProfileOwner>XX</NationalProfileOwner>       <NationalProfileVersion>v1.0</NationalProfileVersion>   ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)54     </Version>   </Header>   <Payload> 
+    <ResponsePayload>       <ActionResponses>        <
+ActionResponse>          <
+ActionIdentifier>0</ActionIdentifier>          <
+GETResponse>            <
+HI1Object xsi:type="auth:AuthorisationObject">              <
+ObjectIdentifier>7dbbc880-8750-4d3c-abe7-ea4a17646045</ObjectIdentifier>              <
+CountryCode>XX</CountryCode>              <
+OwnerIdentifier>SENDER01</OwnerIdentifier>              <
+Generation>1</Generation>              <
+LastChanged>2015-09-01T12:00:00Z</LastChanged>              <
+auth:AuthorisationReference>W000001</auth:AuthorisationReference>              <
+auth:AuthorisationStatus>                <
+common:Owner>ETSI</common:Owner> 
+               <
+common:Name>AuthorisationStatus</common:Name>                <
+common:Value>Invalid</common:Value> 
+             </
+auth:AuthorisationStatus>              <
+auth:AuthorisationTimespan>                <
+auth:StartTime>2015-09-01T12:00:00Z</auth:StartTime>                <
+auth:EndTime>2015-12-01T12:00:00Z</auth:EndTime>              </
+auth:AuthorisationTimespan>              <
+auth:AuthorisationInvalidReason>                <
+ErrorCode>3000</ErrorCode>                <ErrorDescription>The Authorisation is not associated with a valid Warrant Document Object</ErrorDescription>              </auth:AuthorisationInvalidReason>            </HI1Object>          </
+GETResponse>        </
+ActionResponse>        <
+ActionResponse>          <
+ActionIdentifier>0</ActionIdentifier>            <
+GETResponse>              <
+HI1Object xsi:type="task:LITaskObject">                <
+ObjectIdentifier>2b36a78b-b628-416d-bd22-404e68a0cd36</ObjectIdentifier>                <
+CountryCode>XX</CountryCode> 
+               <
+OwnerIdentifier>SENDER01</OwnerIdentifier>                <
+Generation>1</Generation> 
+               <
+AssociatedObjects>                  <
+AssociatedObject>7dbbc880-8750-4d3c-abe7-ea4a17646045</AssociatedObject>                </
+AssociatedObjects>                <
+LastChanged>2015-09-01T12:00:00Z</LastChanged>                <
+task:Reference>LIID1</task:Reference>                <
+task:Status> 
+                 <
+common:Owner>ETSI</common:Owner>                  <
+common:Name>TaskStatus</common:Name>                  <
+common:Value>Invalid</common:Value>                </
+task:Status>                <
+task:TargetIdentifier>                  <
+task:TargetIdentifierValues>                    <task:TargetIdentifierValue>                      <task:FormatType>                        <task:FormatOwner>ETSI</task:FormatOwner>                        <
+task:FormatName>InternationalE164</task:FormatName>                      </
+task:FormatType>                      <
+task:Value>+447700900000</task:Value>                    </
+task:TargetIdentifierValue>                  </
+task:TargetIdentifierValues>                </
+task:TargetIdentifier>                <
+task:DeliveryType>                  <
+common:Owner>ETSI</common:Owner>                  <
+common:Name>TaskDeliveryType</common:Name>                  <
+common:Value>IRIandCC</common:Value>                </
+task:DeliveryType>                <
+task:DeliveryDetails>                  <
+task:DeliveryDestination>                    <
+task:DeliveryAddress>                      <
+task:IPv4Address>192.0.2.0</task:IPv4Address>                    </
+task:DeliveryAddress>                  </
+task:DeliveryDestination>                </
+task:DeliveryDetails>                <
+task:CSPID>                  <
+CountryCode>XX</CountryCode>                  <
+UniqueIdentifier>RECVER01</UniqueIdentifier>                </
+task:CSPID>                <
+task:InvalidReason>   ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)55                  <
+ErrorCode>3000</ErrorCode>                  <
+ErrorDescription>The associated Authorisation is in an Invalid state</ErrorDescription>                </
+task:InvalidReason>                            </
+HI1Object>           </
+GETResponse>        </
+ActionResponse>       </ActionResponses>     </ResponsePayload>     </Payload> </HI1Message>  B.2.5.6 Request 3 
+
+
+
+
+<?xml version="1.0" encoding="utf-8"?> 
+ <HI1Message xmlns="http://uri.etsi.org/03120/common/2016/02Core"             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns:common="http://uri.etsi.org/03120/common/2016/02Common"             xmlns:task="http://uri.etsi.org/03120/common/2016/02Task"             xmlns:auth="http://uri.etsi.org/03120/common/2016/02Authorisation"             xmlns:doc="http://uri.etsi.org/03120/common/2016/02Document">   <Header>     <SenderIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>SENDER01</UniqueIdentifier>     </SenderIdentifier>     <ReceiverIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>RECVER01</UniqueIdentifier>     </ReceiverIdentifier>     <TransactionIdentifier>69353ac0-9582-4c71-b162-86259c99de20</TransactionIdentifier>     <Timestamp>2015-09-01T12:02:00.000000Z</Timestamp>     <Version>       <ETSIVersion>V1.2.1</ETSIVersion>       <NationalProfileOwner>XX</NationalProfileOwner>       <NationalProfileVersion>v1.0</NationalProfileVersion>     </Version> 
+  </Header>   <Payload> 
+    <RequestPayload>       <ActionRequests>        <
+ActionRequest>          <
+ActionIdentifier>0</ActionIdentifier>          <CREATE> 
+
+           <
+HI1Object xsi:type="doc:DocumentObject">              <
+ObjectIdentifier>4193f541-5e19-468e-b4a3-1c636ce115e9</ObjectIdentifier>              <CountryCode>XX</CountryCode>              <
+OwnerIdentifier>SENDER01</OwnerIdentifier>              <
+doc:DocumentReference>W000001</doc:DocumentReference>              <
+doc:DocumentTimespan>                <
+doc:StartTime>2015-09-01T12:00:00Z</doc:StartTime>                <
+doc:EndTime>2015-12-01T12:00:00Z</doc:EndTime>              </
+doc:DocumentTimespan>              <
+doc:DocumentType>                <
+common:Owner>ETSI</common:Owner>                <
+common:Name>DocumentType</common:Name>                <
+common:Value>Warrant</common:Value> 
+             </
+doc:DocumentType>              <
+doc:DocumentSignature>                <
+common:ApproverDetails>                  <
+common:ApproverName>Approver</common:ApproverName>                </
+common:ApproverDetails>                <
+common:ApprovalTimestamp>2015-09-01T12:00:00Z</common:ApprovalTimestamp>              </
+doc:DocumentSignature>            </
+HI1Object>          </CREATE> 
+       </
+ActionRequest>        <
+ActionRequest>          <
+ActionIdentifier>1</ActionIdentifier>          <UPDATE> 
+
+           <
+HI1Object xsi:type="auth:AuthorisationObject">              <
+ObjectIdentifier>7dbbc880-8750-4d3c-abe7-ea4a17646045</ObjectIdentifier>   ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)56              <
+AssociatedObjects>                <
+AssociatedObject>4193f541-5e19-468e-b4a3-1c636ce115e9</AssociatedObject>              </
+AssociatedObjects>            </
+HI1Object>          </UPDATE> 
+       </
+ActionRequest>       </ActionRequests>     </RequestPayload>   </Payload> 
+</HI1Message>  B.2.5.7 Response 3 
+
+
+<?xml version="1.0" encoding="utf-8"?>  
+<HI1Message xmlns="http://uri.etsi.org/03120/common/2016/02Core"             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+            xmlns:common="http://uri.etsi.org/03120/common/2016/02Common"             xmlns:task="http://uri.etsi.org/03120/common/2016/02Task"             xmlns:auth="http://uri.etsi.org/03120/common/2016/02Authorisation"             xmlns:doc="http://uri.etsi.org/03120/common/2016/02Document">   <Header>     <SenderIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>SENDER01</UniqueIdentifier>     </SenderIdentifier>     <ReceiverIdentifier>       <CountryCode>XX</CountryCode>       <UniqueIdentifier>RECVER01</UniqueIdentifier>     </ReceiverIdentifier>     <TransactionIdentifier>69353ac0-9582-4c71-b162-86259c99de20</TransactionIdentifier>     <Timestamp>2015-09-01T12:02:00.000000Z</Timestamp>     <Version>       <ETSIVersion>V1.2.1</ETSIVersion>       <NationalProfileOwner>XX</NationalProfileOwner>       <NationalProfileVersion>v1.0</NationalProfileVersion>     </Version> 
+  </Header>   <Payload>     <ResponsePayload>       <ActionResponses>        <
+ActionResponse>          <
+ActionIdentifier>0</ActionIdentifier>          <
+CREATEResponse>            <
+Identifier>4193f541-5e19-468e-b4a3-1c636ce115e9</Identifier>          </CREATEResponse>        </ActionResponse>        <
+ActionResponse>          <
+ActionIdentifier>1</ActionIdentifier>          <
+UPDATEResponse>            <
+Identifier>7dbbc880-8750-4d3c-abe7-ea4a17646045</Identifier>            <
+HI1Object xsi:type="auth:AuthorisationObject">              <
+ObjectIdentifier>7dbbc880-8750-4d3c-abe7-ea4a17646045</ObjectIdentifier>              <
+CountryCode>XX</CountryCode>              <
+OwnerIdentifier>SENDER01</OwnerIdentifier>              <
+Generation>2</Generation>              <
+AssociatedObjects>                <
+AssociatedObject>4193f541-5e19-468e-b4a3-1c636ce115e9</AssociatedObject>              </
+AssociatedObjects>              <
+LastChanged>2015-09-01T12:02:00Z</LastChanged>              <
+auth:AuthorisationReference>W000001</auth:AuthorisationReference>              <
+auth:AuthorisationStatus>                <
+common:Owner>ETSI</common:Owner> 
+               <
+common:Name>AuthorisationStatus</common:Name>                <
+common:Value>Active</common:Value> 
+             </
+auth:AuthorisationStatus>              <
+auth:AuthorisationTimespan>                <
+auth:StartTime>2015-09-01T12:00:00Z</auth:StartTime>                <
+auth:EndTime>2015-12-01T12:00:00Z</auth:EndTime>              </auth:AuthorisationTimespan>            </HI1Object>          </
+UPDATEResponse>        </
+ActionResponse>   ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)57       </ActionResponses>     </ResponsePayload>   </Payload> </HI1Message>    ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)58 Annex C (normative): 
+ETSI Target Identifier Format Definitions 
+C.1 Overview 
+
+
+
+
+C.2 Definitions 
+Table C.1: ETSI Target Identifier Format Definitions 
+Format Name
+ Description
+ Format E.164 
+E.164 [i.9] Number in fully international 
+format, excluding the '+' prefix, written as 
+decimal digits. 
+Regular expression as per ETSI TS 103 280 [7] 
+InternationalE164 format 
+IMSI 
+International Mobile Subscriber Identity, 
+following the Recommendation ITU-T 
+E.212 [i.10] numbering scheme, written 
+as decimal digits. 
+Regular expression as per ETSI TS 103 280 [7] 
+IMEI 
+International Mobile station Equipment 
+Identity, following the numbering plan 
+
+defined in ETSI TS 123 003 [i.6], written 
+
+as decimal digits without the Luhn check 
+
+digit. 
+Regular expression as per ETSI TS 103 280 [7] 
+IMEICheckDigit International Mobile station Equipment 
+Identity, following the numbering plan 
+
+defined in ETSI TS 123 003 [i.6], written 
+
+as decimal digits with the Luhn check 
+digit. 
+Regular expression as per ETSI TS 103 280 [7] 
+IMEISV International Mobile station Equipment 
+Identity Software Version, following the 
+
+numbering plan defined in ETSI 
+TS 123 003 [i.6], written as decimal 
+
+digits including the two SV digits. 
+Regular expression as per ETSI TS 103 280 [7] 
+MACAddress A MAC address in IEEE 802.2001Ž [i.8] 
+48-bit format, written as six pairs of 
+
+hexadecimal digits separated by colons. 
+Regular expression as per ETSI TS 103 280 [7] 
+IPv4Address IPv4 address in dotted 
+decimal notation. Regular expression as per ETSI TS 103 280 [7] 
+IPv6Address IPv6 address as colon-separated 
+hexadecimal digits. 
+Regular expression as per ETSI TS 103 280 [7] 
+IPv4CIDR IPv4CIDR, written in dotted decimal 
+notation followed by CIDR notation. 
+Regular expression as per ETSI TS 103 280 [7] 
+IPv6CIDR IPv6CIDR written as eight groups of four 
+hexadecimal digits separated by a colon, 
+followed by CIDR notation. 
+Regular expression as per ETSI TS 103 280 [7] 
+TCPPort TCP Port number, written in decimal 
+notation. 
+Regular expression as per ETSI TS 103 280 [7] 
+TCPPortRange Range of TCP Ports, written as decimal 
+numbers separated by a colon. 
+Regular expression as per ETSI TS 103 280 [7] 
+UDPPort UDP Port number, written in decimal 
+notation. 
+Regular expression as per ETSI TS 103 280 [7] 
+UDPPortRange Range of UDP Ports, written as decimal 
+numbers separated by a colon. 
+Regular expression as per ETSI TS 103 280 [7] 
+Port Port number given as a decimal number. Regular expression as per ETSI TS 103 280 [7] 
+PortRange Range of port numbers, given as 
+decimal numbers separated by a colon. 
+Regular expression as per ETSI TS 103 280 [7] 
+EmailAddress Email address following W3C HTML 5 
+Recommendation [12]. 
+Regular expression as per ETSI TS 103 280 [7] 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)59 Format Name
+ Description
+ Format SIP-URI SIP-URI according to the SIP URI 
+scheme (see IETF RFC 3261 [i.2]/ETSI 
+TS 124 229 [i.7]).
+ Regular expression as per ETSI TS 103 280 [7] 
+TEL-URI tel-URI according to the tel URI scheme 
+(see IETF RFC 3966 [i.3]). 
+Regular expression as per ETSI TS 103 280 [7] 
+H323-URI H323 URI according to the H323 URI 
+scheme (see IETF RFC 3508 [i.4]). 
+^h323:[a-zA-Z0-9!#$&-;=?-\[\]_~%]+$ 
+IMPU 
+IP Multimedia Public Identity, as per 
+ETSI TS 123 003 [i.6]. 
+^[a-zA-Z0-9!#$&-;=?-\[\]_~%]+$ 
+IMPI 
+IP Multimedia Private Identity, as per 
+ETSI TS 123 003 [i.6]. 
+^[a-zA-Z0-9!#$&-;=?-\[\]_~%]+$ 
+NAI Network Access Identifier following 
+IETF RFC 4282 [i.5] format.
+  Regular expression as per ETSI TS 103 280 [7] 
+SUPIIMSI Subscription Permanent Identifier in 
+IMSI representation as defined in ETSI 
+TS 123 501 [21]. 
+Regular expression as per ETSI TS 103 280 [7]  
+SUPINAI Subscription Permanent Identifier in NAI 
+representation as defined in ETSI 
+
+TS 123 501 [21]. 
+Regular expression as per ETSI TS 103 280 [7]  
+PEIIMEI Permanent Equipment Identifier in IMEI 
+representation as defined in ETSI 
+TS 123 501 [21]. 
+Regular expression as per ETSI TS 103 280 [7] 
+PEIIMEICheckDi
+
+git 
+Permanent Equipment Identifier in IMEI 
+
+representation as defined in ETSI 
+
+TS 123 501 [21]. 
+Regular expression as per ETSI TS 103 280 [7]  
+PEIIMEISV Permanent Equipment Identifier in IMEI 
+SV representation as defined in ETSI 
+
+TS 123 501 [21]. 
+Regular expression as per ETSI TS 103 280 [7]  
+GPSIMSISDN General Public Subscription Identifier as 
+defined in ETSI TS 123 501 [21] in 
+
+MSISDN representation. 
+Regular expression as per ETSI TS 103 280 [7]  
+GPSINAI General Public Subscription Identifier as 
+defined in ETSI TS 123 501 [21] in NAI 
+
+representation. 
+Regular expression as per ETSI TS 103 280 [7]  
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)60 Annex D (normative): 
+Error Codes 
+D.1 Detailed error codes 
+Table D.1: Detailed Error Codes 
+Error Code Error Description
+ Message Element
+ 3000 
+General Business Logic Error. 
+ 3001 
+Feature Not Supported. 
+ 3002 
+Duplicate ActionID detected. 
+ 3003 
+Transient Technical Error. 
+"Call us if this persists" 
+3004 
+Configuration Issue - <Customize element>. 
+Indicates portal element to configure 
+(Example: Legal Order Type configuration) 
+ Message Element Checks. 
+ 3005 
+Required element missing. 
+(Mandatory per national profile.) 
+(Example: Valid CSPID present.) 
+Specific element type from the message header or 
+object structure is cited. (Object reference if 
+applicable) 
+ObjectID: <Object_Value>: <Element name> 
+3006 
+Value change not allowed. 
+(Update operations.) 
+Specific element type from the message header or 
+object structure is cited. (Object reference if 
+applicable) 
+ObjectID: <Object_Value>: <Element name> 
+3007 
+Improper value. 
+(Semantic value does not fit context.  
+Schema validation catches syntactic.) 
+Specific element type from the message header or 
+object structure is cited. (Object reference if 
+applicable) 
+ObjectID: <Object_Value>: <Element name> 
+3008 
+Improper value change. 
+(New value not allowed.) 
+Specific element type from the message header or 
+object structure is cited. (Object reference if 
+applicable) 
+ObjectID: <Object_Value>: <Element name> 
+3009 
+Value not found in system. 
+(Reference to previous system value.) 
+Specific element type from the message header or 
+object structure is cited. (Object reference if 
+applicable) 
+ObjectID: <Object_Value>: <Element name> 
+ Object Reference Checks. 
+ 3010 
+Attempt to Create an Object that already 
+exists. 
+Object_ID: <Object_Value> 
+3011 
+Attempt to Update an Object that does not 
+exist. 
+Object_ID: <Object_Value> 
+3012 
+Attempt to Update an Object that has 
+Expired. 
+(Question on reuse and impact on audits.) 
+Object_ID: <Object_Value> 
+3013 
+Attempt to Cancel an Object that does not 
+exist. 
+Object_ID: <Object_Value> 
+3014 
+Attempt to Get an Object that cannot be 
+found. 
+Object_ID: <Object_Value> 
+3015 
+Attempt to Get an Object that was found but 
+not deliverable via tasking interface. 
+(Object may have been archived.) 
+Object_ID: <Object_Value> 
+3016 
+(3200) 
+Attempt to link an Object to an Associated 
+Object that does not exist. 
+Linked_From_Object_ID: <Object_Value> 
+Linked_To_Object_ID: <Object_Value> 
+3017 
+Attempt to link an Object to an Associated 
+Object that has Expired. 
+(Question on reuse and impact on audits.) 
+Linked_From_Object_ID: <Object_Value> 
+Linked_To_Object_ID: <Object_Value> 
+3018 
+Attempt to link an Object to an Associated 
+Object that failed. 
+(Two objects sent in same message.) 
+(Example: <3106> Warrant doc delivery.) 
+Linked_From_Object_ID: <Object_Value> 
+Linked_To_Object_ID: <Object_Value> 
+3019-3999 
+Reserved for future Errors. 
+ 4000-4999 
+Reserved for nationally-defined Error Codes. 
+The relevant national profile may specify additional 
+error codes in this range 
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)61 Annex E (normative): 
+Approval Details 
+E.1 Overview 
+
+
+
+
+Table E.1: ApprovalInformation 
+Field Format Description
+ Reference
+ ApprovalType 
+LongString (see ETSI 
+TS 103 280 [7]) 
+Defines the nature of the approval: 
+e.g. Creation, Renewal, Modification, 
+Cancellation. 
+E.2 ApprovalDescription LongString (see ETSI 
+TS 103 280 [7]) 
+Human readable description of what 
+elements of the authorisation were changed. 
+E.3 ApprovalReference LongString (see ETSI 
+TS 103 280 [7]) 
+Nationally defined reference for the 
+
+Approval, provided to allow correlation with 
+
+non-HI-1 processes. 
+E.4 ApproverDetails ApproverDetails Gives det
+ails of who gave the Approval. E.5 
+ApprovalTimestamp QualifiedDateTime (see ETSI 
+TS 103 280 [7]) 
+Indicates when the Approval was given or 
+
+signed. 
+E.6 ApprovalIsEmergency Boolean 
+Flag to indicate that this was an emergency 
+change. 
+E.7 ApprovalDigitalSignature Complex Type (see clause E.8) Provides digital signature information 
+relating to the approval. 
+E.8 ApprovalNationalDetails Complex Type 
+Provides national-specific data elements 
+associated with an approval. 
+ E.2 ApprovalType 
+
+
+
+E.3 ApprovalDescription 
+
+
+
+
+
+
+E.4 ApprovalReference 
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)62 E.5 ApproverDetails 
+E.5.1 Overview 
+
+
+Table E.2: ApproverDetails 
+Field Format Description
+ ApproverName LongString (see ETSI 
+TS 103 280 [7]). 
+Name or other identifier of the approver. 
+ApproverRole LongString (see ETSI 
+TS 103 280 [7]). 
+Nationally-defined role of the Approver (e.g. rank, post or office). 
+ApproverIdentity ApproverIdentity (see 
+clause E.5.2). 
+Identity of the Approver given in a machine-readable format. 
+E.5.2 ApproverIdentity 
+
+
+
+Table E.3: ApproverIdentity 
+Field Format Description
+ NationalApproverIdentity Defined by the relevant national profile. Nationally-defined digital signature details. 
+
+
+
+
+
+E.6 ApprovalTimestamp 
+
+
+
+E.7 ApprovalIsEmergency 
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)63 E.8 ApprovalDigitalSignature 
+E.8.1 Overview 
+
+
+not
+
+
+
+
+
+
+• 
+
+
+• 
+• 
+
+Table E.4: Approval Digital Signature 
+Field Format Description
+ NationalDigitalSignature Defined by the relevant national profile. Nationally-defined digital signature details. 
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)64 Annex F (normative): 
+Dictionaries 
+F.1 Overview 
+
+
+
+
+
+• 
+• 
+F.2 DictionaryEntry type 
+
+
+Table F.1: DictionaryEntry 
+Field Format Description
+ Owner ShortString (see ETSI TS 103 280 [7]). Name of 
+the owner of the dictionary (see clause F.3.2). 
+Name ShortString (see ETSI TS 103 280 [7]). Name of th
+e dictionary from which the value is chosen (see 
+clause F.3.3). 
+Value ShortString (see ETSI TS 103 280 [7]). Value chosen from the dictionary. 
+
+Table F.2: Required informati
+on when defining a dictionary 
+Field Format Description
+ Owner ShortString (see ETSI TS 103 280 [7]). Name of 
+the owner of the dictionary (see clause F.3.2). 
+Name ShortString (see ETSI TS 103 280 [7]). Name of th
+e dictionary from which the value is chosen (see 
+clause F.3.3). 
+Value ShortString (see ETSI TS 103 280 [7]). A label wh
+ich is unique within the dictionary, and assigned a 
+meaning. 
+Meaning LongString (see ETSI TS 103 280 [7]). A human-readable definition of the meaning associated with the 
+Value. 
+
+
+F.3 Definition and use of dictionaries 
+F.3.1 Overview 
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)65 F.3.2 Owner 
+
+
+
+
+• 
+• 
+
+F.3.3 Name 
+
+
+
+F.3.4 Use of dictionaries 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+F.3.5 Machine-readable dictionary definitions 
+
+
+
+
+
+
+
+
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)66 Annex G (normative): 
+Drafting conventions for 
+National Parameters G.1 Overview 
+
+
+G.2 Drafting conventions 
+
+
+
+
+
+
+
+• 
+• 
+• 
+
+• 
+• 
+• 
+
+
+  ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)67 Annex H (informative): 
+Bibliography 
+• 
+
+• 
+• 
+  ETSI ETSI TS 103 120 V1.3.1 (20
+19-05)68 Annex I (informative): 
+Change Request history
+ Status of the present document 
+Lawful Interception (LI); Interface for warrant information
+ TC LI approval 
+date Version 
+Remarks 
+September 2015 1.1.1 
+First publication of the TS after approval by ETSI TC LI#40 
+ 
+Document prepared by the Rapporteur 
+February 2016 1.2.1 
+Included Change Requests agreed by ETSI TC LI#41: 
+
+ 
+CR001, LI(16)P41013r1 (Cat C) Tasking Delivery IP Address and Port 
+CR002, LI(16)P41019r1 (Cat A) Initial corrections to TS 103 120 
+CR003. LI(16)P41021r2 (Cat B) Addition of Task IsEmergency flag 
+
+ 
+Document prepared by the Rapporteur 
+February 2019 1.3.1 
+Included Change Requests agreed by ETSI TC LI#50 
+
+ 
+CR004, LI(19)P50015r1 (Cat B) CR to support 3GPP 5G work 
+ Document prepared by the Rapporteur 
+   ETSI ETSI TS 103 120 V1.3.1 (2019
+-05)69 History 
+Document history 
+
+
+
+
+

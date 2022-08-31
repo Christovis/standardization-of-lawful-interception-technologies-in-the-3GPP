@@ -1,0 +1,2946 @@
+   
+   ETSI TS 102 232-3 V3.4.1 (2016-09) Lawful Interception (
+LI); Handover Interface and 
+Service-Specific Details (SSD) for IP delivery; 
+Part 3: Service-specific details for internet access services 
+  
+ TECHNICAL SPECIFICATION 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)2   
+ Reference 
+RTS/LI-00135-3 
+Keywords 
+access, internet, IP, Lawful Interception, security, 
+service 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+  Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - NAF 742 C 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° 7803/88 
+ Important notice 
+The present document can be downloaded from: 
+http://www.etsi.org/standards-search
+ The present document may be made available in electronic ve
+rsions and/or in print. The content of any electronic and/or
+ print versions of the present document shall not be modified wi
+thout the prior written authorization of ETSI. In case of any 
+existing or perceived difference in contents between such versions and/or in print, the only prevailing document is the 
+print of the Portable Document Format (PDF) version kept on a specific network drive within ETSI Secretariat. 
+Users of the present document should be aware that the document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+ If you find errors in the present document, please send your comment to one of the following services: 
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+ Copyright Notification 
+No part may be reproduced or utilized in any form or by any
+ means, electronic or mechanical, including photocopying 
+and microfilm except as authorized by written permission of ETSI. 
+The content of the PDF version shall not be modified without the written authorization of ETSI. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © European Telecommunications Standards Institute 2016. 
+All rights reserved. 
+ DECTTM, PLUGTESTSTM, UMTS
+TM and the ETSI logo are Trade Marks of ETSI registered for the benefit of its Members.
+ 3GPP
+TM 
+and LTEŽ are Trade Marks of ETSI registered for the benefit of its Members and 
+of the 3GPP Organizational Partners. 
+GSM® and the GSM logo are Trade Marks registered and owned by the GSM Association. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)3 Contents 
+Intellectual Prop
+erty Rights ..................................................................................................
+.............................. 5Foreword ......................................................................................................................
+....................................... 5Modal verbs te
+rminology .......................................................................................................
+............................. 5Introduction ..................................................................................................................
+...................................... 51 Scope .......................................................................................................................
+................................. 62 References ..................................................................................................................
+.............................. 62.1 Normative references ......................................................................................................
+................................... 62.2 Informative references ....................................................................................................
+.................................... 73 Definitions and abbreviations ...............................................................................................
+.................... 73.1 Definitions ...............................................................................................................
+........................................... 73.2 Abbreviations .............................................................................................................
+........................................ 84 General .....................................................................................................................
+................................ 94.1 Internet Access Service (IAS) .............................................................................................
+............................... 94.2 Target identity and IP address ............................................................................................
+................................ 94.3 Lawful Interception requirements ..........................................................................................
+.......................... 104.3.1 Target identity .........................................................................................................
+.................................... 104.3.2 Result of interception ..................................................................................................
+................................ 104.3.3 Intercept related information messages...................................................................................
+.................... 114.3.4 Time constraints ........................................................................................................
+.................................. 114.3.5 Preventing over and under collection of intercept data ..................................................................
+............. 115 System model ................................................................................................................
+......................... 125.1 Reference netw
+ork topol
+ogies ..............................................................................................
+............................ 125.1.1 Dial-up access ..........................................................................................................
+................................... 125.1.2 xDSL access..............................................................................................................
+.................................. 135.1.3 Cable modem access ......................................................................................................
+............................. 145.1.4 IEEE 802.11 Access (with Wireless LAN profile) ..........................................................................
+........... 155.2 Reference scenarios .......................................................................................................
+................................... 155.2.1 Logon ...................................................................................................................
+....................................... 155.2.2 Multi logon .............................................................................................................
+.................................... 155.2.3 Multilink logon .........................................................................................................
+.................................. 165.2.4 IP transport.............................................................................................................
+..................................... 165.2.5 Logoff ..................................................................................................................
+....................................... 165.2.6 Connection loss .........................................................................................................
+.................................. 166 Intercept Related 
+Information (IRI) .........................................................................................
+.............. 176.1 IRI events ................................................................................................................
+......................................... 176.2 HI2 attributes ............................................................................................................
+........................................ 186.2.1 Use of targetIPAddress, additionalIPAddress and otherTargetIdentifiers fields ........................................ 19
+6.2.2 Use of location field ...................................................................................................
+................................. 197 Content of Communication (CC) ...............................................................................................
+............ 207.1 CC events .................................................................................................................
+........................................ 207.2 HI3 attributes ............................................................................................................
+........................................ 208 ASN.1 for IRI and CC ........................................................................................................
+.................... 20Annex A (informative): Stage 
+1 - RADIUS characteristics ................................................................. 26
+A.1 Network topology ..........................................................................................................
+......................... 26A.1.1 RADIUS server ...........................................................................................................
+..................................... 26A.1.2 RADI
+US proxy ............................................................................................................
+..................................... 26A.2 RADIUS service ............................................................................................................
+......................... 27A.2.1 Authentication service ..................................................................................................
+.................................... 27A.2.2 Accounting service ......................................................................................................
+..................................... 28  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)4 A.3 RADIUS protocol ...........................................................................................................
+........................ 29A.3.1 Authentication protocol .................................................................................................
+................................... 29A.3.2 Accounting protocol .....................................................................................................
+.................................... 29A.4 RADIUS main attributes ....................................................................................................
+.................... 30A.5 RADIUS interception .......................................................................................................
+...................... 31A.5.1 Collecting RADIUS packets................................................................................................
+............................. 31A.5.2 Processing RADIUS packets ...............................................................................................
+............................. 31A.5.2.1 Mapping events to RADIUS packets ......................................................................................
+.................... 31A.5.2.2 Functional model ......................................................................................................
+.................................. 32A.5.2.3 RADIUS
+ spoof
+ing .......................................................................................................
+............................... 35A.5.3 Mapping RADIUS on the IRI structure .....................................................................................
+....................... 35Annex B (informative): Stage 
+1 - DHCP characteristics ..................................................................... 36
+B.1 Network topology ..........................................................................................................
+......................... 36B.2 DHCP service ..............................................................................................................
+........................... 36B.3 BOOTP pr
+otocol ............................................................................................................
+........................ 37B.4 DHCP protocol .............................................................................................................
+.......................... 37B.4.1 Address assignment ......................................................................................................
+.................................... 39B.4.2 Message transmission and relay agents ...................................................................................
+......................... 39B.4.3 Security and authentication .............................................................................................
+................................. 39B.5 DHCP main attributes ......................................................................................................
+...................... 39B.6 DHCP interception .........................................................................................................
+........................ 40B.6.1 Introduction ............................................................................................................
+.......................................... 40B.6.2 DHCP packets ............................................................................................................
+...................................... 41B.6.3 State machine ...........................................................................................................
+........................................ 41B.6.3.1 Mapping DHCP packets to events ........................................................................................
+...................... 42B.6.3.2 Timers and administrative events ......................................................................................
+......................... 42B.6.3.3 State information .....................................................................................................
+................................... 42B.6.3.4 State machine diagram .................................................................................................
+............................... 43B.6.4 Mapping DHCP on the IRI structure .......................................................................................
+......................... 43Annex C (informative): 
+IP IRI inte
+rception ....................................................................................
+..... 45C.1 Introduction ..............................................................................................................
+.............................. 45C.2 Requirements ..............................................................................................................
+............................ 45C.3 Proposed im
+plementation ...................................................................................................
+.................... 45Annex D (informative): TCP and UDP IRI interception .................................................................... 46
+D.1 Introduction ..............................................................................................................
+.............................. 46D.2 Requirements ..............................................................................................................
+............................ 46D.3 HI2 requirements ..........................................................................................................
+.......................... 46D.4 HI3 requirements ..........................................................................................................
+.......................... 47D.5 General re
+quiremen
+ts ......................................................................................................
+....................... 47Annex E (informative): Bibliography ...........................................................................................
+........ 48Annex F (informative): Change Request history .................................................................................
+ 49History .......................................................................................................................
+....................................... 51   ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)5 Intellectual Property Rights 
+IPRs essential or potentially essential to the present document may have been declared to ETSI. The information 
+pertaining to these essential IPRs, if any, is publicly available for 
+ETSI members and non-members
+, and can be found 
+in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to ETSI in 
+respect of ETSI standards"
+, which is available from the ETSI Secretariat. Latest updates are available on the ETSI Web 
+server (
+https://ipr.etsi.org/
+). Pursuant to the ETSI IPR Policy, no investigation, including IPR searches, has been carried out by ETSI. No guarantee 
+can be given as to the existence of other IPRs not referenced in ETSI SR 000 314 (or the updates on the ETSI Web 
+server) which are, or may be, or may become, essential to the present document. 
+Foreword 
+This Technical Specification (TS) has been produced by
+ ETSI Technical Committee Lawful Interception (LI). 
+The present document is part 3 of a multi-part deliverable. Full details of the entire series can be found in part 1 [2]. 
+The ASN.1 module is also available as an electronic attachment to the original document from the ETSI site (see 
+clause 8 for more details). 
+Modal verbs terminology 
+In the present document "
+shall
+", "
+shall not
+", "
+should
+", "
+should not
+", "
+may
+", "
+need not", "
+will
+", "
+will not
+", "can" and 
+"cannot
+" are to be interpreted as described in clause 3.2 of the 
+ETSI Drafting Rules
+ (Verbal forms for the expression of 
+provisions). 
+"must
+" and "
+must not
+" are 
+NOT
+ allowed in ETSI deliverables except when used in direct citation. 
+Introduction 
+The intention of the present document has been to fo
+llow the advice given at ETSI meetings in all cases. 
+The present document focuses on intercepting IP data in relati
+on to the use of Internet Access Services (IAS) and is to 
+be used in conjunction with ETSI TS 102 232-1 [2]. In the latter document the handing over of the intercepted data is 
+described. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)6 1 Scope The present document contains a stage 1 description of the in
+terception information in relation to the process of binding 
+a "target identity" to an IP address when providing Internet
+ access and a stage 2 description of when Intercept Related 
+Information (IRI) and Content of Communication (CC) need to be sent, and what information it needs to contain. 
+The study includes but is not restricted to IRI based on application of Dynamic Host Configuration Protocol (DHCP) 
+and Remote Authentication Dial-in User Service (RADIUS) tec
+hnology for binding a "target identity" to an IP address 
+and CC for the intercepted IP packets. 
+The definition of the Handover Interface 2 (HI2) and Handover Interface 3 (HI3) is outside the scope of the present 
+document. For the handover interface is referred to ETSI TS 102 232-1 [2]. 
+2 References 
+2.1 Normative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+Referenced documents which are not found to be publicly available in the expected location might be found at 
+http://docbox.etsi.org/Reference
+. NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are necessary for the application of the present document. 
+[1] ETSI TS 101 671: "Lawful Interception (LI); Handover interface for the lawful interception of 
+telecommunications traffic". 
+NOTE: Periodically TS 101 671 is published as ES 201 671. A reference to the latest version of the TS as above 
+reflects the latest stable content from ETSI/TC LI. 
+[2] ETSI TS 102 232-1: "Lawful Interception (LI); Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 1: Handover specification for IP delivery". 
+[3] IETF RFC 1122: "Requirements for Internet Hosts - Communication Layers". 
+[4] IETF RFC 1570: "PPP LCP Extensions". 
+
+[5] IETF RFC 1990: "The PPP Multilink Protocol (MP)". 
+[6] IETF RFC 2131: "Dynamic Host Configuration Protocol". 
+[7] IETF RFC 7542: "The Network Access Identifier". 
+
+[8] IETF RFC 2865: "Remote Authentication Dial In User Service (RADIUS)". 
+
+[9] IETF RFC 2866: "RADIUS Accounting". 
+
+[10] IETF RFC 3046: "DHCP Relay Agent Information Option". 
+[11] IETF RFC 3118: "Authentication for DHCP Messages". 
+[12] IETF RFC 3396: "Encoding Long Options in the Dynamic Host Configuration Protocol 
+(DHCPv4)". 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)7 [13] IEEE 
+802.11
+TM (ISO/IEC 8802-11): "IEEE Standard for Information technology - 
+Telecommunications and information exchange between systems - Local and metropolitan area 
+networks - Specific requirements - Part 11: Wireless LAN Medium Access Control (MAC) and 
+
+Physical Layer (PHY) Specifications". 
+[14] Recommendation ITU-T X.680: "Information technology - Abstract Syntax Notation One 
+(ASN.1): Specification of basic notation". 
+[15] IETF RFC 2132: "DHCP Options and BOOTP Vendor Extensions". 
+[16] ISO 3166-1: "Codes for the representation of names of countries and their subdivisions -- Part 1: 
+Country codes". 
+2.2 Informative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are not necessary for the application of the present document but they assist the 
+
+user with regard to a particular subject area. 
+[i.1] ETSI TR 102 205: "Methods for Testing and Specification (MTS); UML 2.0 action syntax 
+feasibility study". 
+[i.2] IEEE 
+802.1X-2001
+TM: "IEEE Standards for Local and Metropolitan Area Networks: Port-Based 
+Network Access Control". 
+[i.3] draft-ietf-dhc-agentopt-radius-04.txt: "RADIUS Attributes Sub-option for the DHCP Relay Agent 
+Information Option". 
+3 Definitions and abbreviations 
+3.1 Definitions For the purposes of the present document, the terms and definitions given in ETSI TS 102 232-1 [2] and the following 
+
+apply: 
+access provider: 
+Communications Service Provider (CSP), providing access to a network 
+NOTE: In the context of the present document, the network access is defined as IP based network access to the 
+Internet. 
+access service: 
+set of access methods provided to a user to 
+access a service and/or a supplementary service 
+NOTE: In the context of the present document, the service to be accessed is defined as the Internet. 
+accounting: act of collecting information on resource usage for the purpose of trend analysis, auditing, billing, or cost 
+allocation 
+
+authentication:
+ property by which the correct identity of an entity
+ or party is established with a required assurance 
+authorization: 
+property by which the access rights to resources are established and enforced 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)8 3.2 Abbreviations For the purposes of the present document, the following abbreviations apply: 
+AAA Authentication, Authorization and Accounting 
+ACK Acknowledge 
+ADSL Asymmetric Digital Subscriber Line 
+
+ANP Access Network Provider 
+
+AP Access Provider 
+
+ARP Address Resolution Protocol 
+
+ASN.1 Abstract Syntax Notation One 
+ATM Asynchronous Transfer Mode 
+BOOTP BOOTstrap Protocol 
+
+CC Content of Communication 
+
+CHAP Challenge Handshake Authentication Protocol 
+
+CIN Communication Identity Number 
+CMTS Cable Modem Termination System 
+CPE Customer Premises Equipment 
+
+CSP Communications Service Provider (covers all AP/NWO/SvP) 
+
+DHCP Dynamic Host Configuration Protocol 
+
+DNS Domain Name System 
+
+DoS Denial of Service 
+DSL Digital Subscriber Line 
+DSLAM Digital Subscriber Line Access Multiplexer 
+
+FQDN Fully Qualified Domain Name 
+
+FSM Functional State Machine 
+
+GWR GateWay Router 
+
+HI1 Handover Interface 1 (for Administrative Information) 
+HI2 Handover Interface 2 (for Intercept Related Information) 
+HI3 Handover Interface 3 (for Content of Communication) 
+
+IANA Internet Assigned Numbers Authority 
+
+IAP Internet Access Provider 
+
+IAS Internet Access Service 
+IETF International Engineering Task Force 
+IF Interception Function 
+
+IIF Internal Interception Function 
+
+IP Internet Protocol 
+
+IPCC Internet Protocol Call Content 
+
+IPFIX Internet Protocol Flow Information eXport 
+IPSEC Internet Protocol Security 
+IRI Intercept Related Information 
+
+ISDN Integrated Services Digital Network 
+
+ISP Internet Service Provider 
+
+LAN Local Area Network 
+
+LCP Link Control Protocol 
+LEA Law Enforcement Agency 
+LEMF Law Enforcement Monitoring Facility 
+
+LI Lawful Interception 
+
+MAC Media Access Control 
+
+MF Mediation Function 
+
+NA Not Applicable 
+NAS Network Access Server 
+NIC Network Interface Controller 
+
+NWO NetWork Operator 
+
+OID Object IDentifier 
+
+OSI Open Systems Interconnection 
+PAP Password Authentication Protocol 
+PC Personal Computer 
+
+PDA Personal Digital Assistant 
+
+PDU Packet Data Unit 
+
+POP Point of Presence 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)9 PPP Point-to-Point 
+Protocol 
+PPPoA Point-to-Point Protocol over ATM 
+PPPoE Point-to-Point Protocol over Ethernet 
+
+PSTN Public Switched Telephone Network 
+
+QoS 
+Quality of Service 
+RADIUS Remote Authentication Dial-In User Service 
+SLIP Serial Line Interface Protocol 
+SvP Service 
+Provider 
+TCP Transmission 
+Control 
+Protocol 
+TCP/IP Transmission Control Protocol/Internet Protocol 
+
+TLV Type-Length Value 
+UDP User Datagram Protocol 
+WAN Wide Area Network 
+
+WINS Windows Internet Name Service 
+4 General 
+4.1 Internet Access Service (IAS) 
+An Internet Access Service (IAS) provides access to the Inte
+rnet to end users via a modem connected to a telephone, 
+cable or wireless access network owned by a NetWork Operator 
+(NWO). The IAS is typically provided by an Internet 
+Access Provider (IAP) or Internet Service Providers (ISP), wh
+ere an ISP also provides supplementary services such as 
+E-Mail, Chat, News, etc. For the remainder of the document, the provider of the Internet Access Service (IAS) will be 
+
+referred to as IAP and although NWO and IAP may be the same party, in all figures in the present document, they are 
+depicted as separate entities. 
+  
+     IAP/ISP 
+ 
+     Customer 
+ 
+     NWO 
+Customer 
+Premises 
+
+Equipment 
+(CPE) 
+       IAP 
+Network 
+Access 
+Network 
+Internet 
+ Figure 1: Internet access 
+The customer typically connects to the IAP via a Telco or cable company owned access network, such as the 
+PSTN/ISDN telephony network for dial-up and xDSL access, the cable-TV network for cable modem access or 
+
+alternatively a IEEE 802.11 [13] Wireless LAN. 
+The service provided by the IAP is no more and no less than to provide a user with a valid IP address for transporting 
+and receiving data over an IP based network and to provide transit access to the Internet for this data. 
+4.2 Target identity and IP address 
+Before the IAP can provide a user with a valid IP address, there is a need for 
+Authentication
+, Authorization
+ and during 
+or at the end of the communication session there is a need for 
+Accounting
+. In order to perform these functions, the IAP may deploy equipment in its network that implements an Authentication, 
+
+Authorization and Accounting (AAA) protocol such as RADIUS. The other protocol mentioned in the scope 
+
+declaration, DHCP, is not really an AAA protocol, since it does very limited authentication and no authorization or 
+accounting. DHCP can assign IP addresses and provide network 
+configuration information to the user and is therefore 
+often used in combination with RADIUS or other (proprietary) equipment. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)10 When a user is authenticated and authorized, the IAP will as
+sign an IP address to the user. The assignment of the IP 
+address can be performed by using RADIUS, DHCP or a combination of the two. In the latter case, often the RADIUS 
+server will act as a client to the DHCP server, where the DHCP server assigns the IP address and the RADIUS server 
+
+forwards the information towards the user. The user will use 
+the assigned IP address to communicate over the Internet 
+and therefore, for the duration of the session, traffic from and to
+ this user can be identified by means of this IP address. 
+In some cases (e.g. dial-up access), the Network Access Server (NAS) may assign the IP address to the user; either from 
+a local IP address pool or by using DHCP and does not use RADIUS authentication for IP address assignment. 
+From an LI perspective, the moments of assignment and deassignment of the IP address and the protocol used for it are 
+of interest. It is at the moment of assignment, and only at that particular moment, that the target identity can be tied to a 
+
+dynamically assigned IP address, which can then further be us
+ed to intercept IP traffic from
+ the particular user. At the 
+moment of deassignment, interception of IP data based on that
+ particular IP address shall stop immediately, since the IP 
+address may be handed out to another user shortly after. 
+4.3 Lawful Interception requirements 
+This clause lists the requirements for Lawful Interception. These requirements are derived from higher-level 
+requirements listed in ETSI TS 101 671 [1] and ETSI TS 102 232-1 [2] and are specific to Internet Access Services 
+(IAS). These requirements focus on both the administrative part of Internet access for delivery over HI2 as well as 
+
+capturing traffic for delivery over HI3. 
+4.3.1 Target identity 
+Where the special properties of a given service, and the justified requirements of the LEAs, necessitate the use of 
+
+various identifying characteristics for determination of the traffic to be intercepted, the provider (CSP) shall ensure that 
+
+the traffic can be intercepted on the basis of these characteristics. 
+In each case the characteristics shall be identifiable without unreasonable effort and shall be such that they allow clear 
+determination of the traffic to be intercepted. 
+The target identity will be dependent on the access mechanism used and the parameters available with the AP. The 
+target identity could be based on: 
+a) Username or Network Access Identifier (as defined in IETF RFC 7542 [7]). 
+b) IP address (IPv4 or IPv6). 
+c) Ethernet address. 
+d) Dial-in number calling line identity. 
+e) Cable modem identifier. 
+f) Other unique identifier agreed between AP and LEA. 
+The target identity shall uniquely identify the target in the provider's network. Investigations prior to the interception 
+
+might involve other identifiers such as a DNS name (Fully Qualified Domain Name (FQDN)). Further study may yield 
+more types of target identity. 
+4.3.2 Result of interception 
+The network operator, access provider or service provider sh
+all provide Intercept Related Information (IRI), in relation 
+to each target service: 
+a) When an attempt is made to access the access network. 
+b) When an access to the access network is permitted. 
+c) When an access to the access network is not permitted. 
+d) On change of status (e.g. in the access network). 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)11 e) On change of location (this can be related or unrelated 
+to the communication or at all times when the apparatus 
+is switched on). 
+The IRI shall contain: 
+a) Identities used by or associated with the target identity (e.g. dial-in calling line number and called line number, 
+access server identity, Ethernet addresses, access device identifier). 
+b) Details of services used and their associated parameters. 
+c) Information relating to status. 
+d) Timestamps. 
+Content of Communication (CC) shall be provided for every IP datagram sent through the IAP's network that: 
+a) Has the target's IP address as the IP source address. 
+b) Has the target's IP address as the IP destination address. 
+The CC Content of communication shall contain: 
+a) A stream of octets for every captured datagram, containing a copy of the datagram from layer 3 upwards. 
+NOTE: Due to the possibility of IP source address spoofing, 
+the fact that an intercepted packet has the target's IP 
+address as the IP source address does not guarantee that the packet was transmitted by the target;  
+
+i.e. an intercept in place at the interface connected to
+ the target may not include packets originating from 
+other users spoofing the target's IP address and will not include packets from the actual target that contain 
+a spoofed IP address. 
+4.3.3 Intercept relat
+ed information messages 
+Intercept Related Information (IRI) shall be conveyed to the LEMF in messages, or IRI data records, respectively. Four 
+types of IRI records are defined: 
+1) IRI-BEGIN record at the first event of a communication attempt, opening the IRI transaction. 
+2) IRI-END record at the end of a communicatio
+n attempt, closing the IRI transaction. 
+3) IRI-CONTINUE record at any time during a communication attempt within the IRI transaction. 
+4) IRI-REPORT record used in general for non-communication related events. 
+For a description of the use and purpose of the various IRI records refer to ETSI TS 102 232-1 [2]. 
+4.3.4 Time constraints 
+The delays for generating the Intercept Related Informatio
+n (IRI) will only be caused by the access protocol handling 
+and the automated forwarding of this information to the delivery function. 
+The interception that takes places as a result of the identification of the target in the access service will experience no 
+unnecessary delay. The delay will only be caused by the access protocol handling and the automated forwarding of this 
+
+information to the interception function(s). 
+4.3.5 Preventing over and under collection of intercept data 
+Measures shall be taken to: 
+1) enable timely detection of system, network or software 
+failures that may cause the interception system to over 
+or under collect data; 
+2) take appropriate action to prevent fu
+rther over or under collection; and 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)12 3) report on the anomaly to allow for corrective action by the LEA. 
+NOTE 1: The terms over and under collection refer to either wrongfully including data that is not part of the 
+intercept or not capturing data that should have been part of the intercept. 
+If an interception is started based on an IP-address bindin
+g event that contains session-timeout information and at the 
+time of the expected session-timeout no explicit session-te
+rmination event has been capture
+d, the interception shall be 
+stopped and the situation shall be reported upon. 
+If an IP-address binding event is captured that contains an 
+IP address already in use in an active intercept, but for a 
+different user, the intercept shall be stopped and the situation shall be reported upon. 
+NOTE 2: Due to various kinds of failures or delays in the LI infrastructure, the event indicating the logoff of a 
+target could be missed by the Interception function.
+ The actual logoff would release the IP address for 
+reassignment to another user, which would lead
+ to a serious kind of over collection. 
+5 System model 
+5.1 Reference network topologies 
+This clause describes a number of refere
+nce network topologies, typically used fo
+r Internet access over various types of 
+access networks. 
+5.1.1 Dial-up access 
+Internet access over a switched telephony network is typically referred to as dial-up access. Figure 2 shows the principal 
+equipment involved in this kind of Internet access. 
+  IAP/ISP
+  Customer 
+NWO
+PSTN
+ISDN
+ NAS
+ AAA
+Internet
+("V.90
+")modem
+ IP-
+enabled
+device 
+IAP 
+network
+  Figure 2: Dial-up access 
+The CPE for dial-up access typically consists of a computer, 
+laptop or PDA that is equippe
+d with a modem connected to 
+the regular telephone network. Via this modem, the telephone number of the Network Access Server (NAS) of the IAP 
+is dialled. The NAS answers the call and the NAS and the end-
+user typically establish a Point-to-Point Protocol (PPP) 
+connection. Due to the distributed nature of dial-up 
+access, a user may dial into any NAS in the network. 
+Once the PPP connection is established, the NAS w
+ill request the user to identify himself and to provide a password. 
+The NAS will then request the AAA server in the IAP infrastructure (for dial-up access typically a RADIUS server) to 
+
+perform the authentication based on the provided username and password. Additionally, the AAA server will check 
+
+whether the user is authorized to use the Internet Acce
+ss Service (IAS). If so, the AAA server may provide the NAS 
+with an IP address that is to be used by the user. In 
+other cases, the NAS allocates the IP address from a locally 
+configured pool of addresses and the AAA server does not know the IP address at the time of authentication. 
+Next, the NAS informs the user about the assigned IP address and other network configuration information, such as the 
+address of the DNS server and/or the address of the gateway to the Internet. The CPE can now set-up its IP protocol 
+stack and establish IP based communication with the Internet. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)13 After the NAS has established a PPP session with the CPE, the NAS may provide the Accounting server with 
+information indicating the start of the session and the parameters in use for the session (e.g. IP address, NAS address). 
+
+The Accounting server may be a physically separate server from the Authentication/Authorization server. In the case in 
+
+which the NAS assigns IP addresses from a local pool, this is the first time the IP address assigned to the target is 
+
+known externally to the NAS. 
+At the end of the session, either when the user logs off or 
+when the connection to the NAS is lost, the NAS will provide 
+the Accounting server with details regarding usage of the Internet connection, e.g. duration, bytes sent and received, etc. 
+This information can be used for accounting purposes. 
+From an LI perspective, the assignment of IP addresses, in 
+relation to the usernames they are assigned to, as well as the 
+moment of deassignment, i.e. the exchange of accounting information, are of interest. 
+NOTE: Many IAPs also support tunnelling the 
+PPP session from the NAS to a home gateway either at another 
+location within the IAP or residing on another network (e.g. another IAP or an enterprise). The standard 
+protocol used to support this is Layer 2 T
+unnelling Protocol which tunnels the 
+PPP frames from the NAS 
+to the home gateway. Proprietary tunnelling techniques might also be used based on the service provider. 
+
+Many of the technologies described in the present document may be used to support the tunnelling service 
+
+(e.g. RADIUS); however, since this service is not an Internet Access Service (IAS) as defined in the 
+
+present document, it is outside the scope of the present document. 
+5.1.2 xDSL access 
+Internet access over the local loop by means of using special
+ized equipment for achieving a high bandwidth over copper 
+wire is commonly referred to as xDSL Access. There is great variety of possible architectures and technologies that can 
+be applied for realizing an xDSL network. Therefore, figure 3 only shows the principal equipment involved in this kind 
+
+of Internet access. 
+   IAP/ISP
+ Customer
+     NWO
+  DSLAM
+ AAA
+ Internet
+ GWR IP-enabled
+ device 
+Router /
+ Bridge
+ xDSL 
+modem
+ Edge
+ router
+ IAP 
+network
+ PSTN
+ local 
+loop
+  Figure 3: xDSL access 
+The CPE can consist of a single IP enabled device which is connected to an xDSL modem or, in order to support 
+multiple IP enabled devices to share the xDSL connection, to a router or bridge that is connected to an xDSL modem. 
+The modem is connected to the copper wire of the telephone network, the local loop. In the telephone switch, this wire, 
+and wires from other xDSL lines, are connected to the DSL Access Multiplexer (DSLAM). By utilizing frequencies 
+
+above the telephone bandwidth, the xDSL modem and the DSLAM can encode more data to achieve a higher 
+
+bandwidth than would otherwise be possible in the restricted frequency range of a PSTN network. 
+For large scale xDSL infrastructures, two main approaches are used for protocol layering; PPP over ATM (PPPoA) and 
+PPP over Ethernet (PPPoE). In the PPPoA architecture, a CPE router encapsulates IP packets into PPP frames and then 
+segments them into ATM cells. The PPP link is commonly terminated at the GateWay Router (GWR) of the IAP, which 
+
+concentrates PPP links from multiple Edge routers. The GWR routes the user's IP packets to their final destination. The 
+
+GWR typically uses a RADIUS server to authenticate and auth
+orize the user. A DHCP server may be used to assign the 
+IP address. A PPPoA implementation involves configuring the CPE router with username and password. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)14 In the PPPoE architecture, at the user premises an Ethernet-to-WAN bridge is used as opposed to a router and the PPP 
+session is established between the end user's computer and the GWR. PPPoE requires PPP client software to be 
+
+installed on the user's computer. The client software initiates a PPP session by encapsulating IP packets into PPP frames 
+
+into a MAC frame and then bridges the frames (over ATM/DSL)
+ via the edge router to the GWR. From this point, PPP 
+
+sessions can be established, authenticated, etc. As well 
+as in the PPPoA architecture, the GWR typically uses a 
+RADIUS server to authenticate and authorize the user and again DHCP may use to assign the IP address. 
+In the PPPoA architecture, the CPE router may keep the connection established, even if the user's computer has been 
+shut down. Therefore, in this architecture IP address assignment will happen very rarely; only once until either the 
+
+router is shutdown or, if due to network or equipment fail
+ure, the connection is lost and re-established. In the PPPoE 
+architecture, the IP address is assigned every time the user's computer logs on. 
+In some cases the IAP will resort to assigning static IP addresses to xDSL users. When in this case the user establishes 
+an IP connection, the IP address will still be assigned by means of a RADIUS and or DHCP server, but it will always be 
+the same IP address. If this is the case, especially in comb
+ination with a PPPoA architecture, for LI purposes it is a lot 
+easier to obtain a user's IP address from the IAP administrati
+on, rather than to obtain it from the network by technical 
+means, e.g. capturing and interp
+reting RADIUS or DHCP traffic. 
+If it is decided to resort to technical means for intercepting the IP address, for a timely start of the interception, it may 
+
+be considered to bounce the user's
+ connection in order to enforce assignment of a new IP address. 
+5.1.3 Cable modem access 
+Internet access over the cable network by means of using sp
+ecialized equipment for achieving a high bandwidth over 
+coaxial wire is commonly referred to as cable modem access. As for xDSL, there is great variety of possible 
+
+architectures and technologies that can be applied for realizing a cable modem network. Therefore, figure 4 only shows 
+
+the principal equipment involved in this kind of Internet access. 
+     IAP/ISP
+       NWO
+ Customer
+   CMTS
+ AAA Intern
+et GWR
+ DHCP
+ IP-enabled
+ device 
+Cable 
+modem
+ Cable 
+network 
+(Fiber/Coax)
+ Super
+ hub
+ IAP 
+netwo
+rk  Figure 4: Cable modem access 
+The CPE typically consists of an IP enabled device connected
+ to a cable modem via an Ethernet port. The cable modem 
+connects to the Cable network using a coaxial cable. For downstream data, a cable modem is capable of receiving up to 
+
+36 Mbps of data. Upstream data is transmitted with data rates from 320 kbps up to 10 Mbps. 
+At the NWO end, the data channels are terminated at a Cable Modem Termination System (CMTS). This CMTS 
+aggregates multiple cable modem channels and routes the user's 
+IP packets, either over Ethernet or over ATM, into an 
+IP network. Depending on the applied standards, network 
+architecture and geographical factors, multiple CMTSs may 
+be aggregated by a distribution hub, multiple distribution hubs by a super hub and multiple super hubs by a GateWay 
+
+Router (GWR). 
+Typically, IP addresses are assigned by means of DHCP base
+d on the MAC address of either the cable modem or the 
+users' computer, depending on applied standards and equipmen
+t, where either the computer or the cable modem will 
+broadcast a DHCP request. The DHCP servers are typically distributed at the Super hub level and provisioned from a 
+central location with the MAC addresses of authorized users.
+ Typically IP addresses are assigned dynamically to most 
+users but may be fixed for particular users. The latter may be assigned by means of DHCP as well. 
+The IAP may authenticate and authorize users for the access service based on a username and password as well. Such 
+additional authentication can also be used for the provision process, for example when a user replaces his computer and 
+
+therefore changes his MAC address. The AAA protocol used for this may be RADIUS or proprietary. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)15 From an LI perspective, the AAA process is less relevant 
+than the DHCP based IP address assignment. An interception 
+solution in a cable modem environment will typically capture DHCP traffic in an attempt to identify a user based on his 
+
+MAC address. The potential geographical
+ spread of DHCP servers may become an issue, since this implies that the 
+interception solution shall therefore by distributed ov
+er a potentially large number of locations as well. 
+In some cases, the IAP may use PPPoE for access. This operation is similar to that described for xDSL. 
+5.1.4 IEEE 802.11 Access (w
+ith Wireless LAN profile) 
+Wi-Fi (also known as "Wireless LAN") is a registered tr
+ademark of the Wi-Fi Alliance, and is used to indicate 
+equipment which conforms to an interworking profile for IEEE 802.11a, -b or -g [13]. 
+Figure 5 depicts a much used reference scenario of Wireless LAN access. 
+Most Wireless LAN networks use a standards based AAA protocol like RADIUS for authentication. Therefore, 
+Wireless LAN could be intercepted like any other internet
+ access scenario. However, because access points are often 
+connected via a consumer grade broadband connection using on
+e IP address, the internet traffic is masqueraded. To 
+identify a unique target, interception thus should take place be
+fore the IP addresses are translated (in or near the access 
+point), or traffic should be tunnelled to a central location. 
+ Internet
+connectivity
+Access
+
+point
+AAA
+
+functions
+Backhaul network
+Central location
+ Figure 5: Reference scenario for Wireless LAN access 
+5.2 Reference scenarios 
+5.2.1 Logon 
+In order for a user to be able to use an Internet Access Services (IAS), the user shall first establish a network level 
+connection to the Access Network. Next, either on the in
+itiative of the user or the access network, authentication 
+information is exchanged based on which an AAA server performs authentication and authorization. Depending on the 
+outcome of the authentication and authorization, access is either
+ granted or denied. In the case access is granted, an IP 
+address is provided, the user sets up an IP stack and layer 3 communications can commence. 
+5.2.2 Multi logon 
+If the IAP allows for multi logon, the same UserID can be used multiple times (concurrently) to establish an IP 
+
+connection along the lines of clause 5.2.1. The UserID and 
+password provided by the user will be identical for all 
+sessions; the provided IP address will differ for each of the sessions and the traffic transported for each of the IP 
+
+addresses will belong to separate IP sessions. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)16 5.2.3 Multilink logon 
+Multilink logon may be required for users connecting using a multilink protocol, such as the PPP multilink protocol for 
+ISDN described in IETF RFC 1990 [5], where a separate authentication is performed, along the lines of clause 5.2.1, for 
+each of the ISDN 64 kbit channels and the NAS combines multiple 64 kbit channels into a single logical channel. In this 
+
+scenario, the same UserID and password may be used for authentication for each of the channels; the IP addresses 
+
+provided by the NAS may differ. Depending on NAS implementation, typically the first IP address that is provided, the 
+
+one for the base channel, is the IP address used for the combined channels. Subsequent IP addresses, provided for the 
+
+additional channels, may be valid IP addresses or may be invalid IP addresses such as 0.0.0.0. In either case, IP 
+addresses provided for additional channels are not used for transporting data, since all data is transported using the IP 
+address of the base channel. 
+NOTE: When using multilink 
+PPP to dial into a pool of 
+NASes, each 64 kbit/s connection can terminate on a 
+separate NAS. Many IAPs use multichassis multilink to support this scenario. In this case, the 
+
+aggregation point of the multilink bundle will be on one of the NASes or on a separate piece of 
+equipment. The IP address assigned to the multilink bun
+dle will be allocated from the address pool of the 
+equipment terminating the multilink bundle. 
+5.2.4 IP transport 
+While having an active IP connection, the CPE can transmit IP datagrams, embedding any higher-level IP based 
+protocol, towards any IP enabled destina
+tion connected to the Internet or receive
+ IP datagrams directed towards it from 
+any IP enabled source connected to the Internet. 
+5.2.5 Logoff 
+When a user logs off, the client running on the CPE will negotiate the closure of the session with the NAS, e.g. for a 
+
+PPP session LCP (see IETF RFC 1570 [4]) is used to close the link through an exchange of Terminate packets. Next, 
+
+the NAS informs the AAA server of the session closure and may provide statistics on the session as well. 
+5.2.6 Connection loss 
+During an active IP session, for reasons such as loss of carrier, link quality failure, the expiration of an idle-period 
+timer, the connection may terminate (unexpectedly). In this case there will be no user provided logoff indication and it 
+is up to the NAS to detect the connection loss and propagate the session closure towards the Accounting server. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)17 6 Intercept Related Information (IRI) 
+6.1 IRI events 
+Figure 6 shows the life cycle of a generic internet access session. 
+   AccessEnd 
+ IRI_END 
+ Access-Accept 
+ IRI_BEGIN 
+ Access-Reject 
+
+ Access-Failed 
+ IRI_REPORT 
+ Access-Attempt 
+ IRI_REPORT  
+ New  CIN Value 
+Logged off 
+Logging on 
+Session active 
+ InterimUpdate 
+
+ IRI_CONTINUE 
+Started Intercept 
+ startOfInterceptionWithSessionActive 
+
+ IRI_BEGIN 
+ New  CIN Value 
+Intercept Ended 
+ endOfInterceptionWithSessionActive 
+
+ IRI_REPORT 
+  NOTE: Depending on the signalling implementation, there may be duplicate events due to resends. Resends of 
+events shall be ignored as far as state-changes ar
+e concerned; this is not depicted in the diagram. 
+ Figure 6: State diagram for an Internet session 
+Subject to agreement on a national level, it is acceptable to
+ perform the CIN allocation on the Access-Accept rather than 
+the Access-Attempt. If this option is chosen, the CSPs shall allocate a new CIN only on the IRI-BEGIN messages; and, 
+
+send Access-Attempt, Access-Reject and Access-Failed as standalone messages not associated with any other CC or 
+
+IRI. 
+Figure 6 allows for a model where detailed information is
+ available regarding the identification and authentication 
+process as well as for a simple model where ju
+st a session start notification is available. 
+The following IRI events are depicted. 
+Table 1: IRI events 
+IRI Even
+t Description
+ IRI Message
+ Access_attempt A target requests access to the Internet Access Service (IAS). REPORT 
+Access_accept The AAA server grants access to the target. 
+BEGIN Access_reject The AAA server refuses access to the target. 
+REPORT 
+Access_failed The Access_attempt timed-out or failed otherwise. 
+REPORT 
+Start of Interception with 
+Session Active 
+As sessions can be active over longer periods, it is not unlikely for 
+an intercept to start after a user session has started already. 
+Available information about the status of this session is sent to the 
+LEA. BEGIN Interim_Update Intermediate status report on service status or usage. 
+CONTINUE 
+Access_end A target stops using the IAS, ei
+ther due to logoff or connection loss. END 
+End of 
+Interception with 
+Session Active 
+As sessions can be active over longer periods, it is not unlikely for 
+an intercept to end whilst a user session remains active. 
+
+Available information about the status of this session is sent to the 
+LEA. REPORT 
+   ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)18 When LI is activated during an already active internet sessi
+on, which the IAP is aware of, it is recommended that an 
+IRI-BEGIN message is generated to mark the start of interception and the specific event type of 
+startOfInterceptionWithSessionActive 
+shall be used. 
+When LI is deactivated during an already active internet se
+ssion, which the IAP is aware of, as a national option the MF 
+may choose to either generate an IRI-REPORT message to mark the end of interception and shall use the specific event 
+
+type of 
+endOfInterceptionWithSessionActive,
+ or not to generate an IRI-REPORT message and only communicate the 
+end of interception by other means (e.g. HI1 
+liDeactivated message). 
+6.2 HI2 attributes 
+Table 2 lists the attributes for IRI for Internet access and defines in which of the IRI messages a value shall be provided 
+
+for them, provided the attribute is relevant for the type of service. 
+Table 2: HI2 attributes
+ Attribute
+ Description
+ Report Begin
+ Cont. End accessEventType 
+Type of IRI event (e.g. Access_attempt, 
+Access_failed, Session_start, etc.) 
+Y Y Y Y 
+targetUsername 
+The Username (or other token used for 
+
+identification) of the target 
+Y Y Y Y 
+internetAccessType 
+The type of Internet access (e.g. dial-up, ADSL, 
+
+cable modem, LAN access) 
+Y Y Y Y 
+iPVersion 
+IPv4 or IPv6 or iPV4andV6 
+Y Y Y Y 
+targetIPAddress 
+The IPv4 address that was assigned to the target 
+
+Refer to clause 6.2.1 for full description and usage 
+Y Y Y Y 
+targetNetworkID 
+The MAC address of the target CPE for layer 2 
+
+access or the target PSTN/ISDN number for dial-up 
+Y* Y* - - 
+targetCPEID 
+Secondary identification of the target CPE 
+
+(e.g. DHCP Relay Agent Information, computer 
+name, etc.) 
+Y* Y* - - 
+targetLocation 
+Location information. New implementations are 
+encouraged to use the imported "location" field (see 
+below) where possible. 
+Y* Y* Y - 
+pOPPhoneNumber The POP telephone number used for dial-up access Y* Y* - - 
+pOPIdentifier 
+The POP identifier or name 
+Y* Y* - - 
+pOPIPAddress The POP IP address 
+Y* Y* - - 
+pOPPortNumber 
+The POP or NAS port number the target uses for 
+dial-up access. The content and the structure are 
+defined by the network access provider; to be 
+included if accessible by the provider 
+Y* Y* - - 
+callBackNumber 
+The target PSTN/ISDN number used for call-back by 
+the NAS 
+Y* Y* - - 
+startTime 
+The date and time of the start of the session (or 
+lease) 
+Y* Y* - - 
+expectedEndTime  
+The date and time of a predicted session ending 
+
+(e.g. lease expiration) 
+Y* Y* - - 
+endTime 
+The date and time of the end of the session (or 
+lease) 
+- - - Y 
+endReason 
+The reason for the session to end (e.g. logoff, 
+connection loss, time out, lease expiration) 
+- - - Y 
+octetsTransmitted 
+The number of octets the target sent during the 
+
+session 
+- - - Y 
+octetsReceived 
+The number of octets the target received during the 
+session 
+- - - Y 
+rawAAAData 
+An unformatted OCTET string that may contain the 
+raw AAA records as they were intercepted 
+- - - - 
+nationalIPIRIParameters
+ National IP IRI parameters 
+Y Y Y Y 
+additionalIPAddress 
+The IPv6 address that was assigned to the target 
+
+Refer to clause 6.2.1 for full description and usage 
+Y Y Y Y 
+authenticationType 
+Field used to identify the authentication type to 
+
+assist with LEMF data validation 
+Y Y - - 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)19 Attribute
+ Description
+ Report Begin
+ Cont. End otherTargetIdentifiers 
+This parameter is used when multiple subnet/prefix 
+ranges are assigned to a target service. There can 
+
+be multiple instances of OtherTargetIdentifiers. 
+Refer to clause 6.2.1 for full description and usage. 
+Y Y Y Y 
+location 
+The location associated with the target, if available Y Y Y Y 
+Attributes marked with Y shall be provided, if a value is available for it. 
+Attributes marked with * shall be reported in either the IRI_REPORT or the IRI_BEGIN record or both. 
+
+Attributes marked with - may be reported in all IRI records if a correct value is available. 
+NOTE 1: The ASN.1 for the structure is presented in clause 8 as IPIRI. 
+NOTE 2: National legislation may prohibit the IAP to provide the users password. If so, the password shall be 
+removed from the raw AAA data before handover. 
+ 6.2.1 Use of targetIPAddress, additionalIPAddress and 
+otherTargetIdentifiers fields 
+When the iPVersion parameter is set to value iPV4: 
+• The targetIPAddress field will contain the first 
+(or only) target IPv4 address or subnet range. 
+• The additionalIPAddress field will not be populated with any value. 
+• The otherTargetIdentifiers field will contain the second and subsequent IPv4 target addresses (with or without 
+subnet ranges) if any additional address ranges are assigned to the target service.  
+NOTE 1: The otherTargetIdentifiers field is intended to be extensible to accommodate other target identifiers and 
+types which may be required in future. 
+When the iPVersion parameter is set to value iPV6: 
+• The targetIPAddress field will contain the first (o
+r only) target IPv6 address or prefix range. 
+• The additionalIPAddress field will not be populated with any value. 
+• The otherTargetIdentifiers field will contain the second and subsequent IPv6 target addresses (with or without 
+prefix ranges) if any additional address ranges are assigned to the target service. 
+NOTE 2: The otherTargetIdentifiers field is intended to be extensible to accommodate other target identifiers and 
+types which may be required in future. 
+When the iPVersion parameter is set to value iPV4andV6 (i.e. where the user service is dual-stacked): 
+• The targetIPAddress field will contain the first 
+(or only) target IPv4 address or subnet range. 
+• The additionalIPAddress field will contain the first (or only) target IPv6 address or prefix range. 
+• The otherTargetIdentifiers field will contain the second and subsequent IPv4 or IPv6 target addresses (with or 
+without subnet or prefix ranges) if any additional address ranges are assigned to the target service. 
+NOTE 3: The otherTargetIdentifiers field is intended to be extensible to accommodate other target identifiers and 
+types which may be required in future. 
+6.2.2 Use of location field 
+The IRI Internal Interception Function (IIF) may report location information to satisfy the requirement in clause 4.3.2. 
+
+The availability and format of location information in the IRI IIF may depend on the network access technology. Since 
+version 3.4.1 of the present document uses the common "location" parameter from ETSI TS 102 232-1 [2] to signal this 
+information. Use of this parameter is subject to national agreement. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)20 7 Content of Communication (CC) 
+7.1 CC events 
+CC is provided for every IP datagram sent through the IAP's network that: 
+a) has the target's IP address as the IP source address; 
+b) has the target's IP address as the IP destination address. 
+7.2 HI3 attributes 
+CC is provided for every intercepted IP datagram. The CC payl
+oad contains a stream of octets, containing an exact copy 
+of the intercepted datagram from the IP layer and upwards, i.e. Link layer data is removed from the payload. 
+NOTE: The ASN.1 for the structure is presented in clause 8 as IPCC. 
+8 ASN.1 for IRI and CC 
+The ASN.1 definitions are contained in a .txt file ("IPAccessPDU,ver11.txt" contained in archive 
+ts_10223203v030401p0.zip) which accompanies the present document. 
+The ASN.1 (Recommendation ITU-T X.680 [14]) module that represents the information in the present document and 
+meets all stated requirements is shown below. ETSI TR 102 205 [i.1] gives an overview of the relevant Object 
+IDentifiers (OID) used in ASN.1 modules of the Lawful Intercept specifications and points to the specification where 
+
+the modules can be found. 
+-- ================================ -- Description of the IP Access PDU -- ================================  IPAccessPDU {itu-t(0) identified-organization(4) etsi(0) securityDomain(2) lawfulIntercept(2) li-ps(5) iPAccess(3) version11(11)}  DEFINITIONS IMPLICIT TAGS ::= BEGIN  IMPORTS  -- from ETSI TS 101 671 [1] 
+ IPAddress   FROM HI2Operations 
+  {itu-t(0) identified-organization(4) etsi(0) securityDomain(2) lawfulIntercept(2) hi2(1) 
+version18(18)}  -- from ETSI TS 102 232-1 [2]  Location   FROM LI-PS-PDU   {itu-t(0) identified-organization(4) etsi(0) securityDomain(2) lawfulIntercept(2) li-ps(5) 
+genHeader(1) version24(24)};   -- ============================ -- Object Identifier Definition -- ============================ 
+ iPIRIObjId RELATIVE-OID    ::= {li-ps(5) iPAccess(3) version11(11) iRI(1)} 
+iPCCObjId RELATIVE-OID    ::= {li-ps(5) iPAccess(3) version11(11) cC(2)} 
+iPIRIOnlyObjId RELATIVE-OID   ::= {li-ps(5) iPAccess(3) version11(11) iRIOnly(3)} 
+ -- all three definitions relative to {itu-t(0) identified-organization(4) 
+ -- etsi(0) securityDomain(2) lawfulintercept(2)} 
+   ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)21 -- ========================== -- IP Communications Contents -- ==========================  IPCC ::= SEQUENCE {  iPCCObjId   [0] RELATIVE-OID, 
+ iPCCContents  [1] IPCCContents 
+}  
+IPCCContents ::= CHOICE {  iPPackets   [0] OCTET STRING, 
+ ... }  -- =================================================== -- Intercept-related information for general IP-Access -- ===================================================  IPIRI ::= SEQUENCE {  iPIRIObjId   [0] RELATIVE-OID, 
+ iPIRIContents  [1] IPIRIContents, 
+ ... }  IPIRIContents ::= SEQUENCE {  accessEventType   [0] AccessEventType, 
+ targetUsername   [1] OCTET STRING, 
+  -- in ASCII-characters 
+ internetAccessType  [2] InternetAccessType, 
+ iPVersion    [3] IPVersion, 
+ targetIPAddress   [4] IPAddress OPTIONAL, 
+  -- IP address may not be available in case of failed logon attempts. 
+  -- If it is available, it shall be sent. 
+  -- This field will carry the first IPv4 or IPv6 target IP address with or without  
+  -- subnet. Use of this field is fully described in section 6.2.1. 
+ targetNetworkID   [5] UTF8String (SIZE (1..20)) OPTIONAL, 
+  -- Target network ID (e.g. MAC address, PSTN number) 
+ targetCPEID    [6] UTF8String (SIZE (1..128)) OPTIONAL, 
+  -- CPEID (e.g. Relay Agent info, computer name) 
+ targetLocation   [7] UTF8String (SIZE (1..64)) OPTIONAL, 
+  -- When internetAccessType is Wireless LAN, this field should contain a string which 
+  -- uniquely identifies the wireless accesspoint within the SvP domain 
+  -- New implementations are encouraged to use the location [24] parameter where possible. 
+ pOPPortNumber   [8] INTEGER (0..4294967295) OPTIONAL, 
+  -- The POP port number used by the target 
+ callBackNumber   [9] UTF8String (SIZE (1..20)) OPTIONAL, 
+  -- The number used to call-back the target 
+ startTime    [10] GeneralizedTime OPTIONAL, 
+  -- The start date-time of the session or lease 
+ endTime     [11] GeneralizedTime OPTIONAL, 
+  -- The actual end date-time of the session or lease 
+ endReason    [12] EndReason OPTIONAL, 
+  -- The reason for the session to end 
+ octetsReceived   [13] INTEGER (0..18446744073709551615) OPTIONAL, 
+  -- The number of octets the target received 
+ octetsTransmitted  [14] INTEGER (0..18446744073709551615) OPTIONAL, 
+  -- The number of octets the target transmitted 
+ rawAAAData    [15] OCTET STRING OPTIONAL, 
+  -- Content of the raw AAA record 
+ ...,  expectedEndTime   [16] GeneralizedTime OPTIONAL, 
+  -- The expected end date-time of the session or lease 
+ pOPPhoneNumber   [17] UTF8String (SIZE (1..20)) OPTIONAL, 
+  -- The phone number dialed by the target for dial-up 
+ pOPIdentifier   
+[18] IPIRIIDType OPTIONAL,   -- The identifier or name of the POP 
+ pOPIPAddress   [19] IPAddress OPTIONAL, 
+  -- The IP address of the POP 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)22  nationalIPIRIParameters [20] NationalIPIRIParameters OPTIONAL,   -- National IP IRI Parameters 
+ additionalIPAddress  [21] IPAddress OPTIONAL, 
+  -- This field will carry the first IPv6 target IP address with or without prefix when the  
+  -- iPVersion parameter is set to iPV4andV6. 
+  -- Use of this field is fully described in section 6.2.1 
+ authenticationType  [22] AuthenticationType OPTIONAL, 
+  -- Field used to identify the authentication type to assist with LEMF data validation 
+ otherTargetIdentifiers [23] SEQUENCE OF OtherTargetIdentifiers OPTIONAL, 
+  -- This parameter will carry the second and subsequent IPv4 or IPv6 target IP addresses 
+  -- It is used when multiple subnet/prefix ranges are assigned to a target service. 
+  -- Use of this field is fully described in section 6.2.1 
+ location    [24] Location OPTIONAL   -- The location associated with the target 
+ }  AccessEventType ::= ENUMERATED {  accessAttempt(0),   -- A target requests access to the IAS 
+ accessAccept(1),   -- IAS access is granted to the target, the session begins 
+ accessReject(2),   -- IAS access is refused to the target 
+ accessFailed(3),   -- The Access_attempt timed-out or failed otherwise 
+ sessionStart(4),   -- A target starts using the IAS; not in use anymore from version 4(4) 
+ sessionEnd(5),   -- A target stops using the IAS; not in use anymore from version 4(4) 
+ interimUpdate(6),   -- Intermediate status report on service status or usage 
+ ...,  startOfInterceptionWithSessionActive(7),   -- LI is started on a target who already has an active session 
+ accessEnd(8),   -- A target stops using the IAS, the session ends 
+  endOfInterceptionWithSessionActive(9),    -- LI is ended on a target who still has an active session 
+  unknown(10)  }  
+InternetAccessType ::= ENUMERATED {  undefined(0),  dialUp(1),   -- IAS via DialUp access 
+ xDSL(2),   -- IAS via DSL access 
+ cableModem(3),   -- IAS via Cable access 
+ lAN(4),   -- IAS via LAN access 
+ ...,  wirelessLAN(5),   -- IAS via Wireless LAN access 
+ fTTx(6),   -- IAS via Fiber access 
+ wIMAX-HIPERMAN(7),   -- IAS via WIMAX/HIPERMAN (fixed access) 
+ satellite(8),   -- IAS via Satellite access 
+  -- (when it is not covered by any 3GPP or ETSI mobile Lawful Interception specifications) 
+ wireless-other(9)   -- IAS via other type of Wireless access 
+  -- (when it is not covered by any 3GPP or ETSI mobile Lawful Interception specifications) 
+}    ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)23 IPVersion ::= ENUMERATED {  iPV4(1),   -- The IPv4 protocol is used 
+ iPV6(2),   -- The IPv6 protocol is used 
+ iPV4andV6(3),   -- The IPv4 and IPv6 protocols are used 
+ ... }  EndReason ::= ENUMERATED {  undefined(0),  regularLogoff(1),   -- The target logged off 
+ connectionLoss(2),   -- The connection was lost 
+ connectionTimeout(3),   -- The connection timed-out 
+ leaseExpired(4),   -- The DHCP lease expired 
+ ... }  
+IPIRIIDType ::= CHOICE {  printableIDType   [0] UTF8String (SIZE (1..128)), 
+  -- For printable userIDs, such as the Radius username, phonenumbers 
+ macAddressType   [1] OCTET STRING (SIZE (6)), 
+  -- For MAC address types, raw binary format as in RFC 2132 [15] 
+ ipAddressType   [2] IPAddress, 
+  -- For IP address types 
+ ... }  
+NationalIPIRIParameters ::= SEQUENCE {  countryCode  
+[1] PrintableString (SIZE (2)),   -- Country Code according to ISO 3166-1 [16], 
+  -- the country to which the parameters inserted after the extension marker apply. 
+ ...  -- In case a given country wants to use additional national parameters according to its law, 
+ -- these national parameters should be defined using the ASN.1 syntax and added after the 
+ -- extension marker (...). 
+ -- It is recommended that "version parameter" and "vendor identification parameter" are 
+ -- included in the national parameters definition. Vendor identifications can be 
+ -- retrieved from the IANA web site (see Annex E Bibliography). Besides, it is recommended  
+ -- to avoid using tags from 240 to 255 in a formal type definition. 
+}  AuthenticationType ::= ENUMERATED {  unknown(0),   -- AAA function for the target service is unknown 
+ static(1),   -- The target service is assigned a static IP address & no AAA expected 
+ radiusAAA(2),   -- AAA function for the target service is provided by RADIUS 
+ dhcpAAA(3),   -- AAA function for the target service is provided by DHCP 
+ diameterAAA(4),   -- AAA function for the target service is provided by DIAMETER 
+ ... }    ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)24 OtherTargetIdentifiers ::= CHOICE {   -- Additional target identifiers associated with the target service 
+  -- This list is extensible to accommodate other target identifiers which  
+  -- may be required in future. 
+ iPAddress  [0] IPAddress, 
+  -- IPAddress imported from TS 101 671 [1]. 
+  -- This can be an IPv4 address (with or without a subnet range defined) or  
+  -- an IPv6 address (with or without a prefix range defined). 
+ ... }  -- ===================================================== -- Intercept-related information for IRI-Only intercepts -- =====================================================  IPIRIOnly ::= SEQUENCE {  iPIRIOnlyObjId    [0] RELATIVE-OID, 
+ iPInformation    [1] IPInformation, 
+ protocolInformation   [2] ProtocolInformation, 
+ iPAggregatedNbrOfPackets [3] INTEGER OPTIONAL, 
+ iPAggregatedNbrOfBytes  [4] INTEGER OPTIONAL, 
+ ... }  
+IPInformation ::= CHOICE {  iPv4Information  [0] IPv4Information, 
+ iPv6Information  [1] IPv6Information 
+}  ProtocolInformation ::= CHOICE {  none     [0] NULL, 
+  -- No layer 4 protocol information is provided 
+ tCPInformation   [1] TCPInformation, 
+ uDPInformation   [2] UDPInformation, 
+ ... }  IPv4Information ::= SEQUENCE {  headerLength   [0] OCTET STRING OPTIONAL, 
+ typeOfService   [1] OCTET STRING OPTIONAL, 
+ totalLength    [2] OCTET STRING (SIZE (2))OPTIONAL, 
+ identification   [3] OCTET STRING (SIZE (2))OPTIONAL, 
+ fragment    [4] OCTET STRING (SIZE (2))OPTIONAL, 
+ ttl      [5] OCTET STRING OPTIONAL, 
+ protocol    [6] OCTET STRING OPTIONAL, 
+ headerChecksum   [7] OCTET STRING (SIZE (2))OPTIONAL, 
+ source     [8] OCTET STRING (SIZE (4)), 
+ destination    [9] OCTET STRING (SIZE (4)), 
+ options     [10] OCTET STRING (SIZE (0..40))OPTIONAL 
+}  
+IPv6Information ::= SEQUENCE {  trafficClass   [0] OCTET STRING OPTIONAL, 
+ flowLabel    [1] OCTET STRING (SIZE (20))OPTIONAL, 
+ payloadLength   [2] OCTET STRING (SIZE (4))OPTIONAL, 
+ nextHeader    [3] OCTET STRING OPTIONAL, 
+ hopLimit    [4] OCTET STRING OPTIONAL, 
+ source     [5] OCTET STRING (SIZE (16)), 
+ destination    [6] OCTET STRING (SIZE (16)) 
+}    ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)25 TCPInformation ::= SEQUENCE {  sourcePort   [0] OCTET STRING (SIZE (2))OPTIONAL, 
+ destinationPort  [1] OCTET STRING (SIZE (2))OPTIONAL, 
+ sequenceNumber  [2] OCTET STRING (SIZE (4))OPTIONAL, 
+ ackNumber   [3] OCTET STRING (SIZE (4))OPTIONAL, 
+ dataOffset   [4] BIT STRING (SIZE (4))OPTIONAL, 
+  -- First 4 bits 
+ controlBits   [5] BIT STRING (SIZE (6))OPTIONAL, 
+  -- Last 6 bits 
+ windowSize   [6] OCTET STRING (SIZE (2))OPTIONAL, 
+ checkSum   [7] OCTET STRING (SIZE (2))OPTIONAL, 
+ urgentPointer  [8] OCTET STRING (SIZE (2))OPTIONAL, 
+ options    [9] OCTET STRING (SIZE (0..40))OPTIONAL 
+}  UDPInformation ::= SEQUENCE {  sourcePort   [0] OCTET STRING (SIZE (2))OPTIONAL, 
+ destinationPort  [1] OCTET STRING (SIZE (2))OPTIONAL, 
+ length    [2] OCTET STRING (SIZE (2))OPTIONAL, 
+ checkSum   [3] OCTET STRING (SIZE (2))OPTIONAL 
+}  END -- end of IPAccessPDU   ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)26 Annex A (informative): 
+Stage 1 - RADIUS characteristics 
+A.1 Network topology 
+RADIUS can be deployed as one or more RADIUS servers acting on their own or in combination with a RADIUS 
+proxy. This clause provides an overview of the differences between the two approaches. 
+A.1.1 RADIUS server 
+The RADIUS server approach is commonly seen in cases where the Internet access is provided by the same party that 
+
+provides the Access Network. This situation is depicted in figure A.1. 
+   Customer
+ NWO/IAP
+ CPE
+ Internet
+ Access 
+Network
+ RADIUS
+ Client
+ IP 
+Network
+ RADIUS
+ Server 
+ Figure A.1: RADIUS server 
+In this approach, the device that handles connection establ
+ishment is the RADIUS client and communicates with the 
+RADIUS server directly. Depending on the type of access ne
+twork and the network architecture, the RADIUS client can 
+be a NAS, Edge router, GWR or CMTS. 
+The RADIUS client requests authentication and authorization for a given user by handing the user-provided username 
+and password to the RADIUS server. The RADIUS server will verify the password and authorization against a 
+
+customer database and, in the case of a successful result, will return an Access-Accept result to the client that may 
+include an IP address to be assigned to the user. 
+Network based interception of both assignment and deassignment of IP addresses is performed between the RADIUS 
+client and the RADIUS server. Alternatively, the RADIUS server can be extended with a function that will forward IP 
+
+address assignment information to the interception function. 
+If the IP address is assigned by the NAS or by a DHCP server, the IP address will be reported in an accounting packet. 
+In this case, the interception of IP addresses is done between the RADIUS client and RADIUS Accounting server (see 
+clause A.3.2). Alternatively the RADIUS Accounting server can be extended with a function that will forward the IP 
+
+address assignment information to the interception function. 
+A.1.2 RADIUS proxy 
+In case the Access Network Provider (ANP) is not the same party as the Internet Access Provider (IAP), the Access 
+
+Network Provider (ANP) will typically deploy a RADIUS proxy. This RADIUS proxy will receive the authentication 
+
+and authorization request from the RADIUS client and forwards this to the actual RADIUS server. In the case the 
+
+Access Network Provider (ANP) provides its services to multiple IAPs, based on some attribute provided by the NAS, 
+
+the appropriate RADIUS server of the appropriate IAP is sel
+ected. In the case of dial-up access, for example, the PSTN 
+number of the NAS the user has dialled can be used for this purpose. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)27    IAP (B)
+     NWO
+   Customer
+ CPE
+ Internet
+ Access 
+Network
+ RADIUS
+ Client 
+RADIUS
+ Server
+ RADIUS
+ Server 
+IAP 
+Network
+ IAP 
+Network
+ IAP (A)
+ RADIUS
+ Proxy 
+ Figure A.2: RADIUS proxy 
+The RADIUS server will verify the password and authorization for the service against a customer database. The 
+assignment of the IP address can be performed by either the RADIUS server or the RADIUS proxy, depending on 
+
+network architecture decisions. In the latter case, the RADIUS proxy will typically assign IP addresses from ranges 
+
+each belonging to a particular IAP. Alternatively, as mentioned previously, the IP address may also be assigned from 
+the NAS operated by the NWO. 
+Network based interception of both assignment and deassignment of IP addresses is most likely performed between the 
+RADIUS proxy and the RADIUS server, since traffic between de RADIUS Client and the RADIUS proxy lays outside 
+
+the infrastructure of the IAP. Alternatively, the RADIUS se
+rver can be extended with a function that will forward IP 
+address assignment information to the interception function. 
+NOTE: Another common element used to identify the final RADIUS server or IAP is a 
+Network Access Identifier. If the network access identifier "
+foo@bar.com
+" indicates user "foo" at IAP 
+"bar.com", the RADIUS Proxy could forward the RADIUS requests to the RADIUS server for IAP 
+
+"bar.com". 
+If IP address assignment is done by the NAS operated by the NWO, the interception of the IP address assignment and 
+
+deassignment will most likely be performed between the RADIUS client and the IAP's RADIUS Accounting server. 
+A.2 RADIUS service 
+A.2.1 Authentication service 
+The basic RADIUS service, which provides authentication and authorization, is specified in IETF RFC 2865 [8] which 
+
+defines the relevant key features of the RADIUS service as follows. 
+Purpose 
+Managing dispersed serial line and modem pools for large numbers of users can create the need for significant 
+administrative support. Since modem pools are by definition a link to the outside world, they require careful attention to 
+
+security, authorization and accounting. This can be best achieved by managing a single "database" f users, which allows 
+
+for authentication (verifying user name and password) as well as configuration information detailing the type of service 
+
+to deliver to the user (for example, SLIP, PPP, telnet, rlogin). 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)28 Client/Server model 
+• A Network Access Server (NAS) operates as a client of RADIUS. The client is responsible for passing user 
+information to designated RADIUS servers, and then acting on the response which is returned. 
+• RADIUS servers are responsible for receiving user connection requests, authenticating the user, and then 
+
+returning all configuration information necessary for the client to deliver service to the user. 
+• A RADIUS server can act as a proxy client to other RADIUS servers or other kinds of Authentication servers. 
+Network security 
+• Transactions between the client and RADIUS server are authenticated through the use of a shared secret, 
+
+which is never sent over the network. In addition, any user passwords are sent encrypted between the client 
+
+and RADIUS server, to eliminate the possibility th
+at someone snooping on an unsecure network could 
+determine a user's password. 
+Flexible authentication mechanisms 
+• The RADIUS server can support a variety of methods to authenticate a user. When it is provided with the user 
+
+name and original password given by the user, it can support PPP, PAP or CHAP, UNIX login, and other 
+
+authentication mechanisms. 
+A.2.2 Accounting service 
+RADIUS Accounting is specified in a separate RFC (see IETF RFC 2866 [9]) which defines the relevant key features of 
+
+the Accounting service as follows. 
+Purpose 
+IETF RFC 2866 [9] extends the use of the RADIUS protocol 
+to cover delivery of accounting information from the 
+Network Access Server (NAS) to a RADIUS Accounting server. 
+Client/Server model 
+• A Network Access Server (NAS) operates as a client of the RADIUS Accounting server. The client is 
+responsible for passing user accounting information to a designated RADIUS Accounting server. 
+• The RADIUS Accounting server is responsible for receiving the accounting request and returning a response 
+to the client indicating that it has successfully received the request. 
+• The RADIUS Accounting server can act as a proxy client to other kinds of Accounting servers. 
+Network security 
+• Transactions between the client and RADIUS Accounting 
+server are authenticated through the use of a shared 
+secret, which is never sent over the network. 
+The RADIUS Authentication server and the RADIUS Accounting server may be implemented as a single entity or as 
+
+separate entities. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)29 A.3 RADIUS protocol 
+A.3.1 Authentication protocol 
+This clause outlines the basic message exchange for RADIUS authentication. Apart from authentication of plain user-
+provided credentials, RADIUS supports generic challenge/response authentication as well as the Password 
+Authentication Protocol (PAP) and the Challenge Handshake Authentication Protocol (CHAP). For more detail on these 
+authentication protocols is referred to IETF RFC 2865 [8]. 
+For authentication of users, a RADIUS client exchanges of messages with a RADIUS server over UDP port 1812. 
+Figure A.3 depicts this message exchange. 
+   username / password
+ RADIUS client (NAS) 
+RADIUS server
+ Reject reason or 
+IP-address, etc. 
+CPE 
+Access-request 
+(username, password, NAS-ID, NAS-port, etc.) 
+Access-Reject 
+(reason) or 
+Access-Accept
+ (NAS-ID, NAS-port, IP-address, etc.)
+ Request  
+validation and
+ customer 
+
+database 
+lookup 
+ Figure A.3: Basic authentication message exchange 
+In figure A.3, the CPE provides the NAS with user credentials, i.e. username and password. The NAS encrypts the 
+password, assembles an Access-Request and sends this to
+ the RADIUS server. The RADIUS server decrypts the 
+password by means of a shared secret, va
+lidates the attributes and performs a customer database lookup. If the user is 
+not known, the password is incorrect or the user is not allowed to use the service, the RADIUS server will return an 
+
+Access-Reject message. If the password is correct and the user is allowed to access the NAS and NAS port in question, 
+
+the RADIUS server will return an Access-Accept message. In
+ the approach depicted above, the Access-Accept message 
+will contain the IP address for the user as well as other configuration information that will allow the user to set-up the 
+
+IP stack for proper IP communication. 
+If communication from the NAS to the RADIUS server is established via a RADIUS proxy, as is described in 
+clause A.1.2, it may be the case that the IP address is assigned by the RADIUS proxy as opposed to the RADIUS 
+
+server. In other cases, the IP address may be assigned by th
+e NAS from a locally configured address pool and not by a 
+RADIUS server or proxy. In the latter two cases, the IP address will be communicated to the RADIUS server in an 
+Accounting-Request Start message that is described in clause A.3.2. 
+A.3.2 Accounting protocol 
+This clause outlines the basic message exchange for R
+ADIUS accounting. For accounting purposes, a RADIUS client 
+exchanges messages with a RADIUS Accounting server over UDP port 1813. Figure A.4 depicts this message 
+exchange. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)30 Accountin
+g-request 
+("Stop", username, IP-address, NAS-ID, NAS-port, stats, etc.)
+ RADIUS client 
+Accountin
+g-Respon
+seAccountin
+g-Respon
+seStart 
+of service
+ delivery
+ End of
+ service
+ delivery
+Accounting-request 
+("Start", username, IP-address, NAS-ID, NAS-port, etc.) 
+RADIUS 
+Accounting 
+server 
+ Figure A.4: Accounting message exchange 
+At the start of service delivery to the user, the RADIUS client sends an Accounting-Request Start message to the 
+RADIUS accounting service. The message will contain various attributes identifying the session. Amongst others, 
+username, IP-address, NAS-ID and NAS-port may be present. The RADIUS Accounting server will acknowledge the 
+Accounting-Request Start by sending an Accounting-Response. If the Accounting-Request and Response are to be used 
+
+for IRI, near-real-time accounting is required, since batch-accounting would result into unacceptable delays in IRI 
+
+creation and IP address provision of IP interception equipment. 
+At the end of service delivery, either because the user lo
+gged of or due to accidental disconnection of the user, the 
+RADIUS client sends an Accounting-Request Stop message to the RADIUS Accounting service. The message will 
+contain various attributes identifying the session as well as statistics indicating the duration of the session and the 
+
+amount of data sent and received. Again the attributes username, IP-address, NAS-ID and NAS-port may be present. 
+
+The RADIUS Accounting server will acknowledge the Accounting-Request Stop by sending an Accounting-Response. 
+In some cases, depending on service and configuration, the NAS may send an Accounting-Request Interim-Update 
+message to report the assignment of an IP address. The Interim-Update message can be sent when new information is 
+available or on a periodic basis. 
+A.4 RADIUS main attributes 
+This clause outlines some of the RADIUS attributes relevant for binding a "target identity" to an IP address. For a full 
+overview of all attributes and their presence in the various request messages is referred to IETF RFC 2865 [8] and IETF 
+
+RFC 2866 [9]. Many NAS vendors have implemented vendor-specific RADIUS attributes. Vendor-specific attributes 
+
+are not included in the present document. 
+Table A.1: RADIUS attributes 
+Field 
+Description 
+User-Name The username provided by the user. 
+NAS-IP-Address The IP address of the NAS. Usually, either the NAS-IP-Address or the NAS-Identifier is present.
+ NAS-Identifier  
+NAS-Port A unique identifier for the port used by the user on the particular NAS. 
+Framed-IP-Address
+ The IP address assigned to the user. 
+Called-Station-Id The NAS ISDN/PSTN number as was dialled by the user. 
+Calling-Station-Id The ISDN/PSTN number the user dialled from. 
+Callback-Number If call-back is used by the NAS, the ISDN/PSTN number at which the NAS calls the user. 
+   ETSI ETSI TS 102 232
+-3 V3.4.1 
+(2016
+-09)31 A.5 RADIUS interception 
+This clause presents a possible approach to the processing of RADIUS packets in order to obtain dynamic IP addresses 
+as well as to produce IRI messages for LI of Internet Acces
+s Services (IAS). The presented approach aims at dealing 
+
+with the many possible variants of RADIUS implementations in a single generic functional model. There may be room 
+
+for more sophistication or optimization of the presente
+d model, but in essence it can be implemented as is. 
+A.5.1 Collecting RADIUS packets 
+The model is a state machine that requires to be fed with
+ all RADIUS packets that are exchanged between the RADIUS 
+client and the RADIUS server or proxy. As stated in clauses A.1.1 and A.1.2, the collection of the RADIUS packets can 
+
+be achieved by either a network sniffer function, that sniffs and forwards all RADIUS packets exchanged between the 
+client and server or proxy or by a RADIUS application add-on that forwards the RADIUS packets from the RADIUS 
+platform to the LI platform. 
+A.5.2 Processing RADIUS packets 
+A.5.2.1 Mapping events 
+to RADIUS packets 
+The RADIUS IETF RFC 2865 [8] and IETF RFC 2866 [9] specify most of the RADIUS attributes in the various 
+RADIUS packets as optional. On the other hand, depending on the RADIUS implementation, many of the RADIUS 
+attributes may occur multiple times in different RADIUS packets. This unpredictability requires a generic and flexible 
+
+approach in order to prevent the need for customization of 
+the LI platform for different RADIUS implementations from 
+different vendors. 
+Processing RADIUS packets has two main objectives; obtaining IP addresses and the creation of IRI. 
+
+For obtaining a dynamic IP address, when the IP address is assigned by the RADIUS server, the Access-Request and 
+Access-Accept packet need to be processed. Alternativel
+y, in an architecture where a RADIUS proxy outside the 
+infrastructure of the IAP is handing-out the IP addresses, or when the NAS is allocating IP addresses, the required 
+information may only be available in the Accounting-Request Start or Interim-Update message. 
+As clause 4.3 lists, creation of IRI is required: 
+a) when an attempt is made to access the access network; 
+
+b) when an access to the access network is permitted; 
+c) when an access to the access network is not permitted; 
+d) on change of status (e.g. in the access network); 
+
+e) on change of location (this can be related or unrelated
+ to the communication or at all times when the apparatus 
+is switched on). 
+These requirements translate to the events: 
+a) Logon Attempt. 
+
+b) Logon Success. 
+
+c) Logon Failed. 
+
+d) Interim-Info. 
+
+e) Logoff. 
+
+f) Silent Logoff. 
+Table A.2 provides an overview of the Radius packets that, depending on the RADIUS implementation, may contain 
+relevant information for IRI for each of the events. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)32 Table A.2: Mapping events to RADIUS packets 
+ Access-
+ Request
+ Access-
+Accept 
+Access-
+ Reject 
+Accounting-
+ Request  
+Start Accounting
+-Request 
+Interim-Update 
+Accounting-
+Request 
+Stop Accounting-
+Response 
+Start Accounting-
+Response 
+Stop Logon 
+Attempt 
+        
+Logon 
+Success 
+      
+  Logon Failed
+         
+Interim-Info     
+    Logoff      
+   Silent Logoff  
+        Typically the Accounting-Request packets will contain all information required for the creation of an IRI record. 
+However, it is advised to wait for the occurrence of the related Accounting-Response record before the IRI message is 
+
+created. The latter event will not add to the already known information, but waiting for the related Account-Response 
+
+packet prevents spoofing of the LI system by inserting false Accounting-Request packets into the system. 
+A.5.2.2 Functional model 
+From table A.2, the high-level functional model for the processing of RADIUS packets in figure A.5 was constructed. 
+
+The model continuously processes RADIUS packets and acts like a sieve, ensuring that each of the relevant RADIUS 
+
+packet types is processed by the appropriate function. 
+   Read RADIUS Packet
+ Y 1 1 1 1 1  Access 
+Packet 
+Y N  Access 
+"Accept" 
+Accounting
+ Response 
+"Start"
+ Process  
+Logon 
+N Process  
+Logoff 
+ Access 
+"Reject" 
+Process 
+Deny 
+Y N  Accounting 
+Packet 
+ Access 
+"Request" 
+Accounting
+ Request 
+"Start/Stop"
+ Store 
+Packet 
+Y N Y N  Discard Packet 
+Y N Y N Accounting
+ Response 
+"Stop"
+ Y N 1 1    Process 
+Info 
+Y N Accounting 
+Response 
+"Interim-
+Update" 
+  Figure A.5: Functional model fo
+r processing RADIUS packets 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)33 The following explains each of the processing functions in more detail. 
+Store Packet 
+In order to track the state of users using the Internet A
+ccess Service (IAS), information derived from various types of 
+RADIUS packets needs to be stored to 
+allow correlation with other packets in a later stage of processing. The key used 
+for storing information, and in a later stage retrieving informat
+ion, needs to be selected as such that all RADIUS packets 
+related to a single Internet session hold the same uniq
+ue key. Possible combinations are NAS-ID and NAS-Port, 
+NAS-IP-address and NAS-Port, NAS-IP-Address and Accounting-Session-ID or NAS-ID and Accounting-Session-ID. 
+As stated in IETF RFC 2866 [9], if the NAS includes the Accounting-Session-ID in the Access-Request packet it will 
+
+use the same value in the Accounting-Request messages for that session. 
+The various states a session can go through is shown in figure A.6. 
+   Access-Accept or 
+ Acc-response (to start) 
+
+ IRI_BEGIN (accessAccept) 
+ Access-Reject 
+ IRI_REPORT (accessReject) 
+ Access-Failed or 
+ Acc - time out 
+
+ IRI_REPORT (accessFailed) 
+ Acc-request-Stop  
+ & Acc-response
+  IRI_END 
+
+ (accessEnd) 
+ Acc-request-
+Start  
+ & Acc-response
+  IRI_CONTINUE 
+ (interimUpdate)
+  Access-Attempt or 
+
+ Acc-request-Start 
+
+ IRI_REPORT (accessAttempt)  
+
+ New  CIN Value 
+Logged off 
+Logging on 
+Session active 
+ Acc
+-request
+-InterimUpdate
+  & Acc-response 
+ IRI_CONTINUE 
+ (InterimUpdate) 
+Started Intercept 
+ Acc-request InterimUpdate 
+ & Acc-response  
+
+ IRI_BEGIN 
+ (startOfInterceptionWithSessionActive)
+  New  CIN Value 
+ NOTE: According to IETF RFC 2865 [8], in the case in which the NAS receives an Access-Accept but cannot 
+support the attributes received, it treats the Access-Accept as if it were an Access-Reject. In this case, the 
+RADIUS Accounting server might receive an Accounting-Request Stop without receiving an Accounting-
+Request Start. If the NAS does not generate a message to the RADIUS server indicating the session has 
+been dropped, the system might consider the session still active. Actions taken for this case are for further 
+
+study. 
+Figure A.6: State diagram for an Internet session 
+In order to track the outcome of a logon attempt, the Access-R
+equest packet needs to be stored and later correlated with 
+the appropriate Access-Accept or Access-Reject packet. To prevent spoofing, Accounting-Requests needs to be 
+correlated with Accounting-Responses; the Accounting-Requests needs therefore to be stored as well. 
+The Target-Identity used to identify a target session is typically User-name or Calling-station-ID. However, any other 
+user specific attribute or combination of user sp
+ecific attributes can be used for this purpose. 
+Logon-attempt: 
+Whenever an Access-Request packet is stored and the Target-identity in the packet is on the target-list, 
+the function for creating and sending of an IRI-REPORT re
+cord needs to be invoked in order to signal the access 
+attempt. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)34 Process Login 
+Logon: 
+Whenever an Access-Accept packet is encountered, the information from the related Access-Request is 
+retrieved and the two records are correlated. If the Target-ide
+ntity in the packets is on the target-list, the function for 
+creating and sending of an IRI-BEGIN record needs to be invoked in order to signal a successful logon and the value of 
+the field Framed-IP-Address needs to be made available to th
+e IP Interception Function of the LI platform in order to 
+start intercepting IP packets for this particular session. Alternatively, if an Accounting-Response to an 
+Account-Request-Start packet is encountered and the Target-identity in the packets is on the target-list, the function for 
+creating and sending of an IRI-BEGIN record needs to be invoked in order to signal the start of the session and if the 
+
+value of the field Framed-IP-Address is made available to
+ the IP Interception Function of the LI platform. If an 
+Accounting-Response to an Account-Request-Start packet 
+is encountered while the IP Interception Function was 
+already active for this target session, the function for creat
+ing and sending of an IRI-CONTINUE record needs to be 
+invoked. 
+Multi-logon: In case a target user logs on multiple times using the same credentials, a running interception will already 
+exist with an identical Target-identity, but with a different NAS and/or NAS-Port and IP address. Thus, if the same 
+target Target-identity is encountered multiple times but with different IP addresses, each time the functions for creating 
+
+and sending of IRI records needs to be invoked and the IP Interception Function needs to be provisioned with the IP 
+
+address of the new session. 
+Multilink-logon: In a straightforward approach to handli
+ng Multi-link logon, Access-Accept and/or 
+Account-Request-Start packets that contain an IP address 
+of 0.0.0.0 may be ignored. For all Access-Accept and/or 
+Account-Request-Start packets that may be related to additi
+onal channels logging on and that do contain a valid IP 
+address an IRI-REPORT and IRI-BEGIN records can be sent an
+d the IP addresses can be forwarded to the Interception 
+Function. Since all traffic will be sent over the IP address related to the base-channel, the intercepts on the IP addresses 
+related to the additional channels will remain silent. Although 
+the above approach will work, it is a bit crude; by using 
+Multi-link related attributes that may be available in the 
+RADIUS packets, a more sophisticated approach to handling 
+multi-link logon is conceivable. 
+In some cases, an Accounting-Stop might be detected with
+out first detecting an Accounting-Start (e.g. if the NAS 
+receives an Access-Accept with attributes 
+it does not recognize). This case is handled as described in the Process logoff 
+clause. 
+Process Deny 
+Failed logon:
+ Whenever an Access-Reject packet is encountered, the information from the Access-Request is retrieved 
+and the two records are combined. If the Target-identity in th
+e packets is on the target-list, the function for creating and 
+sending of an IRI-REPORT record needs to be invoked in order to signal a failed logon. After sending of the IRI record, 
+the Access-Request packet can be deleted from the store. 
+Process Logoff 
+Logoff:
+ If an Accounting-Response to an Account-Request-Stop packet is encountered and if the Target-identity in the 
+packet is on the target-list, the function for creating and se
+nding of an IRI-END record needs to be invoked in order to 
+signal a regular logout and the value of the field Framed-IP-
+Address needs to be made available to the IP Interception 
+Function in order to terminate the running interception. Afte
+r sending of the IRI record, the Accounting-Request packet 
+can be deleted from the store. 
+Silent Logoff 
+Silent-Logoff (Exception handling):
+ If in the function Process Login, any of the Access or Account-Request packets 
+contains an IP address that is already associated to a runnin
+g interception but with a different username, the LI system is 
+about to over collect; due to an anomaly the Accounting-
+Request Stop packet for the running interception was most 
+likely missed. The function for creating and sending an IRI-END record needs to be invoked in order to signal logoff 
+and the value of the field Framed-IP-Address needs to be ma
+de available to the IP Interception Function in order to 
+terminate the interception immediately. In the IRI-END ther
+e is an attribute that sign
+als the abnormal interception 
+termination condition. 
+If the IP Interception Function detects that the intercep
+t subject has disconnected vi
+a other means than RADIUS 
+messages, it needs to stop the interception immediately and report the event (for further study). 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)35 A.5.2.3 RADIUS spoofing 
+In order to add additional prevention against spoofing of RADIUS packets, the RADIUS processing engine can be 
+provided with a list of valid NAS-IP addresses, so it can 
+verify the origin of RADIUS packets. However, source IP 
+addresses can be spoofed as well. The best protection against spoofing can be achieved by providing the NAS-Secret 
+(the key used for hashing) to the RADIUS processing engine, so it can verify the hash values provided in the RADIUS 
+
+packets (see IETF RFC 2865 [8]). 
+A.5.3 Mapping RADIUS on the IRI structure 
+Table A.3 lists which attributes of the IRI structure can be assigned a value if a RADIUS server is used for AAA. 
+
+Table A.3 shows that values for the IRI attributes can be derived from: 
+1) the Intercept function (for fixed values or timestamps); or 
+2) the RADIUS Access-packets as defined in IETF RFC 2865 [8]; or 
+3) the RADIUS Accounting-packets as defined in IETF RFC 2866 [9]. 
+Table A.3: Mapping RADIUS on the IRI structure 
+Attribute
+ Value derived from
+  Interception Function
+ Access attrib 
+IETF RFC 2865 [8] 
+Accounting attrib
+ IETF RFC 2866 [9] 
+accessEventType 
+- Code 
+Code and Acct-Status-Type 
+targetUsername - User-name User-name 
+internetAccessType Fixed 
+value - 
+- iPVersion Fixed 
+value  
+ targetIPAddress  Framed-IP-
+Address Framed-IP-Address 
+targetNetworkID NA Calling-Station-ID Calling-Station-ID 
+targetCPEID NA NA NA 
+targetLocation NA NA NA 
+pOPPhoneNumber - Called-Station-ID Called-Station-ID 
+pOPIdentifier - NAS-Identifier NAS-Identifier 
+pOPIPAddress - NAS-IP-Address NAS-IP-Address 
+pOPPortNumber - NAS-Port NAS-Port 
+callBackNumber - Callback-Number Callback-Number 
+startTime IF 
+(system 
+clock) - 
+- expectedEndTime  
+NA 
+NA 
+NA 
+endTime IF 
+(system 
+clock)  
+ endReason 
+- - Inferred from Acct-Terminate-Cause 
+octetsTransmitted - - Acct-Output-Octets 
+octetsReceived - - Acct-Input-Octets 
+rawAAAData 
+<Free to choose> <Free to choose> 
+<Free to choose> 
+nationalIPIRIParameters
+ Fixed value 
+- - additionalIPAddress - 
+Framed-IP-Address or 
+Framed-Route 
+Framed-IP-Address or Framed-Route
+ authenticationType 
+Derived from Auth 
+message type 
+- - otherTargetIdentifiers - 
+Framed-IP-Address or 
+Framed-Route 
+Framed-IP-Address or Framed-Route
+ NOTE 1: Although most RADIUS implementations support pr
+oprietary attributes, the present document only defines 
+attributes from IETF RFC 2865 [8] and IETF RFC 2866 [9]. Any attributes defined outside the mentioned 
+RFC can be handed over in the RawAAAData attribute. 
+NOTE 2: The ASN.1 for the structure is presented in clause 8 as IPIRI. 
+   ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)36 Annex B (informative): 
+Stage 1 - DHCP characteristics 
+B.1 Network topology 
+A DHCP client may be directly connected to the same local
+ area (broadcast) network as the DHCP server, or it may go 
+through a DHCP Relay Agent to access DHCP server on another 
+(IP) network. The ratio of clients to servers is on the 
+order of tens (in a small enterprise LAN environment) to tens of thousands (carrier network). 
+     NWO/IAP
+ Customer
+ CPE 
+LAN Access
+ r   Log –)   Log NMS
+ Log
+ CPE 
+DHCP
+ Client
+ DHCP Client
+ Access 
+Network
+ Circuit
+ Access
+ Unit 
+DHCP Relay
+ Agent
+ NWO/IAP
+ IP Core 
+Network 
+(External)
+ Internet 
+DHCP Server
+ Other Services
+ (Web, DNS, ...)
+  Figure B.1: DHCP Internet access 
+B.2 DHCP service 
+"The Dynamic Host Configuration Protocol (DHCP) provides a framework for passing configuration information to 
+hosts on a TCP/IP network. DHCP is based on the Bootst
+rap Protocol (BOOTP), adding the capability of automatic 
+allocation of reusable network addresse
+s and additional configura
+tion options – DHCP captures the behaviour of 
+BOOTP relay agents–". 
+IETF RFC 2131 [6]: "Dynamic Host Configuration Protocol". 
+DHCP, and BOOTP on which it is based, provide a mechanism by which an Ethernet or Token-ring LAN-attached, 
+TCP/IP host can acquire certain configuration information from a DHCP/BOOTP server. DHCP is typically used in the 
+
+enterprise and within some carrier networks, particularly 
+cable modem and DSL networks, to temporarily award (lease) 
+IP addresses to attached TCP/IP hosts. This configuratio
+n information may also encompass a large number of network 
+and host specific-options, not all of which are necessarily app
+licable to LI (ex: DNS server address, router address, 
+WINS server address, IP network mask, etc.). Implementations can vary significantly depending on the DHCP 
+implementations in vendor server and client software, as well as the default configurations shipped with the product. 
+Table B.1 contains parameters of a common open Unix reference implementation. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)37 Table B.1: Common DHCP server configuration options and declarations 
+Parameter Description
+ Data type
+ Default-lease-time Default length in seconds that the lease is valid 
+Numeric 
+Domain-name The name of the domain for the specified subnet Text 
+Domain-name-servers A list of name servers for the specified subnet 
+List of IP addresses 
+Fixed-address 
+Static address to assign to a host (supports multiple 
+networks) 
+List of IP addresses 
+Group 
+Starts a group declaration 
+N/A 
+Hardware 
+The type of hardware the network interface has 
+Hardware-type: text; Hardware 
+ (currently only Ethernet and token ring are supported) Address: octets, colon separated 
+Host 
+Starts a host declaration 
+N/A 
+Host-name 
+Name to assign to the requesting host 
+Text 
+Max-lease-time 
+Maximum time in seconds the server will grant a lease 
+
+should the client request a specific lease time 
+Numeric 
+Netbios-name-servers Name of the WINS server 
+List of IP addresses 
+Range 
+Range of IP addresses to assign on the specified network Low and high IP address 
+Routers 
+A list of routers to use 
+List of IP addresses 
+Shared-network Starts a shar
+ed-network declaration N/A 
+Subnet 
+Starts a subnet declaration 
+N/A 
+Subnet-mask The subnet-mask of this network, group or host 
+IP address 
+ When the DHCP server starts, it reads the global configuration parameters from a configuration file, such as the name 
+of the server, the domain for which it is responsible, and so forth. That is, it reads the parameters that will be valid for 
+all the clients (unless they are explicitly changed). DHCP stores the list of addresses in memory for each of the subnets 
+it is serving. When a DHCP client starts, it requests an address from the server. The server looks up an available address 
+
+and assigns it to the client. Though DHCP is best-known for assigning dynamic IP addresses, it can also assign static 
+
+addresses to clients if required. 
+In DHCP terminology, clients "lease" IP addresses. DHCP leases only last a certain amount of time. The default period 
+is typically one day, but can be easily changed. Clients can request leases of a specific duration, but to prevent any 
+machine from holding onto the lease forever, a maximum al
+lowable lease time is usually configured on the server.
+ B.3 BOOTP protocol 
+DHCP is carried over BOOTP protocol messages. BOOTP is a client-server protocol, in which the host (a.k.a. client) 
+
+initiates message exchanges with a server. BOOTP messages are transported in UDP messages using ports 67 (client to 
+
+server) and 68 (server to client). Each BOOTP message has a fixed format header and a variable format area that 
+
+contains "options". The header carries information 
+about the operation of BOOTP and the options carry the 
+configuration parameters. There are several DHCP messages that are exchanged between clients and servers; some of 
+those messages will be described in more detail below. 
+NOTE: In the case of a client using DHCP for initial configuration (before the client's TCP/IP software has been 
+completely configured), DHCP requires creative use of the client's TCP/IP software and liberal 
+
+interpretation of IETF RFC 1122 [3]. The TCP/IP software SHOULD accept and forward to the IP layer 
+
+any IP packets delivered to the client's hardware 
+address before the IP address is configured; DHCP 
+servers and BOOTP relay agents may not be able to
+ deliver DHCP messages to clients that cannot accept 
+hardware unicast datagrams before the TCP/IP software is configured. 
+B.4 DHCP protocol 
+DHCP makes use of the BOOTP format, extending the message set by using a BOOTP option to carry the DHCP 
+
+message type. A client still sends BOOTP REQUESTs, and a server still sends BOOTP REPLYs, but the DHCP 
+
+message type option indicates what is "really going on". The following sequence serves as a basic example; there are 
+other messages, and many options in the protocol. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)38 When a host connects to a network, it will first locate a DHCP server from which it can obtain configuration 
+information. The host locates a DHCP server by br
+oadcasting a DHCPDISCOVER message, which may include 
+
+desirable values for parameters (IP address, lease duration,
+ etc.), and a list of requested parameters. Any available 
+
+DHCP servers receive the DHCPDISCOVER message, and reply to the host with a DHCPOFFER message. The 
+
+DHCPOFFER message may include the parameters requested by the client, and others the server deems appropriate. 
+
+The host then selects one of the responding servers to use for subsequent DHCP transactions. 
+Once the host has selected a DHCP server, it contacts that
+ server with a DHCPREQUEST message, specifying the 
+parameters it requires (including values from the DHCPOFFER, specifically the IP-address). The server determines the 
+appropriate configuration parameters for the host and returns those parameters in a DHCPACK message. Once the host 
+
+received the DHCPACK message, it configures its TCP/IP stack according to the parameters from the server, and is 
+
+then ready to use TCP/IP. 
+DHCPREQUEST (client hardware address, proposed IP address)
+ DHCPACK (client hardware address, confirmed IP addres
+s) DHCPRELEASE, etc.(client hardware address, IP addres
+s) End of
+ service
+ delivery
+ DHCP client 
+DHCP server
+ DHCPDISCOVER (client hardware addres
+s) DHCPOFFER (client hardware address, proposed IP addres
+s)  Figure B.2: DHCP exchange 
+A host that has not been manually configured with an IP address can use DHCP to obtain an address from a server. To 
+
+allow for reuse of IP addresses, the assignment of an address to a client includes a lease, which represents a period of 
+
+time in which the host is allowed to use the IP address and 
+in which the server agrees not to reassign the address to 
+another host. Once the lease has expired on an address, the se
+rver is free to reassign the address to another host. Address 
+
+reassignment is useful in conserving IP addresses by reusing addresses from hosts that have left the network. 
+While a manually configured host may still use DHCP (DHCPINFORM) to acquire other configuration parameters 
+(next hop router, DNS server, etc.) at the beginning of a 
+new service attachment, there would be no explicit DHCP 
+protocol event or time-out associated with
+ service termination, or for that matter anything that distinguishes "start of 
+service". It is presumed that other administrative measures 
+would be applied to detect "start of service" (IRI-BEGIN) 
+and "end of service" (IRI-END). 
+DHCPREQUEST can be used to "re-confirm" an address assignment upon re-boot of a system. 
+DHCP can be used to extend the lease on an IP address while the host continues to use the address. Sometime before the 
+lease expires (options specifying the renew interval may be passed in the original DHCPACK), the host sends a 
+
+DHCPREQUEST message to its DHCP server, requesting the extension of the lease on its IP address. The server 
+
+records the lease extension and responds with a DHCPACK containing the information about the extended lease. The 
+
+lease extension process can be completed without interruption of
+ the use of the IP address, so applications using TCP/IP 
+are unaffected. 
+After a host has left a network, the host no longer requests for extensions on the lease for its assigned IP address, and 
+the lease eventually expires. At this point, the server return
+s the IP address to its pool of available addresses and can 
+reassign the address to another host. The length of the lease on an IP address and the policy for extending a lease is 
+
+chosen by the DHCP server administrator. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)39 B.4.1 Address assignment 
+The DHCP server records the addresses and associated leases
+ that it assigns to hosts. When a host that has been 
+assigned an address is restarted, it first sends a DHCPREQUEST message to confirm that it is still on the correct 
+network for that address. The server compares the address sent by the host in the DHCPREQUEST message to the 
+address the server recorded for the host and sends a DHCPACK to
+ the host to confirm that the client can continue to use 
+the address. If the client has moved to a new network, the server responds with a DHCPNAK, and the client restarts the 
+
+DHCP process to obtain a new address appropriate to the new network. 
+A DHCP server identifies a host by its MAC address or (optio
+nally) a client identifier supplied by the host. The address 
+assignments recorded by the DHCP server are indexed by the 
+identifier for the client. Thus, if a host moves from one 
+network to another, its current IP address can be determined by looking in the servers' address assignment records for 
+the most recent address assigned to that host. In the case of an ISP using DHCP for address assignment, the ISP may 
+
+choose to record other subscriber information such as th
+e subscriber's name or account number with the host MAC 
+address, so that the IP address currently associated with a specific subscriber can be identified. 
+B.4.2 Message transmission and relay agents 
+Except when it is extending the lease on an IP address, a 
+host uses link-local broadcast to send DHCP messages. When 
+
+the server is on the same physical network as the host, the server receives the messages directly from the host. However, 
+
+this method of message transmission requires that a DHCP server be deployed on every physical network, which can 
+impose significant management overhead. To avoid the requirement for a DHCP server on every network, DHCP relay 
+agents can be used to forward messages between hosts and DHCP servers. A DHCP relay agent, typically implemented 
+
+in a network element such as a router, forwards the mess
+ages broadcast by hosts to a DHCP server, and returns the 
+messages from servers back to hosts. Each DHCP relay ag
+ent is configured with the addresses of the available DHCP 
+servers, usually at the same time as the hosting network element. 
+IETF RFC 3046 [10] defines an extension to DHCP called "rel
+ay agent options", which are additional options that can 
+be added to a DHCP message by a relay agent. The purpose of these options is to allow a relay agent to include 
+additional information in the DHCP message that may be used by the server or the relay agent. For example, a relay 
+
+agent can include information about the port on which it received a DHCP message from a client, so the relay agent can 
+
+forward the response from the server to the correct port. 
+There is a proposed relay agent option (draft-ietf-dhc-agentopt-radius-04.txt [i.3]) that combines IEEE 802.1X [i.2] 
+(Port based network access protocol), RADIUS and DHCP to
+ provide authenticated iden
+tity information to a DHCP 
+server. This option carries RADIUS auth
+entication information from the network element on which the relay agent is 
+implemented to the DHCP server. In a typical scenario, a ne
+twork subscriber first gains authenticated access through an 
+IEEE 802.1X [i.2] protocol exchange with the networ
+k access device. The network access device uses RADIUS to 
+authenticate the identity of the user attempting to gain 
+access through IEEE 802.1X [i.2]. This access device then caches 
+identity information about the subscriber, obtained thr
+ough the exchange with the RADIUS server. When the 
+subscriber's host initiates a DHCP exchange, the access device includes the identity information in the message 
+
+forwarded to the DHCP server. The DHCP server then assigns 
+an IP address to the host and records the identity of the 
+
+subscriber along with the assigned address. 
+B.4.3 Security and authentication 
+The original DHCP protocol specification includes no mechanisms for security or authentication. IETF RFC 3118 [11] 
+
+specifies an authentication framework and one specific auth
+entication mechanism for DHCP. Using this authentication 
+mechanism, hosts and servers can authenticate the identity of the source of DHCP messages, so that rogue hosts and 
+
+servers can be ignored. Also, the integrity of the contents of DHCP messages can be guaranteed, so that hosts and 
+
+clients cannot be attacked by modifying the contents of DHCP messages in transit. 
+B.5 DHCP main attributes 
+This clause outlines some of the DHCP attributes relevant for binding a "target identity" to an IP address. DHCP 
+
+attributes, usually described as options, are encoded as type-length-value tuples. The type enumerations are defined by 
+
+IANA (Internet Assigned Numbers Authority 
+http://www.iana.org/assignments/bootp-dhcp-parameters
+), in many cases, 
+the lengths are fixed by the type, but included anyway. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)40 As indicated earlier, the DHCP messages are encoded as B
+OOTP requests and replies. BOOTP was created to provide 
+minimal configuration to boot a processor, typically something like a router or X-terminal. The BOOTP configuration 
+typically included a filename and server name from which a device could download a boot image. As most client 
+
+equipment now includes adequate non-volatile storage, DHCP has extended and modified the fields in the BOOTP 
+
+messages for its own purposes. It still uses the address fields, but DHCP may now use the "filename" and "server name" 
+
+fields as extensions of the "options" field. 
+As the encoding of the individual option lengths are limited to 8-bits, some options have to be segmented into multiple 
+instances of the same option, for re-assembly at
+ the receiver (according to IETF RFC 3396 [12]). 
+Some options have sub-options, further encoded as TLVs (Type-Length-Value) within the "value" portion of the option 
+TLV. 
+Specific attributes of interest: 
+IP Address 
+The IP address leased by the DHCP server to the client is one of the few identifiers of client traffic 
+which are exposed to the Internet. As it is dynamically assigned, capturing and expeditious 
+
+dissemination this information about a target is significant. The IP address is encoded as the 
+
+"yiaddr" ("your IP address") or "ciaddr" ("client
+ IP address") field in the BOOTP header. Non-TLV, 
+fixed length (4 bytes), at a fixed offset in the BOOTP header. 
+MAC address 
+The client's MAC address (CHADDR) is specified in the BOOTP header, which encapsulates the 
+
+DHCP messages. Presumably this is acquired by the client from its LAN MAC interface, although 
+this is by no means fixed: many network interface cards and client operating systems support the 
+capability of setting the MAC address. Devices (network switches) also exist which automatically 
+
+map the MAC address specified by the client to another presented to the external world. The MAC 
+
+address is encoded as the "chaddr" ("client hardware address") field in the BOOTP header. 
+
+Non-TLV, fixed length (16 bytes), at a fixed 
+offset in the BOOTP header. Qualified by the 
+BOOTP-hlen and BOOTP-htype fields. 
+Lease Time 
+An IP address is usually leased to the client for a specific period of time (Address Lease Time 
+
+option 51), often hours or days, after which the lease needs to be renewed by a client DHCP 
+REQUEST (usually unicast to the same server). The Lease Time is TLV-encoded, option 51 
+(decimal), 32-bits, seconds. 
+Relay Agent 
+
+Information 
+In cable modem (and other) networks, the customer premise equipment acts as a DHCP proxy, 
+and modifies the client DHCP mess
+ages to include a unique identifier belonging to the CPE, as 
+distinct from the Ethernet MAC of the customer 
+computer. Presumably this identifier, unlike the 
+customer computer MAC address would not be as 
+easily modified, and may be used by the DHCP 
+server, and other directly connected equipment, for identification purposes. The Relay Agent 
+
+Information is TLV-encoded, option 82 (decimal), variable length. Agent Remote ID sub-option 2: 
+TLV encoded, variable length (sometimes the MAC address of the cable modem, sometimes an 
+
+operator-assigned identifier). 
+ B.6 DHCP interception 
+B.6.1 Introduction 
+It is believed that an intrusive application add-on to the DHCP server can authoritatively determine when a target has 
+been assigned an IP-address (entry into the BOUND state), the length of the lease, and when the assignment is voided. 
+A probe-based implementation, however, requires the maintenance of client/server state based on monitored exchanges 
+between the client(s) and server(s) or relay-agent(s). The simple state machine presented here is believed to be 
+
+sufficient to LI purposes. Note that because there is no au
+thentication of DHCP packets any host could inject falsified 
+packets in an undetectable manner (a fair DoS attack on the DHCP service). A single target specification may yield 
+multiple DHCP clients, for example in a cable modem deployment where there are multiple PCs at the target site. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)41 B.6.2 DHCP packets 
+DHCP is moderately complex and the sequence and contents of packets may vary considerably depending on the client 
+and server state and configuration, network environment 
+and location in the network. DHCP is a request/response 
+protocol where requests and responses are linked by the xid and client identifier (usually hardware address or 
+chaddr
+). 
+• DHCPDISCOVER: This BOOTP-Request is the client's atte
+mpt to discover DHCP servers. This is usually the 
+initial message in the process, when the client has no record of a previous assignment or address preference. 
+• DHCPOFFER: This BOOTP-Reply is the server respon
+se to the client DHCPDISCOVER message. This 
+contains a 
+proposed
+ IP address assignment for the client. It may be appropriate to observe these messages even 
+when not addressed to the target, in the event that the IP-Address assumed to be bound to the target is now 
+offered to some other client (noted below as 
+conflict
+). 
+• DHCPREQUEST: This BOOTP-Request is the client request for parameters OFFER'ed by one server, and 
+
+rejecting offers from all other servers, OR extending a lease, OR confirming a previous assignment. 
+• DHCPACK: This BOOTP-Reply is the server response to DHCPREQUEST (or DHCPINFORM, see below), 
+
+containing confirmed configuration parameters for client. The response to a DHCPREQUEST includes the IP 
+address assignment, and lease duration. Nominally, this signals a successful assignment. There is, however, 
+some ambiguity as the client may subsequently respond with a DHCPDECLINE, invalidating the assignment. 
+
+It may be appropriate to inspect DHCPACKs for clients other than the target in order to detect address 
+
+conflicts (see DHCPOFFER, above). 
+• DHCPNAK: This BOOTP-Reply is used when the server rejects a DHCPREQUEST (most likely because of 
+address conflicts). 
+• DHCPDECLINE: This BOOTP-Request is the client 
+response to DHCPACK, when it knows the address 
+assignment is unsuitable (e.g. ARP request for the same address is answered by another host). 
+• DHCPRELEASE: This BOOTP-Request is used when the client releases previously assigned address. 
+• DHCPFORCERENEW: This BOOTP-Reply is used when the 
+server forces the client to attempt to renew the 
+address assignment. This may not be a transparent action from the client's perspective. 
+• DHCPINFORM: This BOOTP-Request is used when th
+e client attempts to acquire additional local 
+configuration that is not relevant to the IP address assignment. This is usually employed when the client has 
+acquired an IP address assignment through other means (fixed configuration). Note that like a 
+
+DHCPREQUEST, the server will respond with a DHCPACK to this request, however the DHCP ACK will not 
+
+include a 
+yiaddr
+ or lease-time option. 
+B.6.3 State machine 
+As intimated above, a simplified state machine may be adequate for LI purposes. In particular, the distinctions between 
+
+INIT, INIT-BOOT and SELECTING, REBOOTING and 
+REQUESTING, and RENEWING and REBINDING seem to 
+be of finer granularity than is useful to the LI function. A renaming and combining of like states results in: 
+• INIT: no address assigned, no (observed) DHCPREQUEST outstanding. 
+• REQUESTING: a DHCPREQUEST for a target without an assignment has been observed, awaiting a server 
+
+response. 
+• BOUND: a DHCPACK has assigned an address to the target - this would also be the "initial state" in the event 
+
+of a "preload" (see below). Because of the ambiguity introduced by "preload" (see below), one should be 
+prepared to receive DHCPACK and DHCPNAK, and respond appropriately. 
+• RENEWING: collapses the RENEWING/REBINDING states of IETF RFC 2131 [6] an address has been 
+assigned, but the client's lease is expiring and the client is attempting to renew the lease by sending 
+
+DHCPREQUEST (DHCPDISCOVER) messages. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)42 B.6.3.1 Mapping DHCP packets to events 
+DHCP requests and responses are linked via a client-assigned tr
+ansaction-identifier (xid). It is not immediately obvious 
+whether the LI function needs to track xids to validate requests/responses. As provisioning of targets is asynchronous to 
+the exercise of DHCP by those targets, and probing may be lo
+ssy, the LI function should be prepared to receive any 
+DHCP message in any state, and act appropriately. 
+DHCPDISCOVER and DHCPOFFER: While these are part of the initial client/server handshake they do not of 
+themselves distinguish an "assignment event" for LI. A DHCPOFFER may, however, invalidate a previous assignment 
+
+by indicating an address assignment conflict. In the BOUND st
+ate, receipt of these messages for a target should trigger 
+a transition into RENEWING. 
+DHCPREQUEST: marks the start of an assignment. 
+
+DHCPACK contains all the information necessary to detect an
+d report the assignment of an IP address. Receipt of this 
+message for a target would normally cause a transition into the BOUND state, however in the event that the confirmed 
+IP address (yiaddr) matched one assumed to be assigned to a target, but given to another client, it should mark a 
+transition into the INIT state and an IRI-END. 
+DHCPNAK: as DHCP does not do any authentication, an "assignment failure" may not have the same significance as a 
+RADIUS "Logon Failure". This message would invalidate a previous target IP address assignment in the process of 
+
+being RENEW'ed, and transition into the INIT state. 
+DHCPDECLINE: invalidates a presumed IP address assignment. This is an unfortunate side-effect of the ambiguity of 
+the DHCPACK, transition into INIT state. 
+DHCPRELEASE: invalidates a previous IP address 
+assignment - transition into the INIT state. 
+DHCPFORCERENEW: forces client into renew cycle (RENEWING). 
+B.6.3.2 Timers and administrative events 
+Lease-timeout: there are several timers associated with DHC
+P, governing re-transmissions, when to start the renewal 
+process, etc. The one that is relevant to LI is the lease ti
+me-out, provided in the DHCPACK (one of several features that 
+distinguishes a response to a DHCPREQUEST and a DHCPINFORM; the former DHCPACK has a lease time, the 
+latter would not). 
+"Preload": an administrative action to provide the assignment information for a target which would normally be 
+discovered by monitoring the DHCP exchange. This is used when provisioning a target after the target obtains an  
+IP address assignment. This event would effect an immediate transition from "INIT" into "BOUND" state. 
+B.6.3.3 State information 
+At minimum, once an assignment is made, either via the DHCP negotiation or administrative command - preload,  
+
+the LI function should maintain enough information to uniquely identify: 
+• the client in the case of a renegotiation; 
+• the allocated address in the case of a re-assignment. 
+The following information is likely to be necessary information, although it may not be sufficient: 
+• one or more client identifiers used for targeting and rene
+gotiation. The obvious example of a target identifier is 
+the client MAC address, however there may be two or more ways to identify a single target; 
+• client IP address; 
+• remaining lease time; 
+• associated DHCP server address; 
+• current state. 
+NOTE: Not all information is present in all messages, or even in all exchanges. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)43 B.6.3.4 State machine diagram 
+   DHCPACK 
+IRI-REPORT 
+DHCPRELEASE,
+ DHCPDECLINE 
+Lease-timeout 
+Conflict 
+IRI
+-END
+ DHCPREQUEST
+IRI
+-CONTINUE
+DHCPREQUEST
+ IRI-REPORT 
+INIT 
+RENEWING
+ BOUND 
+  REQUESTING
+ Preload 
+IRI-BEGIN
+ DHCPNAK 
+IRI-REPORT 
+DHCPACK
+ IRI-BEGIN
+ DHCPACK 
+IRI-CONTINUE
+ DHCPREQUEST,
+ DISCOVER, 
+DHCPOFFER 
+ IRI-REPORT 
+Preload 
+IRI-BEGIN 
+DHCPRELEASE
+ DHCPNAK 
+Lease-timeout 
+Conflict 
+IRI-END 
+ NOTE: Figure B.3 is by no means complete or authoritative. 
+ Figure B.3: LI function DHCP FSM 
+B.6.4 Mapping DHCP on the IRI structure 
+An event which signals a new assignment (DHCPACK) will be reported as an IRI-BEGIN, a renewed lease will be 
+forwarded as an IRI-CONTINUE, and any event that signalled the termination of an assignment, including a conflicting 
+
+DHCPOFFER, will be forwarded as an IRI-END. 
+IRI-BEGIN should include at least the target identifier, the 
+IP address assigned, the client-identifier(s), the server IP 
+address and the lease timeout. 
+
+IRI-CONTINUE should include at least the target identifier, the IP address assigned, the client-identifier(s), the server 
+IP address and the lease timeout. 
+IRI-END should include at least the target identifier, the IP address assigned, the client-identifier(s) and the server IP 
+address. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)44 Table B.2: Mapping DHCP on the IRI structure 
+Attribute
+ Option 
+[RFC defined in]
+ accessEventType Inferred 
+targetUsername Option 82, sub-option 2 (IETF RFC 3046 [10]) or chaddr (IETF RFC 2131 [6]) 
+internetAccessType Fixed value 
+iPVersion Fixed 
+value 
+targetIPAddress yiaddr (IETF RFC 2131 [6]) 
+targetNetworkID chaddr (IETF RFC 2131 [6]) 
+targetCPEID 
+DHCP Relay Agent Information (for further study) 
+targetLocation NA 
+pOPPhoneNumber NA 
+pOPIdentifier NA 
+pOPIPAddress 
+giaddr (IETF RFC 2131 [6]) or DHCP server IP-address 
+pOPPortNumber Option 82, sub-option 1 (IETF RFC 3046 [10]) 
+callBackNumber NA 
+startTime 
+IF System clock 
+expectedEndTime  
+Current time (upon receipt of DHCP-ACK) plus IP Address Lease Time 
+(IETF RFC 2131 [6]) 
+endTime 
+IF System clock 
+endReason Inferred 
+octetsTransmitted - 
+octetsReceived - 
+rawAAAData 
+<Free to choose> 
+nationalIPIRIParameters Inferred 
+additionalIPAddress yiaddr (IETF RFC 2131 [6]) 
+authenticationType Derived from Auth message type 
+otherTargetIdentifiers yiaddr (IETF RFC 2131 [6]) 
+NOTE 1: Depending upon the network configuration, Option-82 may not be present, in which case chaddr may 
+be a more appropriate TargetUserName. Sub-option2 of Option 82 may contain various kinds of 
+
+information, depending on the particular DHCP implementation. In a DHCP environment, 
+TargetUsername is unlikely to be a user name, however, it is the piece of information that uniquely 
+identifies the Target access point. It is more likely to be a MAC address or a serial number from the 
+
+cable-modem. 
+NOTE 2: POPIPAddress (giaddr (IETF RFC 2131 [6]) or DHCP server IP-address): In cable networks, the DHCP 
+servers are often centrally located, and service a very large network of cable headends (CMTS) and 
+
+customer modems. In these networks, giaddr (IETF RFC 2131 [6]) may be a more accurate identifier as 
+
+it may in fact identify the CMTS (cable headend). In smaller, non-cable networks, where the DHCP 
+
+server is within the same broadcast domain as the client, the DHCP-server IPAddress itself may be the 
+closest approximation to the POPIPAddress. 
+NOTE 3: TargetIPAddress (yiaddr (IETF RFC 2131 [6])): 
+It is important to note that yiaddr should only be 
+considered "bound" to the client when it appears in
+ a DHCP-ACK message. For example, yiaddr is also 
+set in the DHCP-OFFER, in which case it is only a "possible" IP address, and in the DHCP-DISCOVER, 
+
+it would be zero. 
+NOTE 4: TargetNetworkID (chaddr (IETF RFC 2131 [6])): For the non-cable case, this may be the "targeting" 
+information (that is the client's fixed MAC address). In a cable network it may be the MAC address of 
+the customer's router or PC NIC card, and discovered only by matching the option 82 information. 
+NOTE 5: The ASN.1 for the structure is presented in clause 8 as IPIRI. 
+   ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)45 Annex C (informative): 
+IP IRI interception C.1 Introduction 
+Concepts of what constitutes IRI may differ, resulting in alternative IP interception requirements and implementations. 
+This annex contains an alternative specification that limits IP IRI handover to signalling information based on 
+
+individual IP frames, and excludes signalling in any encapsulated frames such as TCP or UDP, where such exclusion 
+
+may be required. This annex describes an approach for implementing this option. 
+C.2 Requirements 
+[C.2.1] If IP IRI is delivered, the CC from which the IRI is derived will not be delivered. 
+[C.2.2] IP IRI will only contain information derived from IP header; and no data from any encapsulated 
+layer headers such as UDP or TCP, or higher layers will be included. 
+[C.2.3] The IP IRI PDU may contain values derived from all IP layer Header fields, both IPv4 and IPv6 
+headers. 
+[C.2.4] Depending on implementation requirements, diff
+erent IP layer header fields may be included in 
+the IP IRI PDU. The implementing parties effect selection of the fields. 
+C.3 Proposed implementation 
+Since the optional IP layer header fields are subject to possi
+ble exclusion from the IP IRI PDU, it is recommended to 
+implement a configuration option in the Interception Function
+ that allows for flagging individual header-fields for 
+in - or exclusion. 
+If the LI implementation derives the IP IRI from network statistics, such as those being defined in IETF's IPFIX 
+Working Group, in agreement between CSP and the authorities, IP IRI may be delivered as aggregated records as 
+
+opposed to "per packet IRI". In this approach the number of packets and the number of bytes included in the aggregated 
+IRI record is provided in the iPAg
+gregatedNbrOfPackets and iPAggregatedNbrOfBytes fields of the ASN.1. 
+NOTE: The ASN.1 for the structure is presented in clause 8 as IPIRIOnly. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)46 Annex D (informative): 
+TCP and UDP IRI interception 
+D.1 Introduction 
+If IRI were to be provided for transport layer traffic (e.g. UDP, TCP), i.e. above the IP layer, the requirements listed in 
+this annex provide a guideline for designing and implementi
+ng a solution for unicast traffic. Support for multicast traffic 
+is for further study. 
+Depending on national legislation, it would not be appropriate for IAPs to deliver IRI based on information above 
+layer 3, since the communication on level 4 and up are not provided by the IAP, it is considered User data and should 
+therefore be considered CC. 
+However, some CSPs use TCP and UDP port information for support of services (e.g. traffic analysis, filtering, QoS, 
+billing). In this case, the TCP or UDP information may be considered IRI. 
+In this context "IP layer 4" is a reference to the attempt to squeeze TCP/IP into the OSI reference model, in which case 
+all protocols that run directly on top of IP are considered "layer 4". No information above layer 4 is known or 
+
+interpreted. 
+If encryption such as IPSEC is used between the intercept subject and the associate, then IRI will not be available for 
+TCP or UDP. 
+NOTE: The ASN.1 for the structure is presented in clause 8 as a substructure of IPIRIOnly. 
+D.2 Requirements 
+Requirement Definitions 
+TCP Flow A TCP flow can be identified by the socket pair (IP source address, TCP source port, IP 
+destination address, TCP destination port). A TCP flow begin can be identified from the detection 
+of a SYN. A TCP flow end can be identified by the FIN or RST bits in a TCP session. 
+UDP Flow An UDP flow can be identified by the socket pair (IP source address, UDP source port, IP 
+destination address, UDP destination port). An UDP flow begin can be identified from the 
+recognition of a previously unknown socket pair. An UDP flow end can be identified by a time 
+
+interval with no traffic over the socket pair. 
+IP Flow An IP flow can be identified as a non-UDP Flow, non-TCP Flow and the IP-tuple (IP source 
+address, IP destination address, Protocol Type). An IP flow begin can be identified from the 
+
+recognition of an unknown IP-tuple. An IP flow end can be identified by a time interval with no 
+
+traffic over the IP-tuple. 
+D.3 HI2 requirements 
+[D.3.1] When present, the TCP source and 
+destination port may be considered IRI. 
+NOTE 1: This information is control information that can be used to identify applications running over TCP and 
+traffic analysis. 
+[D.3.2] When present, the UDP source and 
+destination port may be considered IRI. 
+NOTE 2: This information is control information that can be used to identify applications running over TCP and in 
+traffic analysis. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)47 [D.3.3] The HI2 interface should support the ability to deliver an IRI-Begin-record whenever a Flow has 
+begun without delivering the contents of the TCP or UDP segments. 
+NOTE 3: This begin event is, to a degree, required by the delivery protocol and can be used as a trigger to the LEA 
+or the LEA collector that a communication is beginning. 
+[D.3.4] The HI2 interface should support the ability to deliver an iRI-End-record whenever a Flow has 
+ended without delivering the contents of the TCP or UDP segments. 
+NOTE 4: This end event is, to a degree, required by the deli
+very protocol and can be used as a trigger to the LEA or 
+the LEA collector that a communication is ended or
+ can provide gross level information about the 
+communication. 
+[D.3.5] The HI2 iRI-Begin-record should contain th
+e IP addresses involved in an intercepted flow. 
+NOTE 5: This information is necessary for the LEA to identify the communicating parties. 
+[D.3.6] The HI2 iRI-Begin-record should contain th
+e TCP ports involved in an intercepted TCP flow. 
+NOTE 6: This information is necessary to assist th
+e LEAs in identify the communicating applications. 
+[D.3.7] The HI2 iRI-Begin-record should contain the UDP ports involved in an intercepted UDP flow. 
+NOTE 7: This information is necessary to assist th
+e LEAs in identify the communicating applications. 
+[D.3.8] The HI2 iRI-Begin-record may contain a timest
+amp indicating the time a flow start was detected. 
+
+[D.3.9] The iRI should be able to contain the number of
+ bytes transferred from the identified target and the 
+number of bytes transferred to the identified targ
+et. This byte count should include all Layer 3 and 
+above bytes seen by the interception equipment for the targeted flow including retransmissions by 
+higher level protocols such as TCP. 
+NOTE 8: This information provides the LEA will an indication of the amount of information transferred between 
+the endpoints. 
+[D.3.10] The HI2 iRI-End-record may contain a time
+stamp indicating the time a flow end was detected. 
+D.4 HI3 requirements 
+[D.4.1] HI3 delivery should be identical to IP content delivery. 
+NOTE: Anything less would be incomplete data. 
+D.5 General requirements 
+[D.5.1] All timeout intervals are set via HI1 and 
+are outside the scope of the delivery function. 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)48 Annex E (informative): 
+Bibliography 
+• IANA Private Enterprise numbers: 
+http://www.iana.org/assignments/enterprise-numbers
+.   ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)49 Annex F (informative): 
+Change Request history 
+Status of the present document
+ Service-specific details for Internet access services 
+TC LI approval 
+date 
+Version 
+Remarks 
+January 2004 1.1.1 
+First publication of the TS after approval by ETSI/TC LI#04 (14-16 October 2003, 
+Moscow) 
+
+ 
+Version 1.1.1 prepared by Johan Bakker (KPN) (rapporteur ETSI TS 102 234) 
+September 2004 1.2.1 
+Included Change Requests: 
+
+TS102234CR002 (cat F) Alignment of form of ASN.1 version 
+
+TS102234CR003 (cat D) Editorial in Introduction 
+These CRs were approved by TC LI#06 (22-23 July 2004, Póvoa de Varzim) 
+TC LI#07 (28-30 September 2004, Bremen) decided to publish v1.2.1 
+
+ 
+Version 1.2.1 prepared by Peter van der Arend (KPN) (chairman TC LI) 
+July 2005 1.3.1 
+Included Change Requests: 
+
+TS102234CR005r1 (cat C) Definition of "nASPortNumber" and ASN.1 specification: 
+
+Modification of parameter length 
+TS102234CR006 (cat C) Create an own ASN.1
+ box for IPCCContents for different data 
+streams 
+These CRs were approved by TC LI#09 (28-30 July 2005, Rovaniemi) 
+
+ 
+Version 1.3.1 prepared by Peter van der Arend (KPN) (chairman TC LI) 
+October 2005 1.4.1 
+Included Change Requests: 
+
+TS102234CR007r1 (cat C) LI activation during an active internet session 
+
+TS102234CR008r1 (cat C) Additions and changes for interception of wireless LAN 
+These CRs were approved by TC LI#10 (4-6 October 2005, Sorrento) 
+ 
+Version 1.4.1 prepared by Peter van der Arend (KPN) (chairman TC LI) 
+February 2006  1.5.1 
+Included Change Request: 
+
+TS102234CR009 (cat C) on Clarification of session-numbering for IP-Access 
+
+This CR was approved by TC LI#11 (31 January Œ 2 February 2006, Saint Martin) 
+
+ Correction of mistakes performed during ETSI publication process of v1.4.1 
+ 
+Version 1.5.1 prepared by Peter van der Arend (KPN) (chairman TC LI) only distributed 
+
+for internal use in TC LI#12 and was not officially published by ETSI 
+May 2006 1.6.1 
+Included Change Requests: 
+
+TS102234CR010 (cat F) on Changes to figure A.6 
+
+TS102234CR011r2 (cat F) on Additions to ASN.1 
+TS102234CR012 (cat F) on Changes to table B.2 
+TS102234CR013r1 (cat F) on Simplification of figure 6 
+
+TS102234CR014r1 (cat F) on Changes to table 2 
+
+TS102234CR015 (cat F) on Changes to table A.3 
+ All CRs resulting from the LI Plugtest were approved by TC LI#12 (9 Œ 11 May 2006, 
+
+Limassol) 
+
+ Version 1.6.1 prepared by Peter van der Arend (KPN) (chairman TC LI) 
+September 2006 2.1.1 
+Included Change Request: 
+TS102234CR016r1 (cat F) IRI Events and ASN.1 correction 
+This CR was approved by TC LI#13 (6-8 September 2006, Stockholm) 
+ ETSI TS 102 234 is converted to part 03 of the multi part specification ETSI 
+TS 102 232 
+ Version 2.1.1 prepared by Peter van der Arend (KPN) (chairman TC LI) 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)50 Status of the present document
+ Service-specific details for Internet access services 
+TC LI approval 
+date 
+Version 
+Remarks 
+October 2008 2.2.1 
+Included Change Requests: 
+TS102232-03CR017r1 (cat C) on Inclusion of NationalIPIRIParameters field in 
+IPIRIContents 
+TS102232-03CR018r2 (cat B) New values to be added to InternetAccessType 
+
+These CRs were approved by TC LI#19 (30 September - 2 October 2008, Prague) 
+
+ Version 2.2.1 prepared by Peter van der Arend (KPN) (chairman TC LI) 
+Rapporteur of this specification is Mark Lastdrager (Pine Digital Security) 
+June 2011 2.3.1 
+Included Change Request: 
+TS102232-03CR019r5 (cat B) on Dual StackIPv6 Sequence-Of-IP-Addresses 
+ 
+This CR was approved by TC LI#27, 28-30 June 2011, Mariehamn 
+
+ The ASN.1 definitions are contained in a .txt file (IPAccessPDU,ver7.txt) which 
+accompanies the present document 
+
+ 
+Version 2.3.1 prepared by Peter van der Arend (Vodafone) (chairman TC LI) 
+Rapporteur of this specification is Mark Lastdrager (Pine Digital Security) 
+January 2012  3.1.1 
+Included Change Requests: 
+TS102232-03CR022 (cat B) on New IPIRIContents field to identify authentication type & 
+
+profile 
+This CR was approved by TC LI#28, 13-15 September 2011, Otranto 
+ 
+TS102232-03CR026r2 (cat B) on New values to be added to InternetAccessType in 
+
+order to describe new type internet access services 
+This CR was approved by TC LI#29, 24-26 January 2012 in Dun Laoghaire 
+ 
+The ASN.1 definitions are contained in a .txt file (IPAccessPDU,ver8.txt) which 
+
+accompanies the present document 
+ Version 3.1.1 prepared by Peter van der Arend (Vodafone) (chairman TC LI) 
+
+Rapporteur of this specification is Mark Lastdrager (Pine Digital Security) 
+May 2012 3.2.1 
+Included Change Request: 
+
+TS102232-03CR024r2 (cat B) on Changes to expand Target Identifiers 
+
+This CR was approved by TC LI#30 (14-16 May 2012, Amsterdam) 
+
+ The ASN.1 definitions are contained in a .txt file (IPAccessPDU,ver9.txt) which 
+accompanies the present document 
+
+ 
+Version 3.2.1 prepared by Peter van der Arend (Vodafone) (chairman TC LI) 
+Rapporteur of this specification is Mark Lastdrager (Pine Lawful Interception) 
+September 2013 3.3.1 
+Included Change Request: 
+CR027 (Change to IRI-REPORT to signal end of intercept whilst session remains active) 
+This CR was approved by TC LI#34 
+ 
+The ASN.1 definitions are contained in a .txt file (IPAccessPDU,ver10.txt) which 
+
+accompanies the present document 
+ Version 3.3.1 prepared by Mark Lastdrager (Pine Lawful Interception) (rapporteur) 
+July 2016 3.4.1 
+Included Change Requests: 
+ CR028 (Fix header issue in table A.1) 
+
+CR029 (Adding common Location parameter to ETSI TS 102 232-3) 
+
+ 
+These CRs were approved in TC LI#38 and TC LI#42, respectively 
+ The ASN.1 definitions are contained in a .txt file (IPAccessPDU,ver11.txt) which 
+
+accompanies the present document 
+
+ Version 3.4.1 prepared by Mark Lastdrager (Pine Lawful Interception) (rapporteur) 
+  ETSI ETSI TS 102 232
+-3 V3.4.1 (2016
+-09)51 History 
+Document history 
+V1.1.1 February 2004 Publication as ETSI TS 102 234 (Historical) 
+V1.2.1 October 2004 Publication as ETSI TS 102 234 (Historical) 
+V1.3.1 August 2005 Publication as ETSI TS 102 234 (Historical) 
+V1.4.1 January 2006 Publication as ETSI TS 102 234 (Historical) 
+V1.6.1 July 2006 Publication as ETSI TS 102 234 (Historical) 
+V2.1.1 December 2006 Publication 
+V2.2.1 January 2009 Publication 
+V2.3.1 August 2011 Publication 
+V3.1.1 February 2012 Publication 
+V3.2.1 June 2012 Publication 
+V3.3.1 October 2013 Publication 
+V3.4.1 September 2016 Publication 
+ 

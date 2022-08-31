@@ -1,0 +1,1469 @@
+   
+   ETSI TS 103 221-2 
+V1.5.1 (2021-07) Lawful Interception (LI); 
+Internal Network Interfaces; 
+Part 2: X2/X3 
+   
+ TECHNICAL SPECIFICATION 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)2  Reference 
+RTS/LI-00209-2 
+Keywords 
+interface, lawful interception 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+  Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - APE 7112B 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° w061004871 
+ Important notice 
+The present document can be downloaded from: 
+http://www.etsi.org/standards-search
+ The present document may be made available in electronic ve
+rsions and/or in print. The content of any electronic and/or 
+print versions of the present document shall not be modified wi
+thout the prior written authorization of ETSI. In case of any 
+existing or perceived difference in contents between such versions and/or in print, the prevailing version of an ETSI 
+deliverable is the one made publicly available in PDF format at 
+www.etsi.org/deliver
+. Users of the present document should be aware that the document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+ If you find errors in the present document, please send your comment to one of the following services: 
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+ Notice of disclaimer & limitation of liability 
+The information provided in the present deliverable is directed solely to professionals who have the appropriate degree of 
+experience to understand and interpret its content in accordance with generally accepted engineering or  
+other professional standard and applicable regulations.  
+No recommendation as to products and services or vendors is made or should be implied. 
+No representation or warranty is made that this deliverable is
+ technically accurate or sufficient or conforms to any law 
+and/or governmental rule and/or regulation and further, no representation or warranty is made of merchantability or fitness 
+for any particular purpose or against infringement of intellectual property rights. 
+In no event shall ETSI be held liable for loss of profit
+s or any other incidental or consequential damages. 
+ Any software contained in this deliverable is provided "AS IS" with no warranties, express or implied, including but not 
+limited to, the warranties of merchantability, fitness for a particu
+lar purpose and non-infringement of intellectual property 
+rights and ETSI shall not be held liable in any event for any damages whatsoever (including, without limitation, damages 
+for loss of profits, business interruption, loss
+ of information, or any other pecuniary loss
+) arising out of or related to the use 
+of or inability to use the software. 
+Copyright Notification 
+No part may be reproduced or utilized in any form or by any 
+means, electronic or mechanical, including photocopying and 
+microfilm except as authorized by written permission of ETSI. 
+The content of the PDF version shall not be modified without the written authorization of ETSI. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © ETSI 2021. 
+All rights reserved. 
+   ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)3 Contents 
+Intellectual Property Rights ..................................................................................................
+.............................. 6Foreword ......................................................................................................................
+....................................... 6Modal verbs te
+rminology .......................................................................................................
+............................. 61 Scope .......................................................................................................................
+................................. 72 References ..................................................................................................................
+.............................. 72.1 Normative references ......................................................................................................
+................................... 72.2 Informative references ....................................................................................................
+.................................... 83 Definition of terms, symbols and abbreviations ..............................................................................
+......... 83.1 Terms .....................................................................................................................
+............................................. 83.2 Symbols ...................................................................................................................
+........................................... 93.3 Abbreviations .............................................................................................................
+........................................ 94 Introduction and re
+ference model ............................................................................................
+................. 94.1 Reference model ...........................................................................................................
+...................................... 94.2 Assumptions ...............................................................................................................
+...................................... 104.2.1 Architecture ............................................................................................................
+.................................... 104.2.2 Implementati
+on/realization ..............................................................................................
+........................... 104.2.3 Deployment infrastructure ...............................................................................................
+........................... 114.2.4 Regulatory assumptions ..................................................................................................
+............................ 114.3 Relationship to other standards ...........................................................................................
+............................. 115 Message contents 
+and parameters .............................................................................................
+............. 125.1 Overview ..................................................................................................................
+........................................ 125.2 PDU Header
+ Fields .........................................................................................................
+.................................. 125.2.1 Version .................................................................................................................
+....................................... 125.2.2 PDU Type ................................................................................................................
+................................... 135.2.3 Header Length ...........................................................................................................
+................................. 135.2.4 Payload Length ..........................................................................................................
+................................. 135.2.5 Payload Format ..........................................................................................................
+................................. 135.2.6 Payload Direction .......................................................................................................
+................................ 135.2.7 XID .....................................................................................................................
+........................................ 145.2.8 Correlation ID ..........................................................................................................
+................................... 145.3 Conditional Attr
+ibute Fields ..............................................................................................
+............................... 145.3.1 General structure .......................................................................................................
+.................................. 145.3.2 ETSI TS 102 232-1 
+Defined Attribute .....................................................................................
+................... 155.3.3 3GPP TS 33.128 Defined Attribute ........................................................................................
+.................... 155.3.4 3GPP TS 33.108 Defined Attribute ........................................................................................
+.................... 155.3.5 Proprietary Attribute ...................................................................................................
+................................ 155.3.6 Domain ID (DID) .........................................................................................................
+.............................. 165.3.7 Network Function ID (NFID) ..............................................................................................
+....................... 165.3.8 Interception Point ID (IPID) ............................................................................................
+........................... 165.3.9 Sequence Number .........................................................................................................
+.............................. 165.3.10 Timestamp ..............................................................................................................
+.................................... 165.3.11 Source IPv4 Address ....................................................................................................
+............................... 165.3.12 Destination IPv4 Address ...............................................................................................
+............................ 165.3.13 Source IPv6 Address ....................................................................................................
+............................... 175.3.14 Destination IPv6 Address ...............................................................................................
+............................ 175.3.15 Source Port.............................................................................................................
+..................................... 175.3.16 Destination Port .......................................................................................................
+................................... 175.3.17 IP Protocol ............................................................................................................
+...................................... 175.3.18 Matched Target Identifier ..............................................................................................
+............................. 175.3.19 Other Target Identifier ................................................................................................
+................................ 175.3.20 MIME Content Type ......................................................................................................
+............................. 175.3.21 MIME Content Transfer Encoding .........................................................................................
+.................... 185.3.22 Additional XID Related Information .....................................................................................
+..................... 185.4 Payload ...................................................................................................................
+.......................................... 18  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)4 5.4.1 Overview ................................................................................................................
+.................................... 185.4.2 ETSI TS 102 232-1
+ Defined Payload .......................................................................................
+.................. 195.4.3 3GPP TS 33.128 
+Defined Payload ..........................................................................................
+.................... 195.4.4 3GPP TS 33.108 
+Defined Payload ..........................................................................................
+.................... 195.4.5 Proprietary Payload......................................................................................................
+............................... 195.4.6 IPv4 Packet .............................................................................................................
+.................................... 195.4.7 IPv6 Packet .............................................................................................................
+.................................... 195.4.8 Ethernet Frame ..........................................................................................................
+.................................. 195.4.9 RTP Packet ..............................................................................................................
+................................... 195.4.10 SIP Message.............................................................................................................
+................................... 195.4.11 DHCP Message ...........................................................................................................
+................................ 205.4.12 RADIUS Packet ..........................................................................................................
+................................ 205.4.13 GTP-U Message ..........................................................................................................
+................................ 205.4.14 MSRP Message ...........................................................................................................
+................................ 205.4.15 3GPP TS 33.108 
+EpsIRIContent............................................................................................
+..................... 205.4.16 MIME Message ...........................................................................................................
+............................... 205.4.17 3GPP Unstructured PDU ..................................................................................................
+.......................... 206 Transport ...................................................................................................................
+............................. 206.1 Summary ...................................................................................................................
+....................................... 206.2 TLS Transport Profile .....................................................................................................
+................................. 216.2.1 General .................................................................................................................
+....................................... 216.2.2 Profile .................................................................................................................
+........................................ 216.2.3 Authentication ..........................................................................................................
+................................... 216.2.4 Keepalive mechan
+ism for reliability .....................................................................................
+...................... 21Annex A (normative): Requirements ................................................................................................. 22
+A.1 X2 Protocol & Arch
+itecture requ
+irements ...................................................................................
+........... 22A.1.1 Basic F
+unctionality ........................................................................................................................................... 22A.1.2 Flexible ................................................................................................................
+............................................. 22A.1.3 Extensible ..............................................................................................................
+........................................... 22A.1.4 Lightweight .............................................................................................................
+......................................... 22A.1.5 Delay ...................................................................................................................
+............................................. 22A.1.6 Permanent and Dynamic Connections .......................................................................................
+....................... 22A.1.7 Relia
+bility .............................................................................................................
+............................................ 22A.1.8 Error detection .........................................................................................................
+......................................... 22A.1.9 Redundancy ..............................................................................................................
+........................................ 22A.1.10 Correlation ............................................................................................................
+............................................ 23A.1.11 Mediation into HI2/HI3 .................................................................................................
+................................... 23A.2 X2 Security requirements ..................................................................................................
+..................... 23A.2.1 Authentication and Authorization ........................................................................................
+............................ 23A.2.2 Accounting and Audit ....................................................................................................
+.................................. 23A.2.3 Integrity Protection ....................................................................................................
+....................................... 23A.2.4 Confidentiality Protection ..............................................................................................
+.................................. 23A.2.5 Replay Protection .......................................................................................................
+...................................... 23A.2.6 Standalone interface ....................................................................................................
+..................................... 23A.2.7 Minimum Security Level ..................................................................................................
+................................ 23A.2.8 Underlying Infrastructure Trust .........................................................................................
+............................... 23A.2.9 Firewall and NAT Transversal ............................................................................................
+............................. 24A.2.10 Certificate and Key Management .........................................................................................
+............................ 24A.3 X3 Protocol & Arch
+itecture requ
+irements ...................................................................................
+........... 24A.3.1 Basic F
+unctionality ........................................................................................................................................... 24A.3.2 Flexible ................................................................................................................
+............................................. 24A.3.3 Extensible ..............................................................................................................
+........................................... 24A.3.4 Lightweight .............................................................................................................
+......................................... 24A.3.5 Delay ...................................................................................................................
+............................................. 24A.3.6 Permanent and Dynamic Connections .......................................................................................
+....................... 24A.3.7 Relia
+bility .............................................................................................................
+............................................ 24A.3.8 Error detection .........................................................................................................
+......................................... 24A.3.9 Redundancy ..............................................................................................................
+........................................ 25  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)5 A.3.10 Correlation ............................................................................................................
+............................................ 25A.3.11 Mediation into HI2/HI3 .................................................................................................
+................................... 25A.4 X3 Security requirements ..................................................................................................
+..................... 25A.4.1 Authentication & Authorization ..........................................................................................
+............................. 25A.4.2 Accounting/Audit ........................................................................................................
+..................................... 25A.4.3 Integrity Protection ....................................................................................................
+....................................... 25A.4.4 Confidentiality Protection ..............................................................................................
+.................................. 25A.4.5 Replay Protection .......................................................................................................
+...................................... 25A.4.6 Standalone interface ....................................................................................................
+..................................... 25A.4.7 Minimum Security Level ..................................................................................................
+................................ 26A.4.8 Underlying Infrastructure Trust .........................................................................................
+............................... 26A.4.9 Firewall and NAT Transversal ............................................................................................
+............................. 26A.4.10 Certificate and Key Management .........................................................................................
+............................ 26Annex B (informative): Illustrative
+ deployment scenarios ................................................................. 27
+B.1 Introduction ..............................................................................................................
+.............................. 27B.2 Simple deployment scenario ................................................................................................
+.................. 27B.3 Individual X3 POIs with shared X2 POI .....................................................................................
+........... 27B.4 Separated 
+interfa
+ces ......................................................................................................
+.......................... 28Annex C (informative): Change History .........................................................................................
+..... 29History .......................................................................................................................
+....................................... 30     ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)6 Intellectual Property Rights Essential patents 
+IPRs essential or potentially essential to normative deliverables may have been declared to ETSI. The declarations 
+pertaining to these essential IPRs, if any, are publicly available for 
+ETSI members and non-members
+, and can be 
+found in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to 
+ETSI in respect of ETSI standards"
+, which is available from the ETSI Secretaria
+t. Latest updates are available on the 
+ETSI Web server (
+https://ipr.etsi.org/
+). 
+Pursuant to the ETSI Directives including the ETSI IPR Policy, no investigation regarding the essentiality of IPRs, 
+
+including IPR searches, has been carried out by ETSI. No guarantee can be gi
+ven as to the existence of other IPRs not 
+referenced in ETSI SR 000 314 (or the updates on the ETSI Web server) which are, or may be, or may become, 
+
+essential to the present document. 
+Trademarks 
+The present document may include trademar
+ks and/or tradenames which are assert
+ed and/or registered by their owners. 
+ETSI claims no ownership of these except for any which are indicated as being the property of ETSI, and conveys no 
+right to use or reproduce any trademark and/or tradename. 
+Mention of those trademarks in the present document does 
+not constitute an endorsement by ETSI of products, services
+ or organizations associated with those trademarks. 
+DECTŽ
+, PLUGTESTSŽ
+, UMTSŽ
+ and the ETSI logo are trademarks of ETSI registered for the benefit of its 
+Members. 
+3GPPŽ and 
+LTEŽ
+ are trademarks of ETSI registered for th
+e benefit of its Members and of the 3GPP 
+Organizational Partners. 
+oneM2MŽ
+ logo is a trademark of ETSI registered for the benefit of its Members and of the 
+oneM2M Partners. 
+GSM
+® and the GSM logo are trademarks registered and owned by the GSM Association. 
+Foreword This Technical Specification (TS) ha
+s been produced by ETSI Technical
+ Committee Lawful Interception (LI). 
+The present document is part 2 of a multi-part deliverable. Full details of the entire series can be found in part 1 [1]. 
+Modal verbs terminology 
+In the present document "
+shall
+", "shall not
+", "should
+", "should not
+", "may", "need not", "will", "will not
+", "can" and "cannot
+" are to be interpreted as described in clause 3.2 of the 
+ETSI Drafting Rules
+ (Verbal forms for the expression of 
+provisions). 
+"must
+" and "must not
+" are NOT
+ allowed in ETSI deliverables excep
+t when used in direct citation. 
+    ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)7 1 Scope 
+The present document defines an electroni
+c interface for the transmission of inter
+cepted information as part of Lawful 
+Interception. This 
+interface is used from points of inter
+ception to LI mediation functions. 
+Typical reference models for LI define an interface be
+tween Law Enforcement Agenci
+es (LEAs) and Communication 
+Service Providers (CSPs), called the handover interface. They also define an internal ne
+twork interface within the CSP 
+domain between administration/mediation functions for lawful interception and network internal functions, which 
+facilitates the interception of communication. This internal network interface typically consists of three sub-interfaces; 
+administration (called X1), transmission of intercept related information (X2) and transmission of content of 
+
+communication (X3). The present document specifies a protocol for delivering X2 and X3. 
+2 References
+ 2.1 Normative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+Referenced documents which are not found to be publicly available in the expected location might be found at 
+https://docbox.etsi.org/Reference
+. NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documen
+ts are necessary for the appli
+cation of the present document. 
+[1] ETSI TS 103 221-1: "Lawful Interception (LI); 
+Internal Network Interfaces; Part 1: X1". 
+[2] ETSI TS 102 232-1: "Lawful Interception (LI); 
+Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 1: Handover specification for IP delivery". 
+[3] IEEE Std 1003.1Ž-2017: "IEEE Standard for Information Technology - Portable Operating 
+System Interface (POSIX
+®) Base Specifications, Issue 7". 
+[4] IETF RFC 791: "Internet Protocol". 
+[5] IETF RFC 8200: "Internet Protocol, Version 6 (IPv6) Specification". 
+
+[6] IEEE 802.3Ž: "IEEE Standard for Ethernet". 
+
+[7] IETF RFC 3550: "RTP: A Transport Protocol for Real-Time Applications". 
+[8] IETF RFC 3261: "SIP: Session Initiation Protocol". 
+[9] IETF RFC 2131: "Dynamic Host Configuration Protocol". 
+
+[10] IETF RFC 2865: "Remote Authentication Dial In User Service (RADIUS)". 
+
+[11] ETSI TS 129 281: "Universal Mobile Teleco
+mmunications System (UMTS); LTE; 5G; General 
+Packet Radio System (GPRS) 
+Tunnelling Protocol User Plane 
+(GTPv1-U) (3GPP TS 29.281)". 
+[12] IETF RFC 5246: "The Transport Layer Security (TLS) Protocol Version 1.2". 
+
+NOTE: Obsoleted by IETF RFC 8446. 
+
+[13] IETF RFC 7525: "Recommendations for Secure Use of Transport Layer Security (TLS) and 
+Datagram Transport Layer Security (DTLS)". 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)8 [14] 
+IETF RFC 6125: "Representati
+on and Verification of Domain-Bas
+ed Application Service Identity 
+within Internet Public Key Infrastructure Using X.509 (PKIX) Certificates in the Context of 
+Transport Layer Security (TLS)". 
+[15] 
+ETSI TS 133 108: "Universal Mobile Telecommunications System (UMTS); LTE; Digital cellular 
+telecommunications system (Pha
+se 2+) (GSM); 3G security; Handover interface for Lawful 
+Interception (LI) (3GPP TS 33.108)". 
+[16] 
+IETF RFC 1123: "Requirements for Internet Hosts - Application and Support". 
+[17] 
+IETF RFC 4975: "The Message Session Relay Protocol (MSRP)". 
+[18] Void. 
+[19] 
+IETF RFC 8446: "The Transport Layer Security (TLS) Protocol Version 1.3". 
+[20] 
+ETSI TS 133 128: "LTE; 5G; Digital cellular telecommunications system (Phase 2+) (GSM); 
+Universal Mobile Telecommunications System (UMTS); Security; Protocol and procedures for 
+Lawful Interception (LI); Stage 3 (3GPP TS 33.128)". 
+[21] 
+IETF RFC 2045: "Multipurpose In
+ternet Mail Extensions (MIME) 
+Part One: Format of Internet 
+Message Bodies". 
+[22] 
+IANA "Assigned Internet Protocol Numbers". 
+NOTE: Available at 
+https://www.iana.org/assignments/protocol-numbers/protocol-numbers.xhtml
+. [23] 
+ETSI TS 123 501: "5G; System architecture for the 5G System (5GS) (3GPP TS 23.501)". 
+[24] 
+ETSI TS 123 401: "LTE; General Packet Radio Service (GPRS) enhancements for Evolved 
+Universal Terrestrial Radio Access Netw
+ork (E-UTRAN) access (3GPP TS 23.401)". 
+2.2 Informative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are no
+t necessary for the application of the 
+present document but they assist the 
+user with regard to a particular subject area. 
+[i.1] OWASP TLS Cheat Sheet. 
+NOTE: Available at 
+https://cheatsheetseries.owasp.org/cheatsheets/Transport_Layer_Protection_Cheat_Sheet.html
+. [i.2] 
+ETSI TS 102 232-5: "Lawful Interception (LI);
+ Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 5: Service-specific details for IP Multimedia Services". 
+3 Definition of terms, symbols and abbreviations 
+3.1 Terms 
+For the purposes of the present document, the terms given in ETSI TS 103 221-1 [1] apply. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)9 3.2 Symbols Void. 
+3.3 Abbreviations For the purposes of the present document, the abbreviations given in ETSI TS 103 221-1 [1] and the following apply: 
+3GPP 3
+rd Generation Partnership Project 
+CSP Communications Service Provider 
+DHCP Dynamic Host Configuration Protocol 
+
+DID Domain IDentifier 
+
+GTP GPRS Tunnelling Protocol 
+
+GTP-U GPRS Tunnelling Protocol - User 
+GW GateWay 
+IP Internet Protocol 
+
+IPID Interception Point IDentifier 
+
+LI Lawful Interception 
+
+MDF Mediation and Delivery Function 
+
+NAT Network Address Translation 
+NF Network Function 
+NFID Network Function IDentifier 
+
+OWASP Open Web Application Security Protocol 
+
+PDU Protocol Data Unit 
+
+POI Point Of Interception 
+
+RADIUS Remote Access Dial In User Service 
+RTP Realtime Transport Protocol 
+SDO Standards Development Organization 
+
+SIP Session Initiation Protocol 
+
+TC Technical Committee 
+
+TCP Transmission Control Protocol 
+
+TLS Transport Layer Security 
+TLV Tag - Length - Value 
+UDP User Datagram Protocol 
+
+UTC Coordinated Universal Time 
+
+UUID Unique Universal Identifier 
+
+xCC X3 Content of Communications 
+xIRI X2 Intercept Related Information 
+XID X1 IDentifier 
+4 Introduction and reference model 
+4.1 Reference model 
+The X2/X3 interface is based on communication between: 
+a) The Point Of Interception (POI), which performs interception. 
+b) The Mediation and Delivery Function (MDF), which performs the necessary translation, correlation and 
+
+mediation for onward handove
+r over material to LEAs via the HI2 and HI3 interfaces. 
+The X2/X3 reference model is shown in figure 1. 
+ Figure 1: Reference Model 
+POI
+X2MDF
+X3  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)10 The POI produces internal interception product as part of its normal operation. This internal interception product may 
+consist of copies of network traffic that contain material 
+related to Intercept Related Information (xIRI) or Content of 
+Communication (xCC). Material related to xIRI is transported via an X2 interface, while 
+material related to xCC is 
+transported via an X3 interface. 
+Any given POI may have one or both in
+terfaces, as specified by the relevant 
+LI architecture. Implementation and 
+deployment scenarios may be more complex. An illustrative
+ list of deployment scenarios is considered in annex B. 
+4.2 Assumptions 4.2.1 Architecture 
+The present document makes minimal 
+assumptions about the LI architectur
+e in which the X2/X3 interfaces are 
+deployed. The X2/X3 interface is intended to be sufficiently flexible to be used as part of LI architectures defined 
+elsewhere and assumes that the POI and MDF are deployed following an LI architecture defined separately (e.g. by 
+
+another SDO, industry body or local regulation). 
+As such, the present document makes no assumptions about the specific functional requirements on the POI with 
+respect to e.g. buffering, de-duplicati
+on, filtering. It is expected that th
+ese requirements will be supplied by a 
+combination of the relevant LI 
+architecture and local regulation. 
+4.2.2 Implementation/realization 
+The present document assumes that implementations of an LI architecture which utilize X1, X2 and X3 can be 
+
+described by the following high-level model. 
+Implementation
+NFPOI
+POI
+POI
+POI
+X3X2X3X2NFX1Control 
+Function
+Control 
+Function
+ Figure 2: Assumed Implementation Model 
+The model consists of the following entities: 
+• An Implementation: this is a concrete realization of one or more NFs as deployed by an implementer. 
+• A Network Function (NF): a function as defined by the relevant network and/or LI architecture (e.g. a P-GW 
+
+in 3GPP LTE). 
+• Control Function: the sub-fu
+nction of the NF which accepts LI taski
+ng messages. This may be supplied over a 
+standardized interface (e.g. X1 as defined by ETSI TS 
+103 221-1 [1]). However, it is assumed that tasking may 
+also be passed between NFs using other unspecified interfaces. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)11 • Point of Interception (POI): the sub-function of the NF which performs interception and emits data. An NF 
+may contain multiple POIs; in this case it is assumed that the NF implementation 
+will be responsible for 
+multiplexing the output of these POIs into a single X2 or X3 output stream. 
+The present document does not consider the means by whic
+h tasking information is co
+mmunicated from an NF's 
+internal control function to the POI sub-functions but provides the NF implementation a means by which to identify on 
+
+which NF and POI each piece of data originated. 
+The present document assumes that the NF may be required to deliver high volumes of traffic (e.g. a broadband 
+connection), and may be implemented on a platform with tight resources and/or performance constraints (e.g. a packet 
+
+gateway), and as such X2/X3 is require
+d to minimize, as far as is practical
+, the amount of processing and additional 
+bandwidth consumed (see clause A.1.4). 
+4.2.3 Deployment infrastructure 
+The present document assumes that 
+the transport infrastructure between 
+POI/NF and MDF is untrusted (see 
+clause A.2.8) but assumes that the plat
+form on which the POI, NF and MDF are 
+realized is appropriately secured. It 
+does not make any specific assumptions about whether either the platform or transport infrastructure are virtualized. 
+The present document does not assume that clocks on different
+ POIs are synchronized. It 
+assumes that while X3 event 
+timestamps may be required by local regulations and can be 
+added to aid describing chronologies of events (e.g. in 
+court), timestamps will not in general permit re-ordering or re-synchronization of packets which have been intercepted 
+at different NFs. 
+The present document assumes that X2/X3 is required to provide sufficient information, together with X1, to detect loss 
+of material over X2/X3 (see clause 4.2.4 and clause A.1.8). Detection of loss of material is supported by the Sequence 
+
+Number field as defined in clause 5.3.9. A mechanism to detect and prevent link failures is supported by the Keepalive 
+
+/Keepalive Acknowledgement PDUs as defined in clause 6.2.4.
+ Any other POI behaviour to support error recovery is 
+out of scope.  
+An illustrative list of deployment scenarios that have been c
+onsidered as part of the design of the X2/X3 interface is 
+given in annex B. 
+4.2.4 Regulatory assumptions 
+The present document assumes that mate
+rial delivered over X2/X3 may be used
+ as evidence in court. As such, it 
+assumes that the X2/X3 interface is cap
+able of indicating when data has b
+een lost over the X2/X3 interface (see 
+clause A.1.8), but recovery of this data (e.g. by bufferi
+ng and retransmission) are out of scope (as described in 
+clause 4.2.1). 
+
+The present document assumes that material over X2/X3 is required to be delivered without undue delay (see 
+clause A.1.5), but that any such latency requirements are not necessarily as stringent as those associated with the 
+underlying communications session (e.g. there is no need fo
+r a latency which facilitates a two-way conversation or 
+vehicle avoidance measures). 
+4.3 Relationship to other standards 
+The present document forms part of an overall set of standards together with ETSI TS 103 221-1 (X1) [1]. 
+Some models of LI (e.g. 3GPP TS 33.
+108 [15], 3GPP TS 33.128 [20]) define in
+terfaces for the purposes described in 
+clause 4.1 (e.g. X2, X3 defined by 3GPP TS 33.108 [15] or LI_X2, LI_X3 defined by 3GPP TS 33.128 [20]). The 
+present document is designed to fulfil 
+the requirements for those interfaces. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)12 5 Message contents and parameters 
+5.1 Overview 
+The POI sends data to the MDF as a bina
+ry stream of X2/X3 Protocol Data Un
+its (PDUs). Each PDU is formatted as 
+described in the following clauses. 
+Each X2/X3 PDU consists of three main sections: 
+• A set of mandatory PDU header fields containing identifiers, routing and correlation information - see 
+clause 5.2. 
+• A set of additional conditional attributes conveying addi
+tional metadata about the intercepted material - see 
+clause 5.3. 
+• A copy of the intercepted payload material - see clause 5.4. 
+The Keepalive mechanism is described in clause 6.2.4. Each Keepalive and Keepalive Acknowledgement PDU consists 
+
+of: 
+• A set of mandatory header fields, where the Version, PDU Type and Header Length fields are populated as 
+
+specified and all other mandatory fields
+ are set to zero - see clause 5.2. 
+• A Sequence Number - see clause 5.3.9. 
+NOTE: Populating all other mandatory fields to zero means the Keepalive and Keepalive Acknowledgement PDU 
+does not contain a Payload as defined in clause 5.4. 
+Table 1: X2/X3 PDU Structure 
+Field Name
+ Length (octets)
+ Defined
+ in clause
+ Version 2 
+5.2.1 
+PDU Type 
+2 5.2.2 
+Header Length 
+4 5.2.3 
+Payload Length 
+4 5.2.4 
+Payload Format 
+2 5.2.5 
+Payload Direction 
+2 5.2.6 
+XID 16 
+5.2.7 
+Correlation ID 
+8 5.2.8 
+Conditional Attribute Fields 
+Variable 
+5.3 
+Payload Variable 
+5.4 
+ Each PDU is sent across an in
+stance of either the X2 or X3 interface. The 
+choice of which interface to use for any given 
+PDU shall be given by the relevant LI architecture. 
+Definitions and encodings for the fields are given in the clauses 5.2, 5.3 and 5.4. Unless otherwise specified by the 
+present document or another referenced specification, header va
+lues shall be given as unsigned integers in network byte 
+order (i.e. big endian). 
+5.2 PDU Header Fields 
+5.2.1 Version 
+The POI shall populate the Version field with the version of 
+the specification used to create the PDU, given as a 16-bit 
+unsigned integer. 
+The Version field consists of a 
+major
+ and minor
+ version number. 
+For PDUs created accordin
+g to the present document, the Version field 
+is set to the value 4, comprised of the 
+major
+ number 0 and 
+minor
+ number 4 (see below). 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)13 The major
+ version number is given by the upper (most significant) 
+8 bits of the Version field. This number shall be 
+incremented whenever the protocol is extended in
+ a backwards-incompatible manner, including: 
+• Changes to the X2/X3 PDU Struct
+ure (see clause 5.1, table 1). 
+• Changes to the: General Conditional Attribute Structure (see clause 5.3.1, table 4), Proprietary Conditional 
+Attribute Structure (see clause 5.3.5, table 6), or Proprietary Payload Structure (see clause 5.4.5, table 8). 
+• Incompatible changes to the interpretation of, or deletion of: a PDU Type (see clause 5.2.2, table 2), Payload 
+
+Direction (see clause 5.2.6, table 3), Conditional Attribute (see clause 5.3.1, table 5), or Payload Format (see 
+
+clause 5.4.1, table 7). 
+The minor
+ version number is given by the lower (least significant) 8 bits of the Version field. This number shall be 
+incremented whenever the protocol is extended in a backwards-compatible manner, including: 
+• Addition of a new: PDU Type (see clause 5.2.2, table 2), Payload Direction (see clause 5.2.6, table 3), 
+
+Conditional Attribute (see clause 5.3.1, table 5), or Payload Format (see clause 5.4.1, table 7). 
+The minor
+ version number shall be set to 0 whenever the 
+major
+ version number is incremented. 
+5.2.2 PDU Type 
+The POI shall populate the PDU Type field to indicate the type of PDU. It shall take one of the following values. 
+Table 2: PDU Types 
+Value Meaning
+ 1 X2 PDU 2 X3 PDU 3 Keepalive 
+4 Keepalive 
+Acknowledgement 
+ 5.2.3 Header Length 
+The POI shall populate the Header Length field with the length of the header in octets, including the mandatory and any 
+
+conditional fields that have been populated. 
+For PDUs created against the present document, this value has a minimum value of 40 octets. 
+5.2.4 Payload Length 
+The POI shall populate the Payload Length field with the length of the Payload field in octets. 
+
+Keepalive and Keepalive Acknowledgement
+ PDU shall set the field to zero. 
+5.2.5 Payload Format 
+The POI shall indicate the format and encoding of the Pa
+yload field by setting the Payload Format field to the 
+appropriate value. A list of valid values, and their definitions, is given in clause 5.4. 
+5.2.6 Payload Direction 
+The POI shall populate the Payload Direction field with an indication of the direction of the intercepted data or event 
+
+contained in the PDU. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)14 Permitted values are: 
+Table 3: Payload Direction 
+Direction
+ Value
+ Meaning
+ 0 Reserved for Keepalive mechanism as defined in clauses 5.1 and 6.2.4 
+1 The direction of the intercepted data or event is not known to the POI 
+2 The intercepted data or event was sent to (i.e. received by) the target 
+3 The intercepted data or event was sent from the target 
+4 The intercepted data or event is a result of intercepted data or events in more than one direction 
+5 The concept of direction is not applicable to this intercepted data or event 
+ 5.2.7 XID 
+The POI shall populate the XID field with the XID associated with the intercepted product, as assigned by the relevant 
+X1 interface (see ETSI TS 103 221-1 [1]). 
+An XID is a UUID (see ETSI TS 103 221-1 [1], clause 5.1.2). The XID shall be given as a 128-bit unsigned integer. 
+
+Keepalive and Keepalive Acknowledgement
+ PDU shall set the field to zero. 
+5.2.8 Correlation ID 
+Where the POI correlates X2/X3 PDUs, th
+e POI shall ensure that PDUs asso
+ciated with the same communication 
+session are given the same Correlation ID value. The value shall uniquely identify the communication within a given 
+context. The scheme for generating Correlation IDs is define
+d by the relevant LI architecture. The POI may have to 
+adopt a convention for generating Correlation IDs which enables correlation of the same communication session across 
+
+multiple POIs but such decisions are out of scope of the present document. 
+If the POI does not correlate the X2/X3 PDU with any other X2/X3 PDUs the POI shall set the field to zero. 
+Keepalive and Keepalive Acknowledgement
+ PDU shall set the field to zero. 
+5.3 Conditional A
+ttribute Fields 5.3.1 General structure 
+The POI may provide a number of conditional attributes at the end of the header, as directed by the relevant LI 
+architecture. Each of these conditional attributes ha
+s the following Type-Length-Value (TLV) structure. 
+Table 4: General Conditional Attribute Structure 
+Field Name
+ Description
+ Format Attribute Type Indicates the type of conditional attribute - see table 5. 16-bit unsigned integer 
+Attribute Length Length of the following Attribut
+e Contents in octets. 16-bit unsigned integer 
+Attribute Contents As defined by the relevant Attribute Type field. Variable 
+ A conditional attribute with a given Attribute Type may 
+occur more than once. Unless a conditional attribute is 
+specified as supporting multiple occurren
+ces, the MDF shall use the first occurr
+ence of a conditional attribute with a 
+given Attribute Type, and subsequent occurrences 
+of the same Attribute Type shall be ignored. 
+The present document specifies the following conditional attribute types for use in the X2/X3 Content PDU. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)15 Table 5: Conditional Attribute Types 
+Attribute Type 
+Name 
+Defined in clause Multiple 
+occurrences
+ 1 ETSI TS 102 232-1 Defined Attribute 
+5.3.2 
+Yes 
+2 3GPP TS 33.128 Defined Attribute 
+5.3.3 
+Yes 
+3 3GPP TS 33.108 Defined Attribute 
+5.3.4 
+Yes 
+4 Proprietary 
+Attribute 
+5.3.5 Yes 
+5 Domain ID (DID) 
+5.3.6 
+ 6 Network Function ID (NFID) 
+5.3.7 
+ 7 Interception Point ID (IPID) 
+5.3.8 
+ 8 Sequence 
+Number 
+5.3.9  
+9 Timestamp 
+5.3.10  
+10 
+Source IPv4 Address 
+5.3.11 
+ 11 
+Destination IPv4 Address 
+5.3.12 
+ 12 
+Source IPv6 Address 
+5.3.13 
+ 13 
+Destination IPv6 Address 
+5.3.14 
+ 14 Source 
+Port 
+5.3.15  
+15 Destination 
+Port 
+5.3.16  
+16 IP 
+Protocol 
+5.3.17  
+17 Matched 
+Target 
+Identifier 
+5.3.18 Yes 
+18 
+Other Target Identifier 
+5.3.19 
+Yes 
+19 
+MIME Content Type 
+5.3.20 
+ 20 
+MIME Content Transfer Encoding 
+5.3.21 
+ 21 
+Additional XID Related Information 
+5.3.22 
+Yes 
+NOTE: This list is designed to be easily extended. If implementers or other Standards Development 
+Organizations (SDOs) find a need for additional conditional attributes, they are encouraged to contact 
+ETSI.  5.3.2 ETSI TS 102 232-1 Defined Attribute 
+If used, this conditional attribute shall contain an attribute defined by ETSI TS 102 232-1 [2]. 
+Multiple occurrences of
+ this conditional attribute are permitted. 
+5.3.3 3GPP TS 33.128 Defined Attribute 
+If used, this conditional attribute shall contain an attribute defined by 3GPP TS 33.128 [20]. 
+Multiple occurrences of this cond
+itional attribute are permitted. 
+5.3.4 3GPP TS 33.108 Defined Attribute 
+If used, this conditional attribute shall contain an attribute defined by 3GPP TS 33.108 [15]. 
+
+Multiple occurrences of this cond
+itional attribute are permitted. 
+5.3.5 Proprietary Attribute 
+If used, this conditional attribute shall contain an
+ attribute encoded as described in table 6. 
+Table 6: Proprietary Conditional Attribute Structure 
+Field Name
+ Description
+ Format Attribute Owner Length Indicates the length of t
+he Attribute Owner field. 8-bit unsigned integer 
+Attribute Owner FQDN indicating the organization responsible for defining the 
+encoding of the attribute. FQDN given in ASCII format according 
+to IETF RFC 1123 [16]. Shall not be empty. 
+ASCII string 
+Attribute Value Contents, encoding defined by the Attribute Owner field. Variable 
+   ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)16 This conditional attribute is provided to allow temporary support for implementation where use of a standardized 
+solution supported by the present document is not possible. 
+Multiple occurrences of
+ this conditional attribute are permitted,
+ including with the same Attribute Owner. 
+5.3.6 Domain ID (DID) 
+If used, this conditional attribute shall contain a value that identifies the CSP, network or resource group in which the 
+NF or POI exists. The format and content of this conditional attribute is left to the relevant LI architecture to define. 
+5.3.7 Network Function ID (NFID) 
+If used, this conditional attribute shall contain a value that id
+entifies the NF associated wi
+th the POI to the MDF. The 
+format and content of this conditional attribute is left to the relevant LI architecture to define. Depending on the 
+
+architecture and deployment scenarios, it may be used as a way to identify the type of NF. 
+5.3.8 Interception Point ID (IPID) 
+If used, this conditional attribute shall contain a value that id
+entifies the POI within the NF
+. The format and content of 
+this conditional attribute is left to the relevant LI architecture and implementation to define. 
+5.3.9 Sequence Number 
+If used, this conditional attribute shall contain the sequence number of the X2/X3 PDU. If used, the Sequence Number 
+
+shall start at zero and increment by one for each X2/X3 PDU with the same XID, DID, NFID
+, IPID and Correlation ID 
+context. A separate sequence shall be maintained for X2 and X3 PDUs within the same context. 
+The Sequence Number shall be encoded as a four-octet unsigned integer in network byte order. 
+Once the maximum sequence number is reached, the POI sha
+ll restart the sequence number
+ from zero. Use of this 
+conditional attribute shall be determined by the relevant LI architecture. 
+5.3.10 Timestamp 
+If used, this conditional attribute shall contain the time that the content for the PDU was intercepted. 
+The time shall be given in POSIX.1-2017 [3] timespec format (i.e. the number of elapsed seconds since the start of the 
+Unix epoch in UTC). The value shall be given as two su
+ccessive 32-bit unsigned integers, with the first giving the 
+integral part in seconds and the second giving the fractional part in nanoseconds. 
+NOTE: The timespec format as defined in POSIX.1-2017 [3
+] identifies the issue that timestamps after the year 
+2038 cannot be encoded. There is no standardized solution available for this yet. A future version of the 
+
+present document intends to resolve this when available. 
+5.3.11 Source IPv4 Address 
+If used, this conditional attribute shall contain the source IPv4 address related to the Payload field given as four octets in 
+
+network byte order (i.e. most significant octet first). This conditional attribute is primarily intended for use when using 
+
+payload formats that strip off the IP-layer encapsulation (e.g. SIP Message). However, implementers should use the 
+
+IPv4 Packet payload format instead of using this conditional attribute where possible. 
+5.3.12 Destination IPv4 Address 
+If used, this conditional attribute contain the destination IPv4 address related to the Payload field given as four octets in 
+network byte order (i.e. most significant octet first). This conditional attribute is primarily intended for use when using 
+payload formats that strip off the IP-layer encapsulation (e.g. SIP Message). However, implementers should use the 
+
+IPv4 Packet payload format instead of using this conditional attribute where possible. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)17 5.3.13 Source IPv6 Address 
+If used, this conditional attribute shall contain the source IPv6 address related to the Payload field given as sixteen 
+octets in network byte order (i.e. most significant octet firs
+t). This conditional attribute is primarily intended for use 
+when using payload formats that strip off the IP-layer encapsulation (e.g. SIP Message). However, implementers should 
+
+use the IPv6 Packet payload format instead of using this conditional attribute where possible. 
+5.3.14 Destination IPv6 Address 
+If used, this conditional attribute shall contain the destinati
+on IPv6 address related to the Payload field given as sixteen 
+octets in network byte order (i.e. most significant octet firs
+t). This conditional attribute is primarily intended for use 
+when using payload formats that strip off the IP-layer encapsulation (e.g. SIP Message). However, implementers should 
+
+use the IPv6 Packet payload format instead of using this conditional attribute where possible. 
+5.3.15 Source Port 
+If used, this conditional attribute shall contain the source TCP/UDP port related to the Payload field given as a 16-bit 
+
+unsigned integer in network byte order. 
+5.3.16 Destination Port 
+If used, this conditional attribute shall contain the destina
+tion TCP/UDP port related to the Payload field given as a 
+16-bit unsigned integer in network byte order. 
+5.3.17 IP Protocol 
+If used, this conditional attribute shall contain the IP protocol related to the Payload field given as an 8-bit unsigned 
+
+integer, as assigned by IANA [22]. 
+5.3.18 Matched Target Identifier 
+If used, this conditional attribute shall contain a target identifier that the POI matched against the payload and lead to 
+
+the interception of this Payload field. This conditional attribute shall be given as a TargetIdentifier as defined in ETSI 
+TS 103 221-1 [1], clause 6.2.1.2, table 5, as the contents of the TargetIdentifier tag without the enclosing 
+TargetIdentifier tag itself, encoded in UTF-8. 
+NOTE: As an example of the above encoding, an IMSI would be encoded as the UTF-8 string 
+"<imsi>204081234567890</imsi>". 
+Multiple occurrences of this cond
+itional attribute are permitted. 
+5.3.19 Other Target Identifier 
+If used, this conditional attribute shall contain another target identifier that is known to the POI. This conditional 
+
+attribute shall be given using the same format as the Matched Target Identifier conditional attribute (see clause 5.3.18). 
+Multiple occurrences of this cond
+itional attribute are permitted. 
+5.3.20 MIME Content Type 
+This conditional attribute is intended for use with the MIME Message payload format (see clause 5.4.16). If used, this 
+conditional attribute shall contain the MIME Content-Type
+ of the data in the Payl
+oad field according to IETF 
+RFC 2045 [21], clause 5. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)18 5.3.21 MIME Content Transfer Encoding 
+This conditional attribute is intended for use with the MIME Message payload format (see clause 5.4.14). If used, this 
+conditional attribute shall contain the MI
+ME Content-Transfer-Encoding of the da
+ta in the Payload field according to 
+IETF RFC 2045 [21], clause 6. 
+5.3.22 Additional XID Related Information 
+This conditional attribute is intended for use when the POI sends a PDU with a Payload field which is the result of data 
+
+intercepted due to more than one XID r
+eceived from the ADMF over X1 as result of
+ several task activations and to be 
+sent to the same destination. 
+This conditional attribute may be used only if explicitly permitted by the relevant LI architecture. In addition, it may 
+only be used if the values of all header fields and conditional attributes other than the XID, Correlation ID, Sequence 
+Number, and Additional XID Related Information would be the 
+same as that for a separate
+ PDU created with the XID, 
+Correlation ID, and Sequence Number given in this conditional attribute. 
+This conditional attribute contains a concatenation of: 16 
+octets (128-bit unsigned integer) of XID encoded as per 
+clause 5.2.7; 8 octets of Correlation ID encoded as per clause 5.2.8; and optionally a Sequence Number encoded as per 
+clause 5.3.9. 
+Multiple occurrences of this cond
+itional attribute are permitted. 
+5.4 Payload 5.4.1 Overview 
+The POI shall populate the Payload field with intercepted data, given in the format specified by the Payload Format 
+field (see clause 5.2.5). Table 
+7 defines the set of permissible Payload Form
+ats and whether each is permitted for use in 
+X2 or X3 PDUs. 
+Table 7: Payload Formats 
+Value Payload Format Permitted in X2 Permitted in X3 Defined
+ in clause
+ 0 Reserved for Keepalive mechanism N/A 
+N/A 
+5.1 
+1 ETSI TS 102 232-1 Defined Payload Yes 
+Yes 
+5.4.2 
+2 3GPP TS 33.128 Defined Payload Yes 
+Yes 
+5.4.3 
+3 3GPP TS 33.108 Defined Payload Yes 
+Yes 
+5.4.4 
+4 Proprietary Payload 
+Yes Yes 5.4.5 
+5 IPv4 Packet 
+Yes Yes 5.4.6 
+6 IPv6 Packet 
+Yes Yes 5.4.7 
+7 Ethernet 
+Frame No Yes 5.4.8 
+8 RTP 
+Packet 
+No Yes 5.4.9 
+9 SIP Message 
+Yes No 5.4.10 
+10 DHCP Message 
+Yes No 5.4.11 
+11 RADIUS Packet 
+Yes No 5.4.12 
+12 GTP-U 
+Message No Yes 5.4.13 
+13 MSRP 
+Message No Yes 5.4.14 
+14 3GPP TS 33.108 EpsIRIContent Yes 
+No 
+5.4.15 
+15 MIME Message 
+Yes Yes 5.4.16 
+16 3GPP Unstructured PDU 
+No 
+Yes 
+5.4.17 
+NOTE: This list is designed to be easily extended. If implementers or other Standards Development 
+Organizations (SDOs) find a need for additional Payload Format values, they are encouraged to contact 
+ETSI.  Where a choice is possible, and unless otherwise specified by the relevant LI architecture or national regulation, 
+implementers should choose the payload format that provides the most encapsulation. As an example, IPv4 Packet 
+
+should be chosen in preference to RTP packet if the IPv4 data is available. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)19 5.4.2 ETSI TS 102 232-1 Defined Payload 
+If this payload format is specified, the Payload field shall contain data specified and encoded by ETSI TS 102 232-1 [2]. 
+5.4.3 3GPP TS 33.128 Defined Payload 
+If this payload format is specified, 
+the Payload field shall contain data 
+specified and encoded according to 3GPP 
+TS 33.128 [20]. 
+5.4.4 3GPP TS 33.108 Defined Payload 
+If this payload format is specified, 
+the Payload field shall contain data 
+specified and encoded according to 3GPP 
+TS 33.108 [15]. 
+5.4.5 Proprietary Payload 
+If this payload format is specified, the Payload field shall contain data encoded as described in table 8. 
+Table 8: Proprietary Payload Structure 
+Field Name
+ Description
+ Format Payload Owner Length Indicates the length of the Payload Owner field. 
+8-bit unsigned integer 
+Payload Owner FQDN indicating the organization responsible for defining the 
+encoding of the payload. FQDN given in ASCII format according 
+to IETF RFC 1123 [16]. Shall not be empty. 
+ASCII string 
+Payload Value 
+Contents encoding defined by the Payload Owner field. Variable 
+ This payload format is provided to allow temporary support for implementation where use of a standardized solution 
+supported by the present document is not possible. 
+5.4.6 IPv4 Packet 
+If this payload format is specified, the Payload field shall contain an IPv4 packet encoded as per IETF RFC 791 [4]. 
+5.4.7 IPv6 Packet 
+If this payload format is specified, the Payload field shall contain an IPv6 packet encoded as per IETF RFC 8200 [5]. 
+5.4.8 Ethernet Frame 
+If this payload format is specified, the Payload field shall contain an ethernet frame encoded as per IEEE 802.3 [6]. 
+5.4.9 RTP Packet 
+If this payload format is specified, the Payload field sh
+all contain an RTP packet en
+coded as per "RTP packet" 
+definition in clause 3 of IETF RFC 3550 [7], without any IP/UDP encapsulation. 
+Use of this payload format is discouraged for new implementations - handing over RTP with IP encapsulation using the 
+IPv4 Packet or IPv6 Packet payload formats is preferred. 
+5.4.10 SIP Message 
+If this payload format is specified, the Payload field shall contain a SIP message encoded as per clause 7 in IETF 
+
+RFC 3261 [8], without any IP/UDP encapsulation. 
+NOTE: For implementations intending to support compliance with ETSI TS 102 232-5 [i.2], appropriate use of 
+the Source IPv4 Address, Source IPv6 Address, Destination IPv4 Address, and DestinationIPv6 Address 
+
+conditional attributes is recommended. 
+  ETSI ETSI TS 103
+ 221
+-2 V1.5.1 (2021
+-07)20 5.4.11 DHCP Message 
+If this payload format is specified, the Payload field shall contain a DHCP message encoded as per clause 5, figure 1 in 
+IETF RFC 2131 [9], without any IP/UDP encapsulation. 
+5.4.12 RADIUS Packet 
+If this payload format is specified, the Payload field 
+shall contain a RADIUS pack
+et encoded as per IETF 
+RFC 2865 [10], without any IP/UDP encapsulation. 
+5.4.13 GTP-U Message 
+If this payload format is specified, the Payload field shall contain a GTP Message encoded as per clause 7 in 3GPP 
+
+TS 29.281 [11], without any IP/UDP encapsulation. 
+5.4.14 MSRP Message 
+If this payload format is specified, the Payload field shall contain an MSRP Message encoded as per IETF 
+
+RFC 4975 [17], clause 5.1, without any IP/UDP/SIP encapsulation. 
+5.4.15 3GPP TS 33.108 EpsIRIContent 
+If this payload format is specified, the Payload field shall contain a BER-encoded EpsHI2Operations.EpsIRIContent 
+
+structure as defined in 3GPP TS 33.108 [15], clauses 10.5 and B.9. 
+Depending on the details of the implementation, compliance w
+ith 3GPP TS 33.128 [20], clauses 6.3.2.2 and 6.3.3.2 may 
+also be required. 
+5.4.16 MIME Message 
+If this payload format is specified, the Payload field shall contain a message encoded as per IETF RFC 2045 [21], 
+clause 2.3. Unless otherwise specified by the relevant LI 
+architecture, it is recommended that the MIME Content Type 
+attribute (see clause 5.3.20) and, if appropriate, the MIME 
+Content Transfer Encoding attr
+ibute (see clause 5.3.21) are 
+used in conjunction with this payload format. 
+5.4.17 3GPP Unstructured PDU 
+If this payload format is specified, the Payload fi
+eld shall contain the octets of a PDU from either: 
+• a PDU session of type "unstructured" as defined in 3GPP TS 23.501 [23], clauses 5.6.1 and 5.6.10.3; or 
+• a PDN type of "non-IP" as defined in 3GPP TS 23.401 [24], clause 4.3.17.8. 
+6 Transport 
+6.1 Summary This clause provides transport profiles that may be used to transport encoded X2/X3 PDUs. The present document 
+
+specifies a default profile, but further profiles may be defined in future or by the relevant LI architecture or SDO. 
+
+Implementations shall support at least the default profile. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)21 6.2 TLS Transport Profile 
+6.2.1 General 
+If using this profile to send X2/X3 PDUs to the MDF, th
+e POI opens a TLS over TCP connection. TLS is used to 
+perform mutual authentication and identification between the POI and MDF, and to provide confidentiality and integrity 
+protection for X2/X3 PDUs. 
+NOTE: Multiple TLS connections may be 
+used subject to local agreement. 
+Schemes for distributing PDUs across 
+multiple TLS connections are out of scope of th
+e present document, and are for further study. 
+6.2.2 Profile 
+POIs and MDFs shall support TLS, using at least version 1.2 as defined in IETF RFC 5246 [12], supporting the 
+
+recommendations given in IETF RFC 7525 [13]. Implementations are encouraged to support best practice e.g. the 
+
+guidance given in OWASP TLS Cheat Sheet [i.1], section 2.6. 
+New implementations should support TLS 1.3 as defined in IETF RFC 8446 [19]. 
+6.2.3 Authentication 
+Implementations shall perform mutual authentication using client and serv
+er X.509 certificates following IETF 
+RFC 6125 [14]. 
+6.2.4 Keepalive mechanism for reliability 
+The Keepalive and Keepalive Acknowledgement PDU type shall be supported by POIs and MDFs. This profile enables 
+the use of this mechanism. It is intende
+d as a means for the POI application to verify that the MDF application is still 
+operational, and to disconnect the connection if the MDF is not. 
+The POI shall send out a Keepalive PDU as defined in clause 5.1 at least every TIME_P1 (by default TIME_P1 shall be 
+60 seconds). 
+The MDF shall respond to each Keepalive PDU by sending a Keepalive Acknowledgement PDU as defined in 
+clause 5.1. The Sequence Number in the Keepalive Acknowledgement PDU shall be equal to the Sequence Number in 
+
+the Keepalive PDU. If the POI has not seen a Keepalive Acknowledgement PDU within TIME_P2 (by default TIME_P2 shall be 
+180 seconds) then the POI shall disconnect the connection and shall attempt to reconnect to the MDF and report an 
+
+error through the X1 interface as defined in ETSI TS 103 221-1 [1]. 
+The Keepalive mechanism may be used on both X2 and X3 interfaces. 
+    ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)22 Annex A (normative): 
+Requirements 
+A.1 X2 Protocol & Architecture requirements 
+A.1.1 Basic Functionality 
+The interface shall be used for delivery of IRI from the netw
+ork element, which created the 
+copy of the original content 
+of communication, to the mediation function. 
+A.1.2 Flexible 
+The X2 architecture and message exchange
+ technique shall be flexible to allow implementation in both existing and 
+future national and international operator network architectures. 
+A.1.3 Extensible 
+The basic message exchange protocol shall allow limited exte
+nsibility to support parameters not currently supported by 
+the base protocol. 
+A.1.4 Lightweight 
+The protocol shall use a protocol containing minimal options or extensions which are not specifically required by X2. 
+A.1.5 Delay The X2 architecture and message exchange technique shall by design not introduce undue delay compared with existing 
+
+proprietary X2 implementations. 
+A.1.6 Permanent and Dynamic Connections 
+The X2 architecture and message exchange technique shall support both permanent connection and dynamic 
+
+link/connection scenarios. 
+A.1.7 Reliability 
+The X2 architecture and message exchange tech
+nique shall provide reliable data transfer. 
+A.1.8 Error detection 
+The X2 architecture and message protocol shall support error detection (i.e. in case of data loss). 
+A.1.9 Redundancy 
+The X2 architecture and message protocol shall support both 1 to 1 and 1 to 2 end point configurations (i.e. for 
+
+redundancy). 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)23 A.1.10 Correlation 
+The X2 protocol shall provide information necessary to allow correlation at the MDF for information provided over HI2 
+and HI3. 
+A.1.11 Mediation into HI2/HI3 
+The X2 protocol shall provide information necessary to a
+llow correlation at the MDF to comply with the requirements 
+of both the HI2 and HI3 interfaces, where applicable. 
+A.2 X2 Security requirements 
+A.2.1 Authentication and Authorization 
+The X2 architecture and message excha
+nge technique shall provide authentication and authorization of end points. 
+A.2.2 Accounting and Audit 
+The X2 architecture and message exchange technique shall provide Accounting and Auditing. 
+A.2.3 Integrity Protection 
+The X2 message exchange technique shall provide integrity 
+protection for all messages exchanged between nodes in the 
+X2 architecture. Use of Integrity protection shall be mandatory. 
+A.2.4 Confidentiality Protection 
+The X2 message exchange technique shall provide confidentiality protection for all messages exchanged between nodes 
+
+in the X2 architecture. 
+A.2.5 Replay Protection 
+The X2 message exchange technique shall provide replay 
+protection for all messages exchanged between nodes in the 
+X2 architecture. 
+A.2.6 Standalone interface 
+The X2 architecture and message exchange technique shall be designed as a standalone physically dedicated LI 
+
+interface. The design and selection of th
+e protocol shall where possible ensure 
+that vulnerabilities in non-LI interfaces 
+on the same node shall not impact LI interfaces and security. 
+A.2.7 Minimum Security Level 
+The X2 architecture and message exchange techniques shall provide a minimum level of security (including cypher 
+
+suites and key length), which shall be supported by all nodes. At least two algorithms shall be specified. The protocol 
+
+and algorithms shall be resistant to bid down attack. 
+A.2.8 Underlying Infrastructure Trust 
+The X2 architecture and message exchange techniques 
+shall assume by default that the underlying network 
+communication links and infrastructure are untrusted. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)24 A.2.9 Firewall and NAT Transversal 
+The X2 message exchange technique shall be compatible with existing operator firewall and NAT transversal 
+architectures. The message exchange technique shall not requ
+ire unrestricted opening of common ports (e.g. port 80 or 
+21). The message exchange technique shall not prohibit the development of future X2 aware firewall filtering to provide 
+rejection of malicious X2 message at operator security gateways. 
+A.2.10 Certificate and Key Management 
+The X2 architecture relies on (where applicable) Certificate and Key Management mechanisms (including Certificate 
+
+and Key revocation) from X1. 
+A.3 X3 Protocol & Architecture requirements 
+A.3.1 Basic Functionality 
+The interface shall be used for delivery of CC from the networ
+k element, which created the 
+copy of the original content 
+of communication, to the mediation function. 
+A.3.2 Flexible 
+The X3 architecture and message exchange
+ technique shall be flexible to allow implementation in both existing and 
+future national and international operator network architectures. 
+A.3.3 Extensible 
+The basic message exchange protocol shall allow limited ex
+tensibility to support parameter not currently supported by 
+the base protocol.  
+A.3.4 Lightweight 
+The protocol shall use a protocol containing minimal options or extensions which are not specifically required by X3. 
+A.3.5 Delay The X3 architecture and message exchange technique shall not introduce undue delay. 
+A.3.6 Permanent and Dynamic Connections 
+The X3 architecture and message exchange technique shall support both permanent connection and dynamic 
+
+link/connection scenarios. 
+A.3.7 Reliability 
+The X3 architecture and message exchange tech
+nique shall provide reliable data transfer. 
+A.3.8 Error detection 
+The X3 architecture and message protocol shall support error detection (i.e. in case of data loss) specifically only across 
+
+the interface in question. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)25 A.3.9 Redundancy 
+The X3 architecture and message protocol shall support both 1 to 1 and 1 to 2 end point configurations (i.e. for 
+redundancy). 
+A.3.10 Correlation 
+The X3 protocol shall provide information necessary to allow correlation at the MDF for information provided over HI2 
+
+and HI3. 
+A.3.11 Mediation into HI2/HI3 
+The X3 protocol shall provide information necessary to a
+llow correlation at the MDF to comply with the requirements 
+of both the HI2 and HI3 interfaces, where applicable - at a minimum the packet-switched pa
+rts of the relevant HI2/3 
+handover standards. 
+A.4 X3 Security requirements 
+A.4.1 Authentication & Authorization 
+The X3 architecture and message excha
+nge technique shall provide authentication and authorization of end points. 
+A.4.2 Accounting/Audit The X3 architecture and message exchange technique shall provide Accounting & Auditing. 
+A.4.3 Integrity Protection 
+The X3 message exchange technique shall provide integrity 
+protection for all messages exchanged between nodes in the 
+X3 architecture. Use of Integrity protection shall be mandatory. 
+A.4.4 Confidentiality Protection 
+The X3 message exchange technique shall provide confidentiality protection for all messages exchanged between nodes 
+
+in the X3 architecture. 
+A.4.5 Replay Protection 
+The X3 message exchange technique shall provide replay 
+protection for all messages exchanged between nodes in the 
+X3 architecture. 
+A.4.6 Standalone interface 
+The X3 architecture and message excha
+nge technique shall be designed as a standalone physically dedicated LI 
+interface. The design and selection of th
+e protocol shall where possible ensure 
+that vulnerabilities in non-LI interfaces 
+on the same node shall not impact LI interfaces and security. 
+  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)26 A.4.7 Minimum Security Level 
+The X3 architecture and message exchange techniques shall provide a minimum level of security (including cypher 
+suites and key length), which shall be supported by all nodes. At least two algorithms shall be specified. The protocol 
+and algorithms shall be resistant to bid down attack. 
+A.4.8 Underlying Infrastructure Trust 
+The X3 architecture and message exchange techniques 
+shall assume by default that the underlying network 
+communication links and infrastructure are untrusted. 
+A.4.9 Firewall and NAT Transversal 
+The X3 message exchange technique shall be compatible with existing operator firewall and NAT transversal 
+
+architectures. The message exchange technique shall not requ
+ire unrestricted opening of common ports (e.g. port 80 or 
+21). The message exchange technique shall not prohibit the deve
+lopment of future X3 aware firewall filtering to provide 
+rejection of malicious X3 message at operator security gateways. 
+A.4.10 Certificate and Key Management 
+The X3 architecture relies on (where applicable) Certificate and Key Management mechanisms (including Certificate 
+
+and Key revocation) from X1. 
+    ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)27 Annex B (informative): 
+Illustrative deployment scenarios B.1 Introduction 
+This annex provides a list of illustrative X2/X3 deployment scenarios for consideration during the drafting of the 
+present document. 
+B.2 Simple deployment scenario 
+This scenario shows a simple deployment where separate POIs provide X2 and X3. Two POIs connect to a single MDF 
+
+with an X2 interface from one POI a
+nd an X3 interface from another POI. 
+ Figure B.1: Simple deployment scenario 
+B.3 Individual X3 POIs with shared X2 POI 
+This scenario shows a deployment scen
+ario where a single physical POI provid
+es X2 to multiple MDFs, while each 
+MDF receives X3 from a different POI. 
+ Figure B.2: Individual X3 POIs with shared X2 POIs 
+ POIX2MDFPOIX3POIX3MDF
+POIX2POIMDF
+X3X2  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)28 B.4 Separated interfaces 
+This scenario shows a deployment scen
+ario where the X2 and 
+X3 interfaces are delivered to different MDFs. 
+ Figure B.3: Separated interfaces 
+  POIX2MDF
+POIMDF
+X3  ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)29 Annex C (informative): 
+Change History 
+Status of Technical Specification ETSI TS 103 221-2 
+Internal Network Interface
+s; Part 2:
+ X2/X3 TC LI approval 
+date Version 
+Remarks 
+February 2019 1.1.1 First publication of the TS after appr
+oval by ETSI TC LI#50 (5-7 February 2019, Dubai) 
+October 2019 1.2.1 
+Included Change Requests: 
+CR001 (cat D) Clarification on Encoding 
+CR002r1 (cat C) Making the requirements annex informative 
+CR003r2 (cat B) Update for TLS 1.3 
+
+CR004r1 (cat D) Alignment to 3GPP terminology 
+
+ These CRs were approved by TC LI#52 (15-17 October 2019, Turin) 
+July 2020 1.3.1 
+Included Change Request: 
+CR005r2 (cat B) Addition of MIME and EpsIRIContent Payload Formats 
+ This CR was approved by TC LI#54-e (17-25 June 2020) 
+February 2021 1.4.1 
+Included Change Requests: 
+CR006r2 (cat F) Editorial corrections 
+CR007r1 (cat C) Sequence Number length clarification 
+
+CR008r1 (cat C) Updating the Version field 
+
+CR009r1 (cat C) Conditional Attribute clarifications 
+
+CR011r2 (cat C) Avoiding multiple copies of xCC over LI_X3 
+CR012r1 (cat F) Clarifying Keepalive 
+ 
+These CRs were approved by TC LI#56e (15-19 February 2021) 
+June 2021 1.5.1 
+Included Change Requests: 
+
+CR013r1 (cat B) 3GPP Unstructured PDU related to 3GPP NIDD (Non-IP Data Delivery) 
+
+CR014r1 (cat D) Consistency Improvements 
+
+ These CRs were approved by TC LI#57e (21-25 June 2021) 
+     ETSI ETSI TS 103 221
+-2 V1.5.1 (2021
+-07)30 History 
+Document history 
+V1.1.1 March 2019 Publication 
+V1.2.1 December 2019 Publication 
+V1.3.1 August 2020 Publication 
+V1.4.1 April 2021 Publication 
+V1.5.1 July 2021 Publication 
+ 

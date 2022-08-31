@@ -1,0 +1,1381 @@
+   
+   ETSI TS 103 280 V2.3.1 (2019-04)
+ Lawful Interception (LI); 
+Dictionary for common parameters 
+  
+ TECHNICAL SPECIFICATION 
+  ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)2   
+ Reference 
+RTS/LI-00169 
+Keywords 
+dictionary, lawful interception, security 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+  Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - NAF 742 C 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° 7803/88 
+ Important notice 
+The present document can be downloaded from: 
+http://www.etsi.org/standards-search
+ The 
+present document may be made available in electronic vers
+ions and/or in print. The content of any electronic and/or 
+print versions of the present document shall not be modified wi
+thout the prior written authorization of ETSI. In case of any 
+existing or perceived difference in contents between such versions and/or in print, the prevailing version of an ETSI 
+deliverable is the one made publicly available in PDF format at 
+www.etsi.org/deliver
+. Users of the present document should be aware that the document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+ If you find errors in the present document, please send your comment to one of the following services: 
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+ Copyright Notification 
+No part may be reproduced or utilized in any form or by any
+ means, electronic or mechanical, including photocopying 
+and microfilm except as authorized by written permission of ETSI. 
+The content of the PDF version shall not be modified without the written authorization of ETSI. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © ETSI 2019. 
+All rights reserved. 
+ DECTTM, PLUGTESTSTM, UMTS
+TM and the ETSI logo are trademarks of ETSI registered for the benefit of its Members.
+ 3GPP
+TM 
+and LTETM are trademarks of ETSI registered for the benefit of its Members and 
+of the 3GPP Organizational Partners. 
+oneM2MŽ
+ logo is a trademark of ETSI registered for the benefit of its Members and 
+of the oneM2M Partners. 
+GSM® and the GSM logo are trademarks registered and owned by the GSM Association. 
+  ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)3 Contents 
+Intellectual Prop
+erty Rights ..................................................................................................
+.............................. 4Foreword ......................................................................................................................
+....................................... 4Modal verbs te
+rminology .......................................................................................................
+............................. 41 Scope .......................................................................................................................
+................................. 52 References ..................................................................................................................
+.............................. 52.1 Normative references ......................................................................................................
+................................... 52.2 Informative references ....................................................................................................
+.................................... 63 Definition of terms, sy
+mbols and abbreviations ..............................................................................
+......... 63.1 Terms .....................................................................................................................
+............................................. 63.2 Symbols ...................................................................................................................
+........................................... 63.3 Abbreviations .............................................................................................................
+........................................ 74 Release management ..........................................................................................................
+...................... 75 Parameter re
+quirements ......................................................................................................
+...................... 85.0 Introduction ..............................................................................................................
+.......................................... 85.1 Parameter attributes ......................................................................................................
+...................................... 85.2 Parameter naming conventions ..............................................................................................
+............................. 85.3 Technology conventions ....................................................................................................
+................................. 96 Parameter 
+dictionary.........................................................................................................
+........................ 97 Technical impl
+ementation ....................................................................................................
+.................. 217.1 XSD .......................................................................................................................
+........................................... 217.2 ASN.1 ......................................................................................................................
+......................................... 21Annex A (normative): XSD definition ...........................................................................................
+..... 22Annex B (normative): ASN.1 definition .........................................................................................
+.... 26Annex C (informative): Change Request history .................................................................................
+ 28History .......................................................................................................................
+....................................... 29     ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)4 Intellectual Property Rights 
+Essential patents  
+IPRs essential or potentially essential to normative deliverables may have been declared to ETSI. The information 
+pertaining to these essential IPRs, if any, is publicly available for 
+ETSI members and non-members
+, and can be found 
+in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to ETSI in 
+respect of ETSI standards"
+, which is available from the ETSI Secretariat. Latest updates are available on the ETSI Web 
+server (
+https://ipr.etsi.org/
+). 
+Pursuant to the ETSI IPR Policy, no investigation, including IPR searches, has been carried out by ETSI. No guarantee 
+
+can be given as to the existence of other IPRs not referenced in ETSI SR 000 314 (or the updates on the ETSI Web 
+
+server) which are, or may be, or may become, essential to the present document. 
+Trademarks 
+The present document may include trademarks and/or tradenames
+ which are asserted and/or registered by their owners. 
+ETSI claims no ownership of these except for any which ar
+e indicated as being the property of ETSI, and conveys no 
+right to use or reproduce any trademark and/or tradename. 
+Mention of those trademarks in the present document does 
+not constitute an endorsement by ETSI of products, serv
+ices or organizations associated with those trademarks. 
+Foreword 
+This Technical Specification (TS) has been produced 
+by ETSI Technical Committee Lawful Interception (LI). 
+It contains also the XSD technical implementation as attachme
+nt to the original document available from the ETSI site. 
+Modal verbs terminology 
+In the present document "
+shall
+", "
+shall not
+", "
+should
+", "
+should not
+", "
+may
+", "
+need not", "
+will
+", "
+will not
+", "can" and 
+"cannot
+" are to be interpreted as described in clause 3.2 of the 
+ETSI Drafting Rules
+ (Verbal forms for the expression of 
+provisions). 
+"must
+" and "
+must not
+" are 
+NOT
+ allowed in ETSI deliverables except when used in direct citation. 
+  ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)5 1 Scope 
+The present document defines a dictionary of parameters that are commonly used in multiple TC LI specifications. 
+Aside from defining a dictionary, the present document aims 
+to provide technical means for other specifications to use. 
+It is encouraged to use the present documen
+t in the development of new specifications. 
+It is foreseen that regular maintenance of the present document is required. As such, release management requirements 
+
+will be defined. 
+Before accepting any new common parameter, the present document will provide a set of requirements the parameter 
+has to comply to in order to become a common parameter. 
+2 References 
+2.1 Normative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+Referenced documents which are not found to be publicly available in the expected location might be found at 
+https://docbox.etsi.org/Reference
+.  NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are necessary for the application of the present document. 
+[1] ETSI TS 102 232-1: "Lawful Interception (LI); Handover Interface and Service-Specific Details 
+(SSD) for IP delivery; Part 1: Handover specification for IP delivery".
+ [2] W3C Recommendation 5 April 2012: "W3C XML Schema Definition Language (XSD) 1.1 
+Part 2: Datatypes". 
+[3] Recommendation ITU-T X.680: "Information technology - Abstract Syntax Notation One 
+(ASN.1): Specification of basic notation". 
+[4] Recommendation ITU-T E.164: "The international public telecommunication numbering plan". 
+[5] Recommendation ITU-T E.212: "The international identification plan for public networks and 
+subscriptions". 
+[6] ETSI TS 123 003: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); Numbering, addressing and identification (3GPP 
+TS 23.003)". 
+[7] ETSI TS 102 657: "Lawful Interception (LI); Retained data handling; Handover interface for the 
+request and delivery of retained data". 
+[8] IETF RFC 791: "Internet Protocol". 
+[9] IETF RFC 4632: "Classless Inter-domain Routing (CIDR): The Internet Address Assignment and 
+Aggregation Plan". 
+[10] IETF RFC 8200: "Internet Protocol, Version 6 (IPv6) Specification". 
+[11] IETF RFC 4291: "IP Version 6 Addressing Architecture". 
+
+[12] IETF RFC 793: "Transmission Control Protocol". 
+
+[13] IETF RFC 768: "User Datagram Protocol". 
+  ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)6 [14] IEEE 
+802.3
+TM: "IEEE Standard for Ethernet". 
+[15] IETF RFC 5322: "Internet Message Format".[16] W3C Recommendation, 14 December 2017: 
+"HTML 5.2". 
+[17] IETF RFC 4122: "A Universally Unique IDentifier (UUID) URN Namespace". 
+[18] ISO 3166-1: "Codes for the representation of names of countries and their subdivisions -- Part 1: 
+Country codes". 
+[19] IEEE 1003.1-2017: "IEEE Standard for Information Technology--Portable Operating System 
+Interface (POSIX(R)) Base Specifications, Issue 7". 
+[20] ISO/IEC 7812-1:2015: "Identification cards -- Identification of issuers -- Part 1: Numbering 
+system". 
+[21] IETF RFC 3261: "SIP: Session Initiation Protocol". 
+[22] IETF RFC 3966: "The tel URI for Telephone Numbers". 
+[23] NIMA Technical Report 8350.2: "Department of Defense World Geodetic System 1984, Its 
+Definition and Relationships With Local Geodetic Systems". 
+[24] ETSI TS 123 501: "5G; System architecture for the 5G System (5GS) (3GPP TS 23.501)". 
+
+[25] ETSI TS 133 501: "5G; Security architecture and procedures for 5G System (3GPP TS 33.501)". 
+
+[26] IETF RFC 7542: "The Network Access Identifier". 
+[27] ETSI TS 124 501: "5G; Non-Access-Stratum (NAS) protocol for 5G System (5GS); Stage 3 
+(3GPP TS 24.501)". 
+2.2 Informative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are not necessary for the application of the present document but they assist the 
+
+user with regard to a particular subject area. 
+Not applicable. 
+3 Definition of terms, symbols and abbreviations 
+3.1 Terms 
+Void. 
+3.2 Symbols 
+Void. 
+  ETSI ETSI TS 103 280 V2.3.1 (20
+19-04)7 3.3 Abbreviations For the purposes of the present document, the following abbreviations apply: 
+3GPP 3
+rd Generation Partnership Project 
+ASCII American Standard Code for Information Interchange 
+ASN.1 Abstract Syntax Notation One 
+
+CC Content of Communication 
+
+CIDR Classless Inter-Domain Routing 
+
+CSP Communications Service Provider 
+GPSI Generic Public Subscription Identifier 
+HEX HEXadecimal 
+
+HI Handover Interface 
+
+HI1 Handover Interface port 1 (for administrative information) 
+
+HI2 Handover Interface port 2 (for Intercept Related Information) 
+HI3 Handover Interface port 3 (for Content of Communication) 
+IEC International Electrotechnical Commission 
+
+IEEE Institute of Electrical and Electronics Engineers 
+
+IEI Information Element Identifier 
+
+IETF Internet Engineering Task Force 
+
+IMEI International Mobile station Equipment Identity 
+IMEISV International Mobile station Equipment Identity and Software Version number 
+IMSI International Mobile Subscriber Identity 
+
+IP Internet Protocol 
+
+IPv4 Internet Protocol version 4 
+
+IPv6 Internet Protocol version 6 
+
+IRI Intercept Related Information 
+ISO International Organization for Standardization 
+ITU-T International Telecommunication Union - Telecommunication 
+
+LEA Law Enforcement Agency 
+
+LIID Lawful Interception Identifier 
+
+MAC Media Access Control 
+NAI Network Access Identifier 
+NIMA National Imagery and Mapping Agency 
+
+PEI Permanent Equipment Identifier 
+
+POSIX Portable Operating System Interface 
+
+RFC Request For Comments 
+
+SIP Session Initialization Protocol 
+SUCI Subscription Concealed Identifier 
+SUPI Subscription Permanent Identifier 
+
+TCP Transmission Control Protocol 
+
+UDP User Datagram Protocol 
+
+URI Uniform Resource Identifier 
+
+UTC Coordinated Universal Time 
+UUID Universally Unique IDentifier 
+WGS84 World Geodetic System 1984 
+
+XML eXtended Markup Language 
+
+XSD XML Schema Definition 
+4 Release management 
+This clause describes the release management requirements. The requirements are: 
+• The version of the present document is defined as <major>.<minor>.<patch>. 
+• The major version should be incremented when making a backwards incompatible change. 
+• The minor version should be incremented when adding backwards compatible functionality. 
+• The patch version should be incremented when fixing a backwards compatible bug. 
+  ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)8 • Once a major version has been incremented, the previous major version will be supported for 2 years after 
+publication of the new version. Change requests issued to a version that is no longer supported will need to be 
+
+issued for the latest supported major version. 
+5 Parameter requirements 
+5.0 Introduction 
+This clause describes the requirements a parameter should co
+mply to in order to be specified as a common parameter. 
+5.1 Parameter attributes 
+Name 
+• The parameter should be assigned a unique name. The na
+ming conventions used are described in clause 5.2. 
+Description 
+• A description of the parameter should be provided. 
+Usage guidance 
+• If there are circumstances in which additional usage guid
+ance is applicable, use cases may be described in this 
+
+attribute. 
+References to oth
+er specifications 
+• If the parameter is specified in another specification (such as an RFC), a reference to that specification shall be 
+
+provided. If possible, the reference should point to
+ the exact clause or clause in the specification. 
+EXAMPLE: Specify one or more sample values of the parameter. 
+Technical means to define and validate the parameter 
+• If possible, provide a regular expression to specify the value that is accepted by this parameter. 
+
+Implementations may be required to perform additional validation on the value. The regular expressions 
+
+follow the IEEE POSIX [19], section 9 regular expression format but shall be limited to the regular expression 
+
+capabilities su
+pported by XSD [2]. 
+• Define the parameter in the XSD [2] in section 7.1. 
+• Define the parameter in the ASN.1 [3] in section 7.2. 
+5.2 Parameter naming conventions 
+Allowed characters 
+• The following characters are allowed: A-Z, a-z and 0-9. 
+Camel casing 
+• The name of the parameter is to be CamelCased, where the first character is uppercased. Any acronyms should 
+
+be uppercased. 
+  ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)9 EXAMPLE: 
+- IPv4Address. 
+- SIPURI. 
+- EmailAddress. 
+5.3 Technology conventions 
+The used technologies defined in clause 7 may impose requir
+ements that conflict with the requirements in clauses 5.1 
+and 5.2. In the case of a conflict and in exceptional cases, it is allowed to deviate from the requirements above. 
+6 Parameter dictionary 
+LIID 
+Name
+ LIID Description 
+For each target identity related to an interception measure, the authorized CSP operator shall 
+assign a special Lawful Interception IDentifier (LIID), which has been agreed between the LEA 
+and the CSP. It is used within parameters of all HI interface ports. 
+ 
+Using an indirect identification, pointing to a target identity makes it easier to keep the 
+
+knowledge about a specific interception target limited within the authorized CSP operators and 
+the handling agents at the LEA. 
+ 
+The Lawful Interception IDentifier LIID is a component of the CC delivery procedure and of the 
+
+IRI records. It shall be used within any information exchanged at the Handover Interfaces HI2 
+and HI3 for identification and correlation purposes. 
+ 
+The LIID format shall consist of alphanumeric characters. It might for example, among other 
+
+information, contain a lawful authorization reference number, and the date, when the lawful 
+
+authorization was issued. 
+ The authorized CSP shall either enter a unique LIID for each target identity of the interception 
+
+subject or as a national option a single LIID for multiple target identities all pertaining to the 
+
+same interception subject. 
+ EXAMPLE: The interception subject has a telephony service with three telephone numbers. 
+The CSP enters for each telephone number an own LIID, or optionally enters one 
+
+LIID for all three telephone numbers. 
+ 
+If more than one LEA intercepts the same target identity, there shall be unique LIIDs assigned, 
+
+relating to each LEA. 
+Usage guidance 
+The LIID is defined as an OCTET STRING in ASN.1. This means it is possible to use binary 
+
+octets or ASCII printable characters to express the LIID. To correctly handle this, the parameter 
+
+accepts both variations. 
+References
+ ETSI TS 102 232-1 [1], clause 5.2.2. 
+Example 
+ZZZ123 (ASCII printable LIID) 
+46565527098f6bcd4621d373cade4e832627b4f6ff00ff00ff (Binary LIID, represented in HEX) 
+Regular expression
+ ^([!-~]{1,25})|([0-9a-f]{26,50})$ 
+XSD LIID, simpleType 
+ASN.1
+ LIID, OCTET STRING 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)10 UTCDateTime 
+Name
+ UTCDateTime 
+Description
+ A UTC timestamp with second precision. 
+Usage
+ guidance
+ - References
+ W3C XML Schema Definition Language [2], section 3.3.7. 
+Example 2015-12-27T13:37:00Z 
+Regular expression
+ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z$ 
+XSD UTCDateTime, simpleType 
+ASN.1
+ Not defined 
+ UTCMicrosecondDateTime 
+Name
+ UTCMicrosecondDateTime 
+Description
+ A UTC timestamp with microsecond precision. 
+Usage
+ guidance
+ - References
+ W3C XML Schema Definition Language [2], section 3.3.7. 
+Example 2015-12-27T13:37:00.012345Z 
+Regular expression
+ ^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9
+]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{6}Z$ 
+XSD UTCMicrosecondDateTime, simpleType 
+ASN.1
+ Not defined 
+ 
+QualifiedDateTime 
+Name
+ QualifiedDateTime 
+Description
+ A timestamp with second precision and timezone qualifier. 
+Usage
+ guidance
+ - References
+ W3C XML Schema Definition Language 1.1 Part 2: Datatypes [2], section 3.3.7. 
+Example 2015-12-27T13:37:00+02:00 
+Regular expression 
+^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0
+-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-] 
+[0-9]{2}:[0-9]{2})$ 
+XSD QualifiedDateTime, simpleType 
+ASN.1 
+QualifiedDateTime, GeneralizedTime 
+Timestamps shall be provided with a timezone qualifier. The fractional part of a second shall not 
+
+be present. Local time format shall not be used. 
+ QualifiedMicrosecondDateTime 
+Name
+ QualifiedMicrosecondDateTime 
+Description
+ A timestamp with microsecond precision and timezone qualifier. 
+Usage
+ guidance
+ - References
+ W3C XML Schema Definition Language 1.1 Part 2: Datatypes [2], section 3.3.7. 
+Example 2015-12-27T13:37:00.012345+02:00 
+Regular expression 
+^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9
+]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{6}(Z| 
+[+-][0-9]{2}:[0-9]{2})$ 
+XSD QualifiedMicrosecondDateTime, simpleType 
+ASN.1 
+QualifiedMicrosecondDateTime, GeneralizedTime 
+Timestamps shall be provided with a timezone qualifier. The fractional part of a second with no 
+
+more than 6 digits shall be present. Local time format shall not be used. 
+ InternationalE164 
+Name
+ InternationalE164 
+Description
+ E.164 Number in fully international format, written as decimal digits. 
+Usage
+ guidance
+ - References
+ Recommendation ITU-T E.164 [4], clause 6. 
+Example 31612345678 
+Regular expression
+ ^[0-9]{1,15}$ 
+XSD InternationalE164, simpleType 
+ASN.1
+ NumericString (SIZE(1..15)) 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)11 IMSI 
+Name
+ IMSI 
+Description
+ International Mobile Subscriber Identity, written as decimal digits. 
+Usage
+ guidance
+ - References 
+Recommendation ITU-T E.212 [5], clause 6.1 
+ETSI TS 123 003 [6], clause 2.2 and clause 2.3. 
+Example 204081234567890 
+Regular expression
+ ^[0-9]{6,15}$ 
+XSD IMSI, simpleType 
+ASN.1
+ NumericString (SIZE(6..15)) 
+ IMEI 
+Name
+ IMEI 
+Description 
+International Mobile station Equipment Identity, written as decimal digits without the Luhn check 
+digit, annex B of ISO/IEC 7812-1 [20]. 
+Usage guidance 
+To avoid implementation issues, the IMEI parameter explicitly excludes the Luhn check digit, 
+
+annex B of ISO/IEC 7812-1 [20]. 
+
+(See notes 1 and 2). 
+References
+ ETSI TS 123 003 [6], clause 6. 
+Example 35395803121326 
+Regular expression
+ ^[0-9]{14}$ 
+XSD IMEI, simpleType 
+ASN.1
+ NumericString (SIZE(14)) 
+NOTE 1: ETSI TS 102 657 [7], clause E.3 identifies potential issues with the inclusion/exclusion of the check digit. As 
+such, the IMEI parameter is explicitly specified without the check digit. 
+NOTE 2: The IMEICheckDigit parameter can be used when the check digit is explicitly required. 
+IMEICheckDigit 
+Name
+ IMEICheckDigit 
+Description 
+International Mobile station Equipment Identity, written as decimal digits with the Luhn check 
+
+digit, annex B of ISO/IEC 7812-1 [20]. 
+Usage
+ guidance
+ - References
+ ETSI TS 123 003 [6], clause 6. 
+Example 35395803121326 
+Regular expression
+ ^[0-9]{15}$ 
+XSD IMEICheckDigit, simpleType 
+ASN.1
+ NumericString (SIZE(15)) 
+ IMEISV 
+Name
+ IMEISV 
+Description 
+International Mobile station Equipment Identity and Software Version Number as defined in 
+ETSI TS 123 003 [6], clause 6.2.2, written as decimal digits including a software version 
+number instead of a Luhn check digit. 
+Usage
+ guidance
+ - References
+ ETSI TS 123 003 [6], clause 6.2.2. 
+Example 3539580312132601 
+Regular expression
+ ^[0-9]{16}$ 
+XSD IMEISV, simpleType 
+ASN.1
+ NumericString (SIZE(16)) 
+IPv4Address 
+Name
+ IPv4Address 
+Description
+ IPv4 address, written in dotted decimal notation. 
+Usage
+ guidance
+ - References
+ IETF RFC 791 [8]. 
+Example 192.0.2.1 
+Regular expression 
+^((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4] 
+
+[0-9]|[01]?[0-9]?[0-9])$ 
+XSD IPv4Address, simpleType 
+ASN.1
+ Not defined 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)12 IPv4CIDR 
+Name
+ IPv4CIDR 
+Description
+ IPv4 CIDR, written in dotted decimal notation followed by CIDR notation. 
+Usage
+ guidance
+ - References
+ IETF RFC 791 [8] and IETF RFC 4632 [9]. 
+Example 192.0.2.0/24 
+Regular expression 
+^((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4] 
+[0-9]|[01]?[0-9]?[0-9])/([1-2]?[0-9]|3[0-2])$ 
+XSD IPv4CIDR, simpleType 
+ASN.1
+ Not defined 
+ IPv6Address 
+Name
+ IPv6Address 
+Description
+ IPv6 address, written as eight groups of f
+our hexadecimal digits separated by a colon. 
+Usage guidance 
+It is recognized that IPv6 address formatting has various options. To reduce complexity in 
+technical implementations, the IPv6Address parameter restricts the address to the fully 
+
+uncompressed representation of the IPv6 address. 
+References
+ IETF RFC 8200 [10]. 
+Example 2001:0db8:0000:0000:0000:0000:0000:0001
+ Regular expression
+ ^([0-9a-f]{4}:){7}([0-9a-f]{4})$ 
+XSD IPv6Address, simpleType 
+ASN.1
+ Not defined 
+ IPv6CIDR 
+Name
+ IPv6CIDR 
+Description 
+IPv6 CIDR, written as eight groups of four hexadecimal digits separated by a colon followed by 
+CIDR notation. 
+Usage
+ guidance
+ See IPv6Address parameter for usage guidance. 
+References
+ IETF RFC 8200 [10], IETF RFC 4632 [9] and IETF RFC 4291 [11]. 
+Example 2001:0db8:0000:0000:0000:0000:0000:0000/48
+ Regular expression 
+^([0-9a-f]{4}:){7}([0-9a-f]{4})/(([1-9][0-9]?)|(1[0-1][0-9])| 
+
+(12[0-8]))$ 
+XSD IPv6CIDR, simpleType 
+ASN.1
+ Not defined 
+ IPAddress 
+Name
+ IPAddress 
+Description
+ Either a IPv4Address parameter
+ or IPv6Address parameter. 
+Usage
+ guidance
+ - References
+ - Example 
+XSD 
+ 
+<IPAddress> 
+
+    <IPv4Address>192.0.2.1</IPv4Address> 
+</IPAddress> 
+ 
+or <IPAddress> 
+   <IPv6Address>
+2001:0db8:0000:0000:0000:0000:0000:0001
+</IPv6Address> 
+</IPAddress> 
+Regular expression
+ - XSD IPAddress, complexType 
+ASN.1
+ Not defined 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)13 IPCIDR 
+Name
+ IPCIDR Description
+ Either a IPv4CIDR parameter or IPv6CIDR parameter. 
+Usage
+ guidance
+ - References
+ - Example 
+XSD 
+ <IPCIDR>     <IPv4CIDR>192.0.2.0/24</IPv4CIDR> 
+
+</IPCIDR> 
+ or  
+<IPCIDR>     <IPv6CIDR>
+2001:0db8:0000:0000:0000:0000:0000:0000/48
+</IPv6CIDR> 
+</IPCIDR> Regular expression
+ - XSD IPCIDR, complexType 
+ASN.1
+ Not defined 
+ TCPPort 
+Name
+ TCPPort 
+Description
+ TCP port, written in decimal notation. 
+Usage
+ guidance
+ - References
+ IETF RFC 793 [12]. 
+Example 22 
+Regular expression 
+^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6
+[0-4][0-9]{3}|65[0-4][0-9]{2}| 
+655[0-2][0-9]|6553[0-5])$ 
+XSD TCPPort, simpleType 
+ASN.1
+ TCPPort, INTEGER 
+ 
+TCPPortRange 
+Name
+ TCPPortRange 
+Description
+ TCP port range, consists of a 'start' TCPPort parameter and an 'end' TCPPort parameter. 
+Usage
+ guidance
+ The start and end values are inclusive. 
+References
+ - Example 
+Regular expression 
+1024-2048 
+
+ XSD 
+<TCPPortRange> 
+
+    <start>1024</start> 
+
+    <end>2048</end> 
+</TCPPortRange> 
+Regular expression 
+^([1-9][0-9]{0,3}|[1-5][0-9]{4}|6
+[0-4][0-9]{3}|65[0-4][0-9]{2}| 
+655[0-2][0-9]|6553[0-5])-([1-9][0-9]{0,3}|[1-5][0-9]{4}|6[0-4] 
+[0-9]{3}|65[0-4][0-9]{2}|655[0-2][0-9]|6553[0-5])$ 
+XSD TCPPortRange, complexType 
+ASN.1
+ TCPPortRange, SEQUENCE 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)14 UDPPort Name
+ UDPPort Description
+ UDP port, written in decimal notation. 
+Usage
+ guidance
+ - References
+ IETF RFC 768 [13]. 
+Example 53 
+Regular expression 
+^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][
+0-9]{3}|65[0-4][0-9]{2}|655[0-2] 
+[0-9]|6553[0-5])$ 
+XSD UDPPort, simpleType 
+ASN.1
+ UDPPort, INTEGER 
+ UDPPortRange 
+Name
+ UDPPortRange 
+Description
+ UDP port range, consists of a 'start' UDPPort parameter and an 'end' UDPPort parameter. 
+Usage
+ guidance
+ The start and end values are inclusive. 
+References
+ - Example 
+Regular expression 
+2048-4096 
+XSD 
+
+<UDPPortRange> 
+
+    <start>2048</start> 
+    <end>4096</end> 
+</UDPPortRange> 
+Regular expression 
+^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][
+0-9]{3}|65[0-4][0-9]{2}|655[0-2] 
+[0-9]|6553[0-5])-([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][0-9]{3}|65[0-4] 
+[0-9]{2}|655[0-2][0-9]|6553[0-5])$ 
+XSD UDPPortRange, complexType 
+ASN.1
+ UDPPortRange, SEQUENCE 
+ Port 
+Name
+ Port Description
+ Either a TCPPort parameter or a UDPPort parameter. 
+Usage
+ guidance
+ - References
+ - Example 
+XSD 
+<Port> 
+    <TCPPort>22</TCPPort> 
+
+</Port> 
+Regular expression 
+^([0-9]{1,4}|[1-5][0-9]{4}|6[0-4][
+0-9]{3}|65[0-4][0-9]{2}|655[0-2] 
+[0-9]|6553[0-5])$ 
+XSD Port, complexType 
+ASN.1
+ Port, CHOICE 
+ PortRange 
+Name
+ PortRange 
+Description
+ Either a TCPPortRange parameter or a UDPPortRange parameter. 
+Usage
+ guidance
+ The start and end values are inclusive. 
+References
+ - Example 
+XSD 
+<PortRange> 
+    <TCPPortRange> 
+
+        <start>2048</start> 
+
+        <end>4096</end> 
+    </TCPPortRange> 
+</PortRange> 
+Regular expression
+ - XSD PortRange, complexType 
+ASN.1
+ PortRange, CHOICE 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)15 IPAddressPort 
+Name
+ IPAddressPort 
+Description
+ Combination of an IPAddress parameter and a Port parameter. 
+Usage
+ guidance
+ - References
+ - Example 
+XSD 
+<IPAddressPort> 
+    <address> 
+        <IPv4Address>192.0.2.1</IPv4Address> 
+
+    </address> 
+
+    <port> 
+        <TCPPort>22</TCPPort> 
+    </port> 
+
+</IPAddressPort> 
+Regular expression
+ - XSD IPAddressPort, complexType 
+ASN.1
+ Not defined 
+ IPAddressPortRange 
+Name
+ IPAddressPortRange 
+Description
+ Combination of an IPAddress parameter and a PortRange parameter. 
+Usage
+ guidance
+ - References
+ - Example 
+XSD 
+<IPAddressPortRange> 
+    <address> 
+        <IPv4Address>192.0.2.1</IPv4Address> 
+
+    </address> 
+
+    <portRange> 
+        <TCPPortRange> 
+            <start>2048</start> 
+
+            <end>4096</end> 
+
+        </TCPPortRange> 
+    </portRange> 
+</IPAddressPortRange> 
+Regular expression
+ - XSD IPAddressPortRange, complexType 
+ASN.1
+ Not defined 
+ MACAddress 
+Name
+ MACAddress 
+Description
+ MAC address, written as six groups of two hexadecimal digits separated by a colon. 
+Usage
+ guidance
+ - References
+ IEEE 802.3 [14] 
+Example c0:ff:ee:c0:ff:ee 
+Regular expression
+ ^([a-f0-9]{2}:){5}[a-f0-9]{2}$ 
+XSD MACAddress, simpleType 
+ASN.1
+ Not defined 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)16 EmailAddress 
+Name
+ EmailAddress 
+Description
+ E-mail address 
+Usage
+ guidance
+ - References
+ IETF RFC 5322 [15]. 
+Example john.doe@example.com 
+Regular expression 
+^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9]([a-zA-Z0-9-]{0,61} 
+[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-z
+A-Z0-9-]{0,61}[a-zA-Z0-9])?)*$ 
+See note. 
+XSD EmailAddress, simpleType 
+ASN.1
+ Not defined 
+NOTE: The regular expression above is sourced from the W3C HTML5 Recommendation [16]. 
+ UUID 
+Name
+ UUID Description
+ UUID Usage
+ guidance
+ - References
+ IETF RFC 4122 [17]. 
+Example de305d54-75b4-431b-adb2-eb6b9e546013 
+Regular expression
+ ^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9
+]{4}-[a-f0-9]{4}-[a-f0-9]{12}$ 
+XSD UUID, simpleType 
+ASN.1
+ Not defined 
+ 
+ISOCountryCode 
+Name
+ ISOCountryCode 
+Description
+ An ISO 3166-1 [18] alpha-2 two-letter country code. 
+Usage
+ guidance
+ - References
+ ISO 3166-1 [18] alpha-2. 
+Example "NL" 
+Regular expression
+ ^[A-Z]{2}$ 
+XSD ISOCountryCode, simpleType 
+ASN.1
+ Not defined 
+ ShortString 
+Name
+ ShortString 
+Description
+ A string with a maximum length of 255 characters. 
+Usage
+ guidance
+ - References
+ - Example string 
+Regular expression
+ - XSD ShortString, simpleType 
+ASN.1
+ Not defined 
+ 
+LongString 
+Name
+ LongString 
+Description
+ A string with a maximum length of 65 535 characters. 
+Usage
+ guidance
+ - References
+ - Example string 
+Regular expression
+ - XSD LongString, simpleType 
+ASN.1
+ Not defined 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)17 SIPURI 
+Name
+ SIPURI Description
+ SIP URI Usage
+ guidance
+ - References
+ IETF RFC 3261 [21], section 19.1. 
+Example sip:user@example.com 
+Regular expression
+ ^sips?:[a-zA-Z0-9!#$&-;=?-\[\]_~%]+$ 
+XSD SIPURI, simple type 
+ASN.1
+ Not defined 
+ TELURI 
+Name
+ TELURI 
+Description
+ TEL URI 
+Usage
+ guidance
+ - References
+ IETF RFC 3966 [22]. 
+Example tel:+447700900000 
+Regular expression
+ ^tel:[a-zA-Z0-9!#$&-;=?-\[\]_~%]+$ 
+XSD TELURI, simple type 
+ASN.1
+ Not defined 
+ 
+WGS84CoordinateDecimal  
+Name
+ WGS84CoordinateDecimal 
+Description 
+A geographical latitude-longitude coordinate, referring to the WGS84 reference ellipsoid, given 
+in decimal notation. 
+Usage
+ guidance
+ - References
+ NIMA Technical Report 8350.2 [23] (for WGS84 definition itself, not for the syntax defined 
+
+here). 
+Example 
+XSD <WGS84CoordinateDecimal>  <latitude>N43.616000</latitude> 
+ <longitude>E007.053000</longitude> 
+</WGS84CoordinateDecimal>Regular expression
+ - XSD WGS84CoordinateDecimal, complexType 
+ASN.1
+ WGS84CoordinateDecimal, SEQUENCE 
+ WGS84LatitudeDecimal  
+Name
+ WGS84LatitudeDecimal 
+Description
+ A geographical latitude, referring to the WGS84 reference ellipsoid, given in decimal notation. 
+Usage guidance 
+The latitude is given as two digits before the decimal point, left-padded with zero where 
+necessary. The latitude is specific to six decimal places, right-padded with zero where 
+
+necessary. 
+References
+ NIMA Technical Report 8350.2 [23] (for WGS84 definition itself, not for the syntax defined 
+
+here). 
+Example N43.616000 
+Regular expression
+ ^[NS][0-9]{2}\.[0-9]{6}$XSD WGS84LatitudeDecimal, simpleType 
+ASN.1
+ WGS84LatitudeDecimal, OCTET STRING 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)18 WGS84LongitudeDecimal  
+Name
+ WGS84LongitudeDecimal 
+Description
+ A geographical longitude, referring to the WGS84 reference ellipsoid, given in decimal notation. 
+Usage guidance 
+The longitude is given as three digits before the decimal point, left-padded with zero where 
+necessary. The longitude is specific to six decimal places, right-padded with zero where 
+necessary. 
+References
+ NIMA Technical Report 8350.2 [23] (for WGS84 definition itself, not for the syntax defined 
+here). 
+Example E007.053000 
+Regular expression
+ ^[EW][0-9]{3}\.[0-9]{6}$XSD WGS84LongitudeDecimal, simpleType 
+ASN.1
+ WGS84LongitudeDecimal, OCTET STRING 
+ WGS84CoordinateAngular  
+Name
+ WGS84CoordinateAngular 
+Description 
+A geographical latitude-longitude coordinate, referring to the WGS84 reference ellipsoid, given 
+in angular notation. 
+Usage
+ guidance
+ - References
+ NIMA Technical Report 8350.2 [23] (for WGS84 definition itself, not for the syntax defined 
+
+here). 
+Example 
+XSD <WGS84CoordinateAngular>  <latitude>N433700.62</latitude> 
+ <longitude>E0070310.42</longitude> 
+</WGS84CoordinateAngular> Regular expression
+ - XSD WGS84CoordinateAngular, complexType 
+ASN.1
+ WGS84CoordinateAngular, SEQUENCE 
+ WGS84LatitudeAngular  
+Name
+ WGS84LatitudeAngular 
+Description
+ A geographical latitude, referring to the WGS84 reference ellipsoid, given in angular notation. 
+Usage guidance 
+Values are specified as "XDDMMSS.ss", i.e. a concatenation of the following fixed-length 
+values, each padded with zeroes where necessary: 
+  A one-character hemisphere indicator, "N" or "S". 
+
+  A two-digit value indicating degrees. 
+
+  A two-digit value indicating arc-minutes. 
+  A two-digit value indicating whole arc-seconds. 
+  A decimal point. 
+
+  A two-digit value indicating fractional arc-seconds. 
+References
+ NIMA Technical Report 8350.2 [23] (for WGS84 definition itself, not for the syntax defined 
+here). 
+Example N433700.62 
+Regular expression
+ ^[NS][0-9]{6}\.[0-9]{2}$XSD WGS84LatitudeAngular, simpleType 
+ASN.1
+ WGS84LatitudeAngular, OCTET STRING 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)19 WGS84LongitudeAngular  
+Name
+ WGS84LongitudeAngular 
+Description
+ A geographical longitude, referring to the WGS84 reference ellipsoid, given in angular notation. 
+Usage guidance  
+Values are specified as "XDDDMMSS.ss" i.e. a concatenation of the following fixed-length 
+values, each padded with zeroes where necessary: 
+  A one-character hemisphere indicator, "E" or "W". 
+  A three-digit value indicating degrees. 
+
+  A two-digit value indicating arc-minutes. 
+
+  A two-digit value indicating whole arc-seconds. 
+  A decimal point. 
+  A two-digit value indicating fractional arc-seconds. 
+References
+ NIMA Technical Report 8350.2 [23] (for WGS84 definition itself, not for the syntax defined 
+here). 
+Example E0070310.42 
+Regular expression
+ ^[EW][0-9]{7}\.[0-9]{2}$XSD WGS84LongitudeAngular, simpleType 
+ASN.1
+ WGS84LongitudeAngular, OCTET STRING 
+ SUPIIMSI  
+Name
+ SUPIIMSI 
+Description
+ Subscription Permanent Identifier as defined in ETSI TS 123 501 [24], clause 5.9.2 in IMSI 
+representation. 
+Usage guidance  
+In 3GPP Release 15 a SUPI may contain either an IMSI or an NAI, as defined in ETSI 
+
+TS 123 501 [24]. This representation is used for a SUPI in IMSI format. 
+References
+ ETSI TS 123 501 [24]. 
+
+ETSI TS 123 003 [6], clause 2.2. 
+Example See definition of IMSI 
+Regular expression
+ XSD ASN.1
+  SUPINAI 
+Name
+ SUPINAI Description
+ Subscription Permanent Identifier as defined in 3GPP 23.501 [24], clause 5.9.2 in NAI 
+representation. 
+Usage guidance  
+In 3GPP Release 15 a SUPI may contain either an IMSI or an NAI, as defined in ETSI 
+TS 123 501 [24]. This representation is used for a SUPI in NAI format. 
+References
+ ETSI TS 123 501 [24]. 
+IETF RFC 7542 [26]. 
+Example See definition of NAI 
+Regular expression
+ XSD ASN.1
+  SUCI  Name
+ SUCI Description
+ Subscription Concealed Identifier as defined in 3GPP 33.501 [25], clause 6.12.2. 
+Usage guidance  
+The structure of a SUCI is given in ETSI TS 123 003 [6], clause 2.2B, and the IE encoding 
+format is given in ETSI TS 124 501 [27]. When the ASN.1 representation is used, the octets of 
+
+the SUCI are provided as defined in ETSI TS 124 501 [27], clause 9.11.3.4, with the 5GS 
+Mobile identity IEI and length fields (i.e. octets 1 and 2 in Figure 9.11.3.4.2) omitted. When XSD 
+or string representations are used, the sa
+me octets are provided but in hex-binary 
+representation. 
+References
+ ETSI TS 133 501 [25]. 
+
+ETSI TS 124 501 [27]. 
+Example  Regular expression
+ ^[0-9a-f]+$ XSD SUCI, simpleType 
+ASN.1
+ SUCI, OCTET STRING 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)20 PEIIMEI 
+Name
+ PEIIMEI 
+Description
+ Permanent Equipment Identifier as defined in 3GPP 23.501 [24], clause 5.9.3 in IMEI 
+representation, without the final check / spare digit. 
+Usage guidance  
+In 3GPP Release 15 a PEI may contain either an IMEI or an IMEISV as defined in ETSI 
+TS 123 501 [24]. This representation is used for IMEI format without the final check / spare 
+digit. 
+References
+ ETSI TS 123 501 [24], clause 5.9.3. 
+ETSI TS 123 003 [6], clause 6.2.1. 
+Example See definition of IMEI
+ Regular expression
+ XSD ASN.1
+  PEIIMEICheckDigit 
+Name
+ PEIIMEICheckDigit 
+Description
+ Permanent Equipment Identifier as defined in 3GPP 23.501 [24], clause 5.9.3 in IMEI 
+representation with Luhn check digit. 
+Usage guidance  
+In 3GPP Release 15 a PEI may contain either an IMEI or an IMEISV as defined in ETSI 
+
+TS 123 501 [24]. This representation is used for IMEI format including the Luhn check digit. 
+References
+ ETSI TS 123 501 [24], clause 5.9.3. 
+
+ETSI TS 123 003 [6], clause 6.2.1. 
+Example See definition of IMEICheckDigit
+ Regular expression
+ XSD ASN.1
+  PEIIMEISV 
+Name
+ PEIIMEISV 
+Description
+ Permanent Equipment Identifier as defined in 3GPP 23.501 [24], clause 5.9.3 in IMEISV 
+representation. 
+Usage guidance  
+In 3GPP Release 15 a PEI may contain either an IMEI or an IMEISV as defined in ETSI 
+TS 123 501 [24]. This representation is used for IMEISV format written as decimal digits 
+including a software version number instead of a Luhn check digit. 
+References
+ ETSI TS 123 501 [24]. 
+
+ETSI TS 123 003 [6], clause 6.2.2. 
+Example See definition of IMEISV
+ Regular expression
+ XSD ASN.1
+  GPSIMSISDN
+ Name
+ GPSIMSISDN 
+Description 
+Generic Public Subscription Identifier as defined in 3GPP 23.501 [24], clause 5.9.8 in MSISDN 
+representation (see ETSI TS 123 003 [6], clause 3.2). 
+Usage guidance 
+In 3GPP Release 15 a GPSI may contain either a MSISDN, or an External Identifier given as a 
+an NAI following the rules given in ETSI TS 123 003 [6], clause 19.7.2. This representation is 
+used for MSISDN following the format given in ETSI TS 123 003 [6], clause 3.2. 
+References 
+ETSI TS 123 501 [24] 
+ETSI TS 123 003 [6] 
+Example 31612345678 
+Regular expression
+ ^[0-9]{1,15}$ 
+XSD simpleType 
+ASN.1
+ NumericString (SIZE(1..15)) 
+   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)21 GPSINAI 
+Name
+ GPSINAI Description
+ Generic Public Subscription Identifier as defined in 3GPP 23.501 [24], clause 5.9.8 in NAI 
+representation. 
+Usage guidance  
+In 3GPP Release 15 a GPSI may contain either a MSISDN, or an External Identifier given as a 
+an NAI following the rules given in ETSI TS 123 003 [6], clause 19.7.2. This representation is 
+used for NAI format. 
+References
+ ETSI TS 123 501 [24]. 
+IETF RFC 7542 [26]. 
+Example See definition of NAI
+ Regular expression
+ XSD ASN.1
+  NAI 
+Name
+ NAI Description
+ Network Access Identifier following the format given in IETF RFC 7542 [26]. 
+Usage
+ guidance
+  In general an NAI will take the form "username@realm". 
+References
+ IETF RFC 7542 [26]. 
+Example user@homerealm.example.netRegular expression
+ - XSD NAI, simpleType 
+ASN.1
+ NAI, UTF8String 
+ 7 Technical implementation 
+7.1 XSD The XSD definition is defined in annex A. The XSD file named "TS_103_280_v020301.xsd" is contained in archive 
+"ts_103280v020301p0.zip" which accompanies the present document. 
+The targetNamespace of the XSD is set to 'http://uri.etsi.o
+rg/03280/common/2017/07'. The XSD version is set to 2.3.1. 
+The targetNamespace shall be increased in the event of a major release as defined in clause 4 and the requirement to do 
+so. The year in the targetNamespace shall be set to the year and month of publication of the major release. 
+The XSD version shall be increased accordi
+ng to the versioning scheme as defined in clause 4. A change to the present 
+document shall not necessarily lead to a new XSD version. The XSD version shall only be increased when a change to 
+the XSD is required, as such the version of the present document and the XSD version may differ. 
+As the XSD version is not part of the targetNamespace, an implementation should take into account that the appropriate 
+version is used when importing the XSD. 
+7.2 ASN.1 The ASN.1 definition is defined in annex B. The ASN.1 file named "TS_103_280_v020301.asn1" is contained in 
+
+archive "ts_103280v020301p0.zip" which accompanies the present document. 
+The ASN.1 object identifier is defined as itu-t(0) identified-organization(4) etsi(0) common-parameters(3280) 
+version231(231). 
+The ASN.1 version shall be increased acco
+rding to the versioning scheme as defined in clause 4. A change to the 
+present document shall not necessarily lead to a new ASN.1 ve
+rsion. The ASN.1 version shall only be increased when a 
+change to the ASN.1 is required, as such the version of the present document and the ASN.1 version may differ. 
+
+    ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)22 Annex A (normative): 
+XSD definition 
+<?xml version="1.0" encoding="utf-8"?> <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://uri.etsi.org/03280/common/2017/07" targetNamespace="http://uri.etsi.org/03280/common/2017/07" version="2.3.1" elementFormDefault="qualified">     <xs:simpleType name="ShortString">         <xs:restriction base="xs:string">             <xs:maxLength value="255"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="LongString">         <xs:restriction base="xs:string">             <xs:maxLength value="65535"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="LIID">         <xs:restriction base="xs:normalizedString">             <xs:pattern value="([!-~]{1,25})|([0-9a-f]{26,50})"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="UTCDateTime">         <xs:restriction base="xs:dateTime">             <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}Z"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="UTCMicrosecondDateTime">         <xs:restriction base="xs:dateTime">             <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{6}Z"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="QualifiedDateTime">         <xs:restriction base="xs:dateTime">             <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}(Z|[+-][0-9]{2}:[0-9]{2})"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="QualifiedMicrosecondDateTime">         <xs:restriction base="xs:dateTime">             <xs:pattern value="[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}\.[0-9]{6}(Z|[+-][0-9]{2}:[0-9]{2})"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="InternationalE164">         <xs:restriction base="xs:token">             <xs:pattern value="[0-9]{1,15}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="IMSI">         <xs:restriction base="xs:token">             <xs:pattern value="[0-9]{6,15}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="IMEI">         <xs:restriction base="xs:token">             <xs:pattern value="[0-9]{14}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="IMEICheckDigit">         <xs:restriction base="xs:token">             <xs:pattern value="[0-9]{15}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="IMEISV">         <xs:restriction base="xs:token">             <xs:pattern value="[0-9]{16}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="IPv4Address">         <xs:restriction base="xs:token">             <xs:pattern value="((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])"/>         </xs:restriction>   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)23     </xs:simpleType>     <xs:simpleType name="IPv4CIDR">         <xs:restriction base="xs:token">             <xs:pattern value="((25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9]?[0-9])/([1-2]?[0-9]|3[0-2])"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="IPv6Address">         <xs:restriction base="xs:token">             <xs:pattern value="([0-9a-f]{4}:){7}([0-9a-f]{4})"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="IPv6CIDR">         <xs:restriction base="xs:token">             <xs:pattern value="([0-9a-f]{4}:){7}([0-9a-f]{4})/(([1-9][0-9]?)|(1[0-1][0-9])|(12[0-8]))"/>         </xs:restriction>     </xs:simpleType>     <xs:complexType name="IPAddress">         <xs:choice>             <xs:element name="IPv4Address" type="IPv4Address"/>             <xs:element name="IPv6Address" type="IPv6Address"/>         </xs:choice>     </xs:complexType>     <xs:complexType name="IPCIDR">         <xs:choice>             <xs:element name="IPv4CIDR" type="IPv4CIDR"/>             <xs:element name="IPv6CIDR" type="IPv6CIDR"/>         </xs:choice>     </xs:complexType>      <xs:simpleType name="TCPPort">         <xs:restriction base="xs:integer">             <xs:minExclusive value="1"/>             <xs:maxInclusive value="65535"/>         </xs:restriction>     </xs:simpleType>     <xs:complexType name="TCPPortRange">         <xs:sequence>             <xs:element name="start" type="TCPPort"/>             <xs:element name="end" type="TCPPort"/>         </xs:sequence>     </xs:complexType>     <xs:simpleType name="UDPPort">         <xs:restriction base="xs:integer">             <xs:minInclusive value="0"/>             <xs:maxInclusive value="65535"/>         </xs:restriction>     </xs:simpleType>     <xs:complexType name="UDPPortRange">         <xs:sequence>             <xs:element name="start" type="UDPPort"/>             <xs:element name="end" type="UDPPort"/>         </xs:sequence>     </xs:complexType>     <xs:complexType name="Port">         <xs:choice>             <xs:element name="TCPPort" type="TCPPort"/>             <xs:element name="UDPPort" type="UDPPort"/>         </xs:choice>     </xs:complexType>      <xs:complexType name="PortRange">         <xs:choice>             <xs:element name="TCPPortRange" type="TCPPortRange"/>             <xs:element name="UDPPortRange" type="UDPPortRange"/>         </xs:choice>     </xs:complexType>      <xs:complexType name="IPAddressPort">         <xs:sequence>             <xs:element name="address" type="IPAddress"/>             <xs:element name="port" type="Port"/>         </xs:sequence>     </xs:complexType>      <xs:complexType name="IPAddressPortRange">         <xs:sequence>             <xs:element name="address" type="IPAddress"/>             <xs:element name="portRange" type="PortRange"/>         </xs:sequence>     </xs:complexType>    ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)24     <xs:simpleType name="MACAddress">         <xs:restriction base="xs:token">             <xs:pattern value="([a-f0-9]{2}:){5}[a-f0-9]{2}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="EmailAddress">         <xs:restriction base="ShortString">             <xs:pattern value="[a-zA-Z0-9\.!#$%&amp;'\*\+\\/=\?\^_`\{\|\}~\-]+@[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(\.[a-zA-Z0-9]([a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="UUID">         <xs:restriction base="xs:token">             <xs:pattern value="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="ISOCountryCode">         <xs:restriction base="xs:token">             <xs:pattern value="[A-Z]{2}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="SIPURI">         <xs:restriction base="xs:anyURI">             <xs:pattern value="sips?:[a-zA-Z0-9!#$&amp;-;=?-\[\]_~%]+"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="TELURI">         <xs:restriction base="xs:anyURI">             <xs:pattern value="tel:[a-zA-Z0-9!#$&amp;-;=?-\[\]_~%]+"/>         </xs:restriction>     </xs:simpleType>     <xs:complexType name="WGS84CoordinateDecimal">         <xs:sequence>             <xs:element name="latitude" type="WGS84LatitudeDecimal"/>             <xs:element name="longitude" type="WGS84LongitudeDecimal"/>         </xs:sequence>     </xs:complexType>     <xs:simpleType name="WGS84LatitudeDecimal">         <xs:restriction base="xs:string">             <xs:pattern value="[NS][0-9]{2}\.[0-9]{6}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="WGS84LongitudeDecimal">         <xs:restriction base="xs:string">             <xs:pattern value="[EW][0-9]{3}\.[0-9]{6}"/>         </xs:restriction>     </xs:simpleType>     <xs:complexType name="WGS84CoordinateAngular">         <xs:sequence>             <xs:element name="latitude" type="WGS84LatitudeAngular"/>             <xs:element name="longitude" type="WGS84LongitudeAngular"/>         </xs:sequence>     </xs:complexType>     <xs:simpleType name="WGS84LatitudeAngular">         <xs:restriction base="xs:string">             <xs:pattern value="[NS][0-9]{6}\.[0-9]{2}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="WGS84LongitudeAngular">         <xs:restriction base="xs:string">             <xs:pattern value="[EW][0-9]{7}\.[0-9]{2}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="SUPIIMSI">         <xs:restriction base="IMSI"/>     </xs:simpleType>     <xs:simpleType name="SUPINAI">         <xs:restriction base="NAI"/>     </xs:simpleType>     <xs:simpleType name="SUCI">         <xs:restriction base="xs:hexBinary"/>     </xs:simpleType>     <xs:simpleType name="PEIIMEI">         <xs:restriction base="IMEI"/>     </xs:simpleType>     <xs:simpleType name="PEIIMEICheckDigit">         <xs:restriction base="IMEICheckDigit"/>     </xs:simpleType>   ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)25     <xs:simpleType name="PEIIMEISV">         <xs:restriction base="IMEISV"/>     </xs:simpleType>      <xs:simpleType name="GPSIMSISDN">         <xs:restriction base="xs:token">             <xs:pattern value="[0-9]{1,15}"/>         </xs:restriction>     </xs:simpleType>     <xs:simpleType name="GPSINAI">         <xs:restriction base="NAI"/>     </xs:simpleType>     <xs:simpleType name="NAI">         <xs:restriction base="xs:string"/>     </xs:simpleType> </xs:schema>      ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)26 Annex B (normative): 
+ASN.1 definition 
+Common-Parameters {itu-t(0) identified-organization(4) etsi(0) common-parameters(3280) version231(231)}  DEFINITIONS IMPLICIT TAGS EXTENSIBILITY IMPLIED ::= BEGIN  -- Object Identifier definitions  commonParameterDomainId OBJECT IDENTIFIER ::= {itu-t(0) identified-organization(4) etsi(0) common-parameters(3280) version231(231)}  -- Common Parameters (below are as defined in clause 6)  LIID ::= OCTET STRING (SIZE (1..25))  TCPPort ::= INTEGER (1..65535)  TCPPortRange ::= SEQUENCE {     start [0] TCPPort,     end   [1] TCPPort }  UDPPort ::= INTEGER (0..65535)  UDPPortRange ::= SEQUENCE {     start [0] UDPPort,     end   [1] UDPPort }  Port ::= CHOICE {     tCPPort [0] TCPPort,     uDPPort [1] UDPPort }  PortRange ::= CHOICE {     tCPPortRange [0] TCPPortRange,     uDPPortRange [1] UDPPortRange }  QualifiedDateTime ::= GeneralizedTime  QualifiedMicrosecondDateTime ::= GeneralizedTime  WGS84CoordinateDecimal ::= SEQUENCE {     latitude  [0] WGS84LatitudeDecimal,     longitude [1] WGS84LongitudeDecimal }  WGS84LatitudeDecimal ::= OCTET STRING (SIZE (10))  WGS84LongitudeDecimal ::= OCTET STRING (SIZE (11))  WGS84CoordinateAngular ::= SEQUENCE {     latitude  [0] WGS84LatitudeAngular,     longitude [1] WGS84LongitudeAngular }  WGS84LatitudeAngular ::= OCTET STRING (SIZE (10))  WGS84LongitudeAngular ::= OCTET STRING (SIZE (11))  InternationalE164 ::= NumericString (SIZE(1..15))  IMSI ::= NumericString (SIZE(6..15))  IMEI ::= NumericString (SIZE(14))    ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)27 IMEICheckDigit ::= NumericString (SIZE(15))  IMEISV ::= NumericString (SIZE(16))  SUPIIMSI ::= IMSI  SUPINAI ::= NAI  SUCI ::= OCTET STRING  PEIIMEI ::= IMEI  PEIIMEICheckDigit ::= IMEICheckDigit  PEIIMEISV ::= IMEISV  GPSIMSISDN ::= NumericString (SIZE(1..15))  GPSINAI ::= NAI  NAI ::= UTF8String  END    ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)28 Annex C (informative): 
+Change Request history 
+Status of the present document 
+Dictionary
+ for common parameters
+ TC LI approval 
+date Version 
+Remarks 
+June 2015 1.1.1 
+First publication of the TS after approval by ETSI TC LI#39  
+ 
+Document prepared by Steije van Schelt (rapporteur) 
+August 2016 1.1.2 Revision for a minor editorial correction 
+January 2017 1.2.1 
+Included Change Requests agreed by LI#42: 
+
+CR001r1, LI(16)P42024r1 (Cat D) Addition of XSD annex to ETSI TS 103 280 
+CR002r1, LI(16)P420r1 (Cat B) ASN.1 definitions in ETSI TS 103 280 
+ 
+Document prepared by Steije van Schelt (rapporteur) 
+June 2017 2.1.1 
+Included Change Requests: 
+CR003r1 (agreed by LI#43), LI(16)
+P43009r1 (Cat F) Short IMSI 
+CR005 (agreed by LI#45), LI(17)P45025 (Cat B) Addition of SIP URI and TEL URI to 
+common definitions 
+CR006r1 (agreed by LI#45), LI(17)P45026r1 (Cat B) Addition of ASN.1 definitions to 
+ETSI TS 103 280 
+
+ Document prepared by Steije van Schelt (EVE compliancy solutions, rapporteur) 
+June 2018 2.2.1 
+Included Change Requests: 
+ CR007r3 (agreed by LI#48), LI(18)P48008r3 (Cat B) Clarification to UTC time 
+parameters and addition of WGS84 Location Parameters 
+
+ 
+CR008 (agreed by LI#48), LI(18)P48020 (Cat D)
+ Correction of the Regular Expression 
+contained in the Definition of EmailAddress 
+
+ 
+Document prepared by Steije van Schelt (EVE compliancy solutions, rapporteur) 
+March 2019 2.3.1 
+Included Change Requests: 
+
+ 
+CR009r3 (agreed by LI#50), LI(19)P50011r3 (C
+at B) Addition of 5G identifiers to 
+common parameters 
+
+ Document prepared by Steije van Schelt (EVE compliancy solutions, rapporteur) 
+     ETSI ETSI TS 103 280 V2.3.1 (2019
+-04)29 History 
+Document history 
+V1.1.1 August 2015 Publication 
+V1.1.2 August 2015 Publication 
+V1.2.1 August 2016 Publication 
+V2.1.1 August 2017 Publication 
+V2.2.1 September 2018 Publication 
+V2.3.1 April 2019 Publication 
+ 

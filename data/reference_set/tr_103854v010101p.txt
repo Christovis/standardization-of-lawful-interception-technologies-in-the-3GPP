@@ -1,0 +1,663 @@
+   
+   ETSI TR 103 854 V1.1.1 (2022-03)
+ LEA support services;
+ Interfaces for Lawful Disclosure of vehicle-related data: 
+scenarios, examples and recommendations 
+   
+ TECHNICAL REPORT 
+  ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 2    Reference 
+DTR/LI-00214 
+Keywords 
+interface, security, trust 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+  Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - APE 7112B 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° w061004871 
+ Important notice 
+The present document can be downloaded from: 
+http://www.etsi.org/standards-search
+ The present document may be made available in electronic ve
+rsions and/or in print. The content of any electronic and/or 
+print versions of the present document shall not be modified wi
+thout the prior written authorization of ETSI. In case of any 
+existing or perceived difference in contents between such versions and/or in print, the prevailing version of an ETSI 
+deliverable is the one made publicly available in PDF format at 
+www.etsi.org/deliver
+. Users of the present document should be aware that the document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+https://portal.etsi.org/TB/ETSIDeliverableStatus.aspx
+ If you find errors in the present document, please send your comment to one of the following services: 
+https://portal.etsi.org/People/CommiteeSupportStaff.aspx
+ Notice of disclaimer & limitation of liability 
+The information provided in the present deliverable is directed 
+solely to professionals who have the appropriate degree of 
+experience to understand and interpret its content in ac
+cordance with generally accepted engineering or  
+other professional standard and applicable regulations.  
+No recommendation as to products and services or vendors is made or should be implied. 
+No representation or warranty is made that this deliverable is
+ technically accurate or sufficient or conforms to any law 
+and/or governmental rule and/or regulation and further, no repres
+entation or warranty is made of merchantability or fitness 
+for any particular purpose or against infringement of intellectual property rights. 
+In no event shall ETSI be held liable for loss of profit
+s or any other incidental or consequential damages. 
+ Any software contained in this deliverable is provided "AS IS
+" with no warranties, express or implied, including but not 
+limited to, the warranties of merchantability, fitness for a particu
+lar purpose and non-infringement of intellectual property 
+rights and ETSI shall not be held liable in any event for any damages whatsoever (including, without limitation, damages 
+for loss of profits, business inte
+rruption, loss of information, or any other pecuniary loss) arising out of or related to the use 
+of or inability to use the software. 
+Copyright Notification 
+No part may be reproduced or utilized in any form or by any 
+means, electronic or mechanical, including photocopying and 
+microfilm except as authorized by written permission of ETSI. 
+The content of the PDF version shall not be modified without the written authorization of ETSI. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © ETSI 2022. 
+All rights reserved. 
+   ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 3  Contents
+ Intellectual Property Rights
+ ................................................................................................................................ 4 Foreword
+............................................................................................................................................................. 4 Modal verbs terminology
+ ................................................................................................................................... 4 1 Scope ........................................................................................................................................................ 5 2 References
+ ................................................................................................................................................ 5 2.1
+ Normative references
+ ......................................................................................................................................... 5 2.2
+ Informative references
+ ....................................................................................................................................... 5 3 Definition of terms, symbols and abbreviations
+ ....................................................................................... 5 3.1
+ Terms
+ ................................................................................................................................................................. 5 3.2
+ Symbo
+ls ............................................................................................................................................................. 5 3.3
+ Abbreviations
+ ..................................................................................................................................................... 6 4 Structure of the present document
+ ............................................................................................................ 6 5 Reference model
+ ....................................................................................................................................... 6 6 Examples of use cases
+ .............................................................................................................................. 7 6.1
+ Overview
+ ........................................................................................................................................................... 7 6.2
+ List of example use cases
+ ................................................................................................................................... 7 6.2.1
+ Vehicle identification number to international mobile equipment identifier
+................................................ 7 6.2.2
+ International mobile equipment identifier 
+to vehicle identification number
+ ................................................ 7 6.2.3
+ Vehicle identification number to international mobile subscriber identifier
+ ................................................ 8 6.2.4
+ International mobile subscriber identifier to vehicle identification number
+ ................................................. 8 6.2.5
+ Vehicle identification number to location
+ .................................................................................................... 8 6.2.6
+ Vehicle identification number to vehicle data
+ .............................................................................................. 8 7 Recommended approach for interfacing
+ .................................................................................................. 9 7.1
+ Over
+view
+ ........................................................................................................................................................... 9 7.2
+ Information fields
+ .............................................................................................................................................. 9 7.2.1
+ Request information
+ ..................................................................................................................................... 9 7.2.2
+ Response information
+ ................................................................................................................................... 9 7.2.3
+ Format for request and response information
+ ............................................................................................. 10 7.2.4
+ Data categories
+ ........................................................................................................................................... 10 7.3
+ Delivery protocols
+ ........................................................................................................................................... 11 7.3.1
+ Use of HTTP
+ .............................................................................................................................................. 11 7.3.2
+ Delivery security details
+ ............................................................................................................................. 11 Annex A:
+ Usage scenarios
+ ..................................................................................................................... 12 A.1
+ Overview
+ ................................................................................................................................................ 12 A.2
+ Extended vehicle databases
+ .................................................................................................................... 12 A.3
+ European Production Order
+ .................................................................................................................... 12 A.4
+ Autonomous Vehicles
+ ............................................................................................................................ 12 A.5
+ EU C
+-ITS WG6
+ ...................................................................................................................................... 12 A.6
+ Stolen vehicle recovery
+ .......................................................................................................................... 13 A.7
+ Cross
+-border aspects
+ .............................................................................................................................. 13 Annex B:
+ Example of VIN
+-to-IMEI
+ use case
+....................................................................................... 14 Annex C:
+ Change History
+ ..................................................................................................................... 15 History
+ .............................................................................................................................................................. 16      ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 4 Intellectual Property Rights 
+Essential patents  
+IPRs essential or potentially essential to normative delivera
+bles may have been declared
+ to ETSI. The declarations 
+pertaining to these essential IPRs, if any, are publicly available for 
+ETSI members and non-members
+, and can be 
+found in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to 
+ETSI in respect of ETSI standards"
+, which is available from the ETSI Secretariat. Latest updates are available on the 
+ETSI Web server (
+https://ipr.etsi.org/
+). Pursuant to the ETSI Directives including the ETSI IPR Policy, no investigation regarding the essentiality of IPRs, 
+including IPR searches, has been carried out by ETSI. No guarantee can be given as to the existence of other IPRs not 
+
+referenced in ETSI SR 000 314 (or the updates on the ETSI Web server) which are, or may be, or may become, 
+
+essential to the present document. 
+Trademarks 
+The present document may include trademarks and/or tradenames
+ which are asserted and/or registered by their owners. 
+ETSI claims no ownership of these except for any which ar
+e indicated as being the property of ETSI, and conveys no 
+right to use or reproduce any trademark and/or tradename. 
+Mention of those trademarks in the present document does 
+not constitute an endorsement by ETSI of products, serv
+ices or organizations associated with those trademarks. 
+DECTŽ
+, PLUGTESTSŽ
+, UMTSŽ
+ and the ETSI logo are trademarks of ETSI registered for the benefit of its 
+Members. 
+3GPPŽ
+ and 
+LTEŽ are trademarks of ETSI registered for the benefit of its Members and of the 3GPP 
+Organizational Partners. 
+oneM2MŽ
+ logo is a trademark of ETSI registered 
+for the benefit of its Members and of the 
+oneM2M Partners. 
+GSM
+® and the GSM logo are trademarks regist
+ered and owned by the GSM Association. 
+Foreword 
+This Technical Report (TR) has been produced by ETSI Technical Committee Lawful Interception (LI). 
+Modal verbs terminology 
+In the present document "
+should
+", "
+should not
+", "
+may
+", "
+need not
+", "
+will"
+, "will not", "
+can
+" and "
+cannot
+" are to be 
+interpreted as described in clause 3.2 of the 
+ETSI Drafting Rules
+ (Verbal forms for the expression of provisions). 
+"must
+" and "
+must not
+" are 
+NOT
+ allowed in ETSI deliverables except when used in direct citation. 
+    ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 5 1 Scope 
+The present document describes an interface consisting of requests from a Law Enforcement Agency for vehicle-related 
+data and the responses to those requests. The present document describes some usage scenarios and puts forward some 
+
+examples for this interface. The present document includes a recommendation for the details of how the interface could 
+
+work. 
+2 References 
+2.1 Normative references 
+Normative references are not app
+licable in the present document. 
+2.2 Informative references 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+
+non-specific. For specific references, only the cited version applies. For non-specific references, the latest version of the 
+
+referenced document (including any amendments) applies. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication, ETSI cannot guarantee 
+their long term validity. 
+The following referenced documents are not necessary for the application of the present document but they assist the 
+
+user with regard to a particular subject area. 
+[i.1] ETSI TR 103 767: "Lawful Interception (LI); Considerations about interfacing with providers of 
+vehicle information". 
+[i.2] ETSI TS 123 003: "Digital cellular telecommunications system (Phase 2+) (GSM); Universal 
+Mobile Telecommunications System (UMTS); LTE; 5G; Numbering, addressing and identification 
+
+(3GPP TS 23.003)". 
+[i.3] ISO 20078-1:2021: "Road vehicles - Extended vehicle (ExVe) web services - Part 1: Content and 
+definitions". 
+[i.4] ETSI TS 103 280: "Lawful Interception (LI); Dictionary for common parameters". 
+[i.5] ISO 3779:2009: "Road vehicles - Vehicle identification number (VIN) - Content and structure". 
+[i.6] COM/2018/225 final: "Proposal for a Regulation of the European Parliament and of the Council 
+on European Production and Preservation Orders 
+for electronic evidence in criminal matters". 
+[i.7] SAE J853-2009: "Vehicle Identification Numbers". 
+3 Definition of terms, symbols and abbreviations 
+3.1 Terms 
+Void. 
+3.2 Symbols 
+Void. 
+  ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 6 3.3 Abbreviations For the purposes of the present document, the following abbreviations apply: 
+C-ITS Cooperative Intelligent Transport Systems 
+ExVe Extended Vehicle 
+
+GPS Global Positioning System 
+
+HTTP Hyper Text Transfer Protocol 
+
+HTTPS Hyper Text Transfer Protocol Secure 
+
+ICCID Integrated Circuit Card IDentification 
+ID IDentifier 
+IMEI International Mobile Equipment Identity 
+
+IMSI International Mobile Subscriber Identity 
+
+ISO International Organization for Standardization 
+
+JSON JavaScript Object Notation 
+LEA Law Enforcement Agency 
+OEM Original Equipment Manufacturer 
+
+PEI Permanent Equipment Identifier 
+
+RPS Response Processing System 
+
+SAE Society of Automotive Engineers 
+
+VIN Vehicle Identification Number 
+
+XML eXtensible Markup Language 
+4 Structure of the present document 
+The present document includes: 
+• Reference model and description of basic responsibilities (clause 5). 
+• List of examples of use cases (clause 6). 
+• Recommendation for how the interface should be implemented (clause 7). 
+• Usage scenarios (annex A). 
+• Example data structures (annex B). 
+5 Reference model 
+Figure 5.1 shows the reference model for the present document. 
+ Figure 5.1: Reference model 
+The Law Enforcement Agency (LEA) is responsible for creating a lawful request. The LEA system delivers the request 
+
+to a Response Processing System (RPS). The legal obligation on RPS (for example, what has to be delivered, what has 
+
+to be retained) is considered independently of the delivery interface and is out of scope of the present document. 
+This architecture is designed to address use cases that can be met by transactional requests/responses. The present 
+document does not attempt to describe use cases that require an ongoing live stream of data from an RPS (such as voice 
+
+or video). 
+Law Enforcement Agency 
+(LEA system) 
+ Organisation which has vehicle 
+information 
+(Response Processing System) 
+ Request 
+Response
+   ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 7 The request sent by the LEA needs to be clear. A request is cl
+ear if it is explicit to an RPS whether any particular record 
+(held by an RPS) matches or does not match the request. 
+The RPS is responsible for the collection of the data within its organization and produces the data using its own 
+capabilities and entirely under its control. The RPS identifies the data which matches the request, and only that data. 
+
+The RPS is entitled to put in place a human review of the request and delivered material. The RPS packages the data, 
+attaches relevant information (including a timestamp and th
+e unambiguous reference to the issued request) and delivers 
+it to the requesting LEA. 
+The term RPS is used to cover any organization which holds ve
+hicle-related data where there is a lawful reason for it to 
+respond to requests for information. It is not intended 
+to include only manufacturers and may include any relevant 
+commercial or government organization. 
+6 Examples of use cases 
+6.1 Overview 
+This clause contains a list of use cases which are intended to 
+provide some useful illustrations. This is not an exhaustive 
+list and there is no implication that these use cases are lawf
+ul or required in any particular jurisdiction (that is a 
+legislative matter which is out of scope). 
+6.2 List of example use cases 
+6.2.1 Vehicle identification number 
+to international mobile equipment 
+identifier 
+This use case is called VIN-to-IMEI. In this use case, 
+the LEA knows a Vehicle Identification Number (VIN) and 
+requests the IMEI(s). An illustration is given in annex B. 
+
+Other variants of this use case could include other equipment identifiers beyond an IMEI, specifically including PEI. 
+
+For the VIN-to-IMEI use case: 
+• The request includes the VIN, as a string (checked to be compliant with the relevant standard, 
+e.g. ISO 3779 [i.5] and SAE J853-2009 [i.7]). 
+• The response contains zero, one or more IMEI(s) (in th
+e format defined in 3GPP TS 23.003 [i.2]) associated 
+with the supplied VIN, or an error code. 
+NOTE 1: As with all use cases, the request and response would also contain the core parameters listed in clause 7. 
+NOTE 2: VIN-to-IMEI could be considered a canonical use ca
+se in that it is a simple, common example which is 
+still complex enough to illustrate key concepts and challenges. It shows how to deliver benefits which are 
+listed in ETSI TR 103 767 [i.1] (clarity, efficiency, auditability, security, privacy). 
+NOTE 3: This use case is only applicable to vehicles with manufacturer-issued VINs (which may exclude some 
+vehicles from before 1985). 
+6.2.2 International mobile equipment identifier to vehicle identification 
+number This use case is called IMEI-to-VIN and is the reverse of VIN-to-IMEI, i.e. an IMEI is known and the VIN is requested. 
+Other variants of this use case could include other Equipment Identifiers beyond an IMEI, specifically including the 
+Permanent Equipment Identifier (PEI). 
+  ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 8 6.2.3 Vehicle identification number to
+ international mobile subscriber 
+identifier 
+This use case is called VIN-to-IMSI. In this use case, 
+the LEA knows a Vehicle Identification Number (VIN) and 
+requests the IMSI(s). 
+Other variants of this use case could include other subscriber identifiers beyond an IMSI. 
+NOTE 1: There may be more than one IMSI associated with a given VIN. 
+The VIN-to-IMSI association could be made in a variety of wa
+ys (by the manufacturer, by a third party, at a dealer, or 
+by the customer themselves). The present document does not 
+comment on how or where any such association is made. 
+The use case applies to the situation in which an RPS holds this mapping, and an LEA has lawful justification to request 
+the data. 
+NOTE 2: This category could also include VIN-to-ICCID. 
+6.2.4 International mobile subscriber identifier to vehicle identification 
+number This use case is called IMSI-to-VIN and is the reverse of VIN-to-IMSI. 
+Other variants of this use case could include other subscriber identifiers beyond an IMSI. 
+6.2.5 Vehicle identification number to location 
+This use case is called VIN-to-Location and shows the basi
+c relation from a VIN to a location of a vehicle. The 
+following considerations are made: 
+• The location is typically identified by providing latitude and longitude, though other clear, unambiguous 
+formats may be considered. The locatio
+n provided should have a timestamp for the time that the location was 
+observed. 
+• The location could include the source of location (e.g. fr
+om a network or cell site, from a GPS, user-input). 
+• The request for a location would need to contain a specific time or time range. The interface would support 
+
+requests for very recent locations. The latency of data reaching the databases (i.e. how up-to-date the databases 
+
+are) would depend on the design of the systems involved and is out of scope of the interface. 
+• Depending on the implementation and purpose of the location processing, the location is retrieved based on 
+
+certain operational events of the vehicle, as requested by a lawful request. 
+• The RPS would be responsible for responding to the request. This might take place by looking in existing 
+
+databases (such as extended vehicle databases or neut
+ral servers, as per ISO's Extended Vehicle concept 
+defined in ISO 20078-1 [i.3]). Alternatively, the relevant information might need to be retrieved by the RPS 
+
+from the vehicle. 
+6.2.6 Vehicle identification number to vehicle data 
+This use case is called VIN-to-VehicleData and is a request for a set of vehicle-related data based on the vehicle's VIN. 
+The request could be for specific categories of data (see clause 7.2.4). This use case also includes the possibility of 
+defining a request for all the information from the RPS relating to the specified VIN. The present document does not 
+
+state when or whether such a request would be lawful. 
+  ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 9 7 Recommended approach for interfacing 
+7.1 Overview 
+The approach is divided into the following clauses:
+ • Information fields, including schema details (clause 7.2).
+ • Transport protocol (clause 7.3).
+ An example is given in annex B.
+ 7.2 Information fields
+ 7.2.1 Request information 
+The following information would be present in a request (from the LEA): 
+a) Administrative details: 
+- Identifiers for organizations involved (LEA side and RPS side). 
+- A unique request number created by the LEA side (it is
+ also possible to consider
+ situations in which the 
+request number is created by the RPS side, but extra care is then needed to ensure global uniqueness). 
+- Time the request message was prepared and ready to be sent. 
+- It should be possible to signal an urgency or priority of the request. The format for this field (and how it 
+is used) is defined by national systems (this can be accommodated using a free text field for priority). 
+b) The details of a clear and unambiguous request: 
+- The type of the request being made (e.g. VIN-to-IMEI from clause 6.2.1). 
+- The criteria to be used for searchin
+g for information. This would depend on the request: for example, it 
+would be a VIN for the VIN-to-IMEI use case from clause 6.2.1: 
+ It includes the criteria to be used
+ to identify the records that are be
+ing requested. This may need to 
+include a time or time-range, depending on the request. 
+ It could also include information describing which parts of the records should be sent, and which 
+parts should not be sent. This might be based on the data categories listed in clause 7.2.4. 
+c) Supporting information: 
+- Documentation relating to the warrant or authorization where appropriate in line with national 
+regulations. In some jurisdictions, this information is handled outside of this interface. 
+7.2.2 Response information 
+The following information would be present in a response (from the RPS): 
+a) Administrative details: 
+- Identifiers and unique request number (copied from the request). 
+- Time the response message was ready to send (not the same as the time of the request). 
+  ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 10 b) Response details: 
+- The information from the RPS which matched the clear and unambiguous request (see clause 7.2.1). The 
+formats for the information in the response may vary (for example, between different types or makes of 
+
+vehicle), therefore it is important to have both clarity about what the data means, but also flexibility of 
+
+data structures - see clause 7.2.3. 
+- There should be clear handling of errors. 
+c) Supporting information: 
+- Nothing identified at present. 
+7.2.3 Format for request and response information 
+It is recommended that XML or JSON is used an
+d that a schema is established for the data. 
+For the administrative details: it would be possible to write a clear and fixed schema for the relevant information 
+(e.g. request number, date and time of request). 
+For the request parameters: for each of the common request types (e.g. the examples in clause 6) it would be possible to 
+write a schema for the request information. 
+For the response parameters: it is likely there will be more variety of formats here. For simple common requests, it 
+would be possible to write a clear schema (e.g. the IMEI for the VIN-to-IMEI example). For some query types, the 
+
+responses might not always fit a single schema (might vary between different organizations). The following 
+
+considerations might be relevant: 
+• Where appropriate each record would include the time of
+ the observation, and potentially the location of the 
+observation. 
+• A solution is for the RPS side to supply information in a schema they defined themselves, though it would be 
+
+important that the schema was known and shared in advance or as part of the response. 
+• It would be possible to create a dictionary of common terms (which would include ETSI TS 103 280 [i.4] as a 
+minimum). This could include other vehicle-related data such as VIN, speed, route, etc. Additionally, other 
+standards from the vehicles industry should be included. 
+• It is recommended to consider
+ the categories of data as described in clause 7.2.4. Where the data fits naturally 
+into these categories, then this might help provide clarity. 
+7.2.4 Data categories 
+The present document identifies the following categories of response data. These may be used to help with requesting or 
+
+formatting the delivery of data. There is no implication that all data will fall into one of these categories. Data should 
+
+not be forced into structures or categories where it does not natu
+rally fit, as this can cause aspects of the meaning of data 
+to be lost. 
+The present document identifies the following categories of data, without implying that these data types should be 
+stored or may be requested in any given situation: 
+• Identification: Identification numbers for vehicles or vehicle components. 
+• Location: Position at any given time. 
+• Routing: Planning of routes (may be different from actual routes taken). 
+• Driving: Driver's actions or the vehicle's assistance 
+to the driver, including speed and information around 
+autonomous vehicles. See clause 7.3.1 regarding live streaming of data. 
+• Component status: Status of individual parts of the vehicle, either user-controlled (doors, windows) or 
+
+wear-and-tear and servicing. May also include fuel
+ or battery status and expected driving range. 
+  ETSI ETSI TR 103 854
+ V1.1.1 (2022
+-03) 11 • Interior environment: Parameters relating to the environment inside the vehicle e.g. inside temperature, 
+number of passengers. 
+• Exterior environment: Parameters relating to the environment outside the vehicle e.g. external temperature, 
+
+road events. 
+• Infotainment: Details relating to the infotainment system (communications, music, links to other devices). 
+• Service history: Information relating to when the vehicle is taken to a garage or other facility. 
+• Customer details: Information about the person or people associated with the vehicle e.g. owner(s). 
+7.3 Delivery protocols 
+7.3.1 Use of HTTP 
+It is recommended to use HTTP for delivery of responses and requests (security details, including use of HTTPS, are 
+
+specified in clause 7.3.2). Industry best-practice should be followed in terms of using up-to-date protocols. 
+The simplest approach is for the LEA side to send an HTTP request and the RPS to send the data in the HTTP response. 
+
+More complex scenarios include: 
+• Situations where the response is slower (i.e. takes more than a few seconds to create). For a slower response, 
+the initial HTTP request is acknowledged but the details of the response are sent in a later HTTP message. 
+• Situations where multiple responses are required e.g. an update every minute for an hour. It would be possible 
+
+to handle this (on a technical protocol level) as a 
+request/response every minute, though the interface should 
+make it clear that this is one request (with one authorization) which requires a number of sub-components to 
+
+fulfil it. 
+• Situations involving a stream of continuous data. As st
+ated in clause 5, this is not covered by the present 
+document. 
+7.3.2 Delivery security details 
+It is recommended to use HTTPS. 
+It is recommended to reflect state of the art and industry best practice. 
+Consideration is needed regarding the sh
+aring of certificates. Existing mechanisms 
+for sharing trust can be used where it 
+is assessed that they adequately mitigate the identified threats.
+     ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 12 Annex A: 
+Usage scenarios 
+A.1 Overview 
+Annnex A describes some scenarios which are relevant to LEA/RPS interfaces for vehicle-based data. The 
+recommended approach (clause 7) is designed to
+ be compatible with all these scenarios. 
+A.2 Extended vehicle databases 
+Extended Vehicle databases or (ExVe) have been standa
+rdized by ISO [i.3] and have industry recognition. The 
+underlying principle is that there is a database which is separate from the vehicle but which contains information about 
+the vehicle. The principle is that it is secure, safe, auditable and efficient to query the ExVe database, which may not 
+always be the case when querying the vehicle directly. Based on the experience gained with Lawful Interception and 
+
+Lawful Disclosure, ETSI TC LI is familiar with the concept of data stores or data brokers which are independent of the 
+
+device. It is not the case that all law enforcement requirements could be met by going only to an Extended Vehicle 
+
+Database (rather than the vehicle itself). It is noted that not all relevant data will have necessarily been transmitted 
+
+towards an external database. For example, Digital Forensics Policing rely on getting information directly from the 
+
+vehicle. However, ETSI TC LI notes there are many advantages to using separate databases. 
+This clause is not proposing that LEA systems are connected directly to an ExVe database. The RPS would typically 
+check various aspects of the request before passing the request on (where appropriate) to the ExVe database. There may 
+
+still be benefit in the LEA-RPS interface using similar techniques to ExVe, to make the questions easier to process 
+
+using an ExVe database. 
+A.3 European Production Order 
+It is highlighted that the EU e-Evidence European Production Order [i.6] specification includes a time limit of 6 hours 
+for responding to requests. The approach (clause 7) would be suitable for meeting this criteria, and potentially other 
+criteria from the European Production Order. 
+A.4 Autonomous Vehicles 
+Most recent legislations, at the time of publication of the present document, are increasingly explicit and specific with 
+
+regard to automated vehicles to provide certain information (to Police and insurers) about where responsibility lies in 
+
+the event of an incident. Legislation can require the time and place to be logged where an automated vehicle took 
+control of driving, and also where control was handed back to the human driver. This is essential in tracking liability. 
+This could be relevant in two ways: firstly, to see whether the same systems or protocols could be used for this 
+
+information as for other LEA requirements; secondly, to look at 
+the sorts of data sets that are needed in the two different 
+scenarios and look at the area of overlap. 
+A.5 EU C-ITS WG6 
+The objective of the EU's Cooperative Intelligent Transport Systems (C-ITS) Strategy is to facilitate the convergence of 
+
+investments and regulatory frameworks across the EU, in order to see deployment of mature C-ITS services. Beside 
+many other aspects there was a concept and further details di
+scussed for a C-ITS Deployment Platform. As part of this, 
+the EU C-ITS Working Group 6 provided a report which defines general terms, relations between entities and datasets 
+for access to in-vehicle data and resources. As many stakeholders from the automotive/mobility sector were involved, it 
+
+would be good to benefit from the result of that work to increase the acceptance from industry. 
+  ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 13 A.6 Stolen vehicle recovery 
+It is beneficial to the manufacturer, owner, insurer and LEAs that stolen vehicles can be recovered quickly. Systems are 
+being developed that allow manufacturers, or other industry, to determine the location of a vehicle and, where 
+
+appropriate, send this to an LEA. From a legal perspective, this is different from the typical scenario in the present 
+
+document, because locating a stolen vehicle is done with the owner's knowledge and consent. In terms of an efficient 
+
+technical solution, it could be worthwhile to use similar techniques in all situations where industry is sending 
+information to LEAs, provided care is taken to make the necessary distinctions to prevent confusion and ensure all 
+relevant safeguards and checks are met.
+ A.7 Cross-border aspects 
+The interface in the present document is designed to be used
+ in a cross-border situation (as well as within a country). 
+The present document does not comment on whether or not requests and responses should take place cross-border (that 
+
+is a legal matter and is out of scope of the present document). But the present document is designed to support a 
+
+situation in which the requesting LEA and the responding RPS are in different countries. 
+The critical point is to make sure that everyone is using the sa
+me standard, i.e. that there is no translation or mapping of 
+information as it moves from the RPS to the LEA system. It is possible that the transportation of data needs to involve a 
+number of steps (it is a legal matter to determine whether 
+there are any intermediate parties between the LEA and the 
+RPS). However, even if there are intermediate steps or syst
+ems, the critical point is for everyone to use an identical 
+standard and definitions on each step of the path. This reduces the potential for misunderstandings which can cause 
+
+major problems when material is presented in evidence. 
+    ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 14 Annex B: 
+Example of VIN-to-IMEI use case 
+The following parameters show an example of the VIN-to-IMEI use case. 
+Requesting Agency: This_LEA Responding Organisation: This_OEM Date and time of request: 2021-09-07T-15:50:51-04:00 Request ID: GB2548594831 Authorisation: <<A PDF or other authorisation could be supplied (this would not necessary in all jurisdictions. In additional, there could be details separately (e.g. in XML) of the name, role, organisation of the approver(s), the date it was approved etc.>> Type of request: VIN-to-IMEI Request parameters - VIN: <<The VIN would be specified here, in accordance with ISO 3779>>   Response would be sent as XML over the same HTTPS connection (or, if a new one needs to be started, the LEA and RPS sides would exchange certificates as above). Requesting Agency: This_LEA Responding Organisation: This_OEM 
+Date and time of response: 2021-09-07T-15:52:40-04:00 Request ID: GB2548594831 Type of request: VIN-to-IMEI Response parameter - IMEI: <<The relevant IMEI(s) would be specified here>>      ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 15 Annex C: 
+Change History 
+Status of Technical Report 
+ETSI TR 103 854
+ LEA support services; 
+Interfaces for Lawful Disclosure of vehicle-related data: scenarios, examples and recommendations 
+TC LI approval 
+date 
+Version 
+Remarks 
+February 2022 1.1.1 
+First publication of the TR after approval at ETSI TC LI#59e (14-18 February 2022, 
+electronic) 
+     ETSI ETSI TR 103 854 V1.1.1 (2022
+-03) 16 History 
+Document history 
+V1.1.1 March 2022 Publication 
+   
+   
+   
+   
+  

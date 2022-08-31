@@ -1,0 +1,602 @@
+     ETSI TR 102 503 V1.3.1 (2007-11)
+Technical Report
+ Lawful Interception (
+LI);ASN.1 Object Identifiers in La
+wful Interception Specifications
+    ETSI ETSI TR 102 
+503 V1.3.1 (2007
+-11) 2    
+ Reference 
+RTR/LI-00046 
+Keywords 
+ASN.1, object identifier 
+ETSI 
+650 Route des Lucioles 
+F-06921 Sophia Antipolis Cedex - FRANCE
+  Tel.: +33 4 92 94 42 00   Fax: +33 4 93 65 47 16 
+ Siret N° 348 623 562 00017 - NAF 742 C 
+Association à but non lucratif enregistrée à la 
+Sous-Préfecture de Grasse (06) N° 7803/88 
+ Important notice 
+Individual copies of the present document can be downloaded from: 
+http://www.etsi.org
+ The present document may be made available in more than one electronic version or in print. In any case of existing or 
+perceived difference in contents between such versions, the reference version is the Portable Document Format (PDF). 
+In case of dispute, the reference shall be th
+e printing on ETSI printers of the PDF version kept on a specific network drive 
+within ETSI Secretariat. 
+Users of the present document should be aware that the 
+document may be subject to revision or change of status. 
+Information on the current status of this and other ETSI documents is available at 
+http://portal.etsi.org/tb/status/status.asp
+ If you find errors in the present document, please send your comment to one of the following services: 
+http://portal.etsi.org/chaircor/ETSI_support.asp
+ Copyright Notification 
+No part may be reproduced except as authorized by written permission. 
+The copyright and the foregoing restriction extend to reproduction in all media. 
+ © European Telecommunications Standards Institute 2007. 
+All rights reserved. 
+ DECTTM, PLUGTESTSTM 
+and UMTS
+TM 
+are Trade Marks of ETSI registered for the benefit of its Members. 
+TIPHON
+TM and the 
+TIPHON logo
+ are Trade Marks currently being registered by ETSI for the benefit of its Members. 
+3GPP
+TM 
+is a Trade Mark of ETSI registered for the benefit of its Members and of the 3GPP Organizational Partners. 
+  ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 3  Contents 
+Intellectual Prop
+erty Rights...................................................................................................
+.............................4
+ Foreword.......................................................................................................................
+......................................4
+ 1 Scope........................................................................................................................
+................................5
+ 2 References...................................................................................................................
+.............................5
+ 2.1 Informative references.....................................................................................................
+...................................5
+ 3 Definitions and abbreviations................................................................................................
+...................6
+ 3.1 Definitions................................................................................................................
+..........................................6
+ 3.2 Abbreviations..............................................................................................................
+.......................................6
+ 4 Structure of the ETSI domain.................................................................................................
+..................7
+ 4.1 Tree structure.............................................................................................................
+.........................................7
+ 4.2 Description of the ETSI domain.............................................................................................
+............................7
+ Annex A: Change Request history................................................................................................
+........13
+ Annex B: Bibliography..........................................................................................................
+................14
+ History........................................................................................................................
+......................................15
+    ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 4  Intellectual Property Rights 
+IPRs essential or potentially essential to the present document may have been declared to ETSI. The information 
+pertaining to these essential IPRs, if any, is publicly available for 
+ETSI members and non-members
+, and can be found 
+in ETSI SR 000 314: 
+"Intellectual Property Rights (IPRs); Essential, or potentially Essential, IPRs notified to ETSI in 
+respect of ETSI standards"
+, which is available from the ETSI Secretariat. Latest updates are available on the ETSI Web 
+server (
+http://webapp.etsi.org/IPR/home.asp
+). Pursuant to the ETSI IPR Policy, no investigation, including IPR searches, has been carried out by ETSI. No guarantee 
+can be given as to the existence of other IPRs not referenced in ETSI SR 000 314 (or the updates on the ETSI Web 
+server) which are, or may be, or may become, essential to the present document. 
+Foreword 
+This Technical Report (TR) has been produced by ETSI Technical Committee Lawful Interception (LI). 
+  ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 5  1 Scope The present document gives an overview over the relevant
+ Object IDentifiers (OID) used in Lawful Interception 
+specifications of ETSI and other sp
+ecifications from ITU-T and ISO. 
+2 References 
+References are either specific (identified by date of publication and/or edition number or version number) or 
+non-specific. 
+• For a specific reference, subsequent revisions do not apply. 
+• Non-specific reference
+ may be made only to a complete document or a part thereof and only in the following 
+cases:  
+- if it is accepted that it will be possible to use all future changes of the referenced document for the 
+purposes of the referring document;  
+- for informative references. 
+Referenced documents which are not found to be publicly available in the expected location might be found at 
+http://docbox.etsi.org/Reference
+. For online referenced documents, information sufficient to identify and locate the source shall be provided. Preferably, 
+the primary source of the referenced document should be cited, in order to ensure traceability. Furthermore, the 
+
+reference should, as far as possible, remain valid for the expected life of the document. The reference shall include the 
+
+method of access to the referenced document and the full network address, with the same punctuation and use of upper 
+
+case and lower case letters. 
+NOTE: While any hyperlinks included in this clause were valid at the time of publication ETSI cannot guarantee 
+their long term validity. 
+2.1 Informative references 
+[1] Void. 
+[2] ETSI ES 201 671: "Lawful Interception (LI); Ha
+ndover interface for the lawful interception of 
+telecommunications traffic". 
+[3] ETSI TS 101 671: "Lawful Interception (LI); Ha
+ndover Interface for the lawful interception of 
+telecommunications traffic". 
+NOTE: Periodically TS 101 671 is published as ES 201 671. A reference to the latest version of the TS as above 
+reflects the latest stable content from ETSI/TC LI. 
+[4] ETSI TS 133 108: "Universal Mobile Telecommunications System (UMTS); 3G security; 
+Handover interface for Lawful Interception (LI) (3GPP TS 33.108)". 
+[5] ETSI TS 102 232: "Lawful Interception (LI); Handover specification for IP delivery". 
+
+[6] ETSI TS 102 233: "Lawful Interception (LI); Service specific details for E-mail services". 
+[7] ETSI TS 102 234: "Lawful Interception (LI); Service-specific details for internet access services". 
+[8] ETSI TS 102 815: "Lawful Interception (LI); Service-specific details for Layer 2 Lawful 
+Interception". 
+[9] ITU-T Recommendation X.880: "Information technology - Remote Operations: Concepts, model 
+and notation". 
+  ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 6  [10] ETSI TS 101 909-20-1: "Digital Broadband Cable Access to the Public Telecommunications 
+Network; IP Multimedia Time Critical Services; Part 20: Lawful Interception; Sub-part 1: CMS 
+
+based Voice Telephony Services". 
+[11] ETSI TS 101 909-20-2: "Digital Broadband Cable Access to the Public Telecommunications 
+Network; IP Multimedia Time Critical Services; Part 20: Lawful Interception; Sub-part 2: 
+
+Streamed multimedia services". 
+[12] ETSI EN 301 040: "Terrestrial Tr
+unked Radio (TETRA); Security; Lawful Interception (LI) 
+interface". 
+[13] ETSI TS 102 232-1: "Lawful Interception (LI); Handover Interface and Service-Specific  
+Details (SSD) for IP delivery; Part 1: Handover specification for IP delivery". 
+[14] ETSI TS 102 232-2: "Lawful Interception (LI); Handover Interface and Service-Specific  
+Details (SSD) for IP delivery; Part 2: Service specific details for E-mail services". 
+[15] ETSI TS 102 232-3: "Lawful Interception (LI); Handover Interface and Service-Specific  
+Details (SSD) for IP delivery; Part 3: Servi
+ce-specific details for internet access services". 
+[16] ETSI TS 102 232-4 "Lawful Interception (LI); Handover Interface and Service-Specific  
+Details (SSD) for IP delivery; Part 4: Service-specific details for Layer 2 services". 
+[17] ETSI 102 232-5: "Lawful Interception (LI); Handover Interface and Service-Specific  
+Details (SSD) for IP delivery; Part 5: Service-specific details for IP Multimedia Services". 
+[18] ETSI 102 232-6: "Lawful Interception (LI); Handover Interface and Service-Specific  
+Details (SSD) for IP delivery; Part 6: Service-specific details for PSTN/ISDN services". 
+3 Definitions and abbreviations 
+3.1 Definitions  
+For the purposes of the present document, the following terms and definitions apply: 
+common domain: 
+set of objects, which are part of the definition of a protocol or a set of related protocols 
+information object: 
+well-defined piece of information, definition, or specification, which requires a name in order to, 
+identify its use in an instance of communication 
+Object IDentifier (OID): 
+value (distinguishable from all other such values), which is associated with an information 
+object 
+NOTE:  An object identifier consists of a sequence of integers. Each integer represents a node in the object 
+identifier tree. So, each successive integer can be thought of as a selection of an end of a branch of the 
+
+tree. The branch is traversed to get to the next level in the tree. 
+3.2 Abbreviations For the purposes of the present document, the following abbreviations apply: 
+ASN.1 Abstract Syntax Notation One 
+LI Lawful Interception 
+OID Object IDentifier 
+ROSE Remote Operation Service Element 
+  ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 7  4 Structure of the ETSI domain 
+4.1 Tree structure 
+Figure 1 contains the structure for the ETSI domain with the included Lawful Intercept domain and ASN.1 modules 
+from other Lawful Interception (LI) specifications. 
+ETSI/TC LI will act as the formal registration authority 
+for the Lawful Intercept domain, except for the "threeGPP(4)" 
+subdomain which is administrated by 3GPP/SA3-LI, ETSI/TC AT-D is responsible for the "ts101909(1909)" 
+
+subdomain and ETSI/EP TETRA is responsible for the "en301040(1040)" subdomain. 
+4.2 Description of the ETSI domain 
+Tables 1 to 3 contain the OIDs of the ETSI domain. The entries in the last column in the tables point to the specification 
+
+where the modules can be found. 
+For information, in addition to those OIDs defined within ETSI/TC LI, table 4 contains the OIDs for the ROSE 
+operations. Because of the imports, the ASN.1 modules of ROSE will be included when syntax checking or compiling 
+the LI specific ASN.1 modules. 
+   ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 8   identified-organization (4)
+ dod (6) 
+itu-t (0) 
+member-body (2) 
+iso (1) 
+root 
+etsi (0) 
+securityDomain (2) 
+lawfulIntercept (2) 
+fraud (1) 
+ts101909 (1909)
+ en301040 (1040)
+ part20 (20) 
+three-GPP (4)
+ li-ps (5) 
+him (3) 
+hi3 (2) 
+hi2 (1) 
+hi1 (0) 
+subpart (2)
+ subpart (1)
+ specific version
+ internet (1) 
+private (4) 
+enterprise (1) 
+cable
+-Television
+ Laboratories-Inc (4491) 
+clapProject (6) 
+clapProjPacketCable (2) 
+pktcLawfulIntercept (5) 
+identified-organization (3)
+ pcesp (1) 
+US (840) 
+tia (113737) 
+laes (2) 
+tr45 (0) 
+j-std-025 (0) 
+ETSI domain 
+t1 (1) 
+T1-678 (0) 
+ NOTE:  There are other standards which contain ASN.1 modules for interception (see
+ http://portal.etsi.org/li/status.asp
+).  Figure 1: Tree structure of ETSI domain  
+  ETSI ETSI TR 102 503 V1
+.3.1 (2007
+-11) 9  Table 1: OIDs of the ETSI domain 
+Object IDentifier 
+Specification 
+ TR 102 503 V1.1.1
+ fraud(1)  ES 201 671 [2], V1.1.1 clause A.4 
+ ES 201 671 [2], V1.1.1 clause A.4 
+hi1(0) notification 
+Operations (1) 
+version1(1) 
+version2(2) 
+
+version3(3) 
+version4(4) 
+version5(5) 
+ES 201 671 [2], V1.1.1 clause A.4 
+ES 201 671 [2], V2.1.1 clause D.4 
+
+TS 101 671 [3], V2.9.1 clause D.4 
+TS 101 671 [3], V2.11.1 clause D.4 
+TS 101 671 [3], V2.12.1 clause D.4 
+hi2(1) version1(1) 
+version2(2) 
+version3(3) 
+version4(4) 
+
+version5(5) 
+
+version6(6) 
+version7(7) 
+version8(8) 
+
+version9(9) 
+
+version10(10) 
+ES 201 671 [2], V1.1.1 clause A.5 
+ES 201 671 [2], V2.1.1 clause D.5 
+TS 101 671 [3], V2.5.1 clause D.5 
+TS 101 671 [3], V2.7.1 clause D.5 
+
+TS 101 671 [3], V2.9.1 clause D.5 
+
+TS 101 671 [3], V2.10.1 clause D.5 
+TS 101 671 [3], V2.11.1 clause D.5 
+TS 101 671 [3], V2.12.1 clause D.5 
+
+TS 101 671 [3], V2.13.1 clause D.5 
+
+TS 101 671 [3], V2.14.1 clause D.5 
+circuitLI(1) 
+version1(1) 
+version2(2) 
+
+version3(3) 
+ES 201 671 [2], V1.1.1 clause A.6 
+ES 201 671 [2], V2.1.1 clause D.6 
+
+TS 101 671 [3], V.2.12.1 clause D.6 
+tETRALI(2) version1(1) 
+ES 201 671 [2], V1.1.1 clause A.7 
+For Further Study 
+gPRSLI(3) 
+version1(1) 
+version2(2) 
+version3(3) 
+ES 201 671 [2], V1.1.1 clause A.8 
+TS 101 671 [3], V2.10.1 clause D.9 
+TS 101 671 [3], V2.12.1 clause D.9 
+cclinkLI(4) 
+version1(1) 
+version2(2) 
+version3(3) 
+version4(4) 
+ES 201 671 [2], V1.1.1 clause A.9 
+ES 201 671 [2], V2.1.1 clause D.8 
+TS 101 671 [3], V2.7.1 clause D.8 
+TS 101 671 [3], V.2.12.1 clause D.8 
+itu-t (0) identified-
+organizations(4)
+ etsi(0) securityDomain(2) 
+lawfulIntercept(2) 
+hi3(2) gSMLI(5) 
+ES 201 671 [2], V2.1.1 clause D.2 
+For Further Study 
+   ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 10  Object IDentifier 
+Specification 
+him(3) version1(1) 
+version2(2) 
+version3(3) 
+ES 201 671 [2], V1.1.1 clause A.3 
+ES 201 671 [2], V2.1.1 clause D.3 
+TS 101 671 [3], V2.12.1 clause D.3 
+version-1(1) 
+version-2(2) 
+3GPP TS 33.108 [4], V5.0.0 clause B.3 
+3GPP TS 33.108 [4], V6.0.0 clause B.3 
+r5(5) version-3(3) 
+version-4(4) 
+3GPP TS 33.108 [4], V5.7.0 clause B.3 
+3GPP TS 33.108 [4], V5.8.0 clause B.3 
+r6(6) version-3(3) 
+version-4(4) 
+version-5(5) 
+
+version-6(6) 
+3GPP TS 33.108 [4], V6.5.0 clause B.3 
+3GPP TS 33.108 [4], V6.6.0 clause B.3 
+3GPP TS 33.108 [4], V6.7.0 clause B.3 
+
+3GPP TS 33.108 [4], V6.8.0 clause B.3 
+r7(7) version-1(1) 
+version-2(2) 
+version-3(3) 
+3GPP TS 33.108 [4], V7.2.0 clause B.3 
+3GPP TS 33.108 [4], V7.3.0 clause B.3 
+3GPP TS 33.108 [4], V7.8.0 clause B.3 
+hi2(1) r8(8) version-1(1) 3GPP TS 33.108 [4], V8.0.0 clause B.3 
+version-1(1) 3GPP TS 33.108 [4], V5.0.0 clause B.4 
+r5(5) version-2(2) 3GPP TS 33.108 [4], V5.9.0 clause B.4 
+r6(6) version-1(1) 
+version-2(2) 
+
+version-3(3) 
+3GPP TS 33.108 [4], V6.5.0 clause B.4 
+3GPP TS 33.108 [4], V6.7.0 clause B.4 
+
+3GPP TS 33.108 [4], V6.8.0 clause B.4 
+hi3(2) r7(7) version-0(0) 3GPP TS 33.108 [4], V7.3.0 clause B.4 
+version-1(1) 
+version-2(2) 
+3GPP TS 33.108 [4], V6.1.0 clause B.3a 
+3GPP TS 33.108 [4], V6.6.0 clause B.3a 
+r6(6) version-3(3) 3GPP TS 33.108 [4], V6.8.0 clause B.3a 
+hi2CS(3) 
+r7(7) version-0(0) 
+version-1(1) 
+3GPP TS 33.108 [4], V7.3.0 clause B.4 
+3GPP TS 33.108 [4], V7.8.0 clause B.3 
+version1(1) 3GPP TS 33.108 [4], V6.5.0 clause B.6 
+r6(6) version2(2) 3GPP TS 33.108 [4], V6.8.0 clause B.6
+ hi3CS(4) 
+r7(7) version0(0) 3GPP TS 33.108 [4], V7.3.0 clause B.4
+ version1(1) 3GPP TS 33.108 [4], V6.5.0 clause B.5 
+him(5) version2(2) 3GPP TS 33.108 [4], V7.1.0 clause B.5 
+r7(7) version-1(1) 3GPP TS 33.108 [4], V7.8.0 clause B.3 
+itu-t (0) identified-
+organizations(4)
+ etsi(0)
+ securityDomain(2)
+ lawfulIntercept(2)
+ threeGPP(4) 
+hi2wlan(6)
+ r8(8) version-1(1) 3GPP TS 33.108 [4], V8.0.0 clause B.3 
+   ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 11  Object IDentifier 
+Specification 
+hi1(0) TS 102 232 [5], V1.1.1 clause A.1 
+For Further Study 
+genHeader(1) 
+version1(1) 
+version2(2) 
+
+version3(3) 
+version4(4) 
+version5(5) 
+
+version6(6) 
+
+version7(7) 
+TS 102 232 [5], V1.1.1 clause A.2 
+TS 102 232 [5], V1.2.1 clause A.2 
+
+TS 102 232 [5], V1.3.1 clause A.2 
+TS 102 232 [5], V1.4.1 clause A.2 
+TS 102 232 [5], V1.5.1 clause A.2 
+
+TS 102 232-1 [13], V2.1.1 clause A.2 
+
+TS 102 232-1 [13], V2.2.1 clause A.2 
+version1(1) 
+
+ iRI(1) 
+cC(2) 
+TS 102 233 [6], V.1.1.1 annex D 
+TS 102 233 [6], V.1.1.1 annex D 
+version2(2) iRI(1) TS 102 233 [6], V.1.2.1 annex D 
+email(2) 
+version3(3) iRI(1) 
+TS 102 233 [6], V.1.3.1 annex D 
+TS 102 232-2 [14], V2.1.1 annex D 
+version1(1) 
+iRI(1) 
+cC(2) 
+iRIOnly(3) 
+TS 102 234 [7], V1.1.1 clause 8 
+TS 102 234 [7], V1.1.1 clause 8 
+TS 102 234 [7], V1.1.1 clause 8 
+version2(2) 
+iRI(1) 
+cC(2) 
+iRIOnly(3) 
+TS 102 234 [7], V.1.3.1 clause 8 
+TS 102 234 [7], V.1.3.1 clause 8 
+TS 102 234 [7], V.1.3.1 clause 8 
+version3(3) 
+iRI(1) 
+cC(2) 
+iRIOnly(3) 
+TS 102 234 [7], V.1.4.1 clause 8 
+TS 102 234 [7], V.1.4.1 clause 8 
+TS 102 234 [7], V.1.4.1 clause 8 
+version4(4) 
+iRI(1) 
+cC(2) 
+iRIOnly(3) 
+TS 102 234 [7], V.1.6.1 clause 8 
+TS 102 234 [7], V.1.6.1 clause 8 
+TS 102 234 [7], V.1.6.1 clause 8 
+iPAccess(3) 
+version5(5) 
+iRI(1) 
+cC(2) 
+
+iRIOnly(3) 
+TS 102 232-3 [15], V2.1.1 clause 8 
+TS 102 232-3 [15], V2.1.1 clause 8 
+
+TS 102 232-3 [15], V2.1.1 clause 8 
+version1(1) 
+iRI(1) 
+cC(2) 
+
+iRIOnly(3) 
+TS 102 815 [8], V1.1.1 clause 8.2 
+TS 102 815 [8], V1.1.1 clause 8.2 
+
+TS 102 815 [8], V1.1.1 clause 8.2 
+version2(2) 
+iRI(1) 
+cC(2) 
+
+iRIOnly(3) 
+TS 102 815 [8], V1.2.1 clause 8.2 
+TS 102 815 [8], V1.2.1 clause 8.2 
+
+TS 102 815 [8], V1.2.1 clause 8.2 
+version3(3) 
+iRI(1) 
+cC(2) 
+
+iRIOnly(3) 
+TS 102 815 [8], V1.3.1 clause 8.2 
+TS 102 815 [8], V1.3.1 clause 8.2 
+
+TS 102 815 [8], V1.3.1 clause 8.2 
+itu-t (0) identified-
+organizations(4) 
+etsi(0) securityDomain(2) lawfulIntercept(2) li-ps(5) 
+l2Access(4) 
+version4(4) 
+iRI(1) 
+cC(2) 
+
+iRIOnly(3) 
+TS 102 232-4 [16], V2.1.1 clause 8.1 
+TS 102 232-4 [16], V2.1.1 clause 8.1 
+
+TS 102 232-4 [16], V2.1.1 clause 8.1 
+   ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 12  Object IDentifier 
+Specification 
+iPMultimedia(5) version1(1) 
+iRI(1) 
+cC(2) 
+TS 102 232-5 [17], V2.1.1 clause 7 
+version1(1) 
+iRI(1) 
+cC(2) 
+TS 102 232-6 [18], V2.1.1 annex A.2 
+itu-t (0) identified-
+organizations(4) 
+etsi(0) securityDomain(2) lawfulIntercept(2) li-ps(5) 
+pstnIsdn(6) 
+version2(2) 
+iRI(1) 
+cC(2) 
+TS 102 232-6 [18], V2.2.1 annex A.2 
+ Table 2: OIDs of the ETSI/TC AT-D domain 
+Object Identifier 
+Specification 
+subpart1 (1) interceptVersion (0)  TS 101 909-20-1 [10], V1.1.2 annex A  
+itu-t (0) identified-
+organizations(4) 
+etsi(0) ts101909 (1909) part20 (20) 
+subpart2 (2) interceptVersion (0)  TS 101 909-20-2 [11], V1.1.2 annex A  
+ Table 3: OIDs of the ETSI/EP TETRA domain 
+Object Identifier 
+Specification 
+itu-t (0) identified-
+organizations(4) 
+etsi(0) en301040 (1040) interceptVersion (0) EN 301 040 [12], V2.0.0 annex E 
+ Table 4: Object IDentifier of ROSE 
+Object Identifier 
+Specification 
+joint-iso-itu-t(2) remote-operations(4) informationObjects(5) version1(0) ITU-T Recommendation X.880 [9], annex A 
+   ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 13 Annex A: 
+Change Request history 
+Status of the present document 
+ASN.1 Object Identifiers in Lawful Intercept Specifications 
+Date 
+Version Remarks 
+October 2005 1.1.1 
+First publication of the TR after approval by ETSI/TC LI#10 (4-6 October 2005, 
+Sorrento); 
+ Version 1.1.1 prepared by Ralf Schmalbach (BNetzA) (rapporteur TR). 
+May 2006 1.2.1 
+Included Change Request: 
+TR102503CR001 (cat F) on Correction of mistakes performed during ETSI publication 
+process of v1.1.1. 
+
+This CR was approved by TC LI#11 (31 January Œ 2 February 2006, Saint Martin); 
+
+ Update of versions numbers of ASN.1 muldules in modified specifications during 
+TC LI#12 (9-11 May 2006, Limassol). 
+
+ 
+Version 1.2.1 prepared by Ralf Schmalbach (BNetzA) (rapporteur TR). 
+October 2007 1.3.1 
+Included Change Request: 
+TR102503CR002 (cat F) on Update of versions numbers of ASN.1 muldules in modified 
+
+specifications 
+
+This CR was approved by TC LI#16 (2-4 October 2007, Berlin). 
+ Version 1.3.1 prepared by Ralf Schmalbach (BNetzA) (rapporteur TR). 
+  ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 14 Annex B: 
+Bibliography 
+ETSI EG 200 351: "ETSI object identifier tree; Rules and registration procedures". 
+  ETSI ETSI TR 102 503 V1.3.1 (2007
+-11) 15 History 
+Document history 
+V1.1.1 January 2006 Publication 
+V1.2.1 August 2006 Publication 
+V1.3.1 November 2007 Publication 
+   
+   
+ 
