@@ -19,3 +19,7 @@ data/reference_set/*.pdf
 # this data is sensitive and only upon request available
 data/search_set/*.mbox
 data/target_set/*.mbox
+
+# files are too large for github. will be made available on zotero instead
+data/target_set/*.h5
+
